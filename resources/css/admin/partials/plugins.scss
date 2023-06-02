@@ -1,0 +1,33 @@
+/**
+ * Modules
+ *
+ * @version 1.2.0 2021/02/01 00:00
+ * @author Jean <jean@minmax.biz>
+ * @copyright (c) minmax.biz
+ * @link https://minmax.biz
+ */
+
+/**
+ * Setups
+ */
+
+/// ---------------------------------------------------------------------------
+/// Plugins
+/// ---------------------------------------------------------------------------
+@import "plugins/slimScroll";
+@import "plugins/bootstrap-select";
+@import "plugins/dataTables";
+@import "plugins/vue2-datepicker";
+//@import "plugins/clipboard";
+//@import "plugins/maxlength";
+@import "plugins/multiselect";
+//@import "plugins/select2";
+//@import "plugins/typeahead";
+//@import "plugins/docs";
+//@import "plugins/jstree";
+//@import "plugins/bootstrap-tagsinput";
+/// ---------------------------------------------------------------------------
+/// other
+/// ---------------------------------------------------------------------------
+//@import "plugins/highlight.scss";
+@import "plugins/laravel-file-manager";

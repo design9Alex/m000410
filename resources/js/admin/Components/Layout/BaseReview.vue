@@ -1,0 +1,83 @@
+<template>
+  <admin-layout :urls="urls" :configs="configs" :trans="trans" :breadcrumbs="breadcrumbs" v-slot:default="slotProps">
+    <section class="panel panel-default" :style="{minHeight: slotProps.pageMinHeight + 'px'}">
+      <header class="panel-heading">
+        <h1 class="h5 float-left font-weight-bold">{{ array_get(trans, 'title') }}
+          {{ array_get(trans, 'ui.topic.review') }}</h1>
+        <a class="btn btn-sm rounded-pill btn-secondary ml-2"
+           v-if="filled(urls.guide)"
+           :href="urls.guide" target="_blank" :title="array_get(trans, 'ui.button.guide')">
+          <i class="icon-help"></i>
+        </a>
+        <site-page-actions :urls="urls" :trans="trans">
+          <a v-if="filled(urls.show)" class="btn btn-sm btn-main"
+             :href="urls.show" target="_blank" :title="array_get(trans, 'ui.button.show')">
+            <i class="icon-eye3"></i><!--
+            --><span class="ml-1 d-none d-md-inline-block">{{ array_get(trans, 'ui.button.show') }}</span>
+          </a>
+        </site-page-actions>
+      </header>
+
+      <div class="panel-wrapper">
+        <div class="panel-body">
+          <slot name="slotPanelBody">
+            <div class="form-horizontal">
+              <slot v-bind:trans="trans"
+                    v-bind:columns="columns"
+                    v-bind:options="options" />
+            </div>
+          </slot>
+        </div>
+      </div>
+    </section>
+  </admin-layout>
+</template>
+
+<script>
+import AdminLayout from "./SiteMain";
+import SitePageActions from "./SitePageActions";
+
+export default {
+  name: "BaseReview",
+  components: {
+    AdminLayout,
+    SitePageActions
+  },
+  props: {
+    urls: Object,
+    configs: Object,
+  },
+  data() {
+    return {
+      breadcrumbs: [],
+      trans: {},
+      columns: [],
+      options: []
+    }
+  },
+  created() {
+    this.getUI();
+  },
+  methods: {
+    getUI: function () {
+      if (this.filled(this.urls.api_ui)) {
+        axios
+          .get(this.urls.api_ui)
+          .then((response) => {
+            this.breadcrumbs = response.data.data.breadcrumbs;
+            this.updateUI(response.data.data.trans, response.data.data.columns, response.data.data.options);
+          });
+      }
+    },
+    updateUI: function (trans, columns, options) {
+      this.trans = trans;
+      this.columns = columns;
+      this.options = options;
+
+      this.$nextTick(function () {
+        window.dispatchEvent(new Event('resize'));
+      });
+    }
+  }
+}
+</script>

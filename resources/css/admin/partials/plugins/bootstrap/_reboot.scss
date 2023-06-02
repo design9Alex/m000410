@@ -1,0 +1,5 @@
+body {
+  @include media-breakpoint-down(lg) {
+    font-size: .875rem;
+  }
+}

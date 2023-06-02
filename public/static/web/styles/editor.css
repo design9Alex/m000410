@@ -1,0 +1,81 @@
+@import "style.css";
+
+div.minmax-module {
+  display: block;
+  position: relative;
+}
+
+div.minmax-module .module-information {
+  display: block;
+  top: 0;
+  right: 0;
+  position: absolute;
+  width: 30%;
+  padding: 8px;
+  font-size: 11px;
+  background: rgba(210,210,210,.6);
+  border-radius: 0 0 5px 5px;
+  opacity: 0;
+  transition: none;
+}
+div.minmax-module:hover .module-information {
+  top: 100%;
+  opacity: 1;
+  transition: opacity .6s;
+}
+div.minmax-module .module-information a {
+  cursor: pointer;
+  color: #e7505a;
+  position: relative;
+  pointer-events: all;
+}
+
+.mce-content-body .module-information[contentEditable=false][data-mce-selected] {
+  cursor: default;
+  outline: none;
+}
+
+div.minmax-module::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  border: dashed 1px #ececec;
+  pointer-events: none;
+}
+div.minmax-module:hover::after {
+  border-color: #c3c3c3;
+}
+
+div.minmax-module::before {
+  content: attr(data-label);
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  padding: 3px 7px;
+  background-color: rgba(210, 210, 210, .8);
+  border-radius: 0 0 0 5px;
+  font-size: 11px;
+  line-height: 16px;
+  color: #666666;
+  pointer-events: none;
+  transition: transform .3s, background-color .3s, color .3s, border .3s;
+}
+div.minmax-module:hover::before {
+  transform: translateY(-100%);
+  background-color: rgba(210, 210, 210, 1);
+  border-radius: 5px 5px 0 0;
+  color: #000000;
+}
+
+@media only screen and (max-device-width: 700px) {
+  div.minmax-module .module-information {
+    width: 70%;
+  }
+}

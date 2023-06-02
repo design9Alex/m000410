@@ -1,0 +1,24 @@
+/**
+ * Modules
+ *
+ * @version 2.0.0 2021/06/18 11:30
+ * @author Jean <jean@minmax.biz>, Jeffy <jeffy@minmax.biz>
+ * @copyright (c) minmax.biz
+ * @link https://minmax.biz
+ */
+
+// FontSource
+@import "~@fontsource/Poppins/400";
+@import "~@fontsource/Poppins/500";
+
+// icoMoon
+@import 'fonts/icon/style';
+
+// flag-icon-css
+@import '~flag-icon-css/sass/flag-icon';
+
+// FontAwesome (Free)
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/brands';

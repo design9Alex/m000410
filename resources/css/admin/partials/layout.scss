@@ -1,0 +1,24 @@
+/*!
+ * Layout
+ *
+ * @version 1.0.0 2018/01/01 00:00
+ * @author Jean <Jean@youweb.tw>
+ * @copyright (c) youweb.tw
+ * @link http://youweb.tw/
+ */
+
+/**
+ * Layout
+ */
+@import "./layouts/common";
+@import "./layouts/default";
+@import "./layouts/layouts";
+
+/**
+ * Pages
+ */
+//@import "./layouts/pages/login";
+@import "./layouts/pages/login2";
+@import "./layouts/pages/index";
+@import "./layouts/pages/profile-userpic";
+@import "./layouts/pages/template";
