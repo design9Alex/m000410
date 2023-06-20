@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+
 use Illuminate\Database\Seeder;
+use Minmax\Base\Models\SystemLanguage;
 
 class DatabaseSeeder extends Seeder
 {

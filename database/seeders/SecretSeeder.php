@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Minmax\Base\Models\SystemLanguage;
 
 class SecretSeeder extends Seeder
 {
@@ -18,6 +19,9 @@ class SecretSeeder extends Seeder
         $this->updateAdminUserPassword();
 
         $this->updateSuperAdmin();
+        $this->init();
+
+        //$this->updateSystemParameter();
     }
 
     /**
@@ -53,5 +57,31 @@ class SecretSeeder extends Seeder
                 'two_fa' => false
             ]);
         }
+    }
+
+    protected function init()
+    {
+        SystemLanguage::whereIn('id',['ja','zh-CN'])->delete();
+
+        \DB::table('data_sort')->where('model_type','Minmax\Base\Models\SystemLanguage')
+            ->where('model_id','zh-TW')->where('column_name','sort')->update(['content' => '1']);
+
+        \DB::table('data_sort')->where('model_type','Minmax\Base\Models\SystemLanguage')
+            ->where('model_id','en')->where('column_name','sort')->update(['content' => '2']);
+    }
+
+
+    protected function updateSystemParameter()
+    {
+
+        $SystemParameterId = DB::table('data_plaintext')
+            ->where('model_type','Minmax\Base\Models\SystemParameter')
+            ->where('content','product_column_component')->value('model_id');
+
+        $SystemParameter = DB::table('system_parameter')->where('parent_id',$SystemParameterId)->pluck('id')->toArray();
+
+        $model_id = DB::table('data_plaintext')->where('model_type','Minmax\Base\Models\SystemParameter')->whereIn('model_id',$SystemParameter)->where('content','多選')->value('model_id');
+
+        DB::table('data_plaintext')->where('model_id',$model_id)->where('column_name','value')->update(['content' => 'minmax-multi-select']);
     }
 }
