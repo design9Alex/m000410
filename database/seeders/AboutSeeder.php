@@ -36,6 +36,7 @@ class AboutSeeder extends Seeder
 
         DB::table('article_column')->insert($insertData = [
             ['id' => 'about-history', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => 'about-management', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
         ]);
 
         DBHelper::insertDistributedData('article_column', [
@@ -43,6 +44,15 @@ class AboutSeeder extends Seeder
                 'title' => '[關於我們] 大事紀',
                 'column_set' => json_encode([
                     //['column' => 'description', 'component' => 'minmax-textarea'],
+
+                ]),
+                'sort' => 1, 'active' => 1,
+            ],
+            'about-management' => [
+                'title' => '[關於我們] 經營團隊',
+                'column_set' => json_encode([
+                    ['column' => 'department', 'component' => 'minmax-input-text'],
+                    ['column' => 'responsibilities', 'component' => 'minmax-textarea'],
 
                 ]),
                 'sort' => 1, 'active' => 1,
@@ -67,6 +77,10 @@ class AboutSeeder extends Seeder
             ],
             [
                 'id' => 'web-block-abouts-history', 'parent_id' => 'web-block-abouts',
+                'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+            ],
+            [
+                'id' => 'web-block-abouts-management', 'parent_id' => 'web-block-abouts',
                 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
             ],
 
@@ -105,6 +119,19 @@ class AboutSeeder extends Seeder
                 'operations' => json_encode(['infertile']),
                 'sort' => 1, 'active' => 1,
             ],
+            'web-block-abouts-management' => [
+                'code' => 'web-block-abouts-management',
+                'title' => '經營團隊',
+                'editor' => null,
+                'topic' => null,
+                'path' => null,
+                'column_config' => 'about-management',
+                'category_page' => null,
+                'article_page' => 'web-about-management',
+                'role_operations' => null,
+                'operations' => json_encode(['infertile']),
+                'sort' => 2, 'active' => 1,
+            ],
 
 
 
@@ -120,6 +147,7 @@ class AboutSeeder extends Seeder
     {
         $i = 0;
         DB::table('article_block')->insert($insertData = [
+            //大事紀
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
@@ -219,6 +247,17 @@ class AboutSeeder extends Seeder
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
 
 			['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+
+            //經營團隊
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
@@ -984,6 +1023,98 @@ class AboutSeeder extends Seeder
             ],
 
 
+            //經營團隊
+            $id[++$i] => [
+                'title' => '黃嘉能',
+                'department' => '董事長 / 執行長 / 總經理',
+                'responsibilities' => "發展、規劃、執行公司短、中、長期營運策略及計畫\n規劃公司重大投資之決策與開發新事業版圖",
+                'pic' => null,
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+            $id[++$i] => [
+                'title' => '黃俊勳',
+                'department' => '業務總經理暨導線架事業部主管',
+                'responsibilities' => "導線架及自動化設備事業部之業務推廣\n管理及督導各事業部業務績效",
+                'pic' => null,
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+            $id[++$i] => [
+                'title' => '吳聲濤',
+                'department' => '台北分公司 / 總經理',
+                'responsibilities' => '管理及督導台北分公司業務績效及行政部門事務執行',
+                'pic' => null,
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+            $id[++$i] => [
+                'title' => '陳明軒',
+                'department' => '高分子材料事業部 / 協理',
+                'responsibilities' => '負責高分子材料事業部之業務推廣',
+                'pic' => null,
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+            $id[++$i] => [
+                'title' => '趙芝緯',
+                'department' => '高分子材料事業部 / 協理',
+                'responsibilities' => '負責高分子材料事業部之業務推廣',
+                'pic' => null,
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+            $id[++$i] => [
+                'title' => '蔣華文',
+                'department' => '基板事業部 / 協理',
+                'responsibilities' => '負責基板事業部之業務推廣',
+                'pic' => null,
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+            $id[++$i] => [
+                'title' => '陳子仁',
+                'department' => '新產品開發事業部 / 協理',
+                'responsibilities' => '負責新產品開發事業部之業務推廣',
+                'pic' => null,
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+            $id[++$i] => [
+                'title' => '張振榮',
+                'department' => '自動化設備事業部 / 協理',
+                'responsibilities' => '負責自動化設備事業部之業務推廣',
+                'pic' => null,
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+            $id[++$i] => [
+                'title' => '陳美琴',
+                'department' => '財務及會計部 / 經理',
+                'responsibilities' => "財務、帳務及稅務規畫及執行\n合併報表作業之規劃與執行\n董事會、審計委員會及薪資報酬委員會議事之執行",
+                'pic' => null,
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+
         ], false);
 
         DBHelper::insertLanguageUsage('Minmax\Article\Models\ArticleBlock', array_pluck($insertData, 'id'),$this->languages);
@@ -1090,6 +1221,16 @@ class AboutSeeder extends Seeder
             ['category_id' => 'web-block-abouts-history','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
             ['category_id' => 'web-block-abouts-history','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
             ['category_id' => 'web-block-abouts-history','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+
+            ['category_id' => 'web-block-abouts-management','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-management','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-management','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-management','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-management','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-management','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-management','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-management','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-management','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
 
 
         ]);
