@@ -51,6 +51,8 @@ class UpdateArticleBlockColumnConfig extends Migration
 
                 'department' => ['table' => 'data_article_plaintext', 'language' => true],    //部門
                 'responsibilities' => ['table' => 'data_article_plaintext', 'language' => true],    //權責
+                'year' => ['table' => 'data_article_plaintext', 'language' => true],    //年度
+                'company' => ['table' => 'data_article_plaintext', 'language' => true],    //公司
 
                 'background' => ['table' => 'data_article_images', 'language' => true],            // 圖片
                 'icon' => ['table' => 'data_article_images', 'language' => true],            // 圖片
