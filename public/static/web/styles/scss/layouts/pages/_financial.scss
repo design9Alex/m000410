@@ -1,0 +1,800 @@
+@include media-breakpoint-up(lg){
+    .TabBox.financial{
+        margin: 0 0 75px;
+    }
+}
+
+.fnclBox{
+    .OuterBox{
+        .MainBox{
+            padding: 71px 0 120px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 41px 0 90px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 31px 0 80px;
+            }
+
+            .MainTitle{
+                margin: 0 0 45px;
+
+                @include media-breakpoint-down(xl){
+                    margin: 0 0 30px;
+                }
+            }
+        }
+    }
+
+    .Para1{
+        margin: 0 0 20px;
+    }
+
+    .fnclCont{
+        .DataTable{
+            table{
+                border-top: unset;
+
+                thead{
+                    tr{
+                        th{
+                            font: {
+                                weight:500;
+                                size:16px;
+                            };
+                            padding: 17.5px 0 17.5px 49px;
+
+                            @include media-breakpoint-down(lg){
+                                padding: 12.5px 0 12.5px 29px;
+                            }
+                        }
+                    }
+                }
+
+                tbody{
+                    tr{
+                        td{
+                            background: #F6F9FE;
+                            font: {
+                                weight:400;
+                                size:16px;
+                            };
+                            padding: 9.75px 0 9.75px 49px;
+
+                            @include media-breakpoint-down(lg){
+                                padding: 4.75px 0 4.75px 29px;
+                            }
+
+                            &.unit{
+                                font: {
+                                    weight:500;
+                                };
+                                width: 350px;
+
+                                @include media-breakpoint-down(lg){
+                                    min-width: 250px;
+                                }
+                            }
+
+                            &:nth-child(2)
+                            {
+                                background: #FFFFFF;
+                            }
+                        }
+
+                        &:nth-child(2n){
+                            td{
+                                background: #ECF3FD;
+        
+                                &:nth-child(2)
+                                {
+                                    background: #FAFAFA;
+                                }
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+    }
+}
+
+.fnclrptBox{
+    .OuterBox{
+        .MainBox{
+            width: 1460px; // 因圖表關係,此處寬度特別設置
+
+            @include media-breakpoint-down(xxxl){
+                width: 1360px;
+            }
+
+            @include media-breakpoint-between(xxl,xxxl){
+                width: 1260px;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                width: 1060px;
+            }
+
+            @include media-breakpoint-down(xl){
+                width: calc(100% - 10px);
+            }
+
+            .MainTitle,>.Para1,
+            .fnclrptWhenBox,.fnclrptKindBox,
+            .fnclrptYearBox,>.DataTable3{
+                width: $MainWidth;
+            }
+
+            @include media-breakpoint-up(lg){
+                .TabBox{
+                    width: $MainWidth;
+                }
+            }
+
+            .MainTitle{
+                margin: 0 auto 70px;
+
+                @include media-breakpoint-down(xl){
+                    margin: 0 auto 30px;
+                }
+            }
+
+            .TabBox{
+                margin: 0 auto 70px;
+
+                @include media-breakpoint-down(md){
+                    margin: 0 auto 50px;
+                }
+            }
+            >.Para1{
+                margin: 0 auto 35px;
+            }
+            .fnclrptWhenBox{
+                margin: 0 auto 65px;
+
+                @include media-breakpoint-down(sm){
+                    margin: 0 auto 35px;
+                }
+            }
+            .fnclrptKindBox{
+                margin: 0 auto 75px;
+
+                @include media-breakpoint-down(sm){
+                    margin: 0 auto 45px;
+                }
+            }
+            .fnclrptUnitBox{
+                margin: 0 auto;
+            }
+            .fnclrptYearBox{
+                margin: 20px auto 65px;
+
+                @include media-breakpoint-down(sm){
+                    margin: 20px auto 35px;
+                }
+            }
+            >.DataTable3{
+                margin: 0 auto;
+            }
+        }
+    }
+
+    .fnclrptWhenBox{
+        margin: 0 0 65px;
+
+        .fnclrptWhen{
+            background: #B4D0E4;
+            color: #FFFFFF;
+            transition: all .3s;
+            border-radius: 999rem;
+            font: {
+                weight:500;
+                size:20px;
+            };
+            min-width: 360px;
+            padding: 10px 0;
+
+            @include media-breakpoint-between(md,lg){
+                min-width: 300px;
+            }
+
+            @include media-breakpoint-down(md){
+                min-width: unset;
+                width: 180px;
+                font-size: 18px;
+                padding: 5px 0;
+            }
+
+            @include media-breakpoint-down(sm){
+                width: 120px;
+                padding: 4px 0;
+            }
+
+            &:not(:last-child){
+                margin: 0 20px 0 0;
+            }
+
+            &:hover,&.active{
+                background: #366E96;
+            }
+        }
+    }
+
+    .fnclrptKindBox{
+        margin: 0 0 75px;
+
+        .fnclrptKindActBtn{
+            color: #B2B2B2;
+            cursor: pointer;
+            font-size: 16px;
+            
+            &:hover{
+                color: $MainColor;
+            }
+        }
+
+        .fnclrptKindNav{
+            @include media-breakpoint-down(lg){
+                flex: 1;
+                overflow-x: auto;
+                margin: 0 15px;                
+
+                &::-webkit-scrollbar{
+                    display: none;
+                }
+            }
+
+            .fnclrptKindInner{
+                .fnclrptKind{
+                    background: #F2F2F2;
+                    color: #000000;
+                    transition: all .3s;
+                    border-radius: 999rem;
+                    font: {
+                        weight:500;
+                        size:16px;
+                    };
+                    min-width: 140px;
+                    padding: 8px 0;
+
+                    @include media-breakpoint-between(lg,xl){
+                        min-width: 120px;
+                    }
+
+                    @include media-breakpoint-down(sm){
+                        min-width: 120px;
+                        padding: 5px 0;
+                    }
+
+                    &:not(:last-child){
+                        margin: 0 20px 0 0;
+                    }
+
+                    &:hover,&.active{
+                        background: #F7943D;
+                        color: #FFFFFF;
+                    }
+                }
+            }
+        }
+    }
+
+    .fnclrptUnitBox{
+        width: calc(100% - 60px);
+
+        .fnclrptUnit{
+            color: #808080;
+            font: {
+                weight:500;
+                size:16px;
+            };
+        }
+    }
+
+    .fnclrptChartBox{
+        min-height: 445px;
+    }
+
+    .fnclrptYearBox{
+        .fnclrptYear{
+            cursor: pointer;
+            &:not(:last-child){
+                margin: 0 23px 0 0;
+            }
+
+            input{
+                border: 1px solid #0068B2;                
+                appearance: none;
+                position: relative;
+                border-radius: 3px;
+                width: 15px;
+                height: 15px;
+
+                &:checked{
+                    background: #0068B2;
+
+                    &::after{
+                        border-bottom: 2px solid #FFFFFF;
+                        border-right: 2px solid #FFFFFF;
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        top: calc(50% - 2px);
+                        left: 50%;
+                        transform: translate(-50%,-50%) rotate(45deg);
+                        z-index: 1;
+                        width: 6px;
+                        height: 8.5px;
+                    }
+                }
+            }
+
+            .fnclrptYearLabel{
+                color: #000000;
+                font: {
+                    family:$FontSub;
+                    weight:500;
+                    size:16px;
+                };
+                padding: 0 0 0 9px;
+            }
+        }
+    }
+
+    .DataTable3{
+        &.report0{
+            table{
+                tbody{
+                    tr{
+                        td{
+                            width: auto;
+                            padding: 16px 19px;
+
+                            &.title{
+                                font-size: 16px;                               
+                                padding: 16px 10px 16px 50px;
+
+                                @include media-breakpoint-down(lg){
+                                    white-space: nowrap;
+                                    padding: 11px 15px 11px 30px;
+                                }
+                            }
+
+                            &.height{
+                                padding: 20.5px 10px 20.5px 50px;
+
+                                @include media-breakpoint-down(lg){
+                                    padding: 15.5px 15px 15.5px 30px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.year{
+                table{
+                    tbody{
+                        tr{
+                            td{
+                                width: calc((100% - 279px)/5);
+
+                                &.title{
+                                    width: 279px;
+
+                                    @include media-breakpoint-down(lg){
+                                        white-space: nowrap;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.quarterly{
+                table{
+                    tbody{
+                        tr{
+                            td{
+                                width: calc((100% - 200px)/8);
+
+                                &.title{
+                                    width: 200px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .fnclrptDataObso{
+        font: {
+            weight:400;
+            size:18px;
+        };
+    }
+}
+
+.fnclmtlBox{
+    .OuterBox{
+        .MainBox{
+            padding: 70px 0 120px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 40px 0 90px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 30px 0 80px;
+            }
+
+            .MainTitle{
+                margin: 0 0 45px;
+            }
+        }
+    }
+
+    .Para1{
+        margin: 0;
+    }
+
+    .fnclmtlFilter{
+        margin: 0 0 25px;
+
+        @include media-breakpoint-down(md){
+            margin: 25px 0 20px;
+        }
+
+        .FilterSel{
+            border: 1px solid #E5E5E5;
+            border-radius: 999rem;
+        }
+    }
+
+    .DataTable2{
+        table{
+            tbody{
+                tr{
+                    td{
+                        width: 25%;
+
+                        @include media-breakpoint-down(sm){
+                            white-space: nowrap;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.fnclqtlBox{
+    .OuterBox{
+        .MainBox{
+            padding: 70px 0 120px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 40px 0 90px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 30px 0 80px;
+            }
+
+            .MainTitle{
+                margin: 0 0 45px;
+            }
+        }
+    }
+
+    .Para1{
+        margin: 0 0 25px;
+    }
+
+    .DataTable2{
+        table{
+            thead{
+                tr{
+                    &:first-child{
+                        th:first-child{
+                            border-radius: 12px 0 0 0;
+                        }
+    
+                        th:last-child{
+                            border-radius: 0 12px 0 0;
+                        }
+                    }
+
+                    th{
+                        &.special{
+                            background: #2280C3;
+                        }
+
+                        &.plus{
+                            border-bottom: 1px solid rgba(232,232,232,.5);
+                        }
+
+                        &:not(:last-child){
+                            &::after{
+                                background: rgba(232,232,232,.5);
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+
+            tbody{
+                tr{
+                    td{
+                        padding: 14px 19px;
+                        
+                        &.year{
+                            width: 174px;
+                        }
+
+                        &.download{
+                            width: calc((100% - 174px)/5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.annualrptBox{
+    .OuterBox{
+        .MainBox{
+            padding: 70px 0 80px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 40px 0 50px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 30px 0 40px;
+            }
+
+            .MainTitle{
+                margin: 0 0 45px;
+            }
+        }
+    }
+
+    .Para1{
+        margin: 0 0 25px;
+    }
+
+    .annualrptListBox{
+        .annualrptList{
+            border: 1px solid #F2F2F2;
+            background: #F7F7F7;
+            transition: all 1s;
+            position: relative;
+            border-radius: 42px 0 0 0;
+            padding: 48px 40px 46px 50px;
+            width: calc((100% - 80px)/3);
+            margin: 0 0 40px 0;
+
+            @include media-breakpoint-between(xxl,xxxl){
+                padding: 33px 25px 31px 35px;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                padding: 23px 15px 21px 25px;
+                width: calc((100% - 60px)/3);
+                margin: 0 0 30px;
+            }
+
+            @include media-breakpoint-between(md,xl){
+                width: calc((100% - 40px)/2);
+            }
+
+            @include media-breakpoint-down(md){
+                width: 100%;
+            }
+
+            &:not(:nth-child(3n)){
+                margin: 0 40px 40px 0;
+
+                @include media-breakpoint-between(xl,xxl){
+                    margin: 0 30px 30px 0;
+                }
+
+                @include media-breakpoint-down(md){
+                    margin: 0 0 40px 0;
+                }
+            }
+
+            @include media-breakpoint-between(md,xl){
+                &:not(:nth-child(3n)){
+                    margin: 0 0 40px;
+                }
+
+                &:not(:nth-child(2n)){
+                    margin: 0 40px 40px 0
+                }
+            }
+
+            @include media-breakpoint-down(lg){
+                padding: 23px 15px 21px 25px;
+            }
+
+            &:hover{
+                background: #EDF3FD;
+                border: 1px solid #0068B2;
+
+                .annualrptListIcon{
+                    color: #D1E0FA;
+                }
+            }
+
+            .annualrptListYear{
+                color: #0068B2;
+                font: {
+                    family:$FontSub;
+                    weight:700;
+                    size:36px;
+                };
+                margin: 0;
+
+                @include media-breakpoint-between(xl,xxl){
+                    font-size: 30px;
+                }
+            }
+
+            .annualrptListName{
+                color: #000000;
+                font: {
+                    weight:400;
+                    size:18px;
+                };
+                margin: 0 0 55px;
+
+                @include media-breakpoint-between(xl,xxl){
+                    font-size: 16px;
+                    margin: 0 0 45px;
+                }
+            }
+
+            .annualrptListBtn{
+                background: #FFFFFF;
+                border: 1px solid #E5E5E5;
+                color: #B2B2B2;
+                transition: all .5s;
+                border-radius: 999rem;
+                width: 150px;
+                padding: 11px 0;
+
+                @include media-breakpoint-between(xl,xxl){
+                    width: 128px;
+                    padding: 9px 0;
+                }
+
+                &:hover{
+                    background: #0068B2;
+                    border: 1px solid #0068B2;
+                    color: #FFFFFF;
+                }
+
+                span{                    
+                    font: {
+                        family:$FontSub;
+                        weight:500;
+                        size:16px;
+                    };
+                    margin: 0 20px 0 0;
+
+                    @include media-breakpoint-between(xl,xxl){
+                        font-size: 14px;
+                    }
+                }
+
+                i{
+                    font-size: 16px;
+
+                    @include media-breakpoint-between(xl,xxl){
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            .annualrptListIcon{
+                color: #E5E5E5;
+                position: absolute;
+                z-index: 2;
+                right: 40px;
+                bottom: 21px;
+                font-size: 100px;
+
+                @include media-breakpoint-between(xxl,xxxl){
+                    font-size: 90px;
+                    right: 25px;
+                    bottom: 8px;
+                }
+
+                @include media-breakpoint-between(xl,xxl){
+                    font-size: 75px;
+                    right: 15px;
+                    bottom: 8px;
+                }
+
+                @include media-breakpoint-down(lg){
+                    font-size: 90px;
+                    right: 15px;
+                    bottom: -2px;
+                }
+
+                @include media-breakpoint-down(ssssm){
+                    font-size: 80px;
+                    bottom: 2px;
+                }
+            }
+        }
+    }
+}
+
+.lawcfrcBox{
+    .OuterBox{
+        .MainBox{
+            padding: 75px 0 120px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 45px 0 90px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 35px 0 80px;
+            }
+
+            .MainTitle{
+                margin: 0 0 45px;
+            }
+        }
+    }
+
+    .Para1{
+        margin: 0;
+    }
+
+    .fnclmtlFilter{
+        margin: 0 0 25px;
+
+        @include media-breakpoint-down(md){
+            margin: 25px 0 20px;
+        }
+
+        .FilterSel{
+            border: 1px solid #E5E5E5;
+            border-radius: 999rem;
+        }
+    }
+
+    .DataTable2{
+        table{
+            tbody{
+                tr{
+                    td{
+                        @include media-breakpoint-down(sm){
+                            white-space: nowrap;
+                        }
+
+                        &.date{
+                            width: 17.07%;//239px
+                        }
+
+                        &.same{
+                            width: 13.5%;//189px
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,323 @@
+.contactBox{
+    &::after{
+        content: '';
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        background: {
+            image: url('static/contact/bg.webp');
+            position: center;
+            repeat: no-repeat;
+            size: cover;
+        };
+        width: 100%;
+        height: 100%;
+    }
+
+    .TopicBox{
+        z-index: 2;
+    }
+
+    .BreadBox{
+        position: relative;
+        z-index: 2;
+    }
+
+    .OuterBox{
+        background: transparent;
+        position: relative;
+        z-index: 2;
+
+        .MainBox{
+            width: 100%;
+            margin: 0 0 -70px;
+            padding: 0;
+
+            .MainTitle{
+                margin: 0 0 45px;
+
+                @include media-breakpoint-down(sm){
+                    margin: 0 0 25px;
+                }
+            }
+        }
+    }
+
+    .contactFormBox{
+        background: #F5F5F5;        
+        position: relative;
+        z-index: 2;
+        padding: 75px calc((100% - $MainWidth)/2) 0 calc((100% - $MainWidth)/2);
+
+        @include media-breakpoint-between(md,lg){
+            padding: 35px calc((100% - $MainWidth)/2) 0 calc((100% - $MainWidth)/2);
+        }
+
+        @include media-breakpoint-down(md){
+            padding: 25px calc((100% - $MainWidth)/2) 0 calc((100% - $MainWidth)/2);
+        }
+
+        .FormBox{
+            margin: -70px 0 0;
+            transform: translateY(70px);
+        }
+    }
+
+    .contactWhoBox{        
+        padding: 190px 0 142px;
+
+        @include media-breakpoint-down(sm){
+            padding: 140px 0 100px;
+        }
+
+        .contactWhoInner{
+            margin: 0 auto;
+            width: $MainWidth;
+            .contactWhoBlockBox{
+                margin: 0 0 -10px;
+
+                .contactWhoBlock{
+                    margin: 0 0 40px;
+
+                    @include media-breakpoint-up(lg){                        
+                        width: calc((100% - 80px)/3);
+
+                        &:not(:nth-child(3n))
+                        {
+                            margin: 0 40px 40px 0;
+                        }
+                    }
+
+                    @include media-breakpoint-between(md,lg){
+                        width: calc((100% - 40px)/2);
+
+                        &:not(:nth-child(2n))
+                        {
+                            margin: 0 40px 40px 0;
+                        }
+                    }
+                    
+                    @include media-breakpoint-down(md){
+                        width: 100%;
+                    }
+
+                    .contactWhoBlockTopic{
+                        color: #FFFFFF;
+                        font: {
+                            weight:500;
+                            size:24px;
+                        };
+                        margin: 0 0 14px;
+
+                        @include media-breakpoint-between(xl,xxl){
+                            font-size: 20px;
+                        }
+
+                        @include media-breakpoint-between(lg,xl){
+                            font-size: 18px;
+                        }
+
+                        @include media-breakpoint-down(lg){
+                            font-size: 20px;
+                        }
+
+                        @include media-breakpoint-down(ssssm){
+                            font-size: 18px;
+                        }
+                    }
+
+                    .DataListBox{
+                        .DataList{
+                            width: 100%;
+                            margin: 0;
+
+                            @include media-breakpoint-between(lg,xxl){
+                                padding: 0 22px;
+                            }
+
+                            .DataListName{
+                                padding: 33px 0 26px;
+
+                                @include media-breakpoint-down(xxl){
+                                    padding: 23px 0 16px;
+                                }
+                            }
+
+                            .DataListInfo{
+                                padding: 20px 0 57px;
+
+                                @include media-breakpoint-between(xl,xxl){
+                                    padding: 10px 0 47px;
+                                }
+
+                                @include media-breakpoint-between(lg,xl){
+                                    padding: 10px 0 30px;
+                                }
+
+                                @include media-breakpoint-down(lg){
+                                    padding: 15px 0 30px;
+                                }
+
+                                .DataListInfoItemBox{
+                                    .DataListInfoItem{
+                                        .DataListInfoItemTitle{
+                                            margin: 0;
+                                            min-width: 74px;
+
+                                            @include media-breakpoint-between(xxl,xxxl){
+                                                min-width: 80px;
+                                            }
+
+                                            @include media-breakpoint-between(xl,xxl){                                                
+                                                min-width: 76px;
+                                            }
+                                        }
+
+                                        .DataListInfoItemText{
+                                            word-break: break-all;
+
+                                            @include media-breakpoint-between(lg,xxl){
+                                                font-size: 16px;
+                                            }
+
+                                            .email{
+                                                color: #054283;
+                                                font-weight: 500;
+                                                text-decoration: underline;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }                
+                }
+            }
+
+            .contactWhoMemo{
+                color: #FFFFFF;
+                    font: {
+                        weight:400;
+                        size:16px;
+                    };
+            }
+        }
+    }
+}
+
+.contactsendBox{
+    .OuterBox{
+        background: #F5F5F5;
+        .MainBox{
+            padding: 75px 0 120px;
+
+            .MainTitle{
+                margin: 0 0 45px;
+            }
+        }
+    }
+
+    .PopBox{
+        background: unset;
+        position: unset;
+        height: auto;
+
+        .PopCont{
+            border-radius: 0;
+            width: 740px;
+            padding: 78px 60px 80px;
+
+            @include media-breakpoint-between(md,lg){
+                width: 640px;
+            }
+
+            @include media-breakpoint-down(md){
+                width: calc(100% - 60px);
+                padding: 40px 35px 45px;
+            }
+    
+            @include media-breakpoint-down(sm){
+                padding: 30px 25px 35px;
+            }
+    
+            @include media-breakpoint-down(ssssm){
+                padding: 20px 15px 25px;
+            }
+
+            .PopIcon{
+                border: 8px solid #7AA6C6;
+                font-size: 28px;
+                width: 110px;
+                height: 110px;
+                line-height: 100px;
+
+                @include media-breakpoint-between(ssssm,sm){
+                    font-size: 30px;
+                    width: 90px;
+                    height: 90px;
+                    line-height: 83px;
+                }
+
+                @include media-breakpoint-down(ssssm){
+                    font-size: 20px;
+                    width: 70px;
+                    height: 70px;
+                    line-height: 63px;
+                }
+            }
+
+            .PopTitle{
+                margin: 14px 0 33px 0;
+                font-size: 32px;
+
+                @include media-breakpoint-down(sm){
+                    margin: 10px 0 15px;
+                    font-size: 24px;
+                }
+            }
+
+            .PopText,.PopDecro{
+                width: 580px;
+
+                @include media-breakpoint-between(md,lg){
+                    width: 480px;
+                }
+
+                @include media-breakpoint-down(md){
+                    width: 100%;
+                }
+            }
+
+            .PopText{
+                margin: 0 auto 41px;
+                padding: 0 45px 40px;
+
+                @include media-breakpoint-down(md){
+                    width: 100%;
+                    font-size: 16px;
+                    padding: 0 12px 40px;
+                }
+    
+                @include media-breakpoint-down(sm){
+                    margin: 0 auto 24px;
+                    padding: 0 12px 25px;
+                }
+            }
+
+            .PopBtnBox{
+                .PopBtn{
+                    background: #F7943D;
+                    color: #FFFFFF;
+                    flex: unset;
+                    width: 240px;
+
+                    &:hover{
+                        transform: translateY(-5px);
+                    }
+                }
+            }
+        }
+    }
+}

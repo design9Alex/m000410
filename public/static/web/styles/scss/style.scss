@@ -1,0 +1,59 @@
+@charset 'utf-8';
+
+$nTime:'20230505v1';
+
+@import url('scss/plugins/bootstrap.min.css');
+@import url('scss/plugins/owl.carousel.min.css');
+@import url('scss/plugins/jquery.mCustomScrollbar.min.css');
+@import url('scss/plugins/nice-select.css?'+$nTime);
+
+@import url('font/style.css?'+$nTime);
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('./font/fonts/icomoon.eot?'+$nTime);
+    src: url('./font/fonts/icomoon.woff?'+$nTime) format('woff'),
+         url('./font/fonts/icomoon.woff2?'+$nTime) format('woff'),
+         url('./font/fonts/icomoon.ttf?'+$nTime) format('truetype'),
+         url('./font/fonts/icomoon.svg?'+$nTime) format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap
+}
+
+@for $nI from 3 through 9{
+    .fontWeight#{$nI*100}{
+        font-weight: $nI*100 !important;
+    }
+}
+
+@for $nI from 12 through 20{
+    .fontSize#{$nI}{
+        font-size: $nI*1px !important;
+    }
+}
+
+@import 'common/animations.scss';
+@import 'common/component.scss';
+@import 'layouts/_functions.scss';
+@import 'layouts/_variables.scss';
+@import 'layouts/_breakpoints.scss';
+@import 'config/_config.scss';
+
+@import 'layouts/_common.scss';
+@import 'layouts/_pagination.scss';
+@import 'layouts/pages/_index.scss';
+@import 'layouts/pages/_about.scss';
+@import 'layouts/pages/_governance.scss';
+@import 'layouts/pages/_financial.scss';
+@import 'layouts/pages/_products.scss';
+@import 'layouts/pages/_privacy.scss';
+@import 'layouts/pages/_news.scss';
+@import 'layouts/pages/_investor.scss';
+@import 'layouts/pages/_shareholder.scss';
+@import 'layouts/pages/_stakeholder.scss';
+@import 'layouts/pages/_search.scss';
+@import 'layouts/pages/_csr_activities.scss';
+@import 'layouts/pages/_contact.scss';
+@import 'layouts/pages/_sitemap.scss';
+@import 'layouts/pages/_staff.scss';

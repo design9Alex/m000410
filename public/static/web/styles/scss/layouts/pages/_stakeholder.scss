@@ -1,0 +1,160 @@
+.stakeholderBox{
+    .OuterBox{
+        .MainBox{
+            padding: 70px 0 75px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 40px 0 45px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 30px 0 35px;
+            }
+
+            .MainTitle{
+                margin: 0 0 40px;
+
+                @include media-breakpoint-down(sm){
+                    margin: 0 0 30px;
+                }
+            }
+        }
+    }
+
+    .stakeholderFore{
+        width: 100%;
+        margin: 0 0 40px;
+
+        .Para4{
+            @include media-breakpoint-up(xl){
+                flex: 1;
+                margin: 0 80px 0 0;
+            }
+        }
+
+        .stakeholderPic{
+            @include media-breakpoint-up(xl){
+                width: 500px;
+            }
+
+            @include media-breakpoint-between(md,xxl){
+                width: 450px;
+            }
+
+            @include media-breakpoint-down(xl){
+                margin: 40px auto 0;
+            }
+        }
+    }
+
+    .stakeholderBlockBox{
+        .stakeholderBlock{
+            &:not(:last-child){
+                margin: 0 0 60px;
+
+                @include media-breakpoint-down(sm){
+                    margin: 0 0 40px;
+                }
+            }
+
+            .Para3{
+                margin: 0 0 5px;
+            }
+
+            &.second{
+                .Para3{
+                    margin: 0 0 12px;
+                }
+            }
+
+            .DataTable2{
+                table{
+                    tbody{
+                        tr{
+                            td{
+                                @include media-breakpoint-down(lg){
+                                    min-width: 146px;
+                                }
+
+                                &.role{
+                                    width: 15.357%;//215px
+                                }
+
+                                &.who{
+                                    width: 26.428%;//370px
+                                    padding: 20px 25px;
+                                }
+
+                                &.hz{
+                                    width: 12.071%;//169px
+                                    @include media-breakpoint-between(xl,xxl){
+                                        width: 14%;
+                                    }
+
+                                    @include media-breakpoint-down(xl){
+                                        white-space: nowrap;
+                                    }
+                                }
+
+                                &.response{
+                                    width: 27.785%;//389px
+                                    padding: 20px 25px;
+                                    
+                                    @include media-breakpoint-down(lg){
+                                        white-space: nowrap;
+                                    }
+                                }
+
+                                a{
+                                    color: #000000;
+                                    text-decoration: unset;
+                                    transition: all .3s;
+        
+                                    @include articleAhover;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .stakeholderItem{
+                position: relative;
+                padding: 0 0 0 20px;
+
+                &:not(:last-child){
+                    margin: 0 0 5px;
+                }
+
+                &::after{
+                    background: #000000;
+                    border-radius: 999rem;
+                    content: '';
+                    display: block;
+                    position: absolute;                            
+                    left: 0;
+                    z-index: 1;
+                    top: 11px;
+                    width: 8px;
+                    height: 8px;
+                }
+
+                >p{
+                    &:not(:last-child){
+                        margin: 0 0 5px;
+                    }
+                }
+            }
+
+            &.contact{
+                .Para3{
+                    margin: 0 0 20px;
+
+                    @include media-breakpoint-down(sm){
+                        margin: 0 0 10px;
+                    }
+                }
+            }
+        }
+    }
+}

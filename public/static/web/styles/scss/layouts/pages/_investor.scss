@@ -1,0 +1,173 @@
+.investorserviceBox{
+    .OuterBox{
+        .MainBox{
+            padding: 65px 0 120px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 35px 0 90px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 25px 0 80px;
+            }
+            
+            .MainTitle{
+                margin: 0 0 65px;
+
+                @include media-breakpoint-down(md){
+                    margin: 0 0 35px;
+                }
+            }
+        }
+    }
+
+    .Para1{
+        margin: 0 0 55px;
+
+        @include media-breakpoint-down(md){
+            margin: 0 0 35px;
+        }
+    }
+
+    .investorserviceListBox{
+        .investorserviceList{
+            &:not(:last-child){
+                margin: 0 0 30px;
+
+                @include media-breakpoint-down(md){
+                    margin: 0 0 60px;
+                }
+            }
+
+            .investorserviceListTopic{
+                background: {
+                    position: center;
+                    size: cover;
+                };
+                border-radius: 22.5px 0 0 0;
+                width: 300px;
+                padding: 40px 40px 27px;
+
+                @include media-breakpoint-down(md){
+                    width: 100%;
+                    border-radius: 19px 19px 0 0;
+                    padding: 20px 40px;
+                }
+
+                @include media-breakpoint-down(sm){
+                    padding: 20px;
+                }
+
+                .investorserviceListTopicText{
+                    color: #FFFFFF;                    
+                    font: {
+                        weight:700;
+                        size:24px;
+                    };
+                    line-height: 36px;
+
+                    @include media-breakpoint-down(sm){
+                        font-size: 20px;
+                        line-height: 30px;
+                    }
+                }
+
+                .investorserviceListTopicIcon{
+                    background: #FFFFFF;
+                    margin: 0 0 0 auto;
+                    border-radius: 999rem;
+                    width: 80px;
+                    height: 80px;
+
+                    @include media-breakpoint-down(md){
+                        width: 70px;
+                        height: 70px;
+                    }
+
+                    @include media-breakpoint-down(sm){
+                        width: 60px;
+                        height: 60px;
+                    }
+                }
+            }
+
+            .investorserviceListDetail{
+                border: 2px solid #F7F7F7;
+                flex: 1;                
+                min-height: 225px;
+                padding: 40px 0 47px 70px;
+
+                @include media-breakpoint-up(md){
+                    border-left: unset;
+                }
+
+                @include media-breakpoint-between(xl,xxl){
+                    padding: 40px 20px 47px 40px;
+                }
+
+                @include media-breakpoint-down(md){
+                    min-height: unset;
+                    border-top: unset;
+                    width: 100%;
+                    padding: 30px 40px 47px;
+                }
+
+                @include media-breakpoint-down(sm){
+                    padding: 20px 20px 27px;
+                }
+
+                .investorserviceListFore{
+                    color: #000000;
+                    font: {
+                        weight:400;
+                        size:18px;
+                    };
+                    margin: 0 0 17px;
+
+                    @include media-breakpoint-down(md){
+                        font-size: 16px;
+                    }
+                }
+
+                .investorserviceListName{
+                    color: #000000;
+                    font: {
+                        weight:700;
+                        size:20px;
+                    };
+                    margin: 0 0 5px;
+
+                    @include media-breakpoint-down(md){
+                        font-size: 18px;
+                    }
+                }
+
+                .investorserviceListItemBox{
+                    .investorserviceListItem{
+                        color: #000000;
+                        font: {
+                            weight:400;
+                            size:18px;
+                        };
+
+                        @include media-breakpoint-down(md){
+                            font-size: 16px;
+                        }
+
+                        &:not(:last-child){
+                            margin: 0 0 5px;
+                        }
+
+                        a{
+                            color: #000000;
+                            text-decoration: unset;
+                            transition: all .3s;
+
+                            @include articleAhover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

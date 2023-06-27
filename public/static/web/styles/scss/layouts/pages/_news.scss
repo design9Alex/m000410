@@ -1,0 +1,302 @@
+.newsBox{
+    .OuterBox{
+        background: #F5F5F5;
+
+        .MainBox{
+            width: $ArticleMainWidth;
+            padding: 75px 0 100px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 45px 0 70px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 35px 0 60px;
+            }
+
+            @include media-breakpoint-down(sm){
+                width: 100%;
+            }
+
+            .MainTitle{
+                margin: 0 auto;
+                width: $MainWidth;
+            }
+        }
+    }
+
+    .newsContent{
+        .newsFilter{
+            position: relative;
+            z-index: 10;
+            margin: 0 auto;
+            transform: translateY(-30px);
+            width: $MainWidth;
+
+            @include media-breakpoint-down(lg){
+                transform: unset;
+                margin: 15px auto 30px;
+            }
+        }
+
+        .ArticleMainBox{
+            width: $MainWidth;
+
+            @include media-breakpoint-up(lg){
+                transform: translateX(30px);
+            }
+        }
+
+        .ArticleDataBox{
+            margin: 0 auto 70px;
+
+            @include media-breakpoint-between(lg,xl){
+                padding: 0 90px;
+            }
+
+            @include media-breakpoint-down(sm){
+                width: $MainWidth;
+            }
+
+            .ArticleData{
+                @include media-breakpoint-between(lg,xl){
+                    width: calc((100% - 40px)/2);
+                    margin: 0 0 40px;
+
+                    &:not(:nth-child(2n)){
+                        margin: 0 40px 40px 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.newsdtlBox{
+    .OuterBox{
+        background: #F5F5F5;
+
+        .MainBox{
+            padding: 90px 0 120px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 60px 0 90px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 50px 0 80px;
+            }
+        }
+    }
+
+    .editor{
+        h3{
+            line-height: 32px;
+        }
+    }
+
+    &.nd1{
+        .ArticledtlImgBox{
+            width: 800px;
+
+            @include media-breakpoint-between(lg,xl){
+                width: 500px;
+            }
+
+            @include media-breakpoint-down(lg){
+                margin: 0 auto 48px;
+                width: calc(100% - 50px);
+            }
+
+            @include media-breakpoint-down(sm){
+                margin: 0 auto 30px;
+            }
+        }
+
+        .Para4{
+            &.first{
+                margin: 0 0 40px;
+            }
+
+            &.unit{
+                color: #808080;
+                line-height: 20px;
+                margin: 0 0 18px;
+            }
+        }
+
+        .Para2{
+            margin: 0;
+        }
+
+        .DataTable2{
+            table{
+                thead{
+                    tr{
+                        &:first-child{
+                            th:first-child{
+                                border-radius: 12px 0 0 0;
+                            }
+        
+                            th:last-child{
+                                border-radius: 0 12px 0 0;
+                            }
+                        }
+
+                        th{
+                            padding: 17.25px 19px;
+
+                            &.plus{
+                                border-bottom: 1px solid rgba(232,232,232,.5);
+                            }
+
+                            &:not(:last-child)::after{
+                                background: rgba(232,232,232,.5);
+                                content: "";
+                                display: block;
+                                position: absolute;
+                                top: 50%;
+                                right: 0;
+                                transform: translateY(-50%);
+                                z-index: 1;
+                                width: 1px;
+                                height: 100%;
+                            }
+
+                            &.special{
+                                background: #2280C3;
+
+                                &:last-child{
+                                    position: relative;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                tbody{
+                    tr{
+                        td{
+                            background: #F6F9FE;
+                            padding: 16.25px 19px;
+                            
+                            &.same0{
+                                width: 220px;
+
+                                @include media-breakpoint-down(lg){
+                                    white-space: nowrap;
+                                }
+                            }
+
+                            &.same1{
+                                width: calc((100% - 660px)/3);
+                            }
+
+                            &.same2{
+                                width: calc((100% - 440px)/2);
+                            }
+                        }
+
+                        &:nth-child(2n) td{
+                            background: #FFFFFF;
+                        }
+                    }
+                }
+            }
+
+            &.first{
+                margin: 0 0 28px;
+            }
+        }
+
+        .notice{
+            color: #808080;
+            margin: 10px 0 0;
+        }
+
+        .decro{
+            margin: 35px 0 40px;
+        }
+    }
+
+    &.nd2{
+        .Para4{
+            &.first{
+                margin: 0 0 50px;
+            }
+
+            &.unit{
+                color: #808080;
+                line-height: 20px;
+                margin: 0 0 18px;
+            }
+        }
+
+        .Para2{
+            margin: 0;
+        }
+
+        .DataTable3{
+            table{
+                thead tr th,
+                tbody tr td{
+                    &.same0{                        
+                        min-width: 17.07%;//239px
+                        width: 17.07%;//239px
+                    }
+
+                    &.same1{
+                        width: calc((100% - 51.21%)/3);
+                    }
+
+                    &.same2 {
+                        width: 16%;//224px
+                    }
+
+                    &.same3{
+                        width: calc((100% - 33.07%)/2);
+                    }
+                }
+
+                @include media-breakpoint-between(xxl,xxxl){
+                    thead tr th{
+                        &.same2 {
+                            white-space: normal;
+                        }
+                    }
+                }
+
+                tbody tr td{
+                    white-space: nowrap;
+
+                    &.same0{
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            &.first{
+                margin: 0 0 30px;
+
+                @include media-breakpoint-between(xl,xxl){
+                    table thead tr th.same2{
+                        white-space: normal;
+                    }
+                }
+            }
+        }
+
+        .notice{
+            color: #808080;
+            margin: 10px 0 0;
+        }
+    }
+
+    &.nd3{
+        .Para4{
+            &.first{
+                margin: 0 0 60px;
+            }
+        }
+    }
+}

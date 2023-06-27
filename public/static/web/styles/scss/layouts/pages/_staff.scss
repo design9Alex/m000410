@@ -1,0 +1,467 @@
+.staffloginBox{
+    .staffloginCont{
+        @include media-breakpoint-down(xl){
+            background: {
+                image: url('static/staff/bg.webp');
+                position: center;
+                repeat: no-repeat;
+                size: cover;
+            };
+            position: relative;
+            min-height: 100vh;
+            padding: 140px 0 0;
+        }
+
+        @include media-breakpoint-down(sm){
+            padding: 130px 0 0;
+        }
+
+        @include media-breakpoint-down(ssm){
+            padding: 130px 0 50px;
+        }
+
+        .staffloginDescri{
+            background: {
+                image: url('static/staff/bg.webp');
+                position: center;
+                repeat: no-repeat;
+                size: cover;
+            };
+            flex: 1;
+            min-height: 100vh;
+            padding: 40px 40px 40px 160px;
+
+            @include media-breakpoint-between(xxl,xxxl){
+                padding: 40px 40px 40px 100px;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                padding: 40px 40px 40px 60px;
+            }
+
+            @include media-breakpoint-down(xl){
+                min-height: unset;
+                position: absolute;
+                background: unset;
+                top: 25px;
+                left: 25px;
+                z-index: 1;
+                padding: 0;
+            }
+
+            .staffloginDescriLogo{
+                width: 150px;
+                margin: 0 0 146px;
+
+                @include media-breakpoint-down(xl){
+                    margin: 0;
+                    width: 100px;                        
+                }
+            }
+
+            .staffloginDescriTitle{
+                color: #FFFFFF;
+                margin: 0 0 80px;
+
+                @include media-breakpoint-down(xl){
+                    margin: 0;
+                }
+
+                .staffloginDescriTitleEn{
+                    font: {
+                        family:$FontSub;
+                        weight:700;
+                        size:64px;
+                    };
+                    line-height: 70px;
+                    margin: 0 0 12px;
+
+                    @include media-breakpoint-between(xxxl,xxxxl){
+                        font-size: 58px;
+                        line-height: 65px;
+                    }
+
+                    @include media-breakpoint-between(xxl,xxxl){
+                        font-size: 50px;
+                        line-height: 55px;
+                        width: 770px;
+                    }
+
+                    @include media-breakpoint-between(lg,xxl){
+                        font-size: 45px;
+                        line-height: 50px;
+                        width: 600px;
+                    }
+                }
+
+                .staffloginDescriTitleTw{
+                    font: {
+                        weight:500;
+                        size:36px;
+                    };
+                    letter-spacing: .3px;
+                    line-height: 36px;
+
+                    @include media-breakpoint-between(xl,xxxl){
+                        font-size: 30px;
+                    }
+
+                    @include media-breakpoint-down(xl){
+                        font-size: 28px;
+                    }
+                }
+            }
+        }
+
+        .staffloginDescriLinkBox{
+            .staffloginDescriLink{
+                text-align: center;                    
+
+                &:not(:last-child){
+                    margin: 0 40px 0 0;
+                }
+
+                .staffloginDescriLinkIcon{
+                    background: rgba(255,255,255,.3);
+                    border-radius: 999rem;
+                    transition: all .3s;
+                    text-align: center;
+                    width: 90px;
+                    height: 90px;
+                    margin: 0 0 10px;
+
+                    @include media-breakpoint-down(xl){
+                        width: 80px;
+                        height: 80px;
+                    }
+
+                    @include media-breakpoint-down(sm){
+                        width: 60px;
+                        height: 60px;
+                    }
+
+                    i{
+                        color: rgba(255,255,255,.8);
+                        font-size: 36px;
+
+                        @include media-breakpoint-down(xl){
+                            font-size: 30px;
+                        }
+
+                        @include media-breakpoint-down(sm){
+                            font-size: 20px;
+                        }
+                    }
+                }
+
+                &:hover{
+                    .staffloginDescriLinkIcon{
+                        background: #0068B2;
+                    }                        
+                }
+
+                .staffloginDescriLinkText{
+                    color: #FFFFFF;
+                    font: {
+                        weight:400;
+                        size:18px;
+                    };
+                    letter-spacing: .3px;
+
+                    @include media-breakpoint-down(xl){
+                        font-size: 16px;
+                    }
+
+                    @include media-breakpoint-down(sm){
+                        font-size: 14px;
+                    }
+                }
+            }                
+        }
+
+        .staffloginPapper{
+            background: #FFFFFF;
+            min-height: 100vh;
+            padding: 177px 115px 0;
+            width: 720px;
+
+            @include media-breakpoint-between(xxl,xxxl){
+                padding: 177px 80px 0;
+                width: 520px;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                padding: 177px 60px 0;
+                width: 520px;
+            }
+
+            @include media-breakpoint-down(xl){
+                width: 100%;
+            }
+
+            @include media-breakpoint-down(xl){
+                min-height: unset;
+                border-radius: 15px;
+                width: 540px;
+                padding: 30px 40px;
+                margin: 0 auto 50px;
+            }
+
+            @include media-breakpoint-between(sm,md){
+                width: 480px;
+            }
+
+            @include media-breakpoint-down(sm){
+                padding: 20px 30px;
+                width: calc(100% - 60px);
+                margin: 0 auto 30px;
+            }
+
+            .staffloginPapperTopic{
+                color: #0068B2;
+                font: {
+                    weight:700;
+                    size:28px;
+                };
+                margin: 0 0 10px;
+
+                @include media-breakpoint-down(xl){
+                    font-size: 22px;
+                }
+            }
+
+            .staffloginPapperFore{
+                color: #000000;
+                font: {
+                    weight:400;
+                    size:18px;
+                };
+                margin: 0 0 45px;
+
+                @include media-breakpoint-down(xl){
+                    font-size: 16px;
+                    margin: 0 0 35px;
+                }
+
+                @include media-breakpoint-down(sm){
+                    font-size: 14px;
+                    margin: 0 0 20px;
+                }
+            }
+
+            .staffloginPapperForm{
+                width: 100%;
+                .staffloginPapperFormListBox{
+                    margin: 0 0 10px;
+
+                    .staffloginPapperFormList{
+                        &:not(:last-child){
+                            margin: 0 0 13px;
+                        }
+
+                        .staffloginPapperFormListTitle{
+                            color: #808080;
+                            font: {
+                                weight:400;
+                                size:18px;
+                            };
+                            margin: 0 0 5px;
+
+                            @include media-breakpoint-down(xl){
+                                font-size: 16px;
+                            }
+                        }
+
+                        .staffloginPapperFormListCont{
+                            .nice-select,input{
+                                border: 1px solid #D9D9D9;
+                                border-radius: 4.4px;
+                            }
+
+                            select{
+                                &:focus{
+                                    +.nice-select{
+                                        border: 1px solid $MainColor !important;
+                                    }
+                                }
+                            }
+
+                            .nice-select{
+                                color: #000000;
+                                flex: 1;
+                                padding: 13px 20px 13px 23px;
+                                margin: 0 34px 0 0;
+
+                                @include media-breakpoint-down(xl){
+                                    font-size: 16px;
+                                }
+
+                                @include media-breakpoint-down(sm){
+                                    padding: 8px 10px 8px 13px;
+                                }
+
+                                &.open{                                
+                                    border-radius: 4.4px 4.4px 0 0;
+                                }
+
+                                .list{
+                                    margin-top: 1px;
+                                    left: -1px;
+                                    width: calc(100% + 2px);
+                                }
+
+                                .option{
+                                    padding: 10px 0 10px 23px;
+                                }
+
+                                .option:hover,
+                                .option.focus,
+                                .option.selected,
+                                .option.selected.focus{
+                                    background: #0068B2;
+                                }
+                            }
+
+                            .staffloginPapperFormListLink{
+                                color: #054283;
+                                transition: all .3s;
+                                text-decoration: underline;
+                                font: {
+                                    weight:400;
+                                    size:18px;
+                                };
+
+                                &:hover{
+                                    filter: brightness(1.8);
+                                }
+
+                                @include media-breakpoint-down(xl){
+                                    font-size: 16px;
+                                }
+                            }
+
+                            input{
+                                width: 100%;
+                                color: #000000;
+                                font: {
+                                    weight:400;
+                                    size:18px;
+                                };
+                                padding: 13px 5px;
+
+                                @include media-breakpoint-down(sm){
+                                    font-size: 16px;
+                                    padding: 8px 5px;
+                                }
+                            }                        
+                        }
+                    }
+                }
+
+                .staffloginPapperFormAgreeBox{
+                    cursor: pointer;
+                    margin: 0 0 37px;
+
+                    .staffloginPapperFormAgree{
+                        position: relative;
+                        margin: 1px 15px 0 0;
+
+                        @include media-breakpoint-down(ssm){
+                            margin: 1px 10px 0 0;
+                        }
+
+                        input{
+                            border: 1px solid #CCCCCC;
+                            border-radius: 1.6px;
+                            appearance: none;
+                            position: relative;
+                            width: 20px;
+                            height: 20px;
+                            
+                            @include media-breakpoint-down(ssm){
+                                width: 18px;
+                                height: 18px;
+                            }
+
+                            &:checked{
+                                background: #CCCCCC;
+
+                                + i{
+                                    opacity: 1;
+                                }
+                            }
+                        }
+
+                        i{
+                            color: #FFFFFF;
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            z-index: 1;
+                            opacity: 0;
+                            left: 3px;                            
+                            font-size: 13px;
+
+                            @include media-breakpoint-down(ssm){
+                                font-size: 12px;
+                            }
+                        }
+                    }
+
+                    div{
+                        color: #000000;
+                        transition: all .3s;
+                        font: {
+                            weight:400;
+                            size:16px;
+                        };
+
+                        @include media-breakpoint-down(xl){
+                            font-size: 16px;
+                        }
+
+                        @include media-breakpoint-down(sm){
+                            font-size: 14px;
+                        }
+
+                        @include media-breakpoint-down(ssm){
+                            font-size: 12px;
+                        }
+                    }
+
+                    &:hover{
+                        div{
+                            color: $MainColor;
+                        }
+                    }
+                }
+
+                .staffloginPapperFormBtn{
+                    background: #0067B1;
+                    color: #FFFFFF;
+                    transition: all .5s;
+                    border-radius: 999rem;
+                    width: 100%;
+                    text-align: center;
+                    font: {
+                        weight:500;
+                        size:18px;
+                    };
+                    padding: 16.5px 0;
+
+                    @include media-breakpoint-down(xl){
+                        font-size: 16px;
+                    }
+
+                    @include media-breakpoint-down(ssssm){
+                        padding: 12px 0;
+                    }
+
+                    &:hover{
+                        transform: translateY(-5px);
+                    }
+                }
+            }
+        }
+    }
+}

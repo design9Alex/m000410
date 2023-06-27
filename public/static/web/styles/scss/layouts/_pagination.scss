@@ -1,0 +1,112 @@
+.PageBox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .PageBtn{
+        border: 1px solid #E5E5E5;
+        background: #FFFFFF;
+        text-align: center;
+        transition: all .3s;
+        border-radius: 999rem;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;        
+        font: {
+            family:$FontSub;
+            weight:700;
+            size:16px;
+        };
+
+        @include media-breakpoint-down(sm){
+            font-size: 14px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px; 
+        }
+
+        @include media-breakpoint-down(ssm){
+            width: 35px;
+            height: 35px;
+            line-height: 35px; 
+        }
+
+        @include media-breakpoint-down(sssm){
+            font-size: 13px;
+            width: 32px;
+            height: 32px;
+            line-height: 32px; 
+        }
+
+        @include media-breakpoint-down(ssssm){
+            font-size: 12px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px; 
+        }
+
+        &:not(:last-child){
+            margin: 0 15px 0 0;
+
+            @include media-breakpoint-down(sm){
+                margin: 0 10px 0 0;
+            }
+
+            @include media-breakpoint-down(ssssm){
+                margin: 0 5px 0 0;
+            }
+        }
+
+        &:not(.updown):hover,
+        &:not(.updown).active{
+            background: #F7943D;
+            
+            a{
+                .PageBtnNum{
+                    color: #FFFFFF;
+                }
+            }
+        }
+
+        a{
+            color: #4D4C4C;
+            transition: all .3s;
+        }
+
+        &.updown{
+            font-size: 12px;
+
+            &:not(.disabled):hover{
+                border: 1px solid #F7943D;
+                a{
+                    color: #F7943D;
+                }
+            }
+
+            &.disabled{    
+                a{
+                    color: #807F7F;
+                    cursor: not-allowed;
+                }
+            }
+
+            i{
+                @include media-breakpoint-down(ssm){
+                    display: inline-block;
+                    transform-origin: center;
+                    transform: scale(.9);
+                }
+    
+                @include media-breakpoint-down(ssm){
+                    transform: scale(.8);
+                }
+            }
+        }
+
+        .PageBtnNum{
+            color: rgba(77,76,76,.72);
+        }
+    }
+}

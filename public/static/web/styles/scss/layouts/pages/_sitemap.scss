@@ -1,0 +1,100 @@
+.sitemapBox{
+    .OuterBox{
+        .MainBox{
+            padding: 80px 0 50px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 50px 0 30px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 40px 0 30px;
+            }
+        }
+    } 
+
+    .sitemapBlockBox{
+        .sitemapBlock{
+            margin: 0 0 70px;
+            width: calc((100% - 120px)/4);
+
+            @include media-breakpoint-up(xl){
+                &:not(:nth-child(4n)){
+                    margin: 0 40px 70px 0;
+                }
+            }
+
+            @include media-breakpoint-between(lg,xl){                
+                width: calc((100% - 80px)/3);
+
+                &:not(:nth-child(3n)){
+                    margin: 0 40px 70px 0;
+                }
+            }
+
+            @include media-breakpoint-down(lg){                
+                width: calc((100% - 40px)/2);
+
+                &:not(:nth-child(2n)){
+                    margin: 0 40px 70px 0;
+                }
+            }
+
+            @include media-breakpoint-down(sm){                
+                width: 100%;
+
+                &:not(:nth-child(2n)),&:not(:last-child){
+                    margin: 0 0 40px;
+                }
+            }
+
+            .sitemapBlockTopic{
+                background: #0068B2;
+                color: #FFFFFF;
+                border-radius: 7.8px 7.8px 0 0;
+                font: {
+                    weight:500;
+                    size:20px;
+                };
+                line-height: 30px;
+                padding: 15.5px 0 15.5px 30px;
+            }
+
+            .sitemapBlockItemBox{
+                .sitemapBlockItem{
+                    border-bottom: 1px solid #E5E5E5;
+                    padding: 14px 22px 14px 30px;
+
+                    .sitemapBlockText{
+                        color: #000000;
+                        text-align: justify;
+                        text-align-last: justify;
+                        transition: all .3s;
+                        font: {
+                            weight:400;
+                            size:18px;
+                        };
+                        min-width: 72px;
+                    }
+
+                    i{
+                        color: #CCCCCC;
+                        transition: all .3s;
+                        font-size: 12px;
+                    }
+
+                    &:hover{
+                        .sitemapBlockText{
+                            color: #0068B2;
+                            text-decoration: underline;
+                        }
+
+                        i{
+                            color: #F7943D;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

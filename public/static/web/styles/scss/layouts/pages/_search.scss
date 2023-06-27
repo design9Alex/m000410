@@ -1,0 +1,104 @@
+.searchBox{
+    .OuterBox{
+        background: #F5F5F5;
+        .MainBox{
+            padding: 80px 0 100px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 50px 0 70px;
+            }
+    
+            @include media-breakpoint-down(md){
+                padding: 40px 0 60px;
+            }
+        }
+    }
+
+    .Para1{
+        span{
+            color: $MainColor;
+        }
+    }
+
+    .searchListBox{
+        margin: 0 0 100px;
+
+        .searchList{
+            background: #FFFFFF;                    
+            transition: all 1s;
+            padding: 44px 50px 40px;
+
+            @include media-breakpoint-down(sm){
+                padding: 24px 30px 20px;
+            }
+
+            &:not(:last-child){
+                margin: 0 0 20px;
+            }
+
+            &:hover{
+                box-shadow: 0 20px 20px -10px rgba(0,0,0,.08);
+
+                .searchListTitle{
+                    color: $MainColor;
+                }
+            }
+
+            .searchListTitle{
+                color: #000000;
+                transition: all .3s;
+                font: {
+                    weight:500;
+                    size:24px;
+                };
+
+                @include media-breakpoint-down(sm){
+                    font-size: 20px;
+                }
+            }
+
+            .searchListOutline{
+                color: #000000;
+                overflow: hidden;
+                display: -webkit-box;
+                text-overflow: ellipsis;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                font: {
+                    weight:400;
+                    size:18px;
+                };
+                line-height: 32px;
+                margin: 12px 0 32px;
+
+                @include media-breakpoint-down(sm){
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+
+            .searchListBread{
+                color: #808080;
+
+                .icon_home{
+                    font-size: 15px;
+                }
+
+                li{                            
+                    font: {
+                        weight:400;
+                        size:16px;
+                    };
+
+                    &.middle{
+                        margin: 0 15px;
+                    }
+                }
+
+                .icon_arrowR2{
+                    font-size: 12px;                    
+                }
+            }
+        }
+    }
+}

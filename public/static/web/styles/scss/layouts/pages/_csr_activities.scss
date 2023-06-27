@@ -1,0 +1,73 @@
+.csractvBox{
+    .OuterBox{
+        background: #F5F5F5;
+
+        .MainBox{
+            width: $ArticleMainWidth;
+            padding: 75px 0 100px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 45px 0 70px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 35px 0 60px;
+            }
+
+            @include media-breakpoint-down(sm){
+                width: 100%;
+            }
+
+            .MainTitle{
+                margin: 0 auto;
+                width: $MainWidth;
+            }
+        }
+    }
+
+    .csractvContent{
+        .csractvFilter{
+            position: relative;
+            z-index: 10;
+            margin: 0 auto;
+            transform: translateY(-30px);
+            width: $MainWidth;
+
+            @include media-breakpoint-down(lg){
+                transform: unset;
+                margin: 15px auto 30px;
+            }
+        }
+
+        .ArticleMainBox{
+            width: $MainWidth;
+
+            @include media-breakpoint-up(lg){
+                transform: translateX(30px);
+            }
+        }
+
+        .ArticleDataBox{
+            margin: 0 auto 70px;
+
+            @include media-breakpoint-between(lg,xl){
+                padding: 0 90px;
+            }
+
+            @include media-breakpoint-down(sm){
+                width: $MainWidth;
+            }
+
+            .ArticleData{
+                @include media-breakpoint-between(lg,xl){
+                    width: calc((100% - 40px)/2);
+                    margin: 0 0 40px;
+
+                    &:not(:nth-child(2n)){
+                        margin: 0 40px 40px 0;
+                    }
+                }
+            }
+        }
+    }
+}

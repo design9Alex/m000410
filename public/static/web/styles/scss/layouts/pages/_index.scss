@@ -1,0 +1,1353 @@
+/*========== Index ==========*/
+
+
+.idxCarouselBox{
+    width: 100%;
+    position: relative;
+
+    .idxCarousel{
+        position: relative;
+        padding: 225px $MainPaddingHor 0 $MainPaddingHor;
+        height: 720px;
+
+        @include media-breakpoint-down(xl){
+            padding: 127px 35px 0;
+            height: 500px;
+        }
+
+        @include media-breakpoint-between(lg,xl){
+            height: 500px;
+        }
+
+        .idxCarouselTitle{
+            color: #FFFFFF;
+            font: {
+                weight:700;
+                size:60px;
+            };
+            line-height: 90px;
+            transform: translateX(50px);
+            animation: idxAni .7s forwards;
+            
+            @include media-breakpoint-down(xl){
+                font: {
+                    size:36px;
+                };
+                line-height: 70px;
+            }       
+        }        
+
+        .idxCarouselText{
+            color: #FFFFFF;
+            font: {
+                weight:500;
+                size:24px;
+            };
+            letter-spacing: .3px;
+            line-height: 40px;
+            margin: 8px 0 52px;
+            transform: translateX(70px);
+            animation: idxAni 1.4s forwards;
+
+            @include media-breakpoint-down(xl){
+                font: {
+                    size:18px;
+                };
+                line-height: 30px;
+                margin: 0 0 43px;
+            }
+        }
+
+        .idxCarouselBtn{
+            border: 1px solid #FFFFFF;
+            background: rgba(255,255,255,.2);
+            color: #FFFFFF;
+            text-align: center;
+            transition: all .3s;
+            width: -moz-fit-content;
+            width: fit-content;
+            border-radius: 999rem;
+            min-width: 180px;
+            padding: 9px 5px;
+            transform: translateX(100px);
+            animation: idxAni 2s forwards;
+
+            @include media-breakpoint-down(xl){
+                min-width: 150px;
+                padding: 4px 0;
+            }
+
+            .idxCarouselBtnText{
+                line-height: 40px;
+                font-size: 18px;
+                margin: 0 20px 0 0;
+
+                @include media-breakpoint-down(xl){
+                    font-size: 16px;
+                }
+            }
+
+            i{
+                font-size: 20px;                
+            }
+
+            &:hover{
+                background: rgba(255,255,255,.4);
+
+                i{
+                    animation: idxCarouselBtn .8s;
+                }
+            }
+
+            @keyframes idxCarouselBtn {
+                from{
+                    transform: translateX(-10px);
+                }
+
+                to{
+                    transform: translateX(0);
+                }
+            }
+        }
+
+        img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .owl-dots{
+        position: absolute;
+        z-index: 2;
+        transform-origin: center;
+        opacity: 0;
+        animation: opacity1 2s forwards;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: calc(100% - ($MainPaddingHor*2));
+        left: $MainPaddingHor;
+        bottom: 110px;
+
+        @include media-breakpoint-down(xl){
+            width: calc(100% - 70px);
+        }
+
+        @include media-breakpoint-down(xl){
+            left: 35px;
+            bottom: 67px;
+            width: calc(100% - 70px);
+        }
+
+        .owl-dot{
+            display: block;
+
+            @include media-breakpoint-up(xl){
+                position: relative;
+                text-align: left;
+                margin: 0 0 10px;
+                width: calc((100% - 50px)/6);
+
+                .idxCarouseDotDecro{
+                    background: rgba(255,255,255,.6);
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: 0;
+                    z-index: 1;
+                    width: 100%;
+                    top: 0;
+                    height: 1px;
+
+                    &::after{
+                        background: #FFFFFF;
+                        transition: width .5s;
+                        content: '';
+                        display: block;
+                        position: absolute;                    
+                        left: 0;
+                        z-index: 3;
+                        width: 0;
+                        bottom: 0;
+                        height: 1px;
+                    }
+                }
+            }
+
+            @include media-breakpoint-down(xl){
+                background: rgba(234,237,241,.5);
+                transition: all .3s;
+                display: block;           
+                width: 8px;
+                height: 8px;
+
+                &:hover{
+                    background: #FFFFFF;
+                }
+            }
+
+            &:not(:last-child)
+            {
+                margin: 0 10px 10px 0;
+            }
+
+            &:hover{
+                @include media-breakpoint-up(xl){
+                    .idxCarouseDotDecro{
+                        &::after{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            &.active{
+                @include media-breakpoint-up(xl){
+                    .idxCarouseDotDecro{
+                        &::after{
+                            transition: height .3s;
+                            width: 100%;
+                            height: 3px;
+                        }
+                    }
+                }
+
+                @include media-breakpoint-down(xl){
+                    background: #FFFFFF;                    
+                    width: 32px;
+                }
+            }
+
+            span{
+                color: #FFFFFF;
+                display: block;
+                font: {
+                    family: $FontMain;
+                    weight:400;
+                    size:16px;
+                };
+                padding: 20px 0 0;
+
+                @include media-breakpoint-down(xl){
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.idxNewsBox{
+    position: relative;
+    padding: 115px 0 176px;
+
+    @include media-breakpoint-up(md){
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    @include media-breakpoint-down(md){
+        padding: 58px 0 72px;
+    }
+
+    @include media-breakpoint-between(md,xl){
+        padding: 58px 0 122px;
+    }
+
+    &::after{
+        background: #F5F5F5;
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 410px;
+
+        @include media-breakpoint-down(md){
+            height: 450px;
+        }
+    }
+
+    .idxTopicBox{
+        position: relative;
+        z-index: 2;
+
+        @include media-breakpoint-up(md){
+            width: 550px;
+            padding: 39px 0 0 $MainPaddingHor;
+        }
+
+        @include media-breakpoint-between(xl,xxxl){
+            width: 420px;
+        }
+
+        @include media-breakpoint-between(md,xl){
+            width: 300px;
+        }
+
+        @include media-breakpoint-down(md){
+            text-align: center;
+        }
+    
+        .idxTopic{
+            font: {
+                weight: 700;
+                size: 36px;
+            };        
+            letter-spacing: .35px;
+            line-height: 26px;
+
+            @include media-breakpoint-down(md){
+                font: {
+                    size: 28px;
+                };
+            }
+        }
+    
+        .idxTopicMore{
+            color: #000000;
+            text-decoration: underline;
+            transition: all 1.4s,color .3s;
+            font-size: 18px;
+            margin: 40px 0 242px;
+            line-height: 15px;
+
+            @include media-breakpoint-between(md,xl){
+                margin: 40px 0 260px;
+            }
+
+            @include media-breakpoint-down(md){
+                font: {
+                    weight: 400;
+                };
+                margin: 20px 0 40px;
+            }
+
+            &:hover{
+                color: $MainColor;
+            }
+        }
+
+        .idxTopicNavBox{
+            @include media-breakpoint-down(md){
+                display: none !important;
+            }
+
+            .idxTopicNav{
+                background: #CCCCCC !important;
+                text-align: center;
+                cursor: pointer;
+                transition: all .3s;
+                border-radius: 999rem;
+                width: 60px;
+                height: 60px;
+                line-height: 60px !important;
+
+                @include media-breakpoint-down(xl){
+                    width: 46px;
+                    height: 46px;
+                    line-height: 46px !important;
+                }
+
+                &:not(:last-child)
+                {
+                    margin: 0 15px 0 0;
+
+                    @include media-breakpoint-down(xl){
+                        margin: 0 9px 0 0;
+                    }
+                }
+
+                &:hover{
+                    background: #F7943D !important;
+                }
+
+                i{
+                    color: #FFFFFF;
+                    font-size: 20px;
+
+                    @include media-breakpoint-down(xl){
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    .idxNewsCarouselBox{
+        display: block;
+        align-items: unset;
+        justify-content: unset;
+        flex-wrap: unset;
+        z-index: 3;
+
+        @include media-breakpoint-up(xl){
+            position: relative;
+            width: calc(100% - 550px);
+        }
+
+        @include media-breakpoint-between(xl,xxxl){
+            width: calc(100% - 420px);
+        }
+
+        @include media-breakpoint-between(md,xl){
+            width: calc(100% - 300px);
+        }
+
+        @include media-breakpoint-down(md){
+            margin: 0 auto;
+            width: calc(100% - 50px);
+        }
+
+        .owl-stage-outer{
+            padding: 0 0 35px;
+        }
+
+        .owl-stage{
+            display: flex;
+            align-items: stretch;
+            justify-content: flex-start;
+        }
+
+        .owl-item{
+            .ArticleData{
+                width: 100%;
+                margin: 0 auto;
+                padding: 29px 37.75px 24px;
+
+                @include media-breakpoint-down(xl){
+                    padding: 31px 35.7px 20px;
+                }
+
+                @include media-breakpoint-between(lg,md){
+                    padding: 31px 45.7px 20px;
+                }
+
+                @include media-breakpoint-between(sm,md){
+                    padding: 31px 40.7px 20px;
+                }
+
+                .ArticleDataTop{
+                    margin: 0 0 18px;
+
+                    @include media-breakpoint-down(md){
+                        margin: 0 0 15px;
+                    }
+
+                    .ArticleDataDate{
+                        .ArticleDataDateD{
+                            line-height: 23px;
+
+                            @include media-breakpoint-down(md){
+                                line-height: 28px;
+                            }
+                        }
+                    }
+                }                
+
+                .ArticleDataTitle{
+                    margin: 0 0 21px;
+                }
+
+                &.center{
+                    box-shadow: 0 20px 20px -10px rgba(0, 0, 0,.08);
+    
+                    &::after{
+                        width: 100%;
+                    }
+    
+                    .ArticleDataDate{
+                        .ArticleDataDateD{
+                            color: $MainColor;
+                        }
+                    }
+        
+                    .ArticleDataKind{
+                        color: $MainColor;
+                    }
+    
+                    .ArticleDataBtn{
+                        i{
+                            color: #0068B2;
+                        }
+                    }
+                }
+            }
+
+            &.center{
+                @include media-breakpoint-down(xl){
+                    padding: 3px;
+                }
+
+                .ArticleData{
+                    box-shadow: 0 20px 20px -10px rgba(0, 0, 0,.08);
+
+                    &::after{
+                        width: 100%;
+                    }
+                }
+
+                .ArticleDataDate{
+                    .ArticleDataDateD{
+                        color: $MainColor;
+                    }
+                }
+    
+                .ArticleDataKind{
+                    color: $MainColor;
+                }
+
+                .ArticleDataBtn{
+                    i{
+                        color: #0068B2;
+                    }
+                }
+            }
+        }
+
+        .owl-nav{
+            display: none;
+
+            @include media-breakpoint-down(md){
+                display: block;
+                text-align: center;
+                margin: 5px 0 0 0;
+
+                .owl-prev,.owl-next{
+                    background: #CCCCCC !important;
+                    text-align: center;
+                    cursor: pointer;
+                    transition: all .3s;
+                    border-radius: 999rem;
+                    width: 60px;
+                    height: 60px;
+                    line-height: 60px !important;
+
+                    @include media-breakpoint-down(xl){
+                        width: 46px;
+                        height: 46px;
+                        line-height: 46px !important;
+                    }
+
+                    &:not(:last-child)
+                    {
+                        margin: 0 15px 0 0;
+
+                        @include media-breakpoint-down(xl){
+                            margin: 0 9px 0 0;
+                        }
+                    }
+
+                    &:hover{
+                        background: #F7943D !important;
+                    }
+
+                    i{
+                        color: #FFFFFF;
+                        font-size: 20px;
+
+                        @include media-breakpoint-down(xl){
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.idxBtnMore{
+    width: -moz-fit-content;
+    width: fit-content;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include media-breakpoint-down(xl){
+        background: #F7943D;
+        line-height: 35px;
+        min-width: 150px;
+        padding: 5.5px 5px;
+        border-radius: 23px;
+        margin: 0 auto 54px auto;
+    }
+
+    .idxBtnMoreText{
+        color: #FFFFFF;
+        vertical-align: middle;
+        font-size: 18px;
+        margin: 0 28px 0 0;
+
+        @include media-breakpoint-down(xl){
+            font: {
+                weight:400;
+                size:16px;
+            };
+            margin: 0 15px 0 0;
+        }
+    }
+
+    .idxBtnMoreIcon{        
+        vertical-align: middle;        
+
+        @include media-breakpoint-up(xl){
+            background: #F7943D;
+            border-radius: 999rem;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+        }
+
+        @include media-breakpoint-down(xl){
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        i{
+            color: #FFFFFF;
+            display: inline-block;
+            font-size: 18px;
+        }
+    }
+
+    &:hover{
+        .idxBtnMoreIcon{
+            i{
+                animation: idxBtnMoreIcon .8s;
+            }
+        }
+    }
+
+    @keyframes idxBtnMoreIcon{
+        from{
+            transform: translateX(-15px);
+        }
+
+        to{
+            transform: translateX(0);
+        }
+    }    
+}
+
+.idxIvstBox{
+    background: #08397E;
+    position: relative;
+    padding: 200px $MainPaddingHor 0 $MainPaddingHor;
+
+    @include media-breakpoint-up(xl){
+        min-height: 780px;
+    }
+
+    @include media-breakpoint-between(xxxxl,xxxxxl){
+        min-height: 720px;
+    }
+
+    @include media-breakpoint-between(xl,xxl){
+        min-height: 700px;
+    }
+
+    @include media-breakpoint-between(lg,xl){
+        min-height: 550px;
+        padding: 140px $MainPaddingHor 0 $MainPaddingHor;
+    }
+    
+    @include media-breakpoint-down(lg){
+        padding: 67px 0 0;
+    }
+
+    .idxIvstInfo{
+        position: relative;
+        z-index: 6;
+
+        @include media-breakpoint-up(xl){
+            width: 488px;
+        }
+
+        @include media-breakpoint-between(xxxxl,xxxxxl){
+            width: 450px;
+        }
+
+        @include media-breakpoint-between(xxl,xxxl){
+            width: 390px;
+        }
+
+        @include media-breakpoint-between(xl,xxl){
+            width: 350px;
+        }
+
+        @include media-breakpoint-between(lg,xl){
+            width: 295px;
+        }
+
+        @include media-breakpoint-down(lg){
+            width: calc(100% - 70px);
+            margin: 0 auto 55px auto;
+        }
+
+        @include media-breakpoint-between(ssm,sm){
+            width: calc(100% - 110px);
+        }
+
+        .idxIvstTopic{
+            color: #FFFFFF;            
+            font: {
+                weight:700;
+                size:36px;
+            };
+            line-height: 26px;
+            
+            @include media-breakpoint-down(lg){
+                text-align: center;
+                font: {
+                    size:28px;
+                };
+            }
+        }
+
+        .idxIvstText{
+            color: #FFFFFF;
+            font: {
+                size:16px;
+            };
+            letter-spacing: .3px;
+            line-height: 30px;            
+            margin: 44px 0 55px;
+
+            @include media-breakpoint-down(lg){
+                font-weight: 400;
+                margin: 22px auto 35px auto;
+            }            
+        }
+
+        .idxBtnMore{
+            margin: 0;
+
+            @include media-breakpoint-down(lg){
+                margin: 0 auto;
+            }
+        }
+    }
+
+    .idxIvstAreaBox{
+        width: 100%;
+
+        @include media-breakpoint-up(lg){
+            position: absolute;
+            top: calc(50% - 5px);
+            transform: translateY(-50%);
+            right: $MainPaddingHor;
+            z-index: 6;
+            width: 780px;
+        }
+
+        @include media-breakpoint-between(xxxxl,xxxxxl){
+            width: 700px;
+        }
+
+        @include media-breakpoint-between(lg,xxl){
+            width: 580px;
+        }
+
+        @include media-breakpoint-down(lg){
+            position: relative;
+            z-index: 5;
+        }
+
+        .idxIvstAreaInner{
+            .idxIvstAreaTitle{
+                color: #FFFFFF;
+                background: {
+                    image:url('static/index/investor0.webp');
+                    position: left;
+                    size:cover;
+                    repeat:no-repeat;
+                };
+                padding: 138px 0 45px 50px;
+
+                @include media-breakpoint-between(xxxxl,xxxxxl){
+                    padding: 108px 0 35px 50px;
+                }
+
+                @include media-breakpoint-down(xl){
+                    padding: 73px 0 47px 50px;
+                }
+
+                @include media-breakpoint-between(lg,xl){
+                    padding: 73px 0 37px 30px;
+                }
+
+                .idxIvstAreaTitleWord{
+                    font: {
+                        weight:500;
+                        size:15px;
+                    };
+                    letter-spacing: .3px;
+                    line-height: 26px;
+                    margin: 0 0 15px;
+
+                    @include media-breakpoint-down(xl){
+                        margin: 0 0 13px;
+                    }
+                }
+
+                .idxIvstAreaTitleCode{
+                    font: {
+                        family: $FontSub;
+                        weight:900;
+                        size:36px;
+                    };
+                    line-height: 26px;
+
+                    @include media-breakpoint-between(md,lg){
+                        font-size: 30px;
+                    }
+                }
+            }
+
+            .idxIvstAreaImg{
+                img{
+                    height: auto;
+                }
+            }
+
+            .idxIvstAreaNumBox{
+                .idxIvstAreaNum{
+                    background: #005EAD;
+                    padding: 56px 0 56px 50px;
+
+                    @include media-breakpoint-up(md){
+                        width: 50%;
+                    }
+
+                    @include media-breakpoint-between(xxxxl,xxxxxl){
+                        padding: 41px 0 41px 35px;
+                    }
+
+                    @include media-breakpoint-between(xl,xxl){
+                        padding: 36px 0 36px 30px;
+                    }
+
+                    @include media-breakpoint-down(xl){
+                        padding: 40px 0 46px 50px;
+                    }
+
+                    @include media-breakpoint-between(lg,xl){
+                        padding: 20px 0 26px 30px;
+                    }
+
+                    &:nth-child(2){
+                        background: #0C85DB;
+                    }
+
+                    .idxIvstAreaNumList{
+                        &:not(:last-child){
+                            margin: 0 0 30px;
+
+                            @include media-breakpoint-down(xl){
+                                margin: 0 0 27px;
+                            }
+
+                            @include media-breakpoint-between(lg,xl){
+                                margin: 0 0 12px;
+                            }
+
+                            @include media-breakpoint-down(md){
+                                margin: 0 0 6px;
+                            }
+                        }
+
+                        .idxIvstAreaNumListTitle{
+                            color: rgba(255,255,255,.5);
+                            font: {
+                                weight:500;
+                                size:16px;
+                            };
+                            line-height: 26px;
+                            letter-spacing: .3px;
+                            margin: 0 0 14px;
+
+                            @include media-breakpoint-down(md){
+                                font-size: 15px;
+                                margin: 0 0 4px;
+                            }
+                        }
+
+                        .idxIvstAreaNumListVal{
+                            color: #FFFFFF;
+                            font: {
+                                family: $FontSub;
+                                weight:900;
+                                size:36px;
+                            };
+                            line-height: 26px;
+
+                            @include media-breakpoint-between(xl,xxl){
+                                font-size: 30px;
+                            }
+
+                            @include media-breakpoint-between(lg,xl){
+                                font-size: 26px;
+                            }
+
+                            span{
+                                font: {
+                                    weight:500;
+                                    size:14px;
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .idxIvstBg{
+        background: {
+            image: url('static/index/investorBg.webp');
+            position: left;
+            size:cover;
+            repeat:no-repeat;
+        };
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+    }
+
+    #particles-js{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.idxAbtBox{
+    background: {
+        image:url('static/index/aboutBg.webp');
+        position: left;
+        size:cover;
+        repeat:no-repeat;
+    };
+    padding: 185px 0 108px;
+
+    @include media-breakpoint-down(xl){
+        padding: 80px 35px 78px ;
+    }
+
+    @include media-breakpoint-between(md,xl){
+        padding: 130px 35px 78px;
+    }
+
+    .idxAbtInner{
+        margin: 0 auto;
+        
+
+        @include media-breakpoint-up(xl){
+            width: $MainWidth;
+        }
+
+        .idxAbtWordFore{
+            @include media-breakpoint-up(xl){
+                flex: 1;
+                margin: 0 160px 0 0;
+            }
+
+            @include media-breakpoint-between(xxl,xxxl){
+                margin: 0 120px 0 0;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                margin: 0 100px 0 0;
+            }
+
+            .idxAbtPicBox{
+                width: 100%;
+                position: relative;
+                margin: 0 0 105px;
+
+                @include media-breakpoint-down(xl){
+                    margin: 0 auto 50px;
+                }
+
+                @include media-breakpoint-between(xl,xxl){
+                    margin: 0 0 75px;
+                }
+
+                @include media-breakpoint-between(lg,xl){
+                    margin: 0 auto 55px;
+                    width: 400px;
+                }
+
+                .idxAbtPic0,
+                .idxAbtPic1,
+                .idxAbtPic2{
+                    img{
+                        height: auto;
+                    }
+                }
+
+                .idxAbtPic0{
+                    position: absolute;
+                    z-index: 1;
+                    left: -105px;
+                    bottom: -142px;
+                    width: 330px;
+
+                    @include media-breakpoint-between(xxxl,xxxxl){
+                        width: 290px;
+                    }
+
+                    @include media-breakpoint-between(xxl,xxxl){
+                        width: 250px;
+                    }
+
+                    @include media-breakpoint-between(xl,xxl){
+                        width: 200px;
+                        left: -77px;
+                        bottom: -85px;
+                    }
+
+                    @include media-breakpoint-between(lg,xl){
+                        width: 185px;
+                    }
+
+                    @include media-breakpoint-down(xl){
+                        left: -45px;
+                        bottom: -64px;
+                        width: 145px;
+                    }
+
+                    @include media-breakpoint-between(md,lg){
+                        left: 25px;
+                        bottom: -59px;
+                        width: 185px;
+                    }
+                }
+
+                .idxAbtPic1,
+                .idxAbtPic2{
+                    width: 330px;
+
+                    @include media-breakpoint-between(xxxl,xxxxl){
+                        width: 290px;
+                    }
+
+                    @include media-breakpoint-between(xxl,xxxl){
+                        width: 250px;
+                    }
+
+                    @include media-breakpoint-between(xl,xxl){
+                        width: 200px;
+                    }
+
+                    @include media-breakpoint-down(xl){
+                        width: 47.2%;
+                    }
+
+                    @include media-breakpoint-between(md,lg){
+                        width: 250px;
+                    }
+                }
+
+                .idxAbtPic1{         
+                    margin: 0 20px 0 0;
+
+                    @include media-breakpoint-down(xl){
+                        margin: 0 8px 0 0;
+                    }
+                }
+
+                .idxAbtPic2{
+                    transform: translateY(45px);
+
+                    @include media-breakpoint-down(xl){
+                        transform: translateY(20px);
+                    }
+                }
+            }
+
+            .idxAbtEnTitle{
+                background: linear-gradient(to right,#005EAD,#003664);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font: {
+                    weight:900;
+                    size:56px;
+                };
+                line-height: 60px;
+                margin: 0 0 35px;
+                
+                @include media-breakpoint-up(xl){
+                    padding: 0 0 6px;
+                }
+
+                @include media-breakpoint-between(xl,xxl){
+                    font-size: 40px;
+                }
+
+                @include media-breakpoint-down(xl){
+                    font: {
+                        size:32px;
+                    };
+                    line-height: 38px;
+                    padding: 0 0 8px;
+                    margin: 0 0 9px;
+                }
+
+                @include media-breakpoint-between(lg,xl){
+                    font: {
+                        size:42px;
+                    };
+                    line-height: 53px;
+                    width: 400px;
+                    margin: 0 auto 25px;
+                }
+
+                @include media-breakpoint-between(sm,lg){
+                    font: {
+                        size:50px;
+                    };
+                    line-height: 53px;
+                    width: 470px;
+                    margin: 0 auto 25px;
+                }
+            }
+        }
+
+        .idxAbtWordBox{
+            
+            @include media-breakpoint-up(xl){
+                width: 535px;
+                margin: 214px 0 0;
+            }
+
+            @include media-breakpoint-between(lg,xl){
+                margin: 0 auto;
+                width: 400px;
+            }
+
+            @include media-breakpoint-between(md,lg){
+                margin: 0 auto;
+                width: 470px;
+            }
+            
+            .idxAbtTwTitle{
+                font: {
+                    weight:900;
+                    size:36px;
+                };
+                margin: 0;
+                letter-spacing: .3px;
+                line-height: 50px;
+
+                @include media-breakpoint-up(xl){
+                    width: calc(100% - 25px);
+                }
+
+                @include media-breakpoint-between(xl,xxl){
+                    font-size: 32px;
+                }
+
+                @include media-breakpoint-down(xl){
+                    font: {
+                        size:28px;
+                    };
+                    line-height: 40px;
+                }
+            }
+
+            .idxAbtInfo{
+                letter-spacing: .3px;
+                font: {
+                    weight:400;
+                    size:16px;
+                };
+                line-height: 30px;
+                margin: 28px 0 55px;
+
+                @include media-breakpoint-down(xl){
+                    margin: 15px 0 34px;
+                }
+            }
+
+            .idxBtnMore{
+                margin: 0 auto 0 0;
+
+                @include media-breakpoint-down(xl){
+                    padding: 5.5px 5px;
+                }
+
+                span{
+                    @include media-breakpoint-up(xl){
+                        color: #000000;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.idxLinkBox{
+    .idxLink{
+        background: {
+            image:url('images/index/link0.webp');
+            position: center;
+            size:cover;
+            repeat:no-repeat;
+        };
+        position: relative;
+        padding: 114px 0 75px 160px;
+
+        @include media-breakpoint-up(lg){
+            width: 50%;
+        }
+
+        @include media-breakpoint-between(xxxl,xxxxxl){
+            padding: 104px 0 65px 160px;
+        }
+
+        @include media-breakpoint-between(xxl,xxxl){
+            padding: 94px 0 55px 120px;
+        }
+
+        @include media-breakpoint-between(xl,xxl){
+            padding: 94px 0 55px 100px;
+        }
+
+        @include media-breakpoint-down(xl){
+            padding: 34px 0 33px 40px;
+        }
+
+        @include media-breakpoint-between(lg,xl){
+            padding: 55px 0 54px 40px;
+        }
+
+        @include media-breakpoint-between(sm,lg){
+            padding: 75px 0 74px 80px;
+        }
+
+        &.keep{
+            background: {
+                image:url('images/index/link1.webp');
+            };
+        }
+
+        &::after{
+            background: rgba(0,0,0,.4);
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            transition: all .3s;
+            opacity: 0;
+        }
+
+        &:hover{
+            &::after{
+                opacity: 1;
+            }
+        }
+
+        .idxLinkTitle{
+            color: #FFFFFF;
+            position: relative;
+            z-index: 2;
+            font: {
+                weight:700;
+                size:36px;
+            };
+            margin: 0 0 147px;
+
+            @include media-breakpoint-between(xxxl,xxxxxl){
+                margin: 0 0 117px;
+            }
+
+            @include media-breakpoint-between(xxl,xxxl){
+                margin: 0 0 97px;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                margin: 0 0 87px;
+            }
+
+            @include media-breakpoint-down(xl){
+                font: {
+                    size:28px;
+                };
+                margin: 0 0 35px;
+            }
+
+            @include media-breakpoint-between(md,lg){
+                font: {
+                    size:36px;
+                };
+                margin: 0 0 87px;
+            }
+
+            @include media-breakpoint-between(sm,md){
+                font: {
+                    size:36px;
+                };
+                margin: 0 0 47px;
+            }
+        }
+
+        .idxBtnMore{
+            border: 1px solid #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            font-weight: 400;
+            margin: 0 auto 0 0;
+            background: unset;            
+
+            @include media-breakpoint-up(xl){
+                border-radius: 999rem;
+                min-width: 180px;
+                padding: 15.5px 5px;
+
+                .idxBtnMoreIcon{
+                    background: unset;
+                    width: unset;
+                    height: unset;
+                    line-height: unset;
+                    border-radius: unset;
+                }
+            }
+
+            @include media-breakpoint-down(xl){
+                padding: 4.5px 5px;
+
+                .idxBtnMoreIcon{
+                    display: flex !important;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}

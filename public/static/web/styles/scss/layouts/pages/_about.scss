@@ -1,0 +1,1314 @@
+.infoBox{
+    .OuterBox{
+        background: {
+            image: url('static/about/info/bg0.webp');
+            position: bottom;
+            repeat: no-repeat;
+            size: 100% auto;
+        };
+        
+        .MainBox{
+            .MainTitle{
+                margin: 0 0 55px;
+
+                @include media-breakpoint-down(xl){
+                    margin: 0 0 20px;
+                }
+            }
+        }
+    }
+
+    .infoBlock{
+        width: 100%;
+        position: relative;
+
+        &:not(:last-child)
+        {
+            margin: 0 0 137px;
+
+            @include media-breakpoint-down(xl){
+                margin: 0 0 30px;
+            }
+        }
+
+        .infoEn{
+            color: #CCCCCC;
+            font: {
+                family:$FontSub;
+                weight:900;
+                size:42px;
+            };
+            letter-spacing: .3px;
+            line-height: 50px;
+
+            @include media-breakpoint-between(xl,xxl){
+                font-size: 34px;
+                line-height: 40px;
+            }
+
+            @include media-breakpoint-down(xl){
+                font: {
+                    size:24px;
+                };
+                line-height: 32px;
+            }
+
+            @include media-breakpoint-between(md,xl){
+                font: {
+                    size:35px;                    
+                };
+                line-height: 40px;
+            }
+
+            >div>span{
+                background: linear-gradient(to right,#005EAD,#003664);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+
+        .DataTable{
+            background: #FFFFFF;
+            width: 720px;
+
+            @include media-breakpoint-up(xl){
+                position: relative;
+                z-index: 2;
+                padding: 43px 50px 50px 0;
+            }
+
+            @include media-breakpoint-down(xxxxl){
+                width: 670px;
+                padding: 33px 50px 30px 0;
+            }
+
+            @include media-breakpoint-between(xxl,xxxl){
+                width: 610px;
+                padding: 33px 40px 20px 0;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                width: 540px;
+                padding: 33px 40px 20px 0;
+            }
+
+            @include media-breakpoint-down(xl){
+                padding: 20px 20px 20px 0;
+            }
+
+            @include media-breakpoint-down(md){
+                width: 100%;
+            }
+
+            thead{
+                tr{
+                    th{
+                        @include media-breakpoint-between(xl,xxxl){
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+
+            tbody{
+                tr{
+                    td{
+                        @include media-breakpoint-between(xl,xxxl){
+                            font-size: 16px;
+                            padding: 4.5px 0 4.5px 20px;
+                        }
+
+                        &:first-child{
+                            width: 220px;
+
+                            @include media-breakpoint-between(xxl,xxxl){
+                                width: 190px;
+                            }
+
+                            @include media-breakpoint-between(xl,xxl){
+                                width: 170px;
+                            }
+
+                            @include media-breakpoint-down(md){
+                                min-width: 160px;
+                                width: 160px;
+                            }
+                        }
+
+                        &:nth-child(2){
+                            min-width: 450px;
+
+                            @include media-breakpoint-between(xxl,xxxl){
+                                min-width: 420px;
+                            }
+
+                            @include media-breakpoint-between(xl,xxl){
+                                min-width: 370px;
+                            }
+
+                            @include media-breakpoint-down(md){
+                                min-width: 300px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .infoBulidings{
+            @include media-breakpoint-up(xl){
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                z-index: 1;
+                height: 100%;
+                width: 900px;
+            }
+
+            @include media-breakpoint-down(xxxxl){
+                width: 850px;
+            }
+
+            @include media-breakpoint-between(xxl,xxxl){
+                width: 750px;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                width: 650px;
+            }
+
+            @include media-breakpoint-down(xl){
+                width: 100%;
+            }
+        }
+
+        .infoTextBox{
+            @include media-breakpoint-up(xl){
+                margin: 0 220px 0 0;
+                flex: 1;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                margin: 0 180px 0 0;
+            }
+
+            @include media-breakpoint-down(xl){
+                margin: 0 0 50px;
+            }
+
+            .infoText0{
+                font: {
+                    weight:700;
+                    size:28px;
+                };
+                letter-spacing: .3px;
+                line-height: 42px;
+                margin: 0 0 30px;
+
+                @include media-breakpoint-down(xl){
+                    font-size: 20px;
+                    line-height: 32px;
+                }
+            }
+
+            .infoText1{
+                font: {
+                    weight:400;
+                    size:18px;
+                };
+                letter-spacing: .3px;
+                line-height: 32px;
+
+                @include media-breakpoint-up(xl){
+                    flex: 1;
+                }
+
+                @include media-breakpoint-down(sm){
+                    font-size: 16px;
+                }
+
+                &>p:not(:last-child)
+                {
+                    margin: 0 0 30px;
+                }
+            }
+        }
+
+        .infoPicBox{
+            position: relative;
+            width: 490px;
+            
+            @include media-breakpoint-between(xxxl,xxxxl){
+                width: 440px;
+            }
+
+            @include media-breakpoint-between(xxl,xxxl){
+                width: 370px;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                width: 270px;
+            }
+
+            @include media-breakpoint-between(sm,xl){
+                margin: 0 auto;
+                width: 330px;
+            }
+
+            @include media-breakpoint-down(sm){
+                margin: 0 auto;
+                width: 250px;
+            }
+
+            @include media-breakpoint-down(ssssm){
+                width: 200px;
+            }
+
+            .infoPic0{
+                position: absolute;
+                left: -135px;
+                bottom: -70px;
+                z-index: 1;
+                width: 310px;
+
+                @include media-breakpoint-between(xxl,xxxl){
+                    width: 250px;
+                }
+
+                @include media-breakpoint-between(xl,xxl){
+                    width: 180px;
+                }
+
+                @include media-breakpoint-down(xl){
+                    width: 200px;
+                }
+
+                @include media-breakpoint-down(md){
+                    left: -75px;
+                    bottom: -50px;
+                }
+
+                @include media-breakpoint-down(sm){
+                    width: 150px;
+                    left: -30px;
+                    bottom: -30px;
+                }
+
+                @include media-breakpoint-down(ssssm){
+                    width: 100px;
+                }
+            }
+
+            .infoPic1{
+                width: 100%;
+            }
+        }
+    }
+}
+
+.presdtBox{
+    .OuterBox{
+        .MainBox{
+            padding: 70px 0 120px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 40px 0 90px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 30px 0 80px;
+            }
+
+            .MainTitle{
+                margin: 0 0 25px;
+            }
+        }
+    }
+
+    .presdtBlockBox{
+        .presdtBlock{
+            width: calc((100% - 100px)/2);
+
+            @include media-breakpoint-between(md,xl){
+                width: calc((100% - 60px)/2);
+            }
+
+            @include media-breakpoint-down(md){
+                width: 100%;
+            }
+
+            &:first-child{
+                margin: 0 100px 0 0;
+
+                @include media-breakpoint-between(md,xl){
+                    margin: 0 60px 0 0;
+                }
+
+                @include media-breakpoint-down(md){
+                    margin: 0 0 60px;
+                }
+            }
+
+            .presdtBlockTitle{
+                font: {
+                    weight: 500;
+                    size: 28px;
+                };
+                letter-spacing: .3px;
+                margin: 0 0 20px;
+
+                @include media-breakpoint-down(md){
+                    margin: 0;
+                }
+            }
+
+            .presdtBlockImg{
+                width: 100%;
+            }
+
+            .presdtBlockSlogan{                
+                font: {
+                    family: 'Noto Serif TC';
+                    weight: 700;
+                    size: 36px;
+                };
+                min-height: 108px;
+                margin: 40px 0 0;
+
+                @include media-breakpoint-between(lg,xl){
+                    font-size: 30px;
+                    min-height: 90px;
+                }
+
+                @include media-breakpoint-between(md,lg){
+                    font-size: 24px;
+                    min-height: 72px;
+                }
+
+                @include media-breakpoint-down(md){
+                    min-height: unset;
+                    margin: 20px 0 0;
+                    font-size: 30px;                    
+                }
+
+                @include media-breakpoint-down(sm){
+                    font-size: 24px;
+                }
+
+                @include media-breakpoint-down(ssssm){
+                    font-size: 22px;
+                }
+            }
+
+            .presdtBlockWord{
+                border-top: 1px solid #E3E3E3;
+                border-bottom: 1px solid #E3E3E3;
+                margin: 22px 0 30px;
+                padding: 50px 0;
+
+                @include media-breakpoint-down(md){
+                    padding: 30px 0;                  
+                }
+
+                .Para4{
+                    color: #4D4D4D;
+
+                    &.first{
+                        margin: 0 0 57px;
+                    }
+                }
+
+                .presdtBlockWordBlockBox{
+                    .presdtBlockWordBlock{
+                        &:not(:last-child){
+                            margin: 0 0 35px;
+                        }
+
+                        .presdtBlockWordBlockTitle{
+                            font: {
+                                weight: 700;
+                                size: 24px;
+                            };
+                            letter-spacing: .3px;
+                            line-height: 28px;
+                            margin: 0 0 10px;
+                        }
+                    }
+                }
+            }
+
+            .presdtBlockWho{
+                color: #4D4D4D;
+                font: {
+                    weight: 400;
+                    size: 18px;
+                };
+
+                span{
+                    font: {
+                        weight: 500;
+                        size: 24px;
+                    };
+                    padding: 0 0 0 8px;
+                }
+            }
+        }
+    }
+}
+
+body.historyBox{    
+    @include media-breakpoint-up(md){
+        overflow-x: unset;
+    }
+}
+
+.historyBox{
+    .TopicBox{
+        overflow: hidden;
+    }
+
+    .BreadBox{
+        overflow: hidden;
+    }
+
+    .OuterBox{
+        .MainBox{
+            padding: 70px 0 102px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 40px 0 72px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 30px 0 62px;
+            }
+        }
+    }
+
+    .hstyImg{        
+        @include media-breakpoint-up(md){
+            margin: 0 0 60px;
+        }
+    }
+    
+    .hstyTimeBox{
+        .hstyTimeYearBox{
+            transition: all .3s;                     
+    
+            @include media-breakpoint-up(md){
+                flex: 1;
+                position: sticky;
+                top: 110px;
+                max-height: 500px;
+            }
+
+            @include media-breakpoint-down(md){
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 25px 0;
+            }
+    
+            .hstyTimeYear{
+                color: #6BA2D0;
+                cursor: pointer;            
+                font: {
+                    family:$FontSub;
+                    weight:700;
+                    size:20px;
+                };
+                line-height: 45px;
+    
+                &.active{
+                    color: #F7943D;
+                }
+
+                @include media-breakpoint-down(md){
+                    font-size: 18px;
+
+                    &:not(:last-child){
+                        margin: 0 30px 0 0;
+                    }
+                }
+
+                @include media-breakpoint-down(sssm){
+                    font-size: 17px;
+                }
+
+                @include media-breakpoint-down(ssssm){
+                    font-size: 16px;
+
+                    &:not(:last-child){                        
+                        margin: 0 25px 0 0;
+                    }
+                }
+            }
+        }
+    
+        .hstyTimeEvents{
+            overflow: hidden;
+    
+            @include media-breakpoint-up(xl){
+                width: 1210px;
+            }
+
+            @include media-breakpoint-between(xxxl,xxxxl){
+                width: 1110px;
+            }
+
+            @include media-breakpoint-between(xxl,xxxl){
+                width: 1010px;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                width: 840px;
+            }
+
+            @include media-breakpoint-between(lg,xl){
+                width: 700px;
+            }
+
+            @media screen and (width:1200px) {
+                width: 800px;
+            }
+
+            @include media-breakpoint-between(md,lg){
+                width: 550px;
+            }
+
+            @include media-breakpoint-down(md){
+                width: 100%;
+            }
+    
+            .hstyTimeEventsBlock{
+                padding: 50px 0;
+                
+                @include media-breakpoint-down(sm){
+                    padding: 30px 0;
+                }
+    
+                &:not(:last-child){
+                    border-bottom: 1px solid #E5E5E5;
+                }
+    
+                &:first-child{
+                    padding: 0 0 50px;
+                }
+    
+                &:last-child{
+                    padding: 50px 0 0;
+                }
+    
+                &.active{
+                    .hstyTimeEventsBlockYear{
+                        color: #0068B2;
+
+                        .hstyTimeEventsBlockYearDecro{
+                            background: #0068B2;
+                        }
+                    }
+                }
+    
+                .hstyTimeEventsBlockYear{
+                    transition: all .3s;
+                    font: {
+                        family:$FontSub;
+                        weight:700;
+                        size:24px;
+                    };
+                    margin: 0 69px 0 0;
+
+                    @include media-breakpoint-down(md){
+                        font-size: 22px;
+                        margin: 0 0 20px;
+                    }
+
+                    @include media-breakpoint-down(sm){
+                        font-size: 20px;
+                    }
+
+                    @include media-breakpoint-down(sssm){
+                        font-size: 18px;
+                    }
+
+                    .hstyTimeEventsBlockYearDecro{
+                        outline: 4.5px solid #E3E4E8;
+                        background: #999999;
+                        transition: all .3s;
+                        transform: rotate(45deg);
+                        width: 8.5px;
+                        height: 8.5px;
+                        margin: 0 28px 0 8.5px;
+
+                        @include media-breakpoint-down(sm){
+                            width: 6.5px;
+                            height: 6.5px;
+                            margin: 0 20px 0 6.5px;
+                        }
+                    }
+                }
+    
+                .hstyTimeEventsBlockListBox{
+                    @include media-breakpoint-down(md){
+                        width: 100%;
+                        padding: 0 0 0 60px;
+                    }
+
+                    @include media-breakpoint-down(sm){
+                        padding: 0 0 0 40px;
+                    }
+
+                    .hstyTimeEventsBlockList{
+                        &.last:not(:last-child){
+                            margin: 0 0 15px;
+                        }
+    
+                        .hstyTimeEventsBlockListMonth{
+                            color: #0068B2;
+                            letter-spacing: .3px;
+                            font: {
+                                family:$FontSub;
+                                weight:500;
+                                size:20px;
+                            };
+                            padding: 4px 0 0;
+                            margin: 0 38px 0 0;
+
+                            @include media-breakpoint-down(md){
+                                padding: 0;
+                            }
+
+                            @include media-breakpoint-down(sm){
+                                font-size: 18px;
+                                margin: 0 25px 0 0;
+                            }
+
+                            @include media-breakpoint-down(ssssm){
+                                font-size: 16px;
+                                margin: 0 15px 0 0;
+                            }
+    
+                            &.hide{
+                                opacity: 0;
+                            }
+                        }
+    
+                        .hstyTimeEventsBlockListDetailBox{
+                            .hstyTimeEventsBlockListDetail{
+                                letter-spacing: .3px;                        
+                                font: {
+                                    weight:400;
+                                    size:18px;
+                                };
+                                line-height: 32px;
+
+                                @include media-breakpoint-down(sm){
+                                    font-size: 16px;
+                                    line-height: 24px;
+                                }
+                                
+                                .decro{
+                                    color: #0068B2;
+                                    font: {
+                                        weight:700;
+                                        size:18px;
+                                    };
+                                    margin: 0 14px 0 0;
+                                }
+    
+                                .content{
+                                    flex: 1;
+                                    line-height: 28px;
+                                    margin: 3px 0 0;
+
+                                    @include media-breakpoint-down(sm){
+                                        line-height: 24px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ognztBox{
+    .OuterBox{
+        .MainBox{
+            padding: 75px 0 120px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 45px 0 90px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 35px 0 80px;
+            }
+        }
+    }
+
+    .ognztContent{
+        position: relative;
+
+        .ognztMainPic{
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            width: 1020px;
+
+            @include media-breakpoint-between(xl,xxl){
+                width: 900px;
+            }
+
+            @include media-breakpoint-between(lg,xl){
+                width: 800px;
+            }
+
+            @include media-breakpoint-down(lg){
+                width: 100%;
+            }
+        }
+
+        .ognztMainBg{
+            position: absolute;
+            top: -55px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            width: $MainWidth;
+        }
+    }
+}
+
+.mngmtBox{
+    .OuterBox{
+        background: #F5F5F5;
+
+        .MainBox{
+            padding: 73px 0 70px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 43px 0 40px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 33px 0 30px;
+            }
+            
+            .MainTitle{
+                margin: 0 0 55px;
+
+                @include media-breakpoint-down(xl){
+                    margin: 0 0 20px;
+                }
+            }
+        }
+    }
+
+    .DataListBox{
+        .DataList{
+            margin: 0 0 50px;
+            width: calc((100% - 50px)/2);
+
+            @include media-breakpoint-between(lg,xl){
+                margin: 0 0 40px;
+                width: calc((100% - 40px)/2);
+            }
+
+            @include media-breakpoint-down(md){
+                margin: 0 0 40px;
+                width: 100%;
+            }
+
+            &:not(:nth-child(2n))
+            {
+                margin: 0 50px 50px 0;
+
+                @include media-breakpoint-between(lg,xl){
+                    margin: 0 40px 40px 0;
+                }
+
+                @include media-breakpoint-down(md){
+                    margin: 0 0 40px;
+                }
+            }
+    
+            .DataListName{
+                padding: 37px 0 30px;
+
+                @include media-breakpoint-between(lg,xl){
+                    padding: 32px 0 25px;
+                }
+
+                @include media-breakpoint-down(md){
+                    padding: 27px 0 20px;
+                }
+
+                @include media-breakpoint-down(sm){
+                    padding: 20px 0 15px;
+                }
+            }
+    
+            .DataListInfo{
+                padding: 26px 0 50px;
+
+                @include media-breakpoint-down(md){
+                    padding: 21px 0 40px;
+                }
+
+                @include media-breakpoint-down(sm){
+                    padding: 15px 0 30px;
+                }
+    
+                .DataListInfoItemBox{                
+                    .DataListInfoItem{        
+                        .DataListInfoItemTitle{
+                            margin: 0 55px 0 0; 
+                            min-width: 80px;
+
+                            @include media-breakpoint-between(lg,xl){
+                                margin: -2px 35px 0 0; 
+                            }
+
+                            @include media-breakpoint-down(md){
+                                margin: 0 35px 0 0;
+                            }
+
+                            @include media-breakpoint-down(ssssm){
+                                margin: 0 15px 0 0;
+                            }
+                        }
+
+                        &:not(:last-child){
+                            margin: 0 0 10px;
+                        }
+
+                        &.same:not(:last-child){
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.visionBox{
+    .OuterBox{
+        .MainBox{
+            padding: 70px 0 120px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 40px 0 90px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 30px 0 80px;
+            }
+        }
+    }
+
+    .visionContent{
+        position: relative;
+
+        .visionMainPic{
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            width: 780px;
+            margin: 0 45px 0;
+
+            @include media-breakpoint-between(xxxl,xxxxl){
+                width: 680px;
+            }
+
+            @include media-breakpoint-between(xxl,xxxl){
+                width: 630px;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                width: 485px;
+            }
+
+            @include media-breakpoint-between(lg,xl){
+                width: 380px;
+            }
+
+            @include media-breakpoint-down(lg){
+                width: 80%;
+                margin: 0 auto 30px;
+            }
+
+            @include media-breakpoint-between(sm,md){
+                width: 60%;
+            }
+        }
+
+        .visionInfoBox{
+            position: relative;
+            z-index: 2;            
+
+            @include media-breakpoint-up(lg){
+                flex: 1;
+            }
+
+            .visionInfoBlock{
+                &:not(:last-child){
+                    margin: 0 0 55px;
+
+                    @include media-breakpoint-between(xl,xxl){
+                        margin: 0 0 35px;
+                    }
+
+                    @include media-breakpoint-down(xl){
+                        margin: 0 0 30px;
+                    }
+                }
+
+                .visionInfoBlockTitle{
+                    color: #2EACB8;
+                    font: {
+                        weight:700;
+                        size:28px;
+                    };
+                    line-height: 42px;
+                    margin: 0 0 5px;
+                    
+                    @include media-breakpoint-between(xl,xxl){
+                        font-size: 24px;
+                    }
+
+                    @include media-breakpoint-between(lg,xl){
+                        font-size: 24px;
+                    }
+
+                    @include media-breakpoint-down(sm){
+                        font-size: 22px;
+                    }
+                }
+
+                .visionInfoBlockText{
+                    color: #000000;
+                    font: {
+                        weight:400;
+                        size:18px;
+                    };
+                    letter-spacing: .3px;
+                    line-height: 32px;
+
+                    @include media-breakpoint-between(xl,xxl){
+                        font-size: 16px;
+                    }
+
+                    @include media-breakpoint-between(lg,xl){
+                        font-size: 16px;
+                    }
+
+                    @include media-breakpoint-down(sm){
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .visionInfoBlock.mission{
+                width: 400px;
+
+                @include media-breakpoint-down(lg){
+                    width: 100%;
+                }        
+            }
+
+            .visionInfoBlock.vision{
+                width: 400px;
+
+                @include media-breakpoint-down(lg){
+                    width: 100%;
+                }
+
+                .visionInfoBlockTitle{
+                    color: #1F73A4;
+                }                        
+            }
+
+            .visionInfoBlock.value{
+                .visionInfoBlockTitle{
+                    color: #C6535F;
+                } 
+            }
+            
+            .visionInfoBlock.quality{
+                .visionInfoBlockTitle{
+                    color: #D6975C;
+                } 
+            }
+        }
+
+        .visionMainBg{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 1;
+            width: $MainWidth;
+        }
+    }
+}
+
+.awardsBox{
+    .OuterBox{
+        background: #F5F5F5;
+
+        .MainBox{
+            padding: 72px 0 100px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 42px 0 70px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 32px 0 60px;
+            }
+
+            .MainTitle{
+                margin: 0 0 56px;
+
+                @include media-breakpoint-down(xl){
+                    margin: 0 0 36px;
+                }
+            }
+        }
+    }
+
+    .awardsContent{
+        margin: 0 0 20px;
+
+        .awardsBlock{
+            width: calc((100% - 140px)/3);
+            margin: 0 0 75px;
+
+            @include media-breakpoint-between(lg,xl){
+                width: calc((100% - 100px)/3);
+                margin: 0 0 55px;
+            }
+
+            @include media-breakpoint-between(md,lg){
+                width: calc((100% - 50px)/2);
+                margin: 0 0 55px;
+            }
+
+            @include media-breakpoint-down(md){
+                width: 100%;
+                margin: 0 0 50px;
+            }
+
+            &:not(:nth-child(3n)){
+                margin: 0 70px 75px 0;
+
+                @include media-breakpoint-between(lg,xl){
+                    margin: 0 50px 55px 0;
+                }
+
+                @include media-breakpoint-between(md,lg){
+                    margin: 0;
+                }
+                
+                @include media-breakpoint-down(md){
+                    margin: 0 0 50px;
+                }
+            }
+
+            @include media-breakpoint-between(md,lg){
+                &:not(:nth-child(2n)){
+                    margin: 0 50px 55px 0;
+                }
+            }
+
+            .awardsBlockTitle{
+                color: #000000;
+                font: {
+                    weight:500;
+                    size:24px;
+                };
+                letter-spacing: .3px;
+                line-height: 28px;
+                margin: 20px 0 12px;
+
+                @include media-breakpoint-down(xl){
+                    font-size: 22px;
+                    margin: 18px 0 10px;
+                }
+
+                @include media-breakpoint-down(ssssm){
+                    font-size: 18px;
+                    margin: 13px 0 5px;
+                }
+            }
+
+            .awardsBlockInfoBox{
+                .awardsBlockInfo{
+                    color: #000000;
+                    font: {
+                        weight:400;
+                        size:18px;
+                    };
+                    line-height: 32px;
+
+                    @include media-breakpoint-down(xl){
+                        font-size: 16px;
+                    }
+
+                    @include media-breakpoint-down(lg){
+                        line-height: 25px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.reltBox{
+    .OuterBox{
+        .MainBox{
+            padding: 70px 0 120px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 40px 0 90px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 30px 0 80px;
+            }
+
+            .MainTitle{
+                margin: 0 0 25px;
+            }
+        }
+    }
+
+    .reltContent{
+        .reltBlock{
+            &:not(:last-child){
+                margin: 0 0 58px;
+            }
+
+            .reltBlockTopic{
+                color: #000000;
+                font: {
+                    weight:500;
+                    size:28px;
+                };
+                margin: 0 0 21px;
+                line-height: 42px;
+
+                @include media-breakpoint-down(xl){
+                    font-size: 24px;
+                }
+            }
+
+            .DataTable1{
+                tbody{
+                    tr{
+                        td{
+                            font: {
+                                weight:400;
+                            };
+                            @include media-breakpoint-down(md){
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.locationBox{
+    .OuterBox{
+        background: #F5F5F5;
+        
+        .MainBox{
+            padding: 73px 0 80px;
+
+            @include media-breakpoint-between(md,lg){
+                padding: 43px 0 50px;
+            }
+
+            @include media-breakpoint-down(md){
+                padding: 33px 0 40px;
+            }
+
+            .MainTitle{
+                margin: 0 0 55px;
+
+                @include media-breakpoint-down(xl){
+                    margin: 0 0 25px;
+                }
+            }
+        }
+    }
+
+    .locationBlockBox{
+        .locationBlock{
+            width: 100%;
+
+            &:not(:last-child)
+            {
+                margin: 0 0 33px;
+            }
+
+            .locationBlockTitle{
+                color: #0068B2;
+                font: {
+                    weight:500;
+                    size:28px;
+                };
+                letter-spacing: .3px;
+                line-height: 42px;
+                margin: 0 0 25px;
+
+                @include media-breakpoint-between(md,lg){
+                    font-size: 24px;
+                }
+
+                @include media-breakpoint-down(sm){
+                    font-size: 24px;
+                }
+            }
+
+            .DataListBox{
+                .DataList{
+                    @include media-breakpoint-between(lg,xl){
+                        margin: 0 0 40px;
+                        width: calc((100% - 40px)/2);
+
+                        &:not(:nth-child(2n))
+                        {
+                            margin: 0 40px 40px 0;
+                        }
+                    }
+
+                    .DataListName{
+                        padding: 33px 0 25px;
+
+                        @include media-breakpoint-between(xl,xxl){
+                            padding: 28px 0 20px;
+                        }
+
+                        @include media-breakpoint-down(sm){
+                            padding: 18px 0 20px;
+                        }
+                    }
+
+                    .DataListInfo{
+                        @include media-breakpoint-down(sm){
+                            padding: 15px 0 35px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

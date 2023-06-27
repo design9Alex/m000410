@@ -1,0 +1,150 @@
+$grid-breakpoints: (
+  xs: 0,
+  ssssm: 321px,
+  sssm: 376px,
+  ssm: 415px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 1599.2px,
+  xxxxl: 1699.2px,
+  xxxxxl: 1799.2px,
+  xxxxxxl: 1850px,
+);
+
+:root{
+    --MainWidth:1400px;
+    --MainPaddingHor:260px;
+    --ArticleMainWidth:1430px;
+    --FooterWidth:1600px;
+}
+
+@include media-breakpoint-between(xxxl,xxxxl){
+    :root{
+        --MainWidth:1300px;
+        --MainPaddingHor:150px;
+        --FooterWidth:1400px;
+    }
+}
+
+@include media-breakpoint-down(xxxl){
+    :root{
+        --MainWidth:1200px;
+        --MainPaddingHor:100px;        
+    }
+}
+
+@include media-breakpoint-between(xxl,xxxl){
+    :root{
+        --ArticleMainWidth:1230px;
+        --FooterWidth:1300px;
+    }
+}
+
+@include media-breakpoint-between(xl,xxl){
+    :root{
+        --FooterWidth:1100px;
+    }
+}
+
+@include media-breakpoint-down(xxl){
+    :root{
+        --MainWidth:1000px;
+        --MainPaddingHor:100px;
+        --ArticleMainWidth:1030px;
+    }
+}
+
+@include media-breakpoint-between(lg,xl){
+    :root{
+        --MainWidth:calc(100% - 70px);
+        --MainPaddingHor:35px;
+        --ArticleMainWidth:calc(100% - 50px);
+    }
+}
+
+@include media-breakpoint-down(lg){
+    :root{
+        --MainWidth:calc(100% - 50px);
+        --MainPaddingHor:25px;
+        --ArticleMainWidth:calc(100% - 30px);
+    }
+}
+
+@include media-breakpoint-down(sm){
+    :root{
+        --ArticleMainWidth:100%;
+    }
+}
+
+@include media-breakpoint-down(ssssm){
+    :root{
+        --MainWidth:calc(100% - 30px);
+        --MainPaddingHor:15px;
+    }
+}
+
+$FontMain:'Noto Sans TC';
+$FontSub:'Roboto';
+$MainWidth:var(--MainWidth);
+$MainPaddingHor:var(--MainPaddingHor);
+$ArticleMainWidth:var(--ArticleMainWidth);
+$FooterWidth:var(--FooterWidth);
+$MainColor: #0068B2;
+$SubColor: #F7943D;
+
+@mixin scrollbar{
+    &::-webkit-scrollbar{
+        border-radius: 999rem;
+        height: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb{
+        background: #B2B2B2;            
+        border-radius: 999rem;
+    }
+}
+
+html,body
+{
+   	min-height: 100vh;
+	width: 100%;
+	overflow-x: hidden;
+}
+
+html{
+    background: #FFFFFF;
+}
+
+body{
+    font-family: $FontMain;
+    overflow-x: hidden;
+    transition: padding .3s;
+	position: relative;
+
+    main{
+        width: 100%;
+    }
+}
+
+.FontMain{
+    font-family: $FontMain !important;
+}
+
+.FontSub{
+    font-family: $FontSub !important;
+}
+
+.ColorMain{
+    color: $MainColor !important;
+}
+
+.ColorSub{
+    color: $SubColor !important;
+}
+
+.ColorDF2020{
+    color: #DF2020;
+}

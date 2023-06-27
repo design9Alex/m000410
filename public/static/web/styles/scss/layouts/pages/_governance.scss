@@ -1,0 +1,1712 @@
+@include media-breakpoint-up(lg){
+    .TabBox.governance{
+        .TabBtn{        
+            width: calc(100%/9);
+
+            &.regulations{
+                span{
+                    width: 90px;
+                }
+            }
+
+            span{
+                line-height: 22px;
+            }
+        }
+    }
+}
+
+.gvncBox{
+    .Para1{
+        margin: 0;
+    }
+
+    .gvncCont{
+        .gvncPic{
+            width: 670px;
+            margin: 0 64px 0 0;
+
+            @include media-breakpoint-between(md,xxl){
+                width: 500px;
+            }
+
+            @include media-breakpoint-between(md,xl){
+                margin: 0 auto 30px;
+            }
+
+            @include media-breakpoint-down(md){
+                width: 100%;
+            }
+        }
+
+        .gvncWord{
+            @include media-breakpoint-up(xl){
+                flex: 1;
+            }
+
+            .gvncWordListBox{
+                font: {
+                    weight:700;
+                    size:18px;
+                };
+                line-height: 36px;
+                margin: 30px 0 40px;
+            }
+        }
+    }
+}
+
+.operateBox{
+    .Para1{
+        margin: 0 0 20px;
+    }
+
+    .operateBlockBox{
+        width: 100%;
+
+        .operateBlock{
+            &:not(:last-child){
+                margin: 0 0 40px;
+            }
+
+            .operateTop{
+                .operateTopWord{
+                    @include media-breakpoint-up(xl){
+                        flex: 1;
+                        margin: 0 122px 0 0;
+                    }
+
+                    @include media-breakpoint-down(xl){
+                        margin: 0 0 30px;
+                    }
+                }
+
+                .operatePic{
+                    width: 450px;
+
+                    @include media-breakpoint-down(xl){
+                        margin: 0 auto;
+                    }
+
+                    @include media-breakpoint-down(md){
+                        width: 100%;
+                    }
+                }
+            }
+
+            .Para2{
+                margin: 0 0 15px;
+            }
+
+            .Para3{
+                margin: 0 0 5px;
+            }
+
+            .Para4{
+                &:not(:last-child){
+                    margin: 0 0 30px;
+                }
+
+                >li,>p,>div{
+                    &:not(:last-child){
+                        margin: 0;
+                    }
+                }
+            }
+
+            &.third{
+                .Para3{
+                    margin: 0 0 15px;
+                }
+
+                .DataTable2{
+                    th{
+                        &.name{
+                            width: 38.14%;
+                        }
+
+                        &.hour{
+                            width: 9.928%;
+                        }
+
+                        &.total{
+                            width: 14.28%;
+                        }
+                    }
+
+                    td{
+                        &.fontWeight700{
+                            font-weight: 700;
+                        }
+
+                        &.host{
+                            width: 25.64%;//359px
+
+                            @include media-breakpoint-down(lg){
+                                white-space: nowrap;
+                            }
+                        }
+                        
+                        &.title{
+                            padding: 0 5px 0 32.5px;
+
+                            @include media-breakpoint-down(lg){
+                                white-space: nowrap;
+                                padding: 0 15px 0 32.5px;
+                            }
+                        }
+
+                        &.fakelast{
+                            border-right: 1px solid #E8E8E8;
+                        }
+
+                        &.special{
+                            background: #F1F5FD;
+                        }
+                    }
+                }
+            }
+        }
+
+        a{
+            color: #000000;
+            transition: all .3s;
+            
+            &.inline{
+                text-decoration: unset;
+            }
+
+            @include articleAhover;
+        }
+    }
+}
+
+.directorsBox{
+    .Para1{
+        margin: 0 0 25px 0;
+    }
+
+    .directorsBlockBox{
+        .directorsBlock{
+            &:not(:last-child){
+                margin: 0 0 60px;
+            }
+
+            &.all{
+                .Para2{
+                    margin: 0 0 20px;
+                }
+
+                .Para3{
+                    margin: 0 0 15px;
+                }
+
+                .DataTable2{
+                    table{
+                        tbody{
+                            tr{
+                                td{
+                                    &.title{
+                                        width: 11.428%;//160px
+
+                                        @include media-breakpoint-down(lg){
+                                            white-space: nowrap;
+                                        }
+                                    }
+
+                                    &.country{
+                                        width: 5.571%;//78px
+                                        line-height: 22px;
+                                    }
+
+                                    &.name{
+                                        width: 17.785%;//249px
+                                        padding: 0 30px;
+
+                                        @include media-breakpoint-down(lg){
+                                            white-space: nowrap;
+                                        }
+                                    }
+
+                                    &.gender{
+                                        width: 5.642%;//79px
+                                    }
+
+                                    &.education{
+                                        width: 28.857%;//404px
+                                        padding: 18.75px 25px;
+
+                                        @include media-breakpoint-down(lg){
+                                            white-space: nowrap;
+                                        }
+
+                                        >div{
+                                            &:not(:last-child){
+                                                margin: 0 0 5px;
+                                            }
+                                        }
+                                    }
+
+                                    &.job{
+                                        padding: 25px;
+
+                                        @include media-breakpoint-down(md){
+                                            white-space: nowrap;
+                                        }
+
+                                        ul>li{
+                                            &:not(:last-child){
+                                                margin: 0 0 5px;
+                                            }
+                                        }
+                                    }
+
+                                    &.memo{
+                                        width: 19.285%;//270px
+                                        @include media-breakpoint-between(xl,xxl){
+                                            width: 100px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.condition{
+                        table{
+                            tbody{
+                                tr{
+                                    td:not(.title):not(.name):not(.memo){
+                                        width: 12.714%; //178px
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.condition{
+                margin: 0 0 70px;
+            }
+
+            .directorsBlockList{
+                position: relative;
+                padding: 0 0 0 20px;
+
+                &::after{
+                    background: #000000;
+                    content: '';
+                    display: block;
+                    position: absolute;                    
+                    left: 0;
+                    z-index: 1;
+                    border-radius: 999rem;
+                    top: 10px;
+                    width: 8px;
+                    height: 8px;
+                }
+            }
+
+            &.independent{
+                .Para2{
+                    margin: 0 0 15px;
+                }
+
+                .Para4{
+                    margin: 0 0 35px;
+                }
+
+                .DataTable2{
+                    table{
+                        tbody{
+                            tr{
+                                td{
+
+                                    &.name{
+                                        width: 11.42%;//160px
+
+                                        @include media-breakpoint-down(lg){
+                                            white-space: nowrap;
+                                        }
+                                    }
+
+                                    &.education{
+                                        width: 21.285%;//298px
+                                        padding: 18.75px 20px;
+
+                                        @include media-breakpoint-down(lg){
+                                            white-space: nowrap;
+                                            padding: 13.75px 15px;
+                                        }
+
+                                        >div{
+                                            &:not(:last-child){
+                                                margin: 0 0 5px;
+                                            }
+                                        }
+                                    }
+
+                                    &.experience{
+                                        width: 25.714%;//360px
+                                        padding: 30.5px 25px;
+
+                                        @include media-breakpoint-down(lg){
+                                            white-space: nowrap;
+                                            padding: 25.5px 20px;
+                                        }
+
+                                        >div{
+                                            &:not(:last-child){
+                                                margin: 0 0 5px;
+                                            }
+                                        }
+                                    }
+
+                                    &.now{
+                                        width: 29.5%;//413px
+                                        padding: 20px 25px;
+
+                                        @include media-breakpoint-down(lg){
+                                            white-space: nowrap;
+                                            padding: 15px 20px;
+                                        }
+
+                                        >div{
+                                            &:not(:last-child){
+                                                margin: 0 0 5px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.directorsrsltBox{
+    .Para1{
+        margin: 0 0 25px;
+    }
+
+    .Tab2Box{
+        margin: 0 0 55px;
+    }
+}
+
+.directorsplcBox{
+    .Para1{
+        margin: 0 0 25px;
+    }
+
+    .Tab2Box{
+        margin: 0 0 55px;
+    }
+
+    .directorsplcThead{
+        position: relative;
+
+        &::after{
+            background: #FFFFFF;
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;      
+            transform-origin: center;
+            z-index: 1;
+            transform: translateY(-50%) rotate(-30deg);
+            left: 85px;
+            width: 2px;
+            height: 50px;
+
+            @include media-breakpoint-between(xxxl,xxxxl){
+                left: 76px;
+            }
+
+            @include media-breakpoint-between(xxl,xxxl){
+                left: 74px;
+            }
+
+            @include media-breakpoint-between(lg,xxl){
+                left: 71px;
+            }
+
+            @include media-breakpoint-down(lg){
+                left: 76px;
+            }
+        }
+
+        .directorsplcTheadText{
+            &.one{
+                width: 76px;
+            }
+            
+            &.two{
+                width: 96px;
+                white-space: normal;
+
+                @include media-breakpoint-between(xl,xxl){
+                    width: 76px;
+                }
+            }
+        }
+    }
+
+    .directorsplcBlockBox{
+        .directorsplcBlock{
+            &:not(:last-child){
+                margin: 0 0 75px;
+            }
+
+            &.condition{
+                .Para2{
+                    margin: 0 0 20px;
+                }
+
+                .Para4{
+                    margin: 0 0 30px;
+                }
+
+                .DataTable2{
+                    @media screen and (width:1400px) {
+                        overflow-x: auto;
+
+                        @include scrollbar;
+                    }
+                    @include media-breakpoint-between(xl,xxxxl){
+                        overflow-x: auto;
+
+                        @include scrollbar;
+                    }
+
+                    table{                        
+                        thead{
+                            tr{
+                                th{
+                                    padding: 15px 19px;
+        
+                                    &.special{
+                                        background: #0086E5;
+                                        padding: 15px 24.1px 15px 20.5px;
+
+                                        @include media-breakpoint-between(xxxl,xxxxl){
+                                            padding: 15px 20.1px 15px 16.5px;
+                                        }
+
+                                        @include media-breakpoint-between(xl,xxl){
+                                            padding: 15px 18.1px 15px 16.5px;
+                                        }
+        
+                                        &::after{
+                                            opacity: 0;
+                                        }
+                                    }
+
+                                    &.name{
+                                        @include media-breakpoint-between(xl,xxl){
+                                            max-width: 190px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+        
+                        tbody{
+                            tr{
+                                td{
+                                    padding: 16.75px 19px;
+        
+                                    &.name{
+                                        width: 17.071%;//239px
+
+                                        @include media-breakpoint-between(xl,xxl){
+                                            max-width: 190px;
+                                        }
+                                    }
+        
+                                    &.country{
+                                        width: 6.428%;//90px
+                                    }
+        
+                                    &.age{
+                                        width: 6.285%;//88px
+                                    }
+                                        
+                                    &.account{
+                                        width: 9.928%;//139px
+                                    }
+        
+                                    &.legal{
+                                        width: 8.57%;//120px
+                                    }
+        
+                                    i{
+                                        color: #0068B2;
+                                        font-size: 12px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.policy{
+                .Para2{
+                    margin: 0 0 20px;
+                }
+
+                .Para3{
+                    margin: 0 0 10px;
+                }
+
+                .directorsplcPolicyBox{
+                    &:not(:last-child){
+                        margin: 0 0 50px 0;
+                    }
+
+                    .directorsplcPolicyList{
+                        @include media-breakpoint-down(sm){
+                            &:not(:last-child){
+                                margin: 0 0 20px;
+                            }
+                        }
+
+                        .directorsplcPolicyListTitle{
+                            width: 120px;
+                            padding: 4px 0 0;
+                            margin: 0 10px 0 0;
+
+                            @include media-breakpoint-down(lg){
+                                width: 100px;
+                            }
+
+                            @include media-breakpoint-down(sm){
+                                width: 100%;
+                                margin: 0 0 10px;
+                            }
+                        }
+
+                        .directorsplcPolicyListText{
+                            @include media-breakpoint-up(sm){
+                                flex: 1;
+                            }
+
+                            .Para4{
+                                &:not(:last-child){
+                                    margin: 0 0 20px;
+                                }
+
+                                >div,>p,>li{
+                                    &:not(:last-child){
+                                        margin: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.directorsevltBox{
+    .Para1{
+        margin: 0 0 20px;
+    }
+
+    .Tab2Box{
+        margin: 0 0 55px;
+    }
+
+    .Para2{
+        margin: 0 0 15px;
+    }
+
+    .DataTable2{
+        table{
+            tbody{
+                tr{
+                    td{
+                        &.part{
+                            width: 12.857%;//180px
+                            padding: 18.75px 25px;
+
+                            @include media-breakpoint-down(lg){
+                                min-width: 170px;
+                                padding: 13.75px 20px;
+                            }
+                        }
+
+                        &.weight{
+                            width: 5.571%;//78px
+                        }
+
+                        &.indicator{
+                            width: 21.714%;//304px
+                            padding: 22.75px 25px;
+
+                            @include media-breakpoint-between(xl,xxl){
+                                width: 17.714%;
+                            }
+
+                            @include media-breakpoint-down(lg){
+                                min-width: 250px;
+                                padding: 17.75px 20px;
+                            }
+                        }
+
+                        &.standard{
+                            width: 32.142%;//450px
+                            padding: 22.75px 25px;
+
+                            @include media-breakpoint-between(xxl,xxxl){
+                                width: 31%;
+                            }
+
+                            @include media-breakpoint-down(lg){
+                                min-width: 300px;
+                                padding: 17.75px 20px;
+                            }
+                        }
+
+                        &.condition{
+                            width: 21.357%;//299px
+                            padding: 22.75px 25px;
+
+                            @include media-breakpoint-down(lg){
+                                min-width: 250px;
+                                padding: 17.75px 20px;
+                            }
+                        }
+
+                        &.score{
+                            @include media-breakpoint-down(xl){
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.committeeBox{
+    .committeeBlock{
+        &:not(:last-child){
+            margin: 0 0 60px;
+        }
+
+        h6{
+            font: {
+                weight:400;
+                size:18px;
+                line-height: 32px
+            };
+        }
+
+        &.member{
+            .DataTable2{
+                table{
+                    tbody{
+                        tr{
+                            td{
+                                &.function{
+                                    width: 19.928%;//279px
+
+                                    @include media-breakpoint-between(xxl,xxxl){
+                                        width: 20%;
+                                    }
+                                }
+
+                                &.same{
+                                    width: 9.928%;//139px
+
+                                    @include media-breakpoint-between(xl,xxl){
+                                        width: 11.5%;
+                                    }
+                                }
+
+                                &.hang{
+                                    width: 15.571%;//218px
+                                }
+
+                                &.main{
+                                    width: 27.071%;//379px
+                                    padding: 22.25px 33px;
+
+                                    li{
+                                        &:not(:last-child){
+                                            margin: 0 0 5px;
+                                        }
+                                    }
+                                }
+
+                                @include media-breakpoint-down(lg){
+                                    &:not(.function){
+                                        white-space: nowrap;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.second{
+            .Para3{
+                margin: 0 0 5px 0;
+            }
+
+            .Para4{
+                &:not(:last-child){
+                    margin: 0 0 30px;
+                }
+
+                &.fore{
+                    margin: 0 0 10px;
+                }
+
+                &.many{
+                    margin: 0 0 30px;
+                    padding: 0 0 0 35px;
+                }
+
+                &.five{
+                    margin: 0 0 15px;
+                }
+
+                li{
+                    &:not(:last-child){
+                        margin: 0;
+                    }
+                }
+            }
+
+            .DataTable2{
+                table{
+                    tbody{
+                        tr{
+                            td{
+                                padding: 16.75px 19px;
+
+                                &.head{
+                                    border-bottom: 1px solid #E8E8E8 !important;
+                                }
+                                
+                                &.title{
+                                    width: 11.428%;//160px
+
+                                    @include media-breakpoint-down(lg){
+                                        white-space: nowrap;
+                                    }
+                                }
+
+                                &.name{
+                                    width: 17.785%;//249px
+
+                                    @include media-breakpoint-down(lg){
+                                        white-space: nowrap;
+                                    }
+                                }
+
+                                &.memo{
+                                    width: 19.285%;//270px
+
+                                    @include media-breakpoint-down(lg){
+                                        white-space: nowrap;
+                                    }
+                                }
+
+                                &:not(.title):not(.name):not(.memo){
+                                    width: 12.785%;//179px
+                                }
+                            }
+
+                            &:last-child{
+                                td.head{
+                                    border-bottom: 1px solid #D0E2FB !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.salary{
+            margin: 0 0 45px;
+            .Para3{
+                margin: 0 0 5px;
+            }
+
+            .Para4{
+                &:not(:last-child){
+                    margin: 0;
+                }
+
+                >div{
+                    &:not(:last-child){
+                        margin: 0 0 5px;
+                    }
+                }
+
+                &.space{
+                    margin: 0 0 15px;
+                }
+            }
+
+            .DataTable2{
+                table{
+                    tbody{
+                        tr{
+                            td{
+                                padding: 16.75px 19px;
+
+                                &.head{
+                                    border-bottom: 1px solid #E8E8E8 !important;
+                                }
+                                
+                                &.title{
+                                    width: 11.428%;//160px
+
+                                    @include media-breakpoint-down(lg){
+                                        white-space: nowrap;
+                                    }
+                                }
+
+                                &.name{
+                                    width: 17.785%;//249px
+
+                                    @include media-breakpoint-down(lg){
+                                        white-space: nowrap;
+                                    }
+                                }
+
+                                &.memo{
+                                    width: 19.285%;//270px
+
+                                    @include media-breakpoint-down(lg){
+                                        white-space: nowrap;
+                                    }
+                                }
+
+                                &:not(.title):not(.name):not(.memo){
+                                    width: 12.785%;//179px
+                                }
+                            }
+
+                            &:last-child{
+                                td.head{
+                                    border-bottom: 1px solid #D0E2FB !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .committeeTab0{
+                padding: 0 0 0 40px;
+                margin: 0 0 40px;
+
+                .Para4{
+                    &:not(:last-child){
+                        margin: 0 0 20px;
+                    }
+                }
+            }
+
+            .committeeTab1{
+                padding: 0 0 0 20px;
+            }
+        }
+
+        &.plan{
+            .Para4{
+                &.space{
+                    margin: 0 0 15px;
+                }
+            }
+
+            .DataTable2{
+                table{
+                    tbody{
+                        tr{
+                            td{
+                                padding: 16.75px 19px;
+                               
+                                &.head{
+                                    border-bottom: 1px solid #E8E8E8 !important;
+                                }
+
+                                
+                                &.result{
+                                    @include media-breakpoint-down(xxl){
+                                    white-space: nowrap;
+                                    }
+                                }
+
+                                &.date{
+                                    width: 19.928%;//279px
+                                }
+
+                                &.same{
+                                    width: 11.428%;//160px
+
+                                    @include media-breakpoint-down(lg){
+                                        white-space: nowrap;
+                                    }
+                                }
+
+                                &.content{
+                                    width: 41.357%;//579px
+                                    padding: 16.75px 35px;
+
+                                    @include media-breakpoint-down(lg){
+                                        white-space: nowrap;
+                                        padding: 16.75px 25px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.committeecmctBox{
+    .Para1{
+        margin: 0 0 20px;
+    }
+
+    .committeeBlock{
+        &:not(:last-child){
+            margin: 0 0 60px;
+        }
+
+        &.condition{
+            .Para2{
+                margin: 0 0 15px;
+            }
+
+            .Para3{
+                margin: 0 0 10px;
+            }
+
+            .Para4{
+                >li{
+                    &:not(:last-child){
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        &.result{
+            .committeeArea{
+                &:not(:last-child){
+                    margin: 0 0 65px;
+                }
+
+                .Para4{
+                    margin: 0 0 10px;
+                }
+
+                .DataTable2{
+                    table{
+                        tbody{
+                            tr{
+                                td{
+                                    &.point{
+                                        padding: 23.25px 39px;
+                                        width: 71.357%;//999px
+
+                                        @include media-breakpoint-down(lg){
+                                            padding: 13.25px 19px;
+                                        }
+
+                                        li{
+                                            &.special{
+                                                padding: 0 0 0 20px;
+                                            }
+
+                                            &:not(:last-child){
+                                                margin: 0 0 5px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.itnadtBox{
+    .itnadtPhotoBox{
+        width: 100%;
+        margin: 0 0 85px;
+
+        @include media-breakpoint-down(md){
+            margin: 0 0 55px;
+        }
+
+        .itnadtPhotoDep{
+            border: 5px solid #7AA6C6;
+            background: #4D88B2;
+            color: #FFFFFF;
+            border-radius: 999rem;
+            text-align: center;
+            font: {
+                weight:700;
+                size:18px;
+            };
+            width: 120px;
+            height: 120px;
+
+            @include media-breakpoint-down(md){
+                font-size: 16px;
+                width: 80px;
+                height: 80px;
+            }
+
+            @include media-breakpoint-down(sm){
+                margin: 0 auto;
+            }
+
+            &.two{
+                border: 5px solid #7BC6C6;
+                background: #4DB3B2;
+            }
+        }
+
+        .itnadtPhotoDeCro{
+            position: relative;
+            width: 17px;
+            height: 17px;        
+            margin: 0 32px;
+
+            @include media-breakpoint-down(md){
+                margin: 0 25px;
+            }
+
+            @include media-breakpoint-down(sm){
+                margin: 20px auto;
+            }
+
+            &::after{
+                border-right: 4px solid #4D88B2;
+                border-bottom: 4px solid #4D88B2;
+                content: '';
+                position: absolute;
+                display: block;
+                transform-origin: center;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                transform: rotate(-45deg);
+                width: 100%;
+                height: 100%;
+
+                @include media-breakpoint-down(sm){
+                    transform: rotate(45deg);
+                }
+            }
+
+            &.two{                
+                margin: 0 28px;
+
+                @include media-breakpoint-down(md){
+                    margin: 0 25px;
+                }
+    
+                @include media-breakpoint-down(sm){
+                    margin: 20px auto;
+                }
+
+                &::after{
+                    border-right: 4px solid #4DB3B2;
+                    border-bottom: 4px solid #4DB3B2;
+                }
+            }
+        }
+
+        .itnadtPhotoLast{
+            background: #E4F3F3;
+            border-radius: 5px;
+            font: {
+                weight:400;
+                size:18px;
+            };
+            letter-spacing: .3px;
+            line-height: 32px;
+            padding: 18px 46px 18px 30px;
+
+            @include media-breakpoint-down(md){
+                font-size: 16px;
+                padding: 13px 36px 13px 20px;
+            }
+
+            @include media-breakpoint-down(sm){
+                margin: 0 auto;
+                width: 220px;
+            }
+        }
+    }
+
+    .itnadtBlock{
+        &:not(:last-child){
+            margin: 0 0 45px;
+        }
+
+        &.display{
+            .Para2{
+                margin: 0 0 10px;
+            }
+        }
+
+        &.real{
+            .Para2{
+                margin: 0 0 20px;
+            }
+
+            .Para3{
+                margin: 0 0 5px;
+            }
+
+            .Para4{
+                li{
+                    &:not(:last-child){
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        .itnadtBlockArea{
+            &:not(:last-child){
+                margin: 0 0 40px;
+            }
+        }
+    }
+}
+
+.regulationsBox{
+    .DataTable2{
+        table{
+            tbody{
+                tr{
+                    td{
+                        padding: 11.75px 19px;
+
+                        @include media-breakpoint-down(sssm){
+                            padding: 11.75px 10px;
+                        }
+
+                        &.same{
+                            width: 25%;//350px
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.intellectualBox{
+    .Para1{
+        margin: 0 0 20px;
+    }
+
+    .intellectualFore{
+        margin: 0 0 65px;
+
+        .Para4{
+            @include media-breakpoint-up(xl){
+                flex: 1;
+                margin: 0 50px 0 0;
+            }
+
+            >div{
+                &:not(:last-child){
+                    margin: 0;
+                }
+            }
+        }
+
+        .intellectualForePicBox{
+            @include media-breakpoint-down(xl){
+                margin: 30px 0 0;
+            }
+
+            .intellectualForePic{
+                width: 240px;
+
+                @include media-breakpoint-between(xl,xxl){
+                    width: 160px;
+                }         
+                
+                @include media-breakpoint-down(lg){
+                    width: 200px;
+                }
+
+                @include media-breakpoint-down(md){
+                    flex: 1;
+                }
+
+                &:not(:last-child){
+                    margin: 0 15px 0 0;
+
+                    @include media-breakpoint-down(ssssm){
+                        margin: 0 10px 0 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .intellectualBlock{
+        &:not(:last-child){
+            margin: 0 0 65px;
+        }
+
+        .Para2{
+            margin: 0 0 15px;
+        }
+        
+        .intellectualBlockArea{
+            &:not(:last-child){
+                margin: 0 0 20px;
+            }
+        }
+
+        .Para3{
+            margin: 0 0 5px;
+        }
+
+        .Para4{
+            li{
+                padding: 0 0 0 20px;
+                text-indent: -20px;
+
+                &:not(:last-child){
+                    margin: 0;
+                }
+            }
+
+            &.tw{
+                >div{
+                    padding: 0 0 0 37px;
+                    text-indent: -37px;
+                }
+            }
+        }
+    }
+}
+
+.integrityBox{
+    .Para1{
+        margin: 0 0 25px;
+    }
+
+    .Tab2Box{
+        margin: 0 0 55px;
+    }
+
+    .Para2{
+        margin: 0 0 20px;
+    }
+
+    .Para3{
+        margin: 0 0 5px;
+    }
+
+    .Para4{
+        margin: 0 0 35px;
+
+        >div,>p{
+            &:not(:last-child){
+                margin: 0;
+            }
+        }
+    }
+
+    .DataTable2{
+        table{
+            thead{
+                tr{
+                    &:first-child{
+                        th{
+                            &:first-child{
+                                border-right: 1px solid rgba(229,229,229,.5);
+                            }
+
+                            &:nth-child(2){
+                                border-bottom: 1px solid rgba(229,229,229,.5);
+                                padding: 12.5px 19px;
+                            }
+
+                            &:last-child{
+                                border-left: 1px solid rgba(229,229,229,.5);
+                            }
+                        }
+                    }
+
+                    &:nth-child(2){
+                        th:first-child{
+                            border-right: 1px solid rgba(229,229,229,.5);
+                        }
+                    }
+
+                    th{
+                        &.special{
+                            background: #2280C3;
+                            padding: 12.5px 19px;
+                        }
+
+                        &::after{
+                            width: unset;
+                        }
+                    }
+                }
+            }
+
+            tbody{
+                tr{
+                    td{
+                        padding: 16.75px 19px;
+
+                        @include media-breakpoint-down(lg){
+                            padding: 1.75px 14px;
+                        }
+
+                        &.item{
+                            padding: 16.75px 25px;
+
+                            @include media-breakpoint-down(lg){
+                                padding: 11.75px 15px;
+
+                                min-width: 320px;
+                            }
+                        }
+
+                        &.condition{
+                            width: 6.428%;//90px
+                        }
+
+                        &.explain{
+                            width: 37.857%;//530px
+                            padding: 16.75px 30px;
+
+                            @include media-breakpoint-down(lg){
+                                padding: 11.75px 20px;
+                                min-width: 220px;
+                            }
+                        }
+
+                        i{
+                            color: #0068B2;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.integrityreportBox{
+    .integrityreportPic{
+        width: 516px;
+        margin: 0 auto 20px auto;
+
+        @include media-breakpoint-down(sm){
+            width: 100%;
+        }
+    }
+
+    .Para3{
+        margin: 0 0 5px;
+    }
+
+    .Para4{
+        margin: 0 0 50px;
+    }
+
+    .integrityreportBlock{
+        &.email{
+            .Para4{
+                >div{
+                    &:not(:last-child){
+                        margin: 0;
+                    }
+                }
+            }
+
+            a{
+                color: #000000;
+                transition: all .3s;
+                
+                &.inline{
+                    text-decoration: unset;
+                }
+
+                @include articleAhover;
+            }
+        }
+
+        &.step{
+            ol{
+                margin: 0 0 30px;
+            }
+
+            .integrityreportBlockArea{
+                &:not(:last-child){
+                    margin: 0 0 30px;
+                }
+
+                .no{
+                    margin: 0 10px 0 0;
+                }
+
+                .Para4{
+                    margin: 0;
+                    padding: 0 0 0 26px;
+                    text-indent: -26px;
+
+                    >div,>li{
+                        &:not(:last-child){
+                            margin: 0;
+                        }
+
+                        &.sub{
+                            text-indent: -37px;
+                            padding: 0 0 0 38px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.employeebeneBox{
+    .OuterBox{
+        .MainBox{
+            padding: 80px 0 130px;
+
+            .employeebeneOutlineBox{
+                margin: 0 0 80px;
+        
+                .employeebeneOutline{
+                    width: 270px;
+
+                    @include media-breakpoint-between(md,lg){
+                        width: calc((100% - 70px)/3);
+                    }
+
+                    @include media-breakpoint-down(md){
+                        margin: 0 auto;
+                    }
+        
+                    &:not(:last-child){
+                        margin: 0 35px 0 0;
+
+                        @include media-breakpoint-down(md){
+                            margin: 0 auto 50px;
+                        }
+                    }
+        
+                    .employeebeneOutlineIcon,.employeebeneOutlineItemBox{
+                        background: #DAE8F1;
+                    }
+        
+                    .employeebeneOutlineIcon{                
+                        border-radius: 999rem;
+                        width: 90px;
+                        height: 90px;
+        
+                        img{
+                            margin: 0 auto;
+                            width: 52px;
+                        }
+                    }
+        
+                    &.bonus{
+                        .employeebeneOutlineIcon,.employeebeneOutlineItemBox{
+                            background: #F1DEDA;
+                        }
+                    }
+        
+                    &.allowance{
+                        .employeebeneOutlineIcon,.employeebeneOutlineItemBox{
+                            background: #DAF1ED;
+                        }
+                    }
+                     
+                    .employeebeneOutlineTopic{
+                        background: #366E96;
+                        color: #FFFFFF;
+                        border-radius: 999rem;
+                        font: {
+                            weight:700;
+                            size:20px;
+                        };
+                        width: 100%;
+                        margin: 10px 0;
+                        padding: 15px 0;
+                        line-height: 30px;
+
+                        @include media-breakpoint-between(md,lg){
+                            font-size: 18px;
+                            padding: 12px 0;
+                        }
+                    }
+        
+                    &.bonus{
+                        .employeebeneOutlineTopic{
+                            background: #964836;
+                        }
+                    }
+        
+                    &.allowance{
+                        .employeebeneOutlineTopic{
+                            background: #369685;
+                        }
+                    }
+        
+                    .employeebeneOutlineItemBox{
+                        background: #DAE8F1;
+                        flex: 1;
+                        width: 100%;
+                        border-radius: 9.8px;
+                        padding: 25px 39px 25px 35px;
+
+                        @include media-breakpoint-between(md,lg){
+                            padding: 20px 29px 20px 25px;
+                        }
+        
+                        .employeebeneOutlineItem{
+                            position: relative;
+                            font: {
+                                weight:400;
+                                size:18px;
+                            };
+                            padding: 0 0 0 16px;
+        
+                            &:not(:last-child){
+                                margin: 0 0 5px;
+                            }
+        
+                            &::after{
+                                background: #366E96;
+                                content: '';
+                                display: block;
+                                position: absolute;
+                                border-radius: 999rem;
+                                z-index: 1;
+                                left: 0;
+                                top: 11px;
+                                width: 6px;
+                                height: 6px;
+                            }
+                        }
+                    }
+        
+                    &.bonus{
+                        .employeebeneOutlineItemBox{
+                            .employeebeneOutlineItem{
+                                &::after{
+                                    background: #964836;
+                                }
+                            }                    
+                        }
+                    }
+        
+                    &.allowance{
+                        .employeebeneOutlineItemBox{
+                            .employeebeneOutlineItem{
+                                &::after{
+                                    background: #369685;
+                                }
+                            }                    
+                        }
+                    }
+                }
+            }
+        
+            .employeebeneBlockBox{
+                .employeebeneBlock{
+                    &:not(:last-child){
+                        margin: 0 0 40px;
+                    }
+        
+                    .Para3{
+                        margin: 0 0 5px;
+                    }
+        
+                    .Para4{
+                        >p{
+                            &:not(:last-child){
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.employeesafeBox{
+    .Para2{
+        margin: 0 0 25px;
+    }
+
+    .employeesafeWordBox{
+        width: 100%;
+
+        .employeesafeWord{
+            @include media-breakpoint-up(xl){
+                width: 613px;
+                margin: 0 77px 0 0;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                width: 500px;
+                margin: 0 57px 0 0;
+            }
+        }
+
+        .employeesafePicBox{            
+            @include media-breakpoint-up(xl){
+                flex: 1;
+            }
+
+            @include media-breakpoint-down(xl){
+                margin: 30px 0 0;
+            }
+
+            .employeesafePic{
+                width: auto;
+
+                &:not(:last-child){
+                    margin: 0 10px 0 0;
+                }
+            }
+        }
+    }
+}
