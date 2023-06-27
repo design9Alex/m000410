@@ -37,6 +37,7 @@ class AboutSeeder extends Seeder
         DB::table('article_column')->insert($insertData = [
             ['id' => 'about-history', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => 'about-management', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => 'about-awards', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
         ]);
 
         DBHelper::insertDistributedData('article_column', [
@@ -55,7 +56,16 @@ class AboutSeeder extends Seeder
                     ['column' => 'responsibilities', 'component' => 'minmax-textarea'],
 
                 ]),
-                'sort' => 1, 'active' => 1,
+                'sort' => 2, 'active' => 1,
+            ],
+            'about-awards' => [
+                'title' => '[關於我們] 肯定與榮耀',
+                'column_set' => json_encode([
+                    ['column' => 'year', 'component' => 'minmax-input-text'],
+                    ['column' => 'company', 'component' => 'minmax-input-text'],
+
+                ]),
+                'sort' => 3, 'active' => 1,
             ],
 
 
@@ -81,6 +91,10 @@ class AboutSeeder extends Seeder
             ],
             [
                 'id' => 'web-block-abouts-management', 'parent_id' => 'web-block-abouts',
+                'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+            ],
+            [
+                'id' => 'web-block-abouts-awards', 'parent_id' => 'web-block-abouts',
                 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
             ],
 
@@ -131,6 +145,19 @@ class AboutSeeder extends Seeder
                 'role_operations' => null,
                 'operations' => json_encode(['infertile']),
                 'sort' => 2, 'active' => 1,
+            ],
+            'web-block-abouts-awards' => [
+                'code' => 'web-block-abouts-awards',
+                'title' => '肯定與榮耀',
+                'editor' => null,
+                'topic' => null,
+                'path' => null,
+                'column_config' => 'about-awards',
+                'category_page' => null,
+                'article_page' => 'web-about-awards',
+                'role_operations' => null,
+                'operations' => json_encode(['infertile']),
+                'sort' => 3, 'active' => 1,
             ],
 
 
@@ -258,6 +285,18 @@ class AboutSeeder extends Seeder
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
 
             //經營團隊
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+
+            //肯定與榮耀
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
@@ -1115,6 +1154,119 @@ class AboutSeeder extends Seeder
             ],
 
 
+            //肯定與榮耀
+            $id[++$i] => [
+                'title' => '熱心公益貢獻獎',
+                'year' => '2022',
+                'company' => '經濟部加工出口區管理處',
+                'pic' => json_encode([
+                    ['path' => '/static/web/styles/images/about/awards/0.webp']
+                ]),
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '感謝贊助肇喜登峰巡廻賽',
+                'year' => '2022',
+                'company' => '台灣職業高爾夫協會',
+                'pic' => json_encode([
+                    ['path' => '/static/web/styles/images/about/awards/1.webp']
+                ]),
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => 'Buiness Award',
+                'year' => '2021',
+                'company' => 'Sumitomo Bakelite',
+                'pic' => json_encode([
+                    ['path' => '/static/web/styles/images/about/awards/2.webp']
+                ]),
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '績優供應商',
+                'year' => '2021',
+                'company' => '華泰電子',
+                'pic' => json_encode([
+                    ['path' => '/static/web/styles/images/about/awards/3.webp']
+                ]),
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => 'Buiness Award',
+                'year' => '2020',
+                'company' => 'Sumitomo Bakelite',
+                'pic' => json_encode([
+                    ['path' => '/static/web/styles/images/about/awards/4.webp']
+                ]),
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '績優供應商',
+                'year' => '2020',
+                'company' => '華泰電子',
+                'pic' => json_encode([
+                    ['path' => '/static/web/styles/images/about/awards/5.webp']
+                ]),
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '成立三十週年誌慶',
+                'year' => '2019',
+                'company' => '華立集團',
+                'pic' => json_encode([
+                    ['path' => '/static/web/styles/images/about/awards/6.webp']
+                ]),
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '績優供應商',
+                'year' => '2019',
+                'company' => '華泰電子',
+                'pic' => json_encode([
+                    ['path' => '/static/web/styles/images/about/awards/7.webp']
+                ]),
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '傑出供應合作廠商',
+                'year' => '2018',
+                'company' => '矽品精密',
+                'pic' => json_encode([
+                    ['path' => '/static/web/styles/images/about/awards/8.webp']
+                ]),
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '熱心公益貢獻獎',
+                'year' => '2022',
+                'company' => '經濟部加工出口區管理處',
+                'pic' => json_encode([
+                    ['path' => '/static/web/styles/images/about/awards/0.webp']
+                ]),
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+
         ], false);
 
         DBHelper::insertLanguageUsage('Minmax\Article\Models\ArticleBlock', array_pluck($insertData, 'id'),$this->languages);
@@ -1231,6 +1383,17 @@ class AboutSeeder extends Seeder
             ['category_id' => 'web-block-abouts-management','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
             ['category_id' => 'web-block-abouts-management','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
             ['category_id' => 'web-block-abouts-management','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+
+            ['category_id' => 'web-block-abouts-awards','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-awards','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-awards','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-awards','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-awards','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-awards','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-awards','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-awards','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-awards','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-awards','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
 
 
         ]);
