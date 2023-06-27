@@ -41,7 +41,7 @@ return [
         'system_menu' => 3,
         'site_parameter' => 2,
         'system_parameter' => 3,
-        'article_category' => 3,
+        'article_category' => 4,
         'inbox_category' => 2,
         'product_category' => 3,
     ],

@@ -38,6 +38,7 @@ class AboutSeeder extends Seeder
             ['id' => 'about-history', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => 'about-management', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => 'about-awards', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => 'about-location', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
         ]);
 
         DBHelper::insertDistributedData('article_column', [
@@ -66,6 +67,16 @@ class AboutSeeder extends Seeder
 
                 ]),
                 'sort' => 3, 'active' => 1,
+            ],
+            'about-location' => [
+                'title' => '[關於我們] 全球據點',
+                'column_set' => json_encode([
+                    ['column' => 'address', 'component' => 'minmax-input-text'],
+                    ['column' => 'phone', 'component' => 'minmax-input-text'],
+                    ['column' => 'fax', 'component' => 'minmax-input-text'],
+
+                ]),
+                'sort' => 4, 'active' => 1,
             ],
 
 
@@ -97,6 +108,22 @@ class AboutSeeder extends Seeder
                 'id' => 'web-block-abouts-awards', 'parent_id' => 'web-block-abouts',
                 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
             ],
+            [
+                'id' => 'web-block-abouts-location', 'parent_id' => 'web-block-abouts',
+                'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+            ],
+                [
+                    'id' => 'web-block-abouts-location-location', 'parent_id' => 'web-block-abouts-location',
+                    'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+                ],
+                [
+                    'id' => 'web-block-abouts-location-other', 'parent_id' => 'web-block-abouts-location',
+                    'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+                ],
+                [
+                    'id' => 'web-block-abouts-location-abroad', 'parent_id' => 'web-block-abouts-location',
+                    'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+                ],
 
 
         ]);
@@ -159,6 +186,59 @@ class AboutSeeder extends Seeder
                 'operations' => json_encode(['infertile']),
                 'sort' => 3, 'active' => 1,
             ],
+
+            'web-block-abouts-location' => [
+                'code' => 'web-block-abouts-location',
+                'title' => '全球據點',
+                'editor' => null,
+                'topic' => null,
+                'path' => null,
+                'column_config' => 'about-location',
+                'category_page' => null,
+                'article_page' => 'web-about-location',
+                'role_operations' => null,
+                'operations' => json_encode(['unmodifiable',  'indelible']),
+                'sort' => 4, 'active' => 1,
+            ],
+                'web-block-abouts-location-location' => [
+                    'code' => 'web-block-abouts-location-location',
+                    'title' => '營業據點',
+                    'editor' => null,
+                    'topic' => null,
+                    'path' => null,
+                    'column_config' => null,
+                    'category_page' => null,
+                    'article_page' => null,
+                    'role_operations' => null,
+                    'operations' => json_encode(['infertile']),
+                    'sort' => 1, 'active' => 1,
+                ],
+                'web-block-abouts-location-other' => [
+                    'code' => 'web-block-abouts-location-other',
+                    'title' => '其他營業據點',
+                    'editor' => null,
+                    'topic' => null,
+                    'path' => null,
+                    'column_config' => null,
+                    'category_page' => null,
+                    'article_page' => null,
+                    'role_operations' => null,
+                    'operations' => json_encode(['infertile']),
+                    'sort' => 2, 'active' => 1,
+                ],
+                'web-block-abouts-location-abroad' => [
+                    'code' => 'web-block-abouts-location-abroad',
+                    'title' => '海外營業據點',
+                    'editor' => null,
+                    'topic' => null,
+                    'path' => null,
+                    'column_config' => null,
+                    'category_page' => null,
+                    'article_page' => null,
+                    'role_operations' => null,
+                    'operations' => json_encode(['infertile']),
+                    'sort' => 3, 'active' => 1,
+                ],
 
 
 
@@ -299,6 +379,26 @@ class AboutSeeder extends Seeder
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+
+            //營業據點
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+
+            //其他營業據點
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+
+            //海外營業據點
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
@@ -1266,6 +1366,133 @@ class AboutSeeder extends Seeder
                 'roles' => null, 'sort' => ++$sort, 'active' => 1,
             ],
 
+            //營業據點
+            $id[++$i] => [
+                'title' => '高雄總公司',
+                'address' => '811 高雄市楠梓區東七街16號6樓',
+                'phone' => '886-7-362-2663',
+                'fax' => '886-7-362-1490',
+
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '台中營業所',
+                'address' => '427 台中市潭子區雅豐街109號',
+                'phone' => '886-4-2535-4645',
+                'fax' => '886-4-2535-4425',
+
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '台北分公司',
+                'address' => '114 台北市內湖區港墘路221巷35號7樓',
+                'phone' => '886-2-8751-0696',
+                'fax' => '886-2-8751-0689',
+
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+            //其他營業據點
+            $id[++$i] => [
+                'title' => '長華科技股份有限公司',
+                'address' => '811 高雄市楠梓區開發路24號',
+                'phone' => '886-7-962-8202',
+                'fax' => '886-7-962-8203',
+
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '長華能源科技股份有限公司',
+                'address' => '114 台北市內湖區港墘路221巷35號7樓',
+                'phone' => '886-2-8751-0696',
+                'fax' => '886-2-8751-0689',
+
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+            //海外營業據點
+            $id[++$i] => [
+                'title' => 'SH ASIA PACIFIC PTE. LTD.',
+                'address' => '10 Eunos Road 8, #05-04/05 Singapore Post Centre, Singapore 408600',
+                'phone' => '+65-6914-7908',
+                'fax' => '',
+
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => 'MALAYSIAN SH ELECTRONICS SDN. BHD.',
+                'address' => 'Lot 5,7 & 9, Jalan Ragum 15/17 40200 Shah Alam Selangor Darul Ehsan, Malaysia',
+                'phone' => '+60-3-5519-8140',
+                'fax' => '+60-3-5519-8110',
+
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '蘇州興勝科半導體材料有限公司',
+                'address' => '215126 中國江蘇省蘇州工業園區龍潭路123號',
+                'phone' => '+86-512-62836501',
+                'fax' => '+86-512-62836511',
+
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '成都興勝半導體材料有限公司',
+                'address' => '610041 中國四川省成都高新區新加坡工業園新園南二路7號',
+                'phone' => '+86-28-85155577',
+                'fax' => '+86-28-85180228',
+
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '成都興勝新材料有限公司',
+                'address' => '611731 中國四川省成都高新區西部園區科新路8號西區6號廠房',
+                'phone' => '+86-28-87958880',
+                'fax' => '+86-28-87958581',
+
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '長科實業(上海)有限公司',
+                'address' => '中國(上海)自由貿易試驗區富特北路207號2層E01室',
+                'phone' => '+86-21-5241-9000',
+                'fax' => '+86-21-5241-9100',
+
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '上海長華新技電材有限公司',
+                'address' => '200050 上海市長寧路1027號兆豐廣場21F-1',
+                'phone' => '+86-21-5241-9000',
+                'fax' => '+86-21-5241-9000',
+
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+
 
         ], false);
 
@@ -1394,6 +1621,21 @@ class AboutSeeder extends Seeder
             ['category_id' => 'web-block-abouts-awards','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
             ['category_id' => 'web-block-abouts-awards','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
             ['category_id' => 'web-block-abouts-awards','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+
+            ['category_id' => 'web-block-abouts-location-location','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-location-location','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-location-location','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+
+            ['category_id' => 'web-block-abouts-location-other','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-location-other','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+
+            ['category_id' => 'web-block-abouts-location-abroad','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-location-abroad','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-location-abroad','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-location-abroad','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-location-abroad','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-location-abroad','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-abouts-location-abroad','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
 
 
         ]);
