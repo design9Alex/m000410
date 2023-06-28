@@ -11,6 +11,13 @@ return [
             'year' => '年度',
             'company' => '公司',
         ],
+
+        'ArticleIntro' => [
+            'notes' => '說明',
+            'scale' => '營收佔比',
+            'application' => '應用產業',
+
+        ],
     ]
 
 ];

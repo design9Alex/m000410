@@ -57,6 +57,51 @@ class UpdateArticleBlockColumnConfig extends Migration
                 'phone' => ['table' => 'data_article_plaintext', 'language' => true],    //電話
                 'fax' => ['table' => 'data_article_plaintext', 'language' => true],    //傳真
 
+                //損益表
+                'income' => ['table' => 'data_article_plaintext', 'language' => true],    //營業收入
+                'grossprofit' => ['table' => 'data_article_plaintext', 'language' => true],    //營業毛利
+                'revenue' => ['table' => 'data_article_plaintext', 'language' => true],    //營業利益
+                'netincome' => ['table' => 'data_article_plaintext', 'language' => true],    //稅前淨利
+                'cpynetincome' => ['table' => 'data_article_plaintext', 'language' => true],    //歸屬於母公司淨利
+                'eps10' => ['table' => 'data_article_plaintext', 'language' => true],    //股票面額10元計稅後EPS(元)
+                'eps1' => ['table' => 'data_article_plaintext', 'language' => true],    //股票面額1元計稅後EPS(元)
+
+                //資產負債表
+                'cash' => ['table' => 'data_article_plaintext', 'language' => true],    //現金及約當現金
+                'receiveable' => ['table' => 'data_article_plaintext', 'language' => true],    //應收帳款淨額
+                'currentassets' => ['table' => 'data_article_plaintext', 'language' => true],    //流動資產
+                'equityinvestments' => ['table' => 'data_article_plaintext', 'language' => true],    //採用權益法之投資
+                'currentliabilities' => ['table' => 'data_article_plaintext', 'language' => true],    //流動負債
+                'noncurrentliabilities' => ['table' => 'data_article_plaintext', 'language' => true],    //非流動負債
+                'totalequity' => ['table' => 'data_article_plaintext', 'language' => true],    //權益總計
+                'totalassets' => ['table' => 'data_article_plaintext', 'language' => true],    //總資產
+                'netincome10' => ['table' => 'data_article_plaintext', 'language' => true],    //股票面額 10元計每股淨值 (元)
+                'netincome1' => ['table' => 'data_article_plaintext', 'language' => true],    //股票面額 1元計每股淨值 (元)
+                'currentratio' => ['table' => 'data_article_plaintext', 'language' => true],    //流動比率
+                'debtratio' => ['table' => 'data_article_plaintext', 'language' => true],    //負債比率
+
+                //現金流量表
+                'operate' => ['table' => 'data_article_plaintext', 'language' => true],    //營業活動現金流
+                'invest' => ['table' => 'data_article_plaintext', 'language' => true],    //投資活動現金流
+                'fund' => ['table' => 'data_article_plaintext', 'language' => true],    //籌資活動現金流
+
+                //每股數據
+                'share_cash' => ['table' => 'data_article_plaintext', 'language' => true],    //現金股利
+                'netrevenue' => ['table' => 'data_article_plaintext', 'language' => true],    //每股淨資產
+                'eps' => ['table' => 'data_article_plaintext', 'language' => true],    //eps
+
+                //重要比率
+                'EBITDA' => ['table' => 'data_article_plaintext', 'language' => true],    //EBITDA
+                'ROA' => ['table' => 'data_article_plaintext', 'language' => true],    //ROA
+                'ROE' => ['table' => 'data_article_plaintext', 'language' => true],    //ROE
+
+                //產品組合
+                'iclf' => ['table' => 'data_article_plaintext', 'language' => true],    //IC L/F
+                'resin' => ['table' => 'data_article_plaintext', 'language' => true],    //封裝樹脂
+                'other' => ['table' => 'data_article_plaintext', 'language' => true],    //其他(含基板)
+                'ledlf' => ['table' => 'data_article_plaintext', 'language' => true],    //LED L/F
+
+
                 'background' => ['table' => 'data_article_images', 'language' => true],            // 圖片
                 'icon' => ['table' => 'data_article_images', 'language' => true],            // 圖片
                 'pic' => ['table' => 'data_article_images', 'language' => true],            // 圖片
