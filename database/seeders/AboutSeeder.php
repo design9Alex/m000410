@@ -413,7 +413,7 @@ class AboutSeeder extends Seeder
         $sort = 0;
 		$i = 0;
 
-        DBHelper::insertDistributedData('article_block', [
+		$data = [
             //2022
             $id[++$i] => [
                 'title' => '黃嘉能董事長獲頒 2022《哈佛商業評論》台灣企業領袖 100 強',
@@ -1494,7 +1494,12 @@ class AboutSeeder extends Seeder
 
 
 
-        ], false);
+        ];
+
+        foreach (collect($data)->chunk(100) as $chunk) {
+            DBHelper::insertDistributedData('article_block', $chunk , false);
+        }
+
 
         DBHelper::insertLanguageUsage('Minmax\Article\Models\ArticleBlock', array_pluck($insertData, 'id'),$this->languages);
 

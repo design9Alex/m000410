@@ -86,6 +86,7 @@ class UpdateArticleBlockColumnConfig extends Migration
                 'fund' => ['table' => 'data_article_plaintext', 'language' => true],    //籌資活動現金流
 
                 //每股數據
+
                 'share_cash' => ['table' => 'data_article_plaintext', 'language' => true],    //現金股利
                 'netrevenue' => ['table' => 'data_article_plaintext', 'language' => true],    //每股淨資產
                 'eps' => ['table' => 'data_article_plaintext', 'language' => true],    //eps
@@ -100,6 +101,7 @@ class UpdateArticleBlockColumnConfig extends Migration
                 'resin' => ['table' => 'data_article_plaintext', 'language' => true],    //封裝樹脂
                 'other' => ['table' => 'data_article_plaintext', 'language' => true],    //其他(含基板)
                 'ledlf' => ['table' => 'data_article_plaintext', 'language' => true],    //LED L/F
+
 
 
                 'background' => ['table' => 'data_article_images', 'language' => true],            // 圖片

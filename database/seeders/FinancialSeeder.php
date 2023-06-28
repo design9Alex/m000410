@@ -61,8 +61,18 @@ class FinancialSeeder extends Seeder
             'balance-sheet' => [
                 'title' => '[財務摘要] 資產負債表',
                 'column_set' => json_encode([
-                    ['column' => 'department', 'component' => 'minmax-input-text'],
-                    ['column' => 'responsibilities', 'component' => 'minmax-textarea'],
+                    ['column' => 'cash', 'component' => 'minmax-input-text'],
+                    ['column' => 'receiveable', 'component' => 'minmax-textarea'],
+                    ['column' => 'currentassets', 'component' => 'minmax-textarea'],
+                    ['column' => 'equityinvestments', 'component' => 'minmax-textarea'],
+                    ['column' => 'currentliabilities', 'component' => 'minmax-textarea'],
+                    ['column' => 'noncurrentliabilities', 'component' => 'minmax-textarea'],
+                    ['column' => 'totalequity', 'component' => 'minmax-textarea'],
+                    ['column' => 'totalassets', 'component' => 'minmax-textarea'],
+                    ['column' => 'netincome10', 'component' => 'minmax-textarea'],
+                    ['column' => 'netincome1', 'component' => 'minmax-textarea'],
+                    ['column' => 'currentratio', 'component' => 'minmax-textarea'],
+                    ['column' => 'debtratio', 'component' => 'minmax-textarea'],
 
                 ]),
                 'sort' => 2, 'active' => 1,
@@ -70,8 +80,9 @@ class FinancialSeeder extends Seeder
             'cash-flow' => [
                 'title' => '[財務摘要] 現金流量表',
                 'column_set' => json_encode([
-                    ['column' => 'year', 'component' => 'minmax-input-text'],
-                    ['column' => 'company', 'component' => 'minmax-input-text'],
+                    ['column' => 'operate', 'component' => 'minmax-input-text'],
+                    ['column' => 'invest', 'component' => 'minmax-input-text'],
+                    ['column' => 'fund', 'component' => 'minmax-input-text'],
 
                 ]),
                 'sort' => 3, 'active' => 1,
@@ -79,9 +90,9 @@ class FinancialSeeder extends Seeder
             'share-data' => [
                 'title' => '[財務摘要] 每股數據',
                 'column_set' => json_encode([
-                    ['column' => 'address', 'component' => 'minmax-input-text'],
-                    ['column' => 'phone', 'component' => 'minmax-input-text'],
-                    ['column' => 'fax', 'component' => 'minmax-input-text'],
+                    ['column' => 'share_cash', 'component' => 'minmax-input-text'],
+                    ['column' => 'netrevenue', 'component' => 'minmax-input-text'],
+                    ['column' => 'eps', 'component' => 'minmax-input-text'],
 
                 ]),
                 'sort' => 4, 'active' => 1,
@@ -89,9 +100,9 @@ class FinancialSeeder extends Seeder
             'important-ratio' => [
                 'title' => '[財務摘要] 重要比率',
                 'column_set' => json_encode([
-                    ['column' => 'address', 'component' => 'minmax-input-text'],
-                    ['column' => 'phone', 'component' => 'minmax-input-text'],
-                    ['column' => 'fax', 'component' => 'minmax-input-text'],
+                    ['column' => 'EBITDA', 'component' => 'minmax-input-text'],
+                    ['column' => 'ROA', 'component' => 'minmax-input-text'],
+                    ['column' => 'ROE', 'component' => 'minmax-input-text'],
 
                 ]),
                 'sort' => 5, 'active' => 1,
@@ -99,9 +110,10 @@ class FinancialSeeder extends Seeder
             'products-proportion' => [
                 'title' => '[財務摘要] 產品組合',
                 'column_set' => json_encode([
-                    ['column' => 'address', 'component' => 'minmax-input-text'],
-                    ['column' => 'phone', 'component' => 'minmax-input-text'],
-                    ['column' => 'fax', 'component' => 'minmax-input-text'],
+                    ['column' => 'iclf', 'component' => 'minmax-input-text'],
+                    ['column' => 'resin', 'component' => 'minmax-input-text'],
+                    ['column' => 'other', 'component' => 'minmax-input-text'],
+                    ['column' => 'ledlf', 'component' => 'minmax-input-text'],
 
                 ]),
                 'sort' => 6, 'active' => 1,
