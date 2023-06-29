@@ -22,7 +22,7 @@ class FinancialSeeder extends Seeder
         $this->init();
         $this->insertArticleColumn();
         $this->insertArticleCategory();
-        $this->insertArticleBlock();
+        //$this->insertArticleBlock();
         //$this->insertSiteParameters();
 
     }
@@ -62,17 +62,17 @@ class FinancialSeeder extends Seeder
                 'title' => '[財務摘要] 資產負債表',
                 'column_set' => json_encode([
                     ['column' => 'cash', 'component' => 'minmax-input-text'],
-                    ['column' => 'receiveable', 'component' => 'minmax-textarea'],
-                    ['column' => 'currentassets', 'component' => 'minmax-textarea'],
-                    ['column' => 'equityinvestments', 'component' => 'minmax-textarea'],
-                    ['column' => 'currentliabilities', 'component' => 'minmax-textarea'],
-                    ['column' => 'noncurrentliabilities', 'component' => 'minmax-textarea'],
-                    ['column' => 'totalequity', 'component' => 'minmax-textarea'],
-                    ['column' => 'totalassets', 'component' => 'minmax-textarea'],
-                    ['column' => 'netincome10', 'component' => 'minmax-textarea'],
-                    ['column' => 'netincome1', 'component' => 'minmax-textarea'],
-                    ['column' => 'currentratio', 'component' => 'minmax-textarea'],
-                    ['column' => 'debtratio', 'component' => 'minmax-textarea'],
+                    ['column' => 'receiveable', 'component' => 'minmax-input-text'],
+                    ['column' => 'currentassets', 'component' => 'minmax-input-text'],
+                    ['column' => 'equityinvestments', 'component' => 'minmax-input-text'],
+                    ['column' => 'currentliabilities', 'component' => 'minmax-input-text'],
+                    ['column' => 'noncurrentliabilities', 'component' => 'minmax-input-text'],
+                    ['column' => 'totalequity', 'component' => 'minmax-input-text'],
+                    ['column' => 'totalassets', 'component' => 'minmax-input-text'],
+                    ['column' => 'netincome10', 'component' => 'minmax-input-text'],
+                    ['column' => 'netincome1', 'component' => 'minmax-input-text'],
+                    ['column' => 'currentratio', 'component' => 'minmax-input-text'],
+                    ['column' => 'debtratio', 'component' => 'minmax-input-text'],
 
                 ]),
                 'sort' => 2, 'active' => 1,
@@ -133,37 +133,39 @@ class FinancialSeeder extends Seeder
         DB::table('article_category')->insert($insertData = [
 
             [
-                'id' => 'web-block-abouts', 'parent_id' => 'article-block',
+                'id' => 'web-block-investor', 'parent_id' => 'article-block',
                 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
             ],
             [
-                'id' => 'web-block-abouts-history', 'parent_id' => 'web-block-abouts',
+                'id' => 'web-block-investor-financial-information', 'parent_id' => 'web-block-investor',
                 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
             ],
-            [
-                'id' => 'web-block-abouts-management', 'parent_id' => 'web-block-abouts',
-                'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
-            ],
-            [
-                'id' => 'web-block-abouts-awards', 'parent_id' => 'web-block-abouts',
-                'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
-            ],
-            [
-                'id' => 'web-block-abouts-location', 'parent_id' => 'web-block-abouts',
-                'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
-            ],
+
                 [
-                    'id' => 'web-block-abouts-location-location', 'parent_id' => 'web-block-abouts-location',
+                    'id' => 'web-block-investor-income-statement', 'parent_id' => 'web-block-investor-financial-information',
                     'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
                 ],
                 [
-                    'id' => 'web-block-abouts-location-other', 'parent_id' => 'web-block-abouts-location',
+                    'id' => 'web-block-investor-balance-sheet', 'parent_id' => 'web-block-investor-financial-information',
                     'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
                 ],
                 [
-                    'id' => 'web-block-abouts-location-abroad', 'parent_id' => 'web-block-abouts-location',
+                    'id' => 'web-block-investor-cash-flow', 'parent_id' => 'web-block-investor-financial-information',
                     'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
                 ],
+                [
+                    'id' => 'web-block-investor-share-data', 'parent_id' => 'web-block-investor-financial-information',
+                    'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+                ],
+                [
+                    'id' => 'web-block-investor-important-ratio', 'parent_id' => 'web-block-investor-financial-information',
+                    'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+                ],
+                [
+                    'id' => 'web-block-investor-products-proportion', 'parent_id' => 'web-block-investor-financial-information',
+                    'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+                ],
+
 
 
         ]);
@@ -175,9 +177,9 @@ class FinancialSeeder extends Seeder
 
         DBHelper::insertDistributedData('article_category', [
 
-            'web-block-abouts' => [
-                'code' => 'web-block-abouts',
-                'title' => '關於我們',
+            'web-block-investor' => [
+                'code' => 'web-block-investor',
+                'title' => '投資人關係',
                 'pic' => null, 'topic' => null, 'description' => null, 'editor' => null,
                 'path' => null,
                 'column_config' => null,
@@ -187,97 +189,97 @@ class FinancialSeeder extends Seeder
                 'operations' => json_encode(['unmodifiable',  'indelible']),
                 'sort' => 1, 'active' => 1,
             ],
-            'web-block-abouts-history' => [
-                'code' => 'web-block-abouts-history',
-                'title' => '大事紀',
+            'web-block-investor-financial-information' => [
+                'code' => 'web-block-investor-financial-information',
+                'title' => '財務摘要',
                 'editor' => null,
                 'topic' => null,
                 'path' => null,
-                'column_config' => 'about-history',
+                'column_config' => null,
                 'category_page' => null,
-                'article_page' => 'web-about-history',
+                'article_page' => null,
                 'role_operations' => null,
                 'operations' => json_encode(['infertile']),
                 'sort' => 1, 'active' => 1,
             ],
-            'web-block-abouts-management' => [
-                'code' => 'web-block-abouts-management',
-                'title' => '經營團隊',
-                'editor' => null,
-                'topic' => null,
-                'path' => null,
-                'column_config' => 'about-management',
-                'category_page' => null,
-                'article_page' => 'web-about-management',
-                'role_operations' => null,
-                'operations' => json_encode(['infertile']),
-                'sort' => 2, 'active' => 1,
-            ],
-            'web-block-abouts-awards' => [
-                'code' => 'web-block-abouts-awards',
-                'title' => '肯定與榮耀',
-                'editor' => null,
-                'topic' => null,
-                'path' => null,
-                'column_config' => 'about-awards',
-                'category_page' => null,
-                'article_page' => 'web-about-awards',
-                'role_operations' => null,
-                'operations' => json_encode(['infertile']),
-                'sort' => 3, 'active' => 1,
-            ],
 
-            'web-block-abouts-location' => [
-                'code' => 'web-block-abouts-location',
-                'title' => '全球據點',
-                'editor' => null,
-                'topic' => null,
-                'path' => null,
-                'column_config' => 'about-location',
-                'category_page' => null,
-                'article_page' => 'web-about-location',
-                'role_operations' => null,
-                'operations' => json_encode(['unmodifiable',  'indelible']),
-                'sort' => 4, 'active' => 1,
-            ],
-                'web-block-abouts-location-location' => [
-                    'code' => 'web-block-abouts-location-location',
-                    'title' => '營業據點',
+                'web-block-investor-income-statement' => [
+                    'code' => 'web-block-investor-income-statement',
+                    'title' => '損益表',
                     'editor' => null,
                     'topic' => null,
                     'path' => null,
-                    'column_config' => null,
+                    'column_config' => 'income-statement',
                     'category_page' => null,
-                    'article_page' => null,
+                    'article_page' => 'web-investor-income-statement',
                     'role_operations' => null,
                     'operations' => json_encode(['infertile']),
                     'sort' => 1, 'active' => 1,
                 ],
-                'web-block-abouts-location-other' => [
-                    'code' => 'web-block-abouts-location-other',
-                    'title' => '其他營業據點',
+                'web-block-investor-balance-sheet' => [
+                    'code' => 'web-block-investor-balance-sheet',
+                    'title' => '資產負債表',
                     'editor' => null,
                     'topic' => null,
                     'path' => null,
-                    'column_config' => null,
+                    'column_config' => 'balance-sheet',
                     'category_page' => null,
-                    'article_page' => null,
+                    'article_page' => 'web-investor-balance-sheet',
                     'role_operations' => null,
                     'operations' => json_encode(['infertile']),
                     'sort' => 2, 'active' => 1,
                 ],
-                'web-block-abouts-location-abroad' => [
-                    'code' => 'web-block-abouts-location-abroad',
-                    'title' => '海外營業據點',
+                'web-block-investor-cash-flow' => [
+                    'code' => 'web-block-investor-cash-flow',
+                    'title' => '現金流量表',
                     'editor' => null,
                     'topic' => null,
                     'path' => null,
-                    'column_config' => null,
+                    'column_config' => 'cash-flow',
                     'category_page' => null,
-                    'article_page' => null,
+                    'article_page' => 'web-investor-cash-flow',
                     'role_operations' => null,
                     'operations' => json_encode(['infertile']),
                     'sort' => 3, 'active' => 1,
+                ],
+                'web-block-investor-share-data' => [
+                    'code' => 'web-block-investor-share-data',
+                    'title' => '每股數據',
+                    'editor' => null,
+                    'topic' => null,
+                    'path' => null,
+                    'column_config' => 'share-data',
+                    'category_page' => null,
+                    'article_page' => 'web-investor-share-data',
+                    'role_operations' => null,
+                    'operations' => json_encode(['infertile']),
+                    'sort' => 4, 'active' => 1,
+                ],
+                'web-block-investor-important-ratio' => [
+                    'code' => 'web-block-investor-important-ratio',
+                    'title' => '重要比率',
+                    'editor' => null,
+                    'topic' => null,
+                    'path' => null,
+                    'column_config' => 'important-ratio',
+                    'category_page' => null,
+                    'article_page' => 'web-investor-important-ratio',
+                    'role_operations' => null,
+                    'operations' => json_encode(['infertile']),
+                    'sort' => 5, 'active' => 1,
+                ],
+                'web-block-investor-products-proportion' => [
+                    'code' => 'web-block-investor-products-proportion',
+                    'title' => '產品組合',
+                    'editor' => null,
+                    'topic' => null,
+                    'path' => null,
+                    'column_config' => 'products-proportion',
+                    'category_page' => null,
+                    'article_page' => 'web-investor-products-proportion',
+                    'role_operations' => null,
+                    'operations' => json_encode(['infertile']),
+                    'sort' => 6, 'active' => 1,
                 ],
 
 
