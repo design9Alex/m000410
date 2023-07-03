@@ -324,8 +324,8 @@
                 "eps1":"1.02"
             },
             "21Q4":{
-                "income":"5,703",
-                "grossprofit":"1,433",
+                "income":"5703",
+                "grossprofit":"1433",
                 "revenue":"846",
                 "netincome":"907",
                 "cpynetincome":"448",
@@ -333,19 +333,19 @@
                 "eps1":"0.65"
             },
             "22Q1":{
-                "income":"5,655",
-                "grossprofit":"1,313",
+                "income":"5655",
+                "grossprofit":"1313",
                 "revenue":"918",
-                "netincome":"1,154",
+                "netincome":"1154",
                 "cpynetincome":"592",
                 "eps10":"8.6" ,
                 "eps1":"0.86"
             },
             "22Q2":{
-                "income":"5,820",
-                "grossprofit":"1,343",
+                "income":"5820",
+                "grossprofit":"1343",
                 "revenue":"939",
-                "netincome":"1,189",
+                "netincome":"1189",
                 "cpynetincome":"539",
                 "eps10":"7.9" ,
                 "eps1":"0.79"
@@ -559,14 +559,14 @@
         },
         "year":{
             "2018":{
-                "cash":"3,050",
-                "receiveable":"3,333",
-                "currentassets":"8,573",
-                "equityinvestments":"2,779",
-                "currentliabilities":"5,063",
-                "noncurrentliabilities":"2,698",
-                "totalequity":"8,156",
-                "totalassets":"15,917",
+                "cash":"3050",
+                "receiveable":"3333",
+                "currentassets":"8573",
+                "equityinvestments":"2779",
+                "currentliabilities":"5063",
+                "noncurrentliabilities":"2698",
+                "totalequity":"8156",
+                "totalassets":"15917",
                 "netincome10":"86.24",
                 "netincome1":"8.62",
                 "currentratio":"169%",
