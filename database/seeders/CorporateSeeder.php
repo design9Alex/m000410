@@ -33,18 +33,14 @@ class CorporateSeeder extends Seeder
     {
 
         DB::table('article_column')->insert($insertData = [
-            ['id' => 'shareholders-meeting', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],  //股東會
+            ['id' => 'corporate-directors-resolutions', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],  //董事會決議事項
         ]);
 
         DBHelper::insertDistributedData('article_column', [
-            'shareholders-meeting' => [
-                'title' => '[股東專區] 股東會',
+            'corporate-directors-resolutions' => [
+                'title' => '[公司治理] 董事會決議事項',
                 'column_set' => json_encode([
-                    ['column' => 'location', 'component' => 'minmax-input-text'],
-                    ['column' => 'meeting_file_1', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
-                    ['column' => 'meeting_file_2', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
-                    ['column' => 'meeting_file_3', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
-                    ['column' => 'meeting_file_4', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
+                    ['column' => 'file', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
                 ]),
                 'sort' => 1, 'active' => 1,
             ],
@@ -62,13 +58,17 @@ class CorporateSeeder extends Seeder
 
         DB::table('article_category')->insert($insertData = [
             [
-                'id' => 'web-download-shareholders', 'parent_id' => 'article-download',
+                'id' => 'web-download-corporate', 'parent_id' => 'article-download',
                 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
             ],
             [
-                'id' => 'web-download-shareholders-meeting', 'parent_id' => 'web-download-shareholders',
+                'id' => 'web-download-corporate-directors', 'parent_id' => 'web-download-corporate',
                 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
             ],
+                [
+                    'id' => 'web-download-corporate-directors-resolutions', 'parent_id' => 'web-download-corporate-directors',
+                    'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+                ],
 
         ]);
 
@@ -82,9 +82,9 @@ class CorporateSeeder extends Seeder
 
 
 
-            'web-download-shareholders' => [
-                'code' => 'web-download-shareholders',
-                'title' => '股東專區',
+            'web-download-corporate' => [
+                'code' => 'web-download-corporate',
+                'title' => '公司治理',
                 'pic' => null, 'topic' => null, 'description' => null, 'editor' => null,
                 'path' => null,
                 'column_config' => null,
@@ -94,15 +94,28 @@ class CorporateSeeder extends Seeder
                 'operations' => json_encode(['unmodifiable',  'indelible']),
                 'sort' => 1, 'active' => 1,
             ],
-            'web-download-shareholders-meeting' => [
-                'code' => 'web-download-shareholders-meeting',
-                'title' => '股東會',
+            'web-download-corporate-directors' => [
+                'code' => 'web-download-corporate-directors',
+                'title' => '董事會',
                 'editor' => null,
                 'topic' => null,
                 'path' => null,
-                'column_config' => 'shareholders-meeting',
+                'column_config' => null,
                 'category_page' => null,
-                'article_page' => 'web-shareholders-meeting',
+                'article_page' => null,
+                'role_operations' => null,
+                'operations' => json_encode(['infertile']),
+                'sort' => 1, 'active' => 1,
+            ],
+            'web-download-corporate-directors-resolutions' => [
+                'code' => 'web-download-corporate-directors-resolutions',
+                'title' => '董事會決議事項',
+                'editor' => null,
+                'topic' => null,
+                'path' => null,
+                'column_config' => 'corporate-directors-resolutions',
+                'category_page' => null,
+                'article_page' => 'web-corporate-directors-resolutions',
                 'role_operations' => null,
                 'operations' => json_encode(['infertile']),
                 'sort' => 1, 'active' => 1,
