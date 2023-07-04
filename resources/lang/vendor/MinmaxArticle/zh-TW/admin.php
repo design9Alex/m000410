@@ -66,9 +66,23 @@ return [
             'notes' => '說明',
             'scale' => '營收佔比',
             'application' => '應用產業',
+        ],
 
+        'ArticleDownload' => [
+            'quarterly_statements_file_1' => '第一季',
+            'quarterly_statements_file_2' => '第二季',
+            'quarterly_statements_file_3' => '第三季',
+            'quarterly_statements_file_4' => '第四季',
+            'quarterly_statements_file_5' => '全季',
+            'file' => '檔案',
+            'movie_file' => '影音檔案',
 
+            'meeting_file_1' => '開會通知',
+            'meeting_file_2' => '議事手冊',
+            'meeting_file_3' => '主要股東名單',
+            'meeting_file_4' => '議事錄',
 
+            'location' => '會場',
         ],
     ]
 

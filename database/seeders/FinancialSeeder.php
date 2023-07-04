@@ -23,6 +23,9 @@ class FinancialSeeder extends Seeder
         $this->insertArticleColumn();
         $this->insertArticleCategory();
         $this->insertArticleBlock();
+        $this->insertArticleDownload();
+        $this->insertArticleIntro();
+        $this->insertTemplate();
 
     }
 
@@ -40,6 +43,11 @@ class FinancialSeeder extends Seeder
             ['id' => 'share-data', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp], //每股數據
             ['id' => 'important-ratio', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],    //重要比率
             ['id' => 'products-proportion', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],    //產品組合
+
+            ['id' => 'financial-monthly', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],  //每月營收報告
+            ['id' => 'financial-quarterly-statements', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],  //每季財務報告
+            ['id' => 'financial-annual', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],  //公司年報
+            ['id' => 'financial-law-conference', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],  //公司年報
         ]);
 
         DBHelper::insertDistributedData('article_column', [
@@ -117,6 +125,42 @@ class FinancialSeeder extends Seeder
                 ]),
                 'sort' => 6, 'active' => 1,
             ],
+            'financial-monthly' => [
+                'title' => '[財務摘要] 每月營收報告',
+                'column_set' => json_encode([
+                    ['column' => 'editor', 'component' => 'minmax-editor', 'height' => '600px'],
+
+                ]),
+                'sort' => 6, 'active' => 1,
+            ],
+            'financial-quarterly-statements' => [
+                'title' => '[財務資訊] 每季財務報告',
+                'column_set' => json_encode([
+                    ['column' => 'quarterly_statements_file_1', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
+                    ['column' => 'quarterly_statements_file_2', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
+                    ['column' => 'quarterly_statements_file_3', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
+                    ['column' => 'quarterly_statements_file_4', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
+                    ['column' => 'quarterly_statements_file_5', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
+
+                ]),
+                'sort' => 6, 'active' => 1,
+            ],
+            'financial-annual' => [
+                'title' => '[財務資訊] 公司年報',
+                'column_set' => json_encode([
+                    ['column' => 'sub_title', 'component' => 'minmax-input-text'], //
+                    ['column' => 'file', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
+                ]),
+                'sort' => 7, 'active' => 1,
+            ],
+            'financial-law-conference' => [
+                'title' => '[財務資訊] 法說會資料',
+                'column_set' => json_encode([
+                    ['column' => 'file', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
+                    ['column' => 'movie_file', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
+                ]),
+                'sort' => 7, 'active' => 1,
+            ],
 
 
 
@@ -166,6 +210,43 @@ class FinancialSeeder extends Seeder
                 ],
 
 
+            [
+                'id' => 'web-intro-investor', 'parent_id' => 'article-intro',
+                'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+            ],
+            [
+                'id' => 'web-intro-investor-financial-information', 'parent_id' => 'web-intro-investor',
+                'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+            ],
+                [
+                    'id' => 'web-intro-investor-financial-monthly', 'parent_id' => 'web-intro-investor-financial-information',
+                    'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+                ],
+
+
+
+            [
+                'id' => 'web-download-investor', 'parent_id' => 'article-download',
+                'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+            ],
+            [
+                'id' => 'web-download-investor-financial-information', 'parent_id' => 'web-download-investor',
+                'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+            ],
+                [
+                    'id' => 'web-download-investor-financial-quarterly-statements', 'parent_id' => 'web-download-investor-financial-information',
+                    'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+                ],
+                [
+                    'id' => 'web-download-investor-financial-annual', 'parent_id' => 'web-download-investor-financial-information',
+                    'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+                ],
+                [
+                    'id' => 'web-download-investor-financial-law-conference', 'parent_id' => 'web-download-investor-financial-information',
+                    'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+                ],
+
+
 
         ]);
 
@@ -201,7 +282,6 @@ class FinancialSeeder extends Seeder
                 'operations' => json_encode(['infertile']),
                 'sort' => 1, 'active' => 1,
             ],
-
                 'web-block-investor-income-statement' => [
                     'code' => 'web-block-investor-income-statement',
                     'title' => '損益表',
@@ -282,14 +362,117 @@ class FinancialSeeder extends Seeder
                 ],
 
 
+            'web-intro-investor' => [
+                'code' => 'web-intro-investor',
+                'title' => '投資人關係',
+                'pic' => null, 'topic' => null, 'description' => null, 'editor' => null,
+                'path' => null,
+                'column_config' => null,
+                'category_page' => null,
+                'article_page' => null,
+                'role_operations' => null,
+                'operations' => json_encode(['unmodifiable',  'indelible']),
+                'sort' => 1, 'active' => 1,
+            ],
+            'web-intro-investor-financial-information' => [
+                'code' => 'web-intro-investor-financial-information',
+                'title' => '財務摘要',
+                'editor' => null,
+                'topic' => null,
+                'path' => null,
+                'column_config' => null,
+                'category_page' => null,
+                'article_page' => null,
+                'role_operations' => null,
+                'operations' => json_encode(['infertile']),
+                'sort' => 1, 'active' => 1,
+            ],
+                'web-intro-investor-financial-monthly' => [
+                'code' => 'web-intro-investor-financial-monthly',
+                'title' => '每月營收報告',
+                'editor' => null,
+                'topic' => null,
+                'path' => null,
+                'column_config' => 'financial-monthly',
+                'category_page' => null,
+                'article_page' => 'web-investor-financial-monthly',
+                'role_operations' => null,
+                'operations' => json_encode(['infertile']),
+                'sort' => 1, 'active' => 1,
+            ],
+
+
+            'web-download-investor' => [
+                'code' => 'web-download-investor',
+                'title' => '投資人關係',
+                'pic' => null, 'topic' => null, 'description' => null, 'editor' => null,
+                'path' => null,
+                'column_config' => null,
+                'category_page' => null,
+                'article_page' => null,
+                'role_operations' => null,
+                'operations' => json_encode(['unmodifiable',  'indelible']),
+                'sort' => 1, 'active' => 1,
+            ],
+            'web-download-investor-financial-information' => [
+                'code' => 'web-download-investor-financial-information',
+                'title' => '財務摘要',
+                'editor' => null,
+                'topic' => null,
+                'path' => null,
+                'column_config' => null,
+                'category_page' => null,
+                'article_page' => null,
+                'role_operations' => null,
+                'operations' => json_encode(['infertile']),
+                'sort' => 1, 'active' => 1,
+            ],
+                'web-download-investor-financial-quarterly-statements' => [
+                'code' => 'web-download-investor-financial-quarterly-statements',
+                'title' => '每季財務報告',
+                'editor' => null,
+                'topic' => null,
+                'path' => null,
+                'column_config' => 'financial-quarterly-statements',
+                'category_page' => null,
+                'article_page' => 'web-investor-financial-quarterly-statements',
+                'role_operations' => null,
+                'operations' => json_encode(['infertile']),
+                'sort' => 1, 'active' => 1,
+                ],
+                'web-download-investor-financial-annual' => [
+                    'code' => 'web-download-investor-financial-annual',
+                    'title' => '公司年報',
+                    'editor' => null,
+                    'topic' => null,
+                    'path' => null,
+                    'column_config' => 'financial-annual',
+                    'category_page' => null,
+                    'article_page' => 'web-investor-financial-annual',
+                    'role_operations' => null,
+                    'operations' => json_encode(['infertile']),
+                    'sort' => 2, 'active' => 1,
+                ],
+                'web-download-investor-financial-law-conference' => [
+                    'code' => 'web-download-investor-financial-law-conference',
+                    'title' => '法說會資料',
+                    'editor' => null,
+                    'topic' => null,
+                    'path' => null,
+                    'column_config' => 'financial-law-conference',
+                    'category_page' => null,
+                    'article_page' => 'web-investor-financial-law-conference',
+                    'role_operations' => null,
+                    'operations' => json_encode(['infertile']),
+                    'sort' => 3, 'active' => 1,
+                ],
+
+
 
         ], false);
 
         DBHelper::insertLanguageUsage('Minmax\Article\Models\ArticleCategory', array_pluck($insertData, 'id'),$this->languages);
     }
-
-
-
 
     protected function insertArticleBlock()
     {
@@ -972,6 +1155,487 @@ class FinancialSeeder extends Seeder
         ]);
 
 
+    }
+
+
+    protected function insertArticleDownload()
+    {
+        $i = 0;
+        DB::table('article_download')->insert($insertData = [
+            //每季財務報告
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+
+            //公司年報
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+
+            //法說會資料
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+        ]);
+
+
+        $sort = 0;
+        $i = 0;
+
+        DBHelper::insertDistributedData('article_download', [
+            $id[++$i] => [
+                'title' => '2019',
+                'quarterly_statements_file_1' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'quarterly_statements_file_2' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'quarterly_statements_file_3' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'quarterly_statements_file_4' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'quarterly_statements_file_5' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => null, 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => 1, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '2020',
+                'quarterly_statements_file_1' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'quarterly_statements_file_2' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'quarterly_statements_file_3' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'quarterly_statements_file_4' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'quarterly_statements_file_5' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => null, 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => 2, 'active' => 1,
+            ],
+            $id[++$i] => [
+                    'title' => '2021',
+                    'quarterly_statements_file_1' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                    'quarterly_statements_file_2' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                    'quarterly_statements_file_3' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                    'quarterly_statements_file_4' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                    'quarterly_statements_file_5' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                    'start_at' => null, 'end_at' => null, 'roles' => null, 'operations' => null,
+                    'sort' => 3, 'active' => 1,
+                ],
+
+
+            $id[++$i] => [
+                'title' => '2021',
+                'sub_title' => '長華電材2021年報',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => null, 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => 1, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '2020',
+                'sub_title' => '長華電材2020年報',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => null, 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => 1, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '2019',
+                'sub_title' => '長華電材2019年報',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => null, 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => 1, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '2018',
+                'sub_title' => '長華電材2018年報',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => null, 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => 1, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '2017',
+                'sub_title' => '長華電材2017年報',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => null, 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => 1, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '2016',
+                'sub_title' => '長華電材2016年報',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => null, 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => 1, 'active' => 1,
+            ],
+
+
+            $id[++$i] => [
+                'title' => '本公司受邀參加臺灣證券交易所舉辦之「2022年半導體暨新上市主題式業績發表會」',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'movie_file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => null, 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => 1, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '本公司受邀參加凱基證券舉辦之線上法人說明會',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'movie_file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => null, 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => 1, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '本公司受邀參加證交所舉辦之線上主題式業績發表會',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'movie_file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => null, 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => 1, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '本公司受邀參加亞洲投資創富論壇',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'movie_file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => null, 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => 1, 'active' => 1,
+            ],
+
+
+        ], false);
+
+        DBHelper::insertLanguageUsage('Minmax\Article\Models\ArticleDownload', array_pluck($insertData, 'id'),$this->languages);
+
+        $i = 0;
+
+        DB::table('article_categorical')->insert([
+            [
+                'category_id' => 'web-download-investor-financial-quarterly-statements',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+            [
+                'category_id' => 'web-download-investor-financial-quarterly-statements',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+            [
+                'category_id' => 'web-download-investor-financial-quarterly-statements',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+
+
+
+            [
+                'category_id' => 'web-download-investor-financial-annual',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+            [
+                'category_id' => 'web-download-investor-financial-annual',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+            [
+                'category_id' => 'web-download-investor-financial-annual',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+            [
+                'category_id' => 'web-download-investor-financial-annual',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+            [
+                'category_id' => 'web-download-investor-financial-annual',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+            [
+                'category_id' => 'web-download-investor-financial-annual',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+
+
+
+            [
+                'category_id' => 'web-download-investor-financial-law-conference',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+            [
+                'category_id' => 'web-download-investor-financial-law-conference',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+            [
+                'category_id' => 'web-download-investor-financial-law-conference',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+            [
+                'category_id' => 'web-download-investor-financial-law-conference',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+
+
+
+        ]);
+
+    }
+
+
+    protected function insertArticleIntro()
+    {
+        $i = 0;
+        DB::table('article_intro')->insert($insertData = [
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+        ]);
+
+        $editor = <<<HTML
+<table>
+							<thead>
+								<tr>
+									<th class="text-center">日期</th>
+									<th class="text-center">合併營收 (單位：千元)</th>
+									<th class="text-center">MoM</th>
+									<th class="text-center">YoY</th>
+								</tr>
+							</thead>
+							<tbody>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/01</td>
+										<td class="FontSub">1,604,399</td>
+										<td class="FontSub">5.9 %</td>
+										<td class="FontSub">36.6 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/02</td>
+										<td class="FontSub">1,332,975</td>
+										<td class="FontSub">-16.9 %</td>
+										<td class="FontSub">10.5 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/03</td>
+										<td class="FontSub">1,657,240</td>
+										<td class="FontSub">24.3 %</td>
+										<td class="FontSub">17.7 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/04</td>
+										<td class="FontSub">1,594,942</td>
+										<td class="FontSub">-3.8 %</td>
+										<td class="FontSub">14.9 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/05</td>
+										<td class="FontSub">1,564,982</td>
+										<td class="FontSub">-1.9 %</td>
+										<td class="FontSub">13.1 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/06</td>
+										<td class="FontSub">1,740,792</td>
+										<td class="FontSub">11.2 %</td>
+										<td class="FontSub">29.5 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/07</td>
+										<td class="FontSub">1,835,015</td>
+										<td class="FontSub">5.4 %</td>
+										<td class="FontSub">35.2 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/08</td>
+										<td class="FontSub">1,821,516</td>
+										<td class="FontSub">-0.7 %</td>
+										<td class="FontSub">41.3 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/09</td>
+										<td class="FontSub">1,815,855</td>
+										<td class="FontSub">-0.3 %</td>
+										<td class="FontSub">26.5 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/10</td>
+										<td class="FontSub">1,836,860</td>
+										<td class="FontSub">1.2 %</td>
+										<td class="FontSub">33.7 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/11</td>
+										<td class="FontSub">1,890,429</td>
+										<td class="FontSub">2.9 %</td>
+										<td class="FontSub">22 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/12</td>
+										<td class="FontSub">1,975,504</td>
+										<td class="FontSub">4.5 %</td>
+										<td class="FontSub">30.4 %</td>
+									</tr>
+															</tbody>
+						</table>
+					</div>
+
+HTML;
+
+        $sort = 0;
+        $i = 0;
+
+        DBHelper::insertDistributedData('article_intro', [
+            $id[++$i] => [
+                'title' => '2019',
+                'editor' => $editor,
+                'start_at' => $this->timestamp, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '2020',
+                'editor' => $editor,
+                'start_at' => $this->timestamp, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '2021',
+                'editor' => $editor,
+                'start_at' => $this->timestamp, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+
+        ], false);
+
+        DBHelper::insertLanguageUsage('Minmax\Article\Models\ArticleIntro', array_pluck($insertData, 'id'),$this->languages);
+
+        $i = 0;
+
+        DB::table('article_categorical')->insert([
+            [
+                'category_id' => 'web-intro-investor-financial-monthly',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleIntro'
+            ],
+            [
+                'category_id' => 'web-intro-investor-financial-monthly',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleIntro'
+            ],
+            [
+                'category_id' => 'web-intro-investor-financial-monthly',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleIntro'
+            ],
+
+
+
+        ]);
+
+    }
+
+
+    protected function insertTemplate()
+    {
+        $editor = <<<HTML
+<table>
+							<thead>
+								<tr>
+									<th class="text-center">日期</th>
+									<th class="text-center">合併營收 (單位：千元)</th>
+									<th class="text-center">MoM</th>
+									<th class="text-center">YoY</th>
+								</tr>
+							</thead>
+							<tbody>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/01</td>
+										<td class="FontSub">1,604,399</td>
+										<td class="FontSub">5.9 %</td>
+										<td class="FontSub">36.6 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/02</td>
+										<td class="FontSub">1,332,975</td>
+										<td class="FontSub">-16.9 %</td>
+										<td class="FontSub">10.5 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/03</td>
+										<td class="FontSub">1,657,240</td>
+										<td class="FontSub">24.3 %</td>
+										<td class="FontSub">17.7 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/04</td>
+										<td class="FontSub">1,594,942</td>
+										<td class="FontSub">-3.8 %</td>
+										<td class="FontSub">14.9 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/05</td>
+										<td class="FontSub">1,564,982</td>
+										<td class="FontSub">-1.9 %</td>
+										<td class="FontSub">13.1 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/06</td>
+										<td class="FontSub">1,740,792</td>
+										<td class="FontSub">11.2 %</td>
+										<td class="FontSub">29.5 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/07</td>
+										<td class="FontSub">1,835,015</td>
+										<td class="FontSub">5.4 %</td>
+										<td class="FontSub">35.2 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/08</td>
+										<td class="FontSub">1,821,516</td>
+										<td class="FontSub">-0.7 %</td>
+										<td class="FontSub">41.3 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/09</td>
+										<td class="FontSub">1,815,855</td>
+										<td class="FontSub">-0.3 %</td>
+										<td class="FontSub">26.5 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/10</td>
+										<td class="FontSub">1,836,860</td>
+										<td class="FontSub">1.2 %</td>
+										<td class="FontSub">33.7 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/11</td>
+										<td class="FontSub">1,890,429</td>
+										<td class="FontSub">2.9 %</td>
+										<td class="FontSub">22 %</td>
+									</tr>
+																	<tr>
+										<td class="FontSub fontWeight500">2021/12</td>
+										<td class="FontSub">1,975,504</td>
+										<td class="FontSub">4.5 %</td>
+										<td class="FontSub">30.4 %</td>
+									</tr>
+															</tbody>
+						</table>
+					</div>
+
+HTML;
+
+        // Insert to template
+        DB::table('template')->insert($insertData = [
+            //intro
+            ['id' => $id1 = 'editor-financial-monthly', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+
+        ]);
+
+        DBHelper::insertDistributedData('template', [
+            //intro
+            $id1 => [
+                'guard' => 'admin', 'group' => 'editor',
+                'title' => '每月營收報告',
+                'description' => null,
+                'editor' => $editor,
+                'pic' => null,
+                'sort' => 1, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
+            ],
+
+
+
+
+
+
+
+        ], false);
+
+        DBHelper::insertLanguageUsage('Minmax\Base\Models\Template', array_pluck($insertData, 'id'),$this->languages);
     }
 
 
