@@ -34,6 +34,7 @@ class CorporateSeeder extends Seeder
 
         DB::table('article_column')->insert($insertData = [
             ['id' => 'corporate-directors-resolutions', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],  //董事會決議事項
+            ['id' => 'corporate-regulations', 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],  //公司重要規章
         ]);
 
         DBHelper::insertDistributedData('article_column', [
@@ -43,6 +44,13 @@ class CorporateSeeder extends Seeder
                     ['column' => 'file', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
                 ]),
                 'sort' => 1, 'active' => 1,
+            ],
+            'corporate-regulations' => [
+                'title' => '[公司治理] 董事會決議事項',
+                'column_set' => json_encode([
+                    ['column' => 'file', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
+                ]),
+                'sort' => 2, 'active' => 1,
             ],
 
 
@@ -69,6 +77,12 @@ class CorporateSeeder extends Seeder
                     'id' => 'web-download-corporate-directors-resolutions', 'parent_id' => 'web-download-corporate-directors',
                     'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
                 ],
+
+
+            [
+                'id' => 'web-download-corporate-regulations', 'parent_id' => 'web-download-corporate',
+                'created_at' => $this->timestamp, 'updated_at' => $this->timestamp
+            ],
 
         ]);
 
@@ -121,6 +135,20 @@ class CorporateSeeder extends Seeder
                 'sort' => 1, 'active' => 1,
             ],
 
+            'web-download-corporate-regulations' => [
+                'code' => 'web-download-corporate-regulations',
+                'title' => '公司重要規章',
+                'editor' => null,
+                'topic' => null,
+                'path' => null,
+                'column_config' => 'corporate-regulations',
+                'category_page' => null,
+                'article_page' => 'web-corporate-regulations',
+                'role_operations' => null,
+                'operations' => json_encode(['infertile']),
+                'sort' =>2, 'active' => 1,
+            ],
+
 
 
 
@@ -133,7 +161,14 @@ class CorporateSeeder extends Seeder
     {
         $i = 0;
         DB::table('article_download')->insert($insertData = [
-            //股東會
+            //董事會決議事項
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+
+            //公司重要規章
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
@@ -148,56 +183,75 @@ class CorporateSeeder extends Seeder
         $i = 0;
 
         DBHelper::insertDistributedData('article_download', [
+            //董事會決議事項
             $id[++$i] => [
-                'title' => '2022年股東會',
-                'location' => '高雄市楠梓區經二路15號(從業員工服務中心)',
-                'meeting_file_1' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_2' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_3' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_4' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'start_at' => '2022-06-17 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
+                'title' => '2021.12.31',
+                'location' => '2021 年董事會決議事項',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => '2021.12.31 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
                 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '2021年股東會',
-                'location' => '高雄市楠梓區經二路15號(從業員工服務中心)',
-                'meeting_file_1' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_2' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_3' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_4' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'start_at' => '2021-06-17 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
+                'title' => '2020.12.31',
+                'location' => '2020 年董事會決議事項',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => '2020.12.31 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
                 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '2020年股東會',
-                'location' => '高雄市楠梓區經二路15號(從業員工服務中心)',
-                'meeting_file_1' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_2' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_3' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_4' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'start_at' => '2020-06-17 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
+                'title' => '2019.12.31',
+                'location' => '2019 年董事會決議事項',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => '2019.12.31 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
                 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '2019年股東會',
-                'location' => '高雄市楠梓區經二路15號(從業員工服務中心)',
-                'meeting_file_1' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_2' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_3' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_4' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'start_at' => '2019-06-17 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
+                'title' => '2018.12.31',
+                'location' => '2018 年董事會決議事項',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => '2018.12.31 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
                 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '2018年股東會',
-                'location' => '高雄市楠梓區經二路15號(從業員工服務中心)',
-                'meeting_file_1' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_2' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_3' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'meeting_file_4' => json_encode([['path' => '/files/uploads/test.pdf',],]),
-                'start_at' => '2018-06-17 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
+                'title' => '2017.12.31',
+                'location' => '2017 年董事會決議事項',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => '2017.12.31 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
                 'sort' => ++$sort, 'active' => 1,
             ],
+
+            //公司重要規章
+            $id[++$i] => [
+                'title' => '董事會議事規範',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => '2021.12.31 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '公司治理實務守則',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => '2021.12.31 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '取得或處分資產處理程序',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => '2021.12.31 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '董事會議事規範',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => '2021.12.31 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '董事選舉辦法',
+                'file' => json_encode([['path' => '/files/uploads/test.pdf',],]),
+                'start_at' => '2021.12.31 10:00:00', 'end_at' => null, 'roles' => null, 'operations' => null,
+                'sort' => ++$sort, 'active' => 1,
+            ],
+
 
 
         ], false);
@@ -208,29 +262,47 @@ class CorporateSeeder extends Seeder
 
         DB::table('article_categorical')->insert([
             [
-                'category_id' => 'web-download-shareholders-meeting',
+                'category_id' => 'web-download-corporate-directors-resolutions',
                 'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
             ],
             [
-                'category_id' => 'web-download-shareholders-meeting',
+                'category_id' => 'web-download-corporate-directors-resolutions',
                 'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
             ],
             [
-                'category_id' => 'web-download-shareholders-meeting',
+                'category_id' => 'web-download-corporate-directors-resolutions',
                 'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
             ],
             [
-                'category_id' => 'web-download-shareholders-meeting',
+                'category_id' => 'web-download-corporate-directors-resolutions',
                 'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
             ],
             [
-                'category_id' => 'web-download-shareholders-meeting',
+                'category_id' => 'web-download-corporate-directors-resolutions',
                 'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
             ],
 
 
-
-
+            [
+                'category_id' => 'web-download-corporate-regulations',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+            [
+                'category_id' => 'web-download-corporate-regulations',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+            [
+                'category_id' => 'web-download-corporate-regulations',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+            [
+                'category_id' => 'web-download-corporate-regulations',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
+            [
+                'category_id' => 'web-download-corporate-regulations',
+                'categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleDownload'
+            ],
         ]);
 
     }

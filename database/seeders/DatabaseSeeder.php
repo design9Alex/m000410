@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductSeeder::class);
         $this->call(FinancialSeeder::class);
         $this->call(ShareHoldersSeeder::class);
+        $this->call(CorporateSeeder::class);
+        $this->call(CsrSeeder::class);
     }
 }
