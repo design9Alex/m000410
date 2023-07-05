@@ -19,6 +19,10 @@ $footerMenus = optional(optional(optional(array_get($wrapParameters, 'systemMenu
     ->firstWhere('code', 'web-footer'))->systemMenus)->sortBy('sort') ?? collect();
 
 
+switch(request()->route()->getName()){
+  default: $wpClass = ''; break;
+  case 'web.page.web-about': $wpClass = 'infoBox'; break;
+}
 ?>
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
