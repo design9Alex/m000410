@@ -142,7 +142,14 @@ class InsertInitialPages extends Migration
             ['id' => $id14 = 'web-products-post', 'created_at' => $timestamp, 'updated_at' => $timestamp],
 
             ['id' => $id15 = 'web-financial', 'created_at' => $timestamp, 'updated_at' => $timestamp],
-            ['id' => $id16 = 'web-financial-information', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
+            ['id' => $id16 = 'web-financial-income-statement', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id41 = 'web-financial-balance-sheet', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id42 = 'web-financial-cash-flow', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id43 = 'web-financial-share-data', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id44 = 'web-financial-important-ratio', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id45 = 'web-financial-products-proportion', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
             ['id' => $id17 = 'web-financial-monthly', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ['id' => $id18 = 'web-financial-quarterly-statements', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ['id' => $id19 = 'web-financial-annual', 'created_at' => $timestamp, 'updated_at' => $timestamp],
@@ -153,13 +160,27 @@ class InsertInitialPages extends Migration
 
             ['id' => $id23 = 'web-corporate-overview', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ['id' => $id24 = 'web-corporate-operate', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
             ['id' => $id25 = 'web-corporate-directors', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id46 = 'web-corporate-directors-policy', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id47 = 'web-corporate-directors-resolutions', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id48 = 'web-corporate-directors-evaluation', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
             ['id' => $id26 = 'web-corporate-committee', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id49 = 'web-corporate-committee-communication', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
+
             ['id' => $id27 = 'web-corporate-internal-audit', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ['id' => $id28 = 'web-corporate-regulations', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ['id' => $id29 = 'web-corporate-intellectual-property', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
             ['id' => $id30 = 'web-corporate-integrity', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id50 = 'web-corporate-integrity-report', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
+
             ['id' => $id31 = 'web-corporate-employee', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id51 = 'web-corporate-employee-safe', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
 
             ['id' => $id32 = 'web-investor-service', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ['id' => $id33 = 'web-investor-service-agent', 'created_at' => $timestamp, 'updated_at' => $timestamp],
@@ -390,17 +411,94 @@ class InsertInitialPages extends Migration
             $id16 => [
                 'group' => 'single',
                 'page_wrap' => 'web-default',
-                'title' => '財務摘要',
+                'title' => '財務摘要-損益表',
                 'editor' => rescue(function() {
-                    return view('web.templates.pages.financial-information', ['local' => 'zh-TW'])->render();
+                    return view('web.templates.pages.financial-income-statement', ['local' => 'zh-TW'])->render();
                 }, ''),
                 'start_at' => null, 'end_at' => null,
-                'path' => 'financial-information',
+                'path' => 'financial-income-statement',
                 'menus' => null,
                 'permission' => null, 'roles' => null,
                 'operations' => json_encode(['indelible']),
                 'sort' => ++$sort, 'active' => 1,
             ],
+            $id41 => [
+                'group' => 'single',
+                'page_wrap' => 'web-default',
+                'title' => '財務摘要-資產負債表
+',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.financial-balance-sheet', ['local' => 'zh-TW'])->render();
+                }, ''),
+                'start_at' => null, 'end_at' => null,
+                'path' => 'financial-balance-sheet',
+                'menus' => null,
+                'permission' => null, 'roles' => null,
+                'operations' => json_encode(['indelible']),
+                'sort' => ++$sort, 'active' => 1,
+            ],
+            $id42 => [
+                'group' => 'single',
+                'page_wrap' => 'web-default',
+                'title' => '財務摘要-現金流量表
+',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.financial-cash-flow', ['local' => 'zh-TW'])->render();
+                }, ''),
+                'start_at' => null, 'end_at' => null,
+                'path' => 'financial-cash-flow',
+                'menus' => null,
+                'permission' => null, 'roles' => null,
+                'operations' => json_encode(['indelible']),
+                'sort' => ++$sort, 'active' => 1,
+            ],
+            $id43 => [
+                'group' => 'single',
+                'page_wrap' => 'web-default',
+                'title' => '財務摘要-每股數據
+',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.financial-share-data', ['local' => 'zh-TW'])->render();
+                }, ''),
+                'start_at' => null, 'end_at' => null,
+                'path' => 'financial-share-data',
+                'menus' => null,
+                'permission' => null, 'roles' => null,
+                'operations' => json_encode(['indelible']),
+                'sort' => ++$sort, 'active' => 1,
+            ],
+            $id44 => [
+                'group' => 'single',
+                'page_wrap' => 'web-default',
+                'title' => '財務摘要-重要比率
+',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.financial-important-ratio', ['local' => 'zh-TW'])->render();
+                }, ''),
+                'start_at' => null, 'end_at' => null,
+                'path' => 'financial-important-ratio',
+                'menus' => null,
+                'permission' => null, 'roles' => null,
+                'operations' => json_encode(['indelible']),
+                'sort' => ++$sort, 'active' => 1,
+            ],
+            $id45 => [
+                'group' => 'single',
+                'page_wrap' => 'web-default',
+                'title' => '財務摘要-產品組合
+',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.financial-products-proportion', ['local' => 'zh-TW'])->render();
+                }, ''),
+                'start_at' => null, 'end_at' => null,
+                'path' => 'financial-products-proportion',
+                'menus' => null,
+                'permission' => null, 'roles' => null,
+                'operations' => json_encode(['indelible']),
+                'sort' => ++$sort, 'active' => 1,
+            ],
+
+
 
             $id17 => [
                 'group' => 'single',
@@ -525,7 +623,7 @@ class InsertInitialPages extends Migration
             $id25 => [
                 'group' => 'single',
                 'page_wrap' => 'web-default',
-                'title' => '董事會',
+                'title' => '董事會-獨立董事選任資訊',
                 'editor' => rescue(function() {
                     return view('web.templates.pages.corporate-directors', ['local' => 'zh-TW'])->render();
                 }, ''),
@@ -536,11 +634,55 @@ class InsertInitialPages extends Migration
                 'operations' => json_encode(['indelible']),
                 'sort' => ++$sort, 'active' => 1,
             ],
+            $id46 => [
+                'group' => 'single',
+                'page_wrap' => 'web-default',
+                'title' => '董事會-董事會成員多元化政策落實情形',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.corporate-directors-policy', ['local' => 'zh-TW'])->render();
+                }, ''),
+                'start_at' => null, 'end_at' => null,
+                'path' => 'corporate-directors-policy',
+                'menus' => null,
+                'permission' => null, 'roles' => null,
+                'operations' => json_encode(['indelible']),
+                'sort' => ++$sort, 'active' => 1,
+            ],
+            $id47 => [
+                'group' => 'single',
+                'page_wrap' => 'web-default',
+                'title' => '董事會-董事會決議事項',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.corporate-directors-resolutions', ['local' => 'zh-TW'])->render();
+                }, ''),
+                'start_at' => null, 'end_at' => null,
+                'path' => 'corporate-directors-resolutions',
+                'menus' => null,
+                'permission' => null, 'roles' => null,
+                'operations' => json_encode(['indelible']),
+                'sort' => ++$sort, 'active' => 1,
+            ],
+            $id48 => [
+                'group' => 'single',
+                'page_wrap' => 'web-default',
+                'title' => '董事會-董事會績效評估',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.corporate-directors-evaluation', ['local' => 'zh-TW'])->render();
+                }, ''),
+                'start_at' => null, 'end_at' => null,
+                'path' => 'corporate-directors-evaluation',
+                'menus' => null,
+                'permission' => null, 'roles' => null,
+                'operations' => json_encode(['indelible']),
+                'sort' => ++$sort, 'active' => 1,
+            ],
+
+
 
             $id26 => [
                 'group' => 'single',
                 'page_wrap' => 'web-default',
-                'title' => '委員會',
+                'title' => '委員會-委員會成員及運作',
                 'editor' => rescue(function() {
                     return view('web.templates.pages.corporate-committee', ['local' => 'zh-TW'])->render();
                 }, ''),
@@ -551,6 +693,22 @@ class InsertInitialPages extends Migration
                 'operations' => json_encode(['indelible']),
                 'sort' => ++$sort, 'active' => 1,
             ],
+            $id49 => [
+                'group' => 'single',
+                'page_wrap' => 'web-default',
+                'title' => '委員會-獨立董事與內部溝通',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.corporate-committee-communication', ['local' => 'zh-TW'])->render();
+                }, ''),
+                'start_at' => null, 'end_at' => null,
+                'path' => 'corporate-committee-communication',
+                'menus' => null,
+                'permission' => null, 'roles' => null,
+                'operations' => json_encode(['indelible']),
+                'sort' => ++$sort, 'active' => 1,
+            ],
+
+
 
             $id27 => [
                 'group' => 'single',
@@ -600,7 +758,7 @@ class InsertInitialPages extends Migration
             $id30 => [
                 'group' => 'single',
                 'page_wrap' => 'web-default',
-                'title' => '誠信經營',
+                'title' => '誠信經營-企業誠信經營報告',
                 'editor' => rescue(function() {
                     return view('web.templates.pages.corporate-integrity', ['local' => 'zh-TW'])->render();
                 }, ''),
@@ -611,11 +769,27 @@ class InsertInitialPages extends Migration
                 'operations' => json_encode(['indelible']),
                 'sort' => ++$sort, 'active' => 1,
             ],
+            $id50 => [
+                'group' => 'single',
+                'page_wrap' => 'web-default',
+                'title' => '誠信經營-檢舉制度',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.corporate-integrity-report', ['local' => 'zh-TW'])->render();
+                }, ''),
+                'start_at' => null, 'end_at' => null,
+                'path' => 'corporate-integrity-report',
+                'menus' => null,
+                'permission' => null, 'roles' => null,
+                'operations' => json_encode(['indelible']),
+                'sort' => ++$sort, 'active' => 1,
+            ],
+
+
 
             $id31 => [
                 'group' => 'single',
                 'page_wrap' => 'web-default',
-                'title' => '員工與福利',
+                'title' => '員工與福利-員工福利與退休制度',
                 'editor' => rescue(function() {
                     return view('web.templates.pages.corporate-employee', ['local' => 'zh-TW'])->render();
                 }, ''),
@@ -626,6 +800,22 @@ class InsertInitialPages extends Migration
                 'operations' => json_encode(['indelible']),
                 'sort' => ++$sort, 'active' => 1,
             ],
+            $id51 => [
+                'group' => 'single',
+                'page_wrap' => 'web-default',
+                'title' => '員工與福利-工作環境與人身安全保護措施',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.corporate-employee-safe', ['local' => 'zh-TW'])->render();
+                }, ''),
+                'start_at' => null, 'end_at' => null,
+                'path' => 'corporate-employee-safe',
+                'menus' => null,
+                'permission' => null, 'roles' => null,
+                'operations' => json_encode(['indelible']),
+                'sort' => ++$sort, 'active' => 1,
+            ],
+
+
 
             $id32 => [
                 'group' => 'single',
@@ -798,7 +988,14 @@ class InsertInitialPages extends Migration
             ['id' => $id14 = 'web-products-post', 'created_at' => $timestamp, 'updated_at' => $timestamp],
 
             ['id' => $id15 = 'web-financial', 'created_at' => $timestamp, 'updated_at' => $timestamp],
-            ['id' => $id16 = 'web-financial-information', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
+            ['id' => $id16 = 'web-financial-income-statement', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id41 = 'web-financial-balance-sheet', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id42 = 'web-financial-cash-flow', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id43 = 'web-financial-share-data', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id44 = 'web-financial-important-ratio', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id45 = 'web-financial-products-proportion', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
             ['id' => $id17 = 'web-financial-monthly', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ['id' => $id18 = 'web-financial-quarterly-statements', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ['id' => $id19 = 'web-financial-annual', 'created_at' => $timestamp, 'updated_at' => $timestamp],
@@ -810,12 +1007,28 @@ class InsertInitialPages extends Migration
             ['id' => $id23 = 'web-corporate-overview', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ['id' => $id24 = 'web-corporate-operate', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ['id' => $id25 = 'web-corporate-directors', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id46 = 'web-corporate-directors-policy', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id47 = 'web-corporate-directors-resolutions', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id48 = 'web-corporate-directors-evaluation', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
+
+
             ['id' => $id26 = 'web-corporate-committee', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id49 = 'web-corporate-committee-communication', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
+
+
             ['id' => $id27 = 'web-corporate-internal-audit', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ['id' => $id28 = 'web-corporate-regulations', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ['id' => $id29 = 'web-corporate-intellectual-property', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
+
             ['id' => $id30 = 'web-corporate-integrity', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id50 = 'web-corporate-integrity-report', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
+
             ['id' => $id31 = 'web-corporate-employee', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ['id' => $id51 = 'web-corporate-employee-safe', 'created_at' => $timestamp, 'updated_at' => $timestamp],
 
             ['id' => $id32 = 'web-investor-service', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ['id' => $id33 = 'web-investor-service-agent', 'created_at' => $timestamp, 'updated_at' => $timestamp],
@@ -1014,14 +1227,76 @@ class InsertInitialPages extends Migration
             $id16 => [
                 'guard' => 'admin', 'group' => 'page',
                 'description' => null,
-                'title' => '財務摘要',
+                'title' => '財務摘要-損益表',
                 'editor' => rescue(function() {
-                    return view('web.templates.pages.financial-information', ['local' => 'zh-TW'])->render();
+                    return view('web.templates.pages.financial-income-statement', ['local' => 'zh-TW'])->render();
                 }, ''),
 
                 'pic' => null,
                 'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
             ],
+            $id41 => [
+                'guard' => 'admin', 'group' => 'page',
+                'description' => null,
+                'title' => '財務摘要-資產負債表',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.financial-balance-sheet', ['local' => 'zh-TW'])->render();
+                }, ''),
+
+                'pic' => null,
+                'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
+            ],
+            $id42 => [
+                'guard' => 'admin', 'group' => 'page',
+                'description' => null,
+                'title' => '財務摘要-現金流量表',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.financial-cash-flow', ['local' => 'zh-TW'])->render();
+                }, ''),
+
+                'pic' => null,
+                'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
+            ],
+            $id43 => [
+                'guard' => 'admin', 'group' => 'page',
+                'description' => null,
+                'title' => '財務摘要-每股數據',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.financial-share-data', ['local' => 'zh-TW'])->render();
+                }, ''),
+
+                'pic' => null,
+                'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
+            ],
+            $id44 => [
+                'guard' => 'admin', 'group' => 'page',
+                'description' => null,
+                'title' => '財務摘要-重要比率',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.financial-important-ratio', ['local' => 'zh-TW'])->render();
+                }, ''),
+
+                'pic' => null,
+                'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
+            ],
+            $id45 => [
+                'guard' => 'admin', 'group' => 'page',
+                'description' => null,
+                'title' => '財務摘要-產品組合',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.financial-products-proportion', ['local' => 'zh-TW'])->render();
+                }, ''),
+
+                'pic' => null,
+                'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
+            ],
+
+
+
+
+
+
+
             $id17 => [
                 'guard' => 'admin', 'group' => 'page',
                 'description' => null,
@@ -1116,10 +1391,12 @@ class InsertInitialPages extends Migration
                 'pic' => null,
                 'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
             ],
+
+
             $id25 => [
                 'guard' => 'admin', 'group' => 'page',
                 'description' => null,
-                'title' => '董事會',
+                'title' => '董事會-獨立董事選任資訊',
                 'editor' => rescue(function() {
                     return view('web.templates.pages.corporate-directors', ['local' => 'zh-TW'])->render();
                 }, ''),
@@ -1127,12 +1404,61 @@ class InsertInitialPages extends Migration
                 'pic' => null,
                 'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
             ],
+            $id46 => [
+                'guard' => 'admin', 'group' => 'page',
+                'description' => null,
+                'title' => '董事會-董事會成員多元化政策落實情形',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.corporate-directors-policy', ['local' => 'zh-TW'])->render();
+                }, ''),
+
+                'pic' => null,
+                'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
+            ],
+            $id47 => [
+                'guard' => 'admin', 'group' => 'page',
+                'description' => null,
+                'title' => '董事會-董事會決議事項',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.corporate-directors-resolutions', ['local' => 'zh-TW'])->render();
+                }, ''),
+
+                'pic' => null,
+                'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
+            ],
+            $id48 => [
+                'guard' => 'admin', 'group' => 'page',
+                'description' => null,
+                'title' => '董事會-董事會績效評估',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.corporate-directors-evaluation', ['local' => 'zh-TW'])->render();
+                }, ''),
+
+                'pic' => null,
+                'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
+            ],
+
+
+
+
+
             $id26 => [
                 'guard' => 'admin', 'group' => 'page',
                 'description' => null,
-                'title' => '委員會',
+                'title' => '委員會-委員會成員及運作',
                 'editor' => rescue(function() {
                     return view('web.templates.pages.corporate-committee', ['local' => 'zh-TW'])->render();
+                }, ''),
+
+                'pic' => null,
+                'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
+            ],
+            $id49 => [
+                'guard' => 'admin', 'group' => 'page',
+                'description' => null,
+                'title' => '委員會-獨立董事與內部溝通',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.corporate-committee-communication', ['local' => 'zh-TW'])->render();
                 }, ''),
 
                 'pic' => null,
@@ -1176,7 +1502,7 @@ class InsertInitialPages extends Migration
             $id30 => [
                 'guard' => 'admin', 'group' => 'page',
                 'description' => null,
-                'title' => '誠信經營',
+                'title' => '誠信經營-企業誠信經營報告',
                 'editor' => rescue(function() {
                     return view('web.templates.pages.corporate-integrity', ['local' => 'zh-TW'])->render();
                 }, ''),
@@ -1184,13 +1510,37 @@ class InsertInitialPages extends Migration
                 'pic' => null,
                 'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
             ],
+            $id50 => [
+                'guard' => 'admin', 'group' => 'page',
+                'description' => null,
+                'title' => '誠信經營-檢舉制度',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.corporate-integrity-report', ['local' => 'zh-TW'])->render();
+                }, ''),
+
+                'pic' => null,
+                'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
+            ],
+
+
 
             $id31 => [
                 'guard' => 'admin', 'group' => 'page',
                 'description' => null,
-                'title' => '員工與福利',
+                'title' => '員工與福利-員工福利與退休制度',
                 'editor' => rescue(function() {
                     return view('web.templates.pages.corporate-employee', ['local' => 'zh-TW'])->render();
+                }, ''),
+
+                'pic' => null,
+                'sort' => ++$sort, 'operations' => json_encode(['unmodifiable', 'indelible']), 'active' => 1,
+            ],
+            $id51 => [
+                'guard' => 'admin', 'group' => 'page',
+                'description' => null,
+                'title' => '員工與福利-工作環境與人身安全保護措施',
+                'editor' => rescue(function() {
+                    return view('web.templates.pages.corporate-employee-safe', ['local' => 'zh-TW'])->render();
                 }, ''),
 
                 'pic' => null,
