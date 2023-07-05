@@ -89,8 +89,6 @@ return [
         'ArticleBlock' => \Minmax\Article\Models\ArticleBlock::class,
         'ArticleDownload' => \Minmax\Article\Models\ArticleDownload::class,
         'ArticleCategory' => \Minmax\Article\Models\ArticleCategory::class,
-        'ProductIntro' => \Minmax\Product\Models\ProductIntro::class,
-        'ProductClass' => \Minmax\Product\Models\ProductClass::class,
     ],
 
     /*
@@ -203,7 +201,8 @@ return [
     |
     */
 
-    'page_builder' => \Minmax\Article\Services\PageSample::class,
+    //'page_builder' => \Minmax\Article\Services\PageSample::class,
+    'page_builder' => \App\Services\PageBuilder::class,
 
     /*
     |--------------------------------------------------------------------------
