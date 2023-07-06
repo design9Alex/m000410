@@ -106,6 +106,92 @@ function breadcrumbs($route, $parameters = [])
             break;
 
 
+        case 'web.page.web-about-management':
+            $breadcrumbs[] = ['uri' => route('web.page.web-about') , 'title' => trans('web.menu.abouts')];
+
+            $menu = \Minmax\Base\Models\SystemMenu::query()
+                ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+                ->distributedWhere('guard', 'web')
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('code','web-header-abouts-about-management')
+                ->distributedActive()
+                ->first();
+
+            $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
+
+            break;
+
+        case 'web.page.web-about-vision':
+            $breadcrumbs[] = ['uri' => route('web.page.web-about') , 'title' => trans('web.menu.abouts')];
+
+            $menu = \Minmax\Base\Models\SystemMenu::query()
+                ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+                ->distributedWhere('guard', 'web')
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('code','web-header-abouts-about-vision')
+                ->distributedActive()
+                ->first();
+
+            $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
+
+            break;
+
+        case 'web.page.web-about-awards':
+            $breadcrumbs[] = ['uri' => route('web.page.web-about') , 'title' => trans('web.menu.abouts')];
+
+            $menu = \Minmax\Base\Models\SystemMenu::query()
+                ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+                ->distributedWhere('guard', 'web')
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('code','web-header-abouts-about-awards')
+                ->distributedActive()
+                ->first();
+
+            $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
+
+            break;
+
+        case 'web.page.web-about-relationship':
+            $breadcrumbs[] = ['uri' => route('web.page.web-about') , 'title' => trans('web.menu.abouts')];
+
+            $menu = \Minmax\Base\Models\SystemMenu::query()
+                ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+                ->distributedWhere('guard', 'web')
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('code','web-header-abouts-about-relationship')
+                ->distributedActive()
+                ->first();
+
+            $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
+
+            break;
+
+        case 'web.page.web-about-location':
+            $breadcrumbs[] = ['uri' => route('web.page.web-about') , 'title' => trans('web.menu.abouts')];
+
+            $menu = \Minmax\Base\Models\SystemMenu::query()
+                ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+                ->distributedWhere('guard', 'web')
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('code','web-header-abouts-about-location')
+                ->distributedActive()
+                ->first();
+
+            $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
+
+            break;
+
+
     }
 
     $arr['breadcrumbs'] = $breadcrumbs ?? [];
