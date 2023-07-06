@@ -155,6 +155,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'about-history-list':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceAboutHistoryList($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -205,6 +213,78 @@ class PageBuilder extends ParentBuilder
 
 
         $html = view('web.layouts.components.breadcrumbs', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+    //replaceAboutHistoryList
+    protected function replaceAboutHistoryList($blockNode)
+    {
+
+        $categoryId = 'web-block-abouts-history';
+        $articleCategory = ArticleCategory::query()
+            ->with(['articleCategories.articleCategories'])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where('id',$categoryId)->distributedOrWhere('code',$categoryId)
+            ->distributedActive()
+            ->orderBy('sort')
+            ->first();
+
+
+
+        if(blank($articleCategory)){
+            abort(404);
+        }
+
+        $articleBlocks = (new ArticleBlockRepository())->query()
+            ->with([
+                'articleCategories.articleCategory',
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->whereHas('articleCategories', function ($query) use($articleCategory) {
+                $query->where('id', array_get($articleCategory,'id'));
+            })
+
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>', now());
+            })
+            ->distributedActive()
+            ->orderBy('sort')
+            ->get();
+
+        $years = array();
+        $blocks = array();
+
+        foreach($articleBlocks ?? [] as $key => $item){
+            $years[] = mb_substr(array_get($item,'start_at')->format('Y'),0,3).'0';
+            $blocks[mb_substr(array_get($item,'start_at')->format('Y'),0,3).'0'][array_get($item,'start_at')->format('Y')][] = $item;
+        }
+        $years = array_unique($years);
+        rsort($years);
+        $years = array_values($years);
+
+        //dd($blocks);
+
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'articleCategory' => $articleCategory,
+            'blocks' => $blocks,
+            'years' => $years,
+        ];
+
+
+        $html = view('web.layouts.components.about-history-list', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
 
