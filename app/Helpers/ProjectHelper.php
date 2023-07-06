@@ -63,7 +63,41 @@ function breadcrumbs($route, $parameters = [])
                 ->whereHas('languageUsage', function ($query) {
                     $query->whereJsonContains('languages', [app()->getLocale() => true]);
                 })
-                ->distributedWhere('code','web-header-abouts-president')
+                ->distributedWhere('code','web-header-abouts-about-president')
+                ->distributedActive()
+                ->first();
+
+            $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
+
+            break;
+
+        case 'web.page.web-about-history':
+            $breadcrumbs[] = ['uri' => route('web.page.web-about') , 'title' => trans('web.menu.abouts')];
+
+            $menu = \Minmax\Base\Models\SystemMenu::query()
+                ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+                ->distributedWhere('guard', 'web')
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('code','web-header-abouts-about-history')
+                ->distributedActive()
+                ->first();
+
+            $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
+
+            break;
+
+        case 'web.page.web-about-organization':
+            $breadcrumbs[] = ['uri' => route('web.page.web-about') , 'title' => trans('web.menu.abouts')];
+
+            $menu = \Minmax\Base\Models\SystemMenu::query()
+                ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+                ->distributedWhere('guard', 'web')
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('code','web-header-abouts-about-organization')
                 ->distributedActive()
                 ->first();
 

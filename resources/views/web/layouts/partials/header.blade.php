@@ -12,8 +12,15 @@
       <nav class="menuInner">
         <ul class="d-xl-flex align-items-xl-stretch justify-content-xl-between list-unstyled mb-0">
           @foreach ($headerMenus as $systemMenu)
-            @php $requestUrl = Request::url(); @endphp
-            <li class="menuBlock @if(array_get($systemMenu,'code') == 'web-header-contact' || array_get($systemMenu,'code') == 'web-header-staff') jsMenuSubOther @endIf  d-xl-flex align-items-xl-start justify-content-xl-center flex-xl-column jsMenuBlock">
+            @php
+                $requestUrl = Request::url();
+            @endphp
+
+            <li class="menuBlock
+            @if( in_array(array_get($systemMenu,'code').'-'.Request::path(),array_pluck(array_get($systemMenu,'systemMenus'),'code')) ) active default @endIf
+            @if(array_get($systemMenu,'code') == 'web-header-contact' || array_get($systemMenu,'code') == 'web-header-staff') jsMenuSubOther @endIf
+            d-xl-flex align-items-xl-start justify-content-xl-center flex-xl-column jsMenuBlock">
+
             <div class="menuTopic defaultA d-flex align-items-center justify-content-between justify-content-xl-center jsMenuTopic">
               <div class="menuTopicText">{{array_get($systemMenu,'title')}}</div>
 
@@ -50,7 +57,7 @@
                   @else
                     @foreach(array_get($systemMenu,'systemMenus') ?? [] as $subSystemMenu)
                     <li>
-                      <a href="{{ $subSystemMenu->url ?? 'javascript:void(0)' }}" class="menuSubList defaultA  d-flex align-items-center justify-content-between justify-content-xl-center jsMenuSubHref" >
+                      <a href="{{ $subSystemMenu->url ?? 'javascript:void(0)' }}" class="menuSubList defaultA @if('/'.request()->route()->uri() == $subSystemMenu->url) active @endIf {{--active--}} d-flex align-items-center justify-content-between justify-content-xl-center jsMenuSubHref" >
                         <div class="menuSubText">{{ $subSystemMenu->title }}</div>
                         <i class="icon_arrowR3"></i>
                       </a>

@@ -23,6 +23,13 @@ switch(request()->route()->getName()){
   default: $wpClass = ''; break;
   case 'web.page.web-about': $wpClass = 'infoBox'; break;
   case 'web.page.web-about-president': $wpClass = 'presdtBox'; break;
+  case 'web.page.web-about-history': $wpClass = 'historyBox jsHistoryBox'; break;
+  case 'web.page.web-about-organization': $wpClass = 'ognztBox'; break;
+  case 'web.page.web-about-management': $wpClass = 'mngmtBox'; break;
+  case 'web.page.web-about-vision': $wpClass = 'visionBox'; break;
+  case 'web.page.web-about-awards': $wpClass = 'awardsBox'; break;
+  case 'web.page.web-about-relationship': $wpClass = 'reltBox'; break;
+  case 'web.page.web-about-location': $wpClass = 'locationBox'; break;
 }
 ?>
 <!doctype html>
