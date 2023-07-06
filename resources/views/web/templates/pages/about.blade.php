@@ -17,27 +17,9 @@
     </div>
     <h1 class="Topic">關於我們</h1>
   </section>
-  <nav class="BreadBox" data-aos="fade-left" data-aos-duration="900">
-    <ol class="mb-0 list-unstyled d-flex align-items-center justify-content-start flex-wrap">
-      <li>
-        <a href="index.php" class="BreadIcon defaultA">
-          <i class="icon_home"></i>
-        </a>
-      </li>
-      <li class="middle">
-        <i class="icon_arrowR2"></i>
-      </li>
-      <li>
-        <a class="BreadText defaultA" href="about.php">關於我們</a>
-      </li>
-      <li class="middle">
-        <i class="icon_arrowR2"></i>
-      </li>
-      <li>
-        <div class="BreadText now">公司簡介</div>
-      </li>
-    </ol>
-  </nav>
+
+  @include('web.templates.modules.breadcrumbs')
+
   <div class="OuterBox">
     <section class="MainBox editor">
       <h2 class="MainTitle" data-aos="fade-up" data-aos-duration="1000">公司簡介</h2>

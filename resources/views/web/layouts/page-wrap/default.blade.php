@@ -22,6 +22,7 @@ $footerMenus = optional(optional(optional(array_get($wrapParameters, 'systemMenu
 switch(request()->route()->getName()){
   default: $wpClass = ''; break;
   case 'web.page.web-about': $wpClass = 'infoBox'; break;
+  case 'web.page.web-about-president': $wpClass = 'presdtBox'; break;
 }
 ?>
 <!doctype html>
