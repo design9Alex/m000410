@@ -171,6 +171,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'about-awards-list':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceAboutAwardsList($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -351,6 +359,79 @@ class PageBuilder extends ParentBuilder
 
 
         $html = view('web.layouts.components.about-management-list', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+    //replaceAboutAwardsList
+    protected function replaceAboutAwardsList($blockNode)
+    {
+        $perPage = $blockNode->getAttribute('data-per');
+        $perPage = blank($perPage) || $perPage == 0 ? 9 : intval($perPage);
+
+        $currentPage = intval(request('page', 1));
+
+        $categoryId = 'web-block-abouts-awards';
+        $articleCategory = ArticleCategory::query()
+            ->with(['articleCategories.articleCategories'])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where('id',$categoryId)->distributedOrWhere('code',$categoryId)
+            ->distributedActive()
+            ->orderBy('sort')
+            ->first();
+
+
+
+        if(blank($articleCategory)){
+            abort(404);
+        }
+
+        $baseQuery = (new ArticleBlockRepository())->query()
+            ->with([
+                'articleCategories.articleCategory',
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->whereHas('articleCategories', function ($query) use($articleCategory) {
+                $query->where('id', array_get($articleCategory,'id'));
+            })
+
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>', now());
+            })
+            ->distributedActive();
+
+
+        $amount = $baseQuery->count();
+
+        $articleBlocks = $baseQuery
+            ->orderBy('sort')
+            ->forPage($currentPage, $perPage)
+            ->get();
+
+
+        $viewData = [
+            'total' => $amount < 1 ? 1 : intval(ceil($amount / $perPage)),
+            'current' => $currentPage,
+            'routeName' => request()->route()->getName(),
+            'articleCategory' => $articleCategory,
+            'articleBlocks' => $articleBlocks,
+            'routeParameters' => [
+                //'cls' => request()->route('cls') ?? '',
+            ],
+        ];
+
+
+        $html = view('web.layouts.components.about-awards-list', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
 

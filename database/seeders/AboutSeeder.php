@@ -64,6 +64,7 @@ class AboutSeeder extends Seeder
                 'column_set' => json_encode([
                     ['column' => 'year', 'component' => 'minmax-input-text'],
                     ['column' => 'company', 'component' => 'minmax-input-text'],
+                    ['column' => 'pic', 'component' => 'minmax-images'],
 
                 ]),
                 'sort' => 3, 'active' => 1,
