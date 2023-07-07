@@ -493,6 +493,7 @@ class PageBuilder extends ParentBuilder
                 ->where(function ($query)  {
                     $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>', now());
                 })
+                ->distributedOrderBy()
                 ->get() ?? [];
         }
 

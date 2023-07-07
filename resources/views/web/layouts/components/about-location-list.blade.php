@@ -7,12 +7,12 @@
       <div class="DataList" data-aos="fade-up" data-aos-duration="1000">
         <h4 class="DataListName mb-0" data-aos="fade-right" data-aos-duration="1500">{{array_get($item2,'title')}}</h4>
         <div class="DataListInfo" data-aos="fade-right" data-aos-duration="1500">
-          <p class="DataListInfoWord ">{{array_get($item2,'address')}}</p>
+          <p class="DataListInfoWord">{{array_get($item2,'address')}}</p>
           <ul class="DataListInfoItemBox list-unstyled mb-0">
             <li class="DataListInfoItem">
               <div class="DataListInfoItemTitle">@lang('web.about_location.phone'){{--電話--}}</div>
               <div class="DataListInfoItemText FontSub">
-                <a href="tel:886-7-3622663">{{array_get($item2,'phone')}}</a>
+                <a href="tel:{{array_get($item2,'phone')}}">{{array_get($item2,'phone')}}</a>
               </div>
             </li>
             <li class="DataListInfoItem">
