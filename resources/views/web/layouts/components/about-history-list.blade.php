@@ -8,8 +8,9 @@
 
   <div class="hstyTimeEvents jsHistoryTimeEvents" data-aos="fade-left" data-aos-duration="1000">
     @foreach($years ?? [] as $key => $year)
+      @php $i = 0; @endphp
       @foreach(array_get($blocks,$year) ?? [] as $key2 => $itemYear)
-        <div class="hstyTimeEventsBlock d-flex align-items-start justify-content-start flex-wrap flex-md-nowrap jsHistoryYearBlock" data-year="@if($key2 == 0) {{$year}} @endIf" data-kind="{{$year}}" data-aos="fade-up" data-aos-duration="1000">
+        <div class="hstyTimeEventsBlock d-flex align-items-start justify-content-start flex-wrap flex-md-nowrap jsHistoryYearBlock" data-year="@if($i == 0){{$year}}@endIf" data-kind="{{$year}}" data-aos="fade-up" data-aos-duration="1000">
           <div class="hstyTimeEventsBlockYear d-flex align-items-center justify-content-start">
             <div class="hstyTimeEventsBlockYearDecro"></div>
             <div>{{$key2}}</div>
@@ -17,7 +18,7 @@
           <div class="hstyTimeEventsBlockListBox">
             @php $m = ''; @endphp
             @foreach($itemYear ?? [] as $key3 => $item3)
-              <div class="hstyTimeEventsBlockList d-flex align-items-start justify-content-start @if($key3 > 0) last @endIf">
+              <div class="hstyTimeEventsBlockList d-flex align-items-start justify-content-start @if($key3 == count($itemYear) - 1) last @endIf">
                 @if(array_get($item3,'start_at')->format('M') != $m)
                   @php $m = array_get($item3,'start_at')->format('M'); @endphp
                   <div class="hstyTimeEventsBlockListMonth ">{{array_get($item3,'start_at')->format('M')}}{{--Sep.--}}</div>
@@ -32,6 +33,7 @@
                   </div>
                 </div>
               </div>
+              @php ++$i; @endphp
             @endForeach
           </div>
         </div>
