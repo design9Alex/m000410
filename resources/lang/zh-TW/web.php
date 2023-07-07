@@ -16,5 +16,10 @@ return [
 
     ],
 
+    'about_management' => [
+        'department' => '部門/職稱',
+        'responsibilities' => '工作權責',
+    ],
+
 
 ];

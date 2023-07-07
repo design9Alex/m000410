@@ -163,6 +163,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'about-management-list':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceAboutManagementList($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -289,7 +297,62 @@ class PageBuilder extends ParentBuilder
     }
 
 
+    //replaceAboutManagementList
+    protected function replaceAboutManagementList($blockNode)
+    {
 
+        $categoryId = 'web-block-abouts-management';
+        $articleCategory = ArticleCategory::query()
+            ->with(['articleCategories.articleCategories'])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where('id',$categoryId)->distributedOrWhere('code',$categoryId)
+            ->distributedActive()
+            ->orderBy('sort')
+            ->first();
+
+
+
+        if(blank($articleCategory)){
+            abort(404);
+        }
+
+        $articleBlocks = (new ArticleBlockRepository())->query()
+            ->with([
+                'articleCategories.articleCategory',
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->whereHas('articleCategories', function ($query) use($articleCategory) {
+                $query->where('id', array_get($articleCategory,'id'));
+            })
+
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>', now());
+            })
+            ->distributedActive()
+            ->orderBy('sort')
+            ->get();
+
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'articleCategory' => $articleCategory,
+            'articleBlocks' => $articleBlocks,
+        ];
+
+
+        $html = view('web.layouts.components.about-management-list', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
 
 
     protected function prepareMenus()
