@@ -195,6 +195,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'news-post':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceNewsPost($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -652,6 +660,156 @@ class PageBuilder extends ParentBuilder
 
 
         $html = view('web.layouts.components.news-list', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+    //replaceNewsPost
+    /**
+     * @param  \DOMElement|\DOMNode $blockNode
+     */
+    protected function replaceNewsPost($blockNode)
+    {
+        $articlePageId = 'web-news';
+        $articlePostId = request()->route('id');
+
+        $articleCategory = array();
+        $categoryId = request()->route('cls') ?? '';
+
+        if(filled(request()->route('cls'))) {
+
+            $articleCategory = ArticleCategory::query()
+                ->where(function ($q) use ($categoryId) {
+                    $q->orWhere('id', $categoryId)->distributedOrWhere('path', $categoryId)->distributedOrWhere('code', $categoryId);
+                })
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedActive()
+                ->first();
+        }
+
+        if(blank($articleCategory) && !$this->isPreview('admin.article-post.preview-view')){
+            abort(404);
+        }
+
+
+        $articlePost = ArticlePost::query()
+            ->with([
+                'articleCategories.articleCategory',
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where(function ($query) {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query) {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>=', now());
+            })
+            ->distributedActive()
+            ->where(function($query) use($articlePostId){
+                $query->orWhere('id',$articlePostId)->distributedOrWhere('path',$articlePostId);
+            })
+            ->first();
+
+        if ($this->isPreview('admin.article-post.preview-view')) {
+            $articlePost = new ArticlePost(session('admin.preview-data'));
+        }
+
+
+        if (blank($articlePost)) {
+            abort(404);
+        }
+
+        $articlePostId = array_get($articlePost,'id');
+
+
+        $site_title = array_get($articlePost,'meta_title' , array_get($articlePost,'title'));
+        $this->setSeo('title',$site_title.' | '.webData('site_title'));
+
+        $meta_description = array_get($articlePost,'meta_description' , array_get($articlePost,'description'));
+
+        $this->setSeo('description',$meta_description);
+        $this->setSeo('keywords',array_get($articlePost,'meta_keywords'));
+        $this->setSeo('image',array_get($articlePost,'meta_image.0.path'));
+
+
+        $this->recordTrack($articlePost,'clicked');
+
+        if ($this->isPreview('admin.article-post.preview-view')) {
+            $parentCategoryID = array_get($articlePost, 'articleCategories.0');
+        }else {
+            $parentCategoryID = $articlePost->articleCategories[0]->id;
+        }
+
+
+
+        $allPosts = ArticlePost::query()
+            ->with([
+                'articleCategories.articlePage',
+                'articleCategories.articleCategory.articlePage',
+                'articleCategories.articleCategory.articleCategory.articlePage',
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->when(filled($categoryId), function ($query) use ($categoryId) {
+                return $query->whereHas('articleCategories', function ($query) use ($categoryId) {
+                    $query->where(function ($q) use ($categoryId) {
+                        $q->orWhere('id', $categoryId)->distributedOrWhere('path', $categoryId)->distributedOrWhere('code', $categoryId);
+                    });
+                });
+            })
+            ->where(function ($query) {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query) {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>=', now());
+            })
+            ->distributedActive()
+            ->orderBy('pinned', 'desc')
+            ->orderBy('posted_at', 'desc')
+            ->orderBy('id')
+            ->get();
+
+
+
+
+        $postsCount = count($allPosts);
+        // dd($postsCount);
+
+        $key = array_search($articlePostId, array_pluck($allPosts, 'id'));
+
+        $prev = null;
+        $next = null;
+
+        if ($key == 0) {
+            $prev = null;
+            $postsCount > 1 ? $next = $allPosts[$key + 1] : $next = null;
+
+        } elseif ($key == $postsCount - 1) {
+            $prev =   $allPosts[$key - 1];
+            $next = null;
+        } else {
+            $prev = $allPosts[$key - 1];
+            $next = $allPosts[$key + 1];
+        }
+
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'fullUrl' => request()->fullUrl(),
+            'prev' => $prev,
+            'next' => $next,
+            'articlePageId' => $articlePageId,
+            'articlePost' => $articlePost,
+            'routeParameters' => [
+                'category' => request()->route('id'),
+            ],
+        ];
+
+        $html = view('web.layouts.components.news-post', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
 
