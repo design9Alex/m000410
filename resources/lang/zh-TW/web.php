@@ -21,5 +21,10 @@ return [
         'responsibilities' => '工作權責',
     ],
 
+    'about_location' => [
+        'phone' => '電話',
+        'fax' => '傳真',
+    ],
+
 
 ];

@@ -179,6 +179,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'about-location-list':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceAboutLocationList($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -432,6 +440,74 @@ class PageBuilder extends ParentBuilder
 
 
         $html = view('web.layouts.components.about-awards-list', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+    //replaceAboutLocationList
+    protected function replaceAboutLocationList($blockNode)
+    {
+
+        $categoryId = 'web-block-abouts-location';
+        $articleCategory = ArticleCategory::query()
+            ->with([
+                'articleCategories' => function($query){
+                    $query->orderBy('sort');
+                },
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where('id',$categoryId)->distributedOrWhere('code',$categoryId)
+            ->distributedActive()
+            ->first();
+
+
+
+        if(blank($articleCategory)){
+            abort(404);
+        }
+
+        $articleBlocks = array();
+
+        foreach(array_get($articleCategory,'articleCategories') ?? [] as $key => $item){
+            $articleBlocks[array_get($item,'id')] = (new ArticleBlockRepository())->query()
+                ->with([
+                    'articleCategories' => function($query){
+                        $query->orderBy('sort');
+                    },
+                ])
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->whereHas('articleCategories', function ($query) use($item) {
+                    $query->where('id', array_get($item,'id'));
+                })
+
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->where(function ($query)  {
+                    $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+                })
+                ->where(function ($query)  {
+                    $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>', now());
+                })
+                ->get() ?? [];
+        }
+
+
+
+
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'articleCategory' => $articleCategory,
+            'articleBlocks' => $articleBlocks,
+        ];
+
+
+        $html = view('web.layouts.components.about-location-list', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
 
