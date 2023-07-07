@@ -1,6 +1,6 @@
 <?php
 /**
- * Page route:news
+ * Page route:news-post
  *
  * @var string $local
  */
@@ -20,7 +20,8 @@
 
   @include('web.templates.modules.breadcrumbs')
 
+
   <div class="OuterBox">
-    @include('web.templates.modules.news-list')
+    @include('web.templates.modules.news-post')
   </div>
 </main>

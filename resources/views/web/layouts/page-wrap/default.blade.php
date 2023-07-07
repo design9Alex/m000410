@@ -31,6 +31,7 @@ switch(request()->route()->getName()){
   case 'web.page.web-about-relationship': $wpClass = 'reltBox'; break;
   case 'web.page.web-about-location': $wpClass = 'locationBox'; break;
   case 'web.page.web-news': $wpClass = 'newsBox'; break;
+  case 'web.page.web-news-post': $wpClass = 'newsdtlBox nd1'; break;
 }
 ?>
 <!doctype html>

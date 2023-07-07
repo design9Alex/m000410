@@ -4,24 +4,12 @@
   <nav class="BreadBox" data-aos="fade-left" data-aos-duration="900">
     <ol class="mb-0 list-unstyled d-flex align-items-center justify-content-start flex-wrap">
       <li>
-        <a href="index.php" class="BreadIcon defaultA">
+        <a href="{{route('web.home')}}" class="BreadIcon defaultA">
           <i class="icon_home"></i>
         </a>
       </li>
       <li class="middle">
         <i class="icon_arrowR2"></i>
-      </li>
-
-      <li>
-        <a class="BreadText defaultA" href="about.php">關於我們</a>
-      </li>
-
-      <li class="middle">
-        <i class="icon_arrowR2"></i>
-      </li>
-
-      <li>
-        <div class="BreadText now">公司簡介</div>
       </li>
 
     </ol>

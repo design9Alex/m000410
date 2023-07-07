@@ -543,6 +543,7 @@ class PageBuilder extends ParentBuilder
 
 
 
+
         $articleCategory = array();
         $categoryId = request()->route('cls') ?? '';
         if(filled(request()->route('cls'))) {
@@ -557,11 +558,7 @@ class PageBuilder extends ParentBuilder
 
 
         $topPost = ArticlePost::query()
-                ->with([
-                    'articleCategories.articlePage',
-                    'articleCategories.articleCategory.articlePage',
-                    'articleCategories.articleCategory.articleCategory.articlePage',
-                ])
+                ->with(['articleCategories'])
                 ->when(filled($categoryId), function ($query) use ($categoryId) {
                     return $query->whereHas('articleCategories', function ($query) use ($categoryId) {
                         //$query->where('id', $categoryId);
@@ -569,6 +566,10 @@ class PageBuilder extends ParentBuilder
                             $q->orWhere('id', $categoryId)->distributedOrWhere('path', $categoryId)->distributedOrWhere('code', $categoryId);
                         });
                     });
+                })
+                ->whereHas('articleCategories', function ($query) use($articleCategories)  {
+                    //$query->where('id', request()->route('cls'));
+                    $query->whereIn('id',array_pluck($articleCategories,'id'));
                 })
                 ->where(function ($query) {
                     $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
@@ -587,9 +588,12 @@ class PageBuilder extends ParentBuilder
                 ->orderBy('id')
                 ->first() ?? [];
 
-
-
         $baseQuery = ArticlePost::query()
+            ->with([
+                'articleCategories.articlePage',
+                'articleCategories.articleCategory.articlePage',
+                'articleCategories.articleCategory.articleCategory.articlePage',
+            ])
             ->when(filled($categoryId), function ($query) use ($categoryId) {
                 return $query->whereHas('articleCategories', function ($query) use ($categoryId) {
                     //$query->where('id', $categoryId);
@@ -601,7 +605,10 @@ class PageBuilder extends ParentBuilder
             ->when(filled($topPost), function ($query) use ($topPost) {
                 return $query->where('id','!=', array_get($topPost,'id'));
             })
-
+            ->whereHas('articleCategories', function ($query) use($articleCategories)  {
+                //$query->where('id', request()->route('cls'));
+                $query->whereIn('id',array_pluck($articleCategories,'id'));
+            })
             ->where(function ($query) {
                 $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
             })
@@ -617,11 +624,7 @@ class PageBuilder extends ParentBuilder
         $amount = $baseQuery->count();
 
         $articlePosts = $baseQuery
-            ->with([
-                'articleCategories.articlePage',
-                'articleCategories.articleCategory.articlePage',
-                'articleCategories.articleCategory.articleCategory.articlePage',
-            ])
+
             ->orderBy('pinned', 'desc')
             ->orderBy('posted_at', 'desc')
             ->orderBy('id')
