@@ -7,8 +7,8 @@
     </div>
     <h3 class="awardsBlockTitle">{{array_get($item,'title')}}</h3>
     <ul class="awardsBlockInfoBox list-unstyled mb-0">
-      <li class="awardsBlockInfo">年度：{{array_get($item,'year')}}</li>
-      <li class="awardsBlockInfo">公司：{{array_get($item,'company')}}</li>
+      <li class="awardsBlockInfo">@lang('web.about_awards.year'){{--年度--}}：{{array_get($item,'year')}}</li>
+      <li class="awardsBlockInfo">@lang('web.about_awards.company'){{--公司--}}：{{array_get($item,'company')}}</li>
     </ul>
   </div>
   @endForeach

@@ -187,6 +187,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'news-list':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceNewsList($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -511,6 +519,139 @@ class PageBuilder extends ParentBuilder
         $html = view('web.layouts.components.about-location-list', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
+
+
+    //replaceNewsList
+    protected function replaceNewsList($blockNode)
+    {
+
+        $perPage = $blockNode->getAttribute('data-per');
+        $perPage = blank($perPage) || $perPage == 0 ? 8 : intval($perPage);
+
+        $articlePageId = 'web-news';
+        $currentPage = intval(request('page', 1));
+
+        $articleCategories = ArticleCategory::query()
+            ->where('parent_id', $articlePageId)
+            ->with(['articleCategories.articleCategories'])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->distributedActive()
+            ->orderBy('sort')
+            ->get();
+
+
+
+        $articleCategory = array();
+        $categoryId = request()->route('cls') ?? '';
+        if(filled(request()->route('cls'))) {
+
+            $articleCategory = ArticleCategory::query()
+                ->where(function ($q) use ($categoryId) {
+                    $q->orWhere('id', $categoryId)->distributedOrWhere('path', $categoryId)->distributedOrWhere('code', $categoryId);
+                })
+                ->distributedActive()
+                ->first();
+        }
+
+
+        $topPost = ArticlePost::query()
+                ->with([
+                    'articleCategories.articlePage',
+                    'articleCategories.articleCategory.articlePage',
+                    'articleCategories.articleCategory.articleCategory.articlePage',
+                ])
+                ->when(filled($categoryId), function ($query) use ($categoryId) {
+                    return $query->whereHas('articleCategories', function ($query) use ($categoryId) {
+                        //$query->where('id', $categoryId);
+                        $query->where(function ($q) use ($categoryId) {
+                            $q->orWhere('id', $categoryId)->distributedOrWhere('path', $categoryId)->distributedOrWhere('code', $categoryId);
+                        });
+                    });
+                })
+                ->where(function ($query) {
+                    $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+                })
+                ->where(function ($query) {
+                    $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>=', now());
+                })
+
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('pinned','1')
+                ->distributedActive()
+                ->orderBy('pinned', 'desc')
+                ->orderBy('posted_at', 'desc')
+                ->orderBy('id')
+                ->first() ?? [];
+
+
+
+        $baseQuery = ArticlePost::query()
+            ->when(filled($categoryId), function ($query) use ($categoryId) {
+                return $query->whereHas('articleCategories', function ($query) use ($categoryId) {
+                    //$query->where('id', $categoryId);
+                    $query->where(function ($q) use ($categoryId) {
+                        $q->orWhere('id', $categoryId)->distributedOrWhere('path', $categoryId)->distributedOrWhere('code', $categoryId);
+                    });
+                });
+            })
+            ->when(filled($topPost), function ($query) use ($topPost) {
+                return $query->where('id','!=', array_get($topPost,'id'));
+            })
+
+            ->where(function ($query) {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query) {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>=', now());
+            })
+
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->distributedActive();
+
+        $amount = $baseQuery->count();
+
+        $articlePosts = $baseQuery
+            ->with([
+                'articleCategories.articlePage',
+                'articleCategories.articleCategory.articlePage',
+                'articleCategories.articleCategory.articleCategory.articlePage',
+            ])
+            ->orderBy('pinned', 'desc')
+            ->orderBy('posted_at', 'desc')
+            ->orderBy('id')
+            ->forPage($currentPage, $perPage)
+            ->get();
+
+
+
+
+        $viewData = [
+            'total' => $amount < 1 ? 1 : intval(ceil($amount / $perPage)),
+            'current' => $currentPage,
+            'routeName' => request()->route()->getName(),
+            'articlePageId' => $articlePageId,
+            'topPost' => $topPost,
+            'articlePosts' => $articlePosts,
+            'articleCategories' => $articleCategories,
+            'articleCategory' => $articleCategory,
+            'cls' => request()->route('cls') ?? '',
+            'routeParameters' => [
+                'cls' => request()->route('cls') ?? '',
+            ],
+        ];
+
+
+
+        $html = view('web.layouts.components.news-list', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
 
 
     protected function prepareMenus()

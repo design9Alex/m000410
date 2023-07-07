@@ -11,13 +11,17 @@
       </div>
       <nav class="menuInner">
         <ul class="d-xl-flex align-items-xl-stretch justify-content-xl-between list-unstyled mb-0">
-          @foreach ($headerMenus as $systemMenu)
+          @foreach ($headerMenus as $key => $systemMenu)
             @php
                 $requestUrl = Request::url();
             @endphp
 
             <li class="menuBlock
-            @if( in_array(array_get($systemMenu,'code').'-'.Request::path(),array_pluck(array_get($systemMenu,'systemMenus'),'code')) ) active default @endIf
+            @if(array_get($systemMenu,'code') == 'web-header-abouts')
+              @if( in_array(array_get($systemMenu,'code').'-'.Request::path(),array_pluck(array_get($systemMenu,'systemMenus'),'code')) ) active default @endIf
+            @else
+              @if( strstr(Request::path(),str_replace('web-header-','',array_get($systemMenu,'code')) ) ) active default @endIf
+            @endIf
             @if(array_get($systemMenu,'code') == 'web-header-contact' || array_get($systemMenu,'code') == 'web-header-staff') jsMenuSubOther @endIf
             d-xl-flex align-items-xl-start justify-content-xl-center flex-xl-column jsMenuBlock">
 
@@ -32,14 +36,25 @@
                 <ul class="menuSub list-unstyled jsMenuSub">
                   @if($systemMenu->code === 'web-header-news')
                     <li>
-                      <a href="{{route('web.page.web-news')}}" class="menuSubList defaultA  d-flex align-items-center justify-content-between justify-content-xl-center jsMenuSubHref" >
-                        <div class="menuSubText">全部消息</div>
+                      <a href="{{route('web.page.web-news')}}" class="menuSubList defaultA
+                        @if( Request::path() == 'news' || Request::path() == 'en/news' )
+                          active
+                        @endIf
+
+                        d-flex align-items-center justify-content-between justify-content-xl-center jsMenuSubHref" >
+                        <div class="menuSubText">@lang('web.news.all'){{--全部消息--}}</div>
                         <i class="icon_arrowR3"></i>
                       </a>
                     </li>
                     @foreach($newsCategories ?? [] as $key => $item)
                     <li>
-                      <a href="{{route('web.page.web-news',['cls' => array_get($item,'path',array_get($item,'id'))])}}" class="menuSubList defaultA  d-flex align-items-center justify-content-between justify-content-xl-center jsMenuSubHref" >
+                      <a href="{{route('web.page.web-news',['cls' => array_get($item,'path',array_get($item,'id'))])}}" class="menuSubList defaultA
+                      @if( (filled(array_get($item,'path')) && strstr(Request::path(),'news/'.array_get($item,'path')) )
+                        || strstr(Request::path(),'news/'.array_get($item,'id'))
+                        )
+                      active
+                      @endIf
+                      d-flex align-items-center justify-content-between justify-content-xl-center jsMenuSubHref" >
                         <div class="menuSubText">{{array_get($item,'title')}}</div>
                         <i class="icon_arrowR3"></i>
                       </a>

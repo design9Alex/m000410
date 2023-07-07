@@ -191,6 +191,27 @@ function breadcrumbs($route, $parameters = [])
 
             break;
 
+        case 'web.page.web-news':
+            $breadcrumbs[] = ['uri' => route('web.page.web-news') , 'title' => trans('web.menu.news')];
+
+            $articleCategory = \Minmax\Article\Models\ArticleCategory::query()
+                ->with(['articleCategories.articleCategories'])
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->where(function($query){
+                    $query->orwhere('id',request()->route('cls'))->distributedOrWhere('path',request()->route('cls'));
+                })
+                ->distributedActive()
+                ->first();
+
+            if(filled(request()->route('cls'))) {
+                $breadcrumbs[] = ['uri' => route('web.page.web-news', ['cls' => request()->route('cls') ?? '']), 'title' => array_get($articleCategory, 'title', trans('web.news.all'))];
+            }else{
+                $breadcrumbs[] = ['uri' => route('web.page.web-news'), 'title' =>  trans('web.news.all')];
+            }
+            break;
+
 
     }
 
