@@ -5,6 +5,7 @@ return [
         'home' => '首頁',
         'abouts' => '關於我們',
         'news' => '新聞中心',
+        'products' => '產品與服務',
         'investor' => '投資人關係',
         'stakeholder' => '企業永續',
         'contact' => '聯絡我們',
@@ -12,7 +13,9 @@ return [
     ],
 
     'page' => [
-
+        'prev' => '上一則',
+        'back_list' => '返回列表',
+        'next' => '下一則',
 
     ],
 
@@ -35,11 +38,8 @@ return [
         'all' => '全部消息',
     ],
 
-    'news-post' => [
-        'prev' => '上一則',
-        'back_list' => '返回列表',
-        'next' => '下一則',
+    'products' => [
+        'scale' => '營收佔比:',
     ],
-
 
 ];

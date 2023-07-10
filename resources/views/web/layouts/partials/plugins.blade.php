@@ -23,3 +23,7 @@
 
 <script src="{{ asset('static/web/scripts/ajax.js') }}"></script>
 
+<script>
+  let _getProductCategory = '{{route('web.ajax.getProductCategory')}}';
+  let _saveContactUri = '{{route('web.ajax.contact.form')}}';
+</script>

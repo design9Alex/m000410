@@ -372,7 +372,7 @@ class InsertInitialPages extends Migration
                     return view('web.templates.pages.products', ['local' => 'zh-TW'])->render();
                 }, ''),
                 'start_at' => null, 'end_at' => null,
-                'path' => 'products/{cls?}/{cls2?}',
+                'path' => 'products',
                 'menus' => null,
                 'permission' => null, 'roles' => null,
                 'operations' => json_encode(['indelible']),

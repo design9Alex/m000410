@@ -39,15 +39,15 @@
       <div class="ArticledtlLinkGuideDecro">
         <i class="icon_arrowL0"></i>
       </div>
-      <div class="ArticledtlLinkGuideText">@lang('web.news-post.prev'){{--上一則--}}</div>
+      <div class="ArticledtlLinkGuideText">@lang('web.page.prev'){{--上一則--}}</div>
     </a>
     @endIf
 
-    <a href="{{route('web.page.web-news',['cls' => array_get($articlePost,'articleCategories.0.path',array_get($articlePost,'articleCategories.0.id')) ])}}" class="ArticledtlLinkBack defaultA">@lang('web.news-post.back_list'){{--返回列表--}}</a>
+    <a href="{{route('web.page.web-news',['cls' => array_get($articlePost,'articleCategories.0.path',array_get($articlePost,'articleCategories.0.id')) ])}}" class="ArticledtlLinkBack defaultA">@lang('web.page.back_list'){{--返回列表--}}</a>
 
     @if(filled($next))
     <a href="{{route('web.page.web-news-post',['cls' => array_get($next,'articleCategories.0.path',array_get($next,'articleCategories.0.id')) , 'id' => array_get($next,'id') ])}}" class="ArticledtlLinkGuide defaultA next">
-      <div class="ArticledtlLinkGuideText">@lang('web.news-post.next'){{--下一則--}}</div>
+      <div class="ArticledtlLinkGuideText">@lang('web.page.next'){{--下一則--}}</div>
       <div class="ArticledtlLinkGuideDecro">
         <i class="icon_arrowR0"></i>
       </div>

@@ -203,6 +203,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'products-list':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceProductsList($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -810,6 +818,160 @@ class PageBuilder extends ParentBuilder
         ];
 
         $html = view('web.layouts.components.news-post', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+    //replaceProductsList
+    protected function replaceProductsList($blockNode)
+    {
+        $perPage = $blockNode->getAttribute('data-per');
+        $perPage = blank($perPage) || $perPage == 0 ? 10 : intval($perPage);
+
+        $currentPage = intval(request('page', 1));
+
+        $categoryId = 'web-intro-products';
+        $articleCategory = ArticleCategory::query()
+            ->with([
+                'articleCategories' => function($query){
+                    $query->distributedActive()->orderBy('sort');
+                },
+                'articleCategories.articleCategories' => function($query){
+                    $query->distributedActive()->orderBy('sort');
+                },
+            ])
+
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where('id',$categoryId)->distributedOrWhere('code',$categoryId)
+            ->distributedActive()
+            ->orderBy('sort')
+            ->first();
+
+
+
+        if(blank($articleCategory)){
+            abort(404);
+        }
+
+        $cls = filled(request()->input('cls')) ? request()->input('cls') : array_get($articleCategory,'articleCategories.0.id');
+        $cls2 = filled(request()->input('cls2')) ? request()->input('cls2') : array_get($articleCategory,'articleCategories.0.articleCategories.0.id');
+
+        if(request()->has('cls2')){
+            $cls2 = request()->input('cls2') ?? '';
+        }
+
+        $category = ArticleCategory::query()
+            ->with([
+                'articleCategories' => function($query){
+                    $query->distributedActive()->orderBy('sort');
+                },
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where('id',$cls)->distributedOrWhere('code',$cls)
+            ->distributedActive()
+            ->first() ?? [];
+
+
+        $secCategory = array();
+
+
+        if(filled($cls) && filled($cls2)){
+            $secCategory = ArticleCategory::query()
+                    ->whereHas('languageUsage', function ($query) {
+                        $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                    })
+                    ->where('id',$cls2)->distributedOrWhere('code',$cls2)
+                    ->distributedActive()
+                    ->first() ?? [];
+        }
+
+
+
+
+
+
+
+        $baseQuery = (new ArticleIntroRepository())->query()
+            ->with([
+                'articleCategories' => function ($query) {
+                    $query->distributedActive()->orderBy('sort')
+                        ->whereHas('languageUsage', function ($query) {
+                            $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                        });
+                },
+                'articleCategories.articleCategory' => function ($query) {
+                    $query->distributedActive()->orderBy('sort')
+                        ->whereHas('languageUsage', function ($query) {
+                        $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                    });
+                },
+
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->whereHas('articleCategories', function ($query) use($cls2) {
+                $query->distributedActive()->where('id', $cls2);
+            })
+
+
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>', now());
+            })
+
+            ->distributedActive();
+
+
+        $baseQuery = $baseQuery->when(!empty(request()->input('product_keyword')), function ($query)  {
+            return $query->where(function ($query)   {
+                $query
+                    ->distributedOrWhere('title', 'like', '%' . request()->input('product_keyword') . '%')
+                    ->distributedOrWhere('description', 'like', '%' . request()->input('product_keyword') . '%')
+                    ->distributedOrWhere('editor', 'like', '%' . request()->input('product_keyword') . '%');
+            });
+        });
+
+        $amount = $baseQuery->count();
+
+        $articleIntros = $baseQuery
+            ->orderBy('sort')
+            ->forPage($currentPage, $perPage)
+            ->get();
+
+
+
+
+        $viewData = [
+            'total' => $amount < 1 ? 1 : intval(ceil($amount / $perPage)),
+            'current' => $currentPage,
+            'routeName' => request()->route()->getName(),
+            'articleCategory' => $articleCategory,
+            'articleIntros' => $articleIntros,
+            'cls' => $cls,
+            'cls2' => $cls2,
+            'product_keyword' => request()->input('product_keyword') ?? '',
+            'category' => $category,
+            'secCategory' => $secCategory,
+            'routeParameters' => [
+                'cls' => $cls,
+                'cls2' => $cls2,
+                'product_keyword' => request()->input('product_keyword') ?? '',
+            ],
+        ];
+
+
+
+        $html = view('web.layouts.components.products-list', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
 

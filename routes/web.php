@@ -14,3 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::get('/', 'SiteController@index')->name('home');
+Route::post('saveContact', 'AjaxController@ContactForm')->name('ajax.contact.form');
+Route::post('getProductCategory', 'AjaxController@getProductCategory')->name('ajax.getProductCategory');
+Route::get('getCaptcha', 'AjaxController@getCaptcha')->name('ajax.getCaptcha'); // 驗證碼
+Route::post('saveTrack', 'AjaxController@saveTrack')->name('ajax.save.track');

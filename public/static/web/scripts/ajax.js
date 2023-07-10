@@ -1,20 +1,13 @@
 let _url = window.location.pathname;
 //let filename = url.substring(url.lastIndexOf('/')+1);
 
-let filename = _url.split('/')[2];
+let filename = _url.split('/')[1];
 if(document.documentElement.lang == 'en') {
-  filename = _url.split('/')[1];
+  filename = _url.split('/')[2];
 }
 //console.log(document.documentElement.lang);
-//console.log(filename);
-
 switch(filename){
-  case 'news': document.write('<scr' + 'ipt type="text/javascript" src="/static/web/scripts/page/news.js"></scr' + 'ipt>'); break;
   case 'products': document.write('<scr' + 'ipt type="text/javascript" src="/static/web/scripts/page/products.js"></scr' + 'ipt>'); break;
-  case 'financial-1': document.write('<scr' + 'ipt type="text/javascript" src="/static/web/scripts/page/financial-1.js"></scr' + 'ipt>'); break;
-  case 'financial-2': document.write('<scr' + 'ipt type="text/javascript" src="/static/web/scripts/page/financial-2.js"></scr' + 'ipt>'); break;
-  case 'career-1': document.write('<scr' + 'ipt type="text/javascript" src="/static/web/scripts/page/career-1.js"></scr' + 'ipt>'); break;
-  case 'career-4': document.write('<scr' + 'ipt type="text/javascript" src="/static/web/scripts/page/career-4.js"></scr' + 'ipt>'); break;
   case 'contact': document.write('<scr' + 'ipt type="text/javascript" src="/static/web/scripts/page/contact.js"></scr' + 'ipt>'); break;
 
 }

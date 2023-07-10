@@ -232,6 +232,26 @@ function breadcrumbs($route, $parameters = [])
             break;
 
 
+        case 'web.page.web-products':
+            $breadcrumbs[] = ['uri' => route('web.page.web-products') , 'title' => trans('web.menu.products')];
+
+            /*
+            $menu = \Minmax\Base\Models\SystemMenu::query()
+                ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+                ->distributedWhere('guard', 'web')
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('code','web-header-products')
+                ->distributedActive()
+                ->first();
+
+            $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
+            */
+
+            break;
+
+
     }
 
     $arr['breadcrumbs'] = $breadcrumbs ?? [];
