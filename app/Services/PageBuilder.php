@@ -211,6 +211,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'products-post':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceProductsPost($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -969,9 +977,192 @@ class PageBuilder extends ParentBuilder
             ],
         ];
 
-
-
         $html = view('web.layouts.components.products-list', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+    //replaceProductsPost
+    /**
+     * @param  \DOMElement|\DOMNode $blockNode
+     */
+    protected function replaceProductsPost($blockNode)
+    {
+        $articlePageId = 'web-products-post';
+        $articleIntroId = request()->route('id');
+
+        $articleCategory = array();
+        $cls = request()->route('cls') ?? '';
+        $cls2 = request()->route('cls2') ?? '';
+
+        if(filled(request()->route('cls'))) {
+
+            $articleCategory = ArticleCategory::query()
+                ->where(function ($q) use ($cls) {
+                    $q->orWhere('id', $cls)->distributedOrWhere('path', $cls)->distributedOrWhere('code', $cls);
+                })
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedActive()
+                ->first();
+        }
+
+        if(blank($articleCategory) && !$this->isPreview('admin.article-intro.preview-view')){
+            abort(404);
+        }
+
+
+        if(filled(request()->route('cls2'))) {
+
+            $articleSecCategory = ArticleCategory::query()
+                ->where(function ($q) use ($cls2) {
+                    $q->orWhere('id', $cls2)->distributedOrWhere('path', $cls2)->distributedOrWhere('code', $cls2);
+                })
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedActive()
+                ->first();
+        }
+
+        if(blank($articleSecCategory) && !$this->isPreview('admin.article-intro.preview-view')){
+            abort(404);
+        }
+
+
+        $articleIntro = ArticleIntro::query()
+            ->with([
+                'articleCategories.articleCategory',
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where(function ($query) {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query) {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>=', now());
+            })
+            ->distributedActive()
+            ->where(function($query) use($articleIntroId){
+                $query->orWhere('id',$articleIntroId)->distributedOrWhere('path',$articleIntroId);
+            })
+            ->first();
+
+        //dd(array_get($articleIntro,'articleCategories.0.title'));
+
+
+
+        if ($this->isPreview('admin.article-intro.preview-view')) {
+            $articleIntro = new ArticleIntro(session('admin.preview-data'));
+        }
+
+
+        if (blank($articleIntro)) {
+            abort(404);
+        }
+
+        $articleIntroId = array_get($articleIntro,'id');
+
+
+        $site_title = array_get($articleIntro,'meta_title' , array_get($articleIntro,'title'));
+        $this->setSeo('title',$site_title.' | '.webData('site_title'));
+
+        $meta_description = array_get($articleIntro,'meta_description' , array_get($articleIntro,'description'));
+
+        $this->setSeo('description',$meta_description);
+        $this->setSeo('keywords',array_get($articleIntro,'meta_keywords'));
+        $this->setSeo('image',array_get($articleIntro,'meta_image.0.path'));
+
+
+        $this->recordTrack($articleIntro,'clicked');
+
+        if ($this->isPreview('admin.article-post.preview-view')) {
+            $parentCategoryID = array_get($articleIntro, 'articleCategories.0');
+        }else {
+            $parentCategoryID = $articleIntro->articleCategories[0]->id;
+        }
+
+
+
+        $allIntros = (new ArticleIntroRepository)->query()
+            ->with([
+                'articleCategories' => function ($query) {
+                    $query->distributedActive()->orderBy('sort')
+                        ->whereHas('languageUsage', function ($query) {
+                            $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                        });
+                },
+                'articleCategories.articleCategory' => function ($query) {
+                    $query->distributedActive()->orderBy('sort')
+                        ->whereHas('languageUsage', function ($query) {
+                            $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                        });
+                },
+
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->whereHas('articleCategories', function ($query) use($cls2) {
+                $query->distributedActive()->where('id', $cls2);
+            })
+
+
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>', now());
+            })
+
+            ->orderBy('sort')
+            ->distributedActive()
+            ->get();
+
+
+
+
+
+        $introsCount = count($allIntros);
+        // dd($postsCount);
+
+        $key = array_search($articleIntroId, array_pluck($allIntros, 'id'));
+
+        $prev = null;
+        $next = null;
+
+        if ($key == 0) {
+            $prev = null;
+            $introsCount > 1 ? $next = $allIntros[$key + 1] : $next = null;
+
+        } elseif ($key == $introsCount - 1) {
+            $prev =   $allIntros[$key - 1];
+            $next = null;
+        } else {
+            $prev = $allIntros[$key - 1];
+            $next = $allIntros[$key + 1];
+        }
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'fullUrl' => request()->fullUrl(),
+            'prev' => $prev,
+            'next' => $next,
+            'articlePageId' => $articlePageId,
+            'articleIntro' => $articleIntro,
+            'routeParameters' => [
+                'cls' => request()->route('cls'),
+                'cls2' => request()->route('cls2'),
+                'id' => request()->route('id'),
+            ],
+        ];
+
+        $html = view('web.layouts.components.products-post', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
 

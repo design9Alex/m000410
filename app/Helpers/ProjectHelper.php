@@ -35,7 +35,6 @@ function breadcrumbs($route, $parameters = [])
     $breadcrumbs[] = ['uri' => route('web.home') , 'title' => trans('web.menu.home')];
 
     //\Request::route()->getName()
-
     switch($route){
         case 'web.page.web-about':
             $breadcrumbs[] = ['uri' => route('web.page.web-about') , 'title' => trans('web.menu.abouts')];
@@ -248,6 +247,40 @@ function breadcrumbs($route, $parameters = [])
 
             $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
             */
+
+            break;
+
+        case 'web.page.web-products-post':
+            $breadcrumbs[] = ['uri' => route('web.page.web-products') , 'title' => trans('web.menu.products')];
+
+            $articleIntroId = request()->route('id');
+
+            $model = $articleIntro = \Minmax\Article\Models\ArticleIntro::query()
+                ->with([
+                    'articleCategories',
+                    'articleCategories.articleCategory',
+                ])
+
+                ->where(function ($query) {
+                    $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+                })
+                ->where(function ($query) {
+                    $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>=', now());
+                })
+                ->where(function($query) use($articleIntroId){
+                    $query->orWhere('id',$articleIntroId)->distributedOrWhere('path',$articleIntroId);
+                })
+                ->distributedActive()
+                ->first();
+
+
+            $breadcrumbs[] = ['uri' => route('web.page.web-products-post',[
+                'cls' => array_get($articleIntro,'articleCategories.0.path',array_get($articleIntro,'articleCategories.0.id')) ,
+                'cls2' => array_get($articleIntro,'articleCategories.0.articleCategory.path',array_get($articleIntro,'articleCategories.0.articleCategory.id')),
+                'id' => request()->route('id')
+            ]) , 'title' => array_get($articleIntro,'title') ];
+
+
 
             break;
 

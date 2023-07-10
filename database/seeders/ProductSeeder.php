@@ -283,31 +283,31 @@ HTML;
 									<ul class="productdtlIntroIconBox d-flex align-items-center justify-content-start flex-wrap flex-lg-nowrap list-unstyled mb-0">
 																					<li class="productdtlIntroIcon">
 												<div class="productdtlIntroIconImg">
-													<img data-src="/static/web/stylesimages/product/pc.svg" alt="PC週邊" class="defaultImg lazyload">
+													<img data-src="/static/web/styles/images/product/pc.svg" alt="PC週邊" class="defaultImg lazyload">
 												</div>
 												<div class="productdtlIntroIconText">PC週邊</div>
 											</li>
 																					<li class="productdtlIntroIcon">
 												<div class="productdtlIntroIconImg">
-													<img data-src="/static/web/stylesimages/product/electronic.svg" alt="消費性電子" class="defaultImg lazyload">
+													<img data-src="/static/web/styles/images/product/electronic.svg" alt="消費性電子" class="defaultImg lazyload">
 												</div>
 												<div class="productdtlIntroIconText">消費性電子</div>
 											</li>
 																					<li class="productdtlIntroIcon">
 												<div class="productdtlIntroIconImg">
-													<img data-src="/static/web/stylesimages/product/telecommunications.svg" alt="網通電信" class="defaultImg lazyload">
+													<img data-src="/static/web/styles/images/product/telecommunications.svg" alt="網通電信" class="defaultImg lazyload">
 												</div>
 												<div class="productdtlIntroIconText">網通電信</div>
 											</li>
 																					<li class="productdtlIntroIcon">
 												<div class="productdtlIntroIconImg">
-													<img data-src="/static/web/stylesimages/product/mobile.svg" alt="行動裝置" class="defaultImg lazyload">
+													<img data-src="/static/web/styles/images/product/mobile.svg" alt="行動裝置" class="defaultImg lazyload">
 												</div>
 												<div class="productdtlIntroIconText">行動裝置</div>
 											</li>
 																					<li class="productdtlIntroIcon">
 												<div class="productdtlIntroIconImg">
-													<img data-src="/static/web/stylesimages/product/car.svg" alt="車用" class="defaultImg lazyload">
+													<img data-src="/static/web/styles/images/product/car.svg" alt="車用" class="defaultImg lazyload">
 												</div>
 												<div class="productdtlIntroIconText">車用</div>
 											</li>
@@ -327,6 +327,18 @@ HTML;
                 'editor' => $editor,
                 'application' => $application,
                 'pic' => json_encode([
+                    [
+                        'path' => '/static/web/styles/images/product/0/0.webp',
+                        'title' => null, 'media' => null, 'autoplay' => '0', 'cover' => '0', 'device' => 'all',
+                    ],
+                    [
+                        'path' => '/static/web/styles/images/product/0/0.webp',
+                        'title' => null, 'media' => null, 'autoplay' => '0', 'cover' => '0', 'device' => 'all',
+                    ],
+                    [
+                        'path' => '/static/web/styles/images/product/0/0.webp',
+                        'title' => null, 'media' => null, 'autoplay' => '0', 'cover' => '0', 'device' => 'all',
+                    ],
                     [
                         'path' => '/static/web/styles/images/product/0/0.webp',
                         'title' => null, 'media' => null, 'autoplay' => '0', 'cover' => '0', 'device' => 'all',
@@ -616,31 +628,31 @@ HTML;
 									<ul class="productdtlIntroIconBox d-flex align-items-center justify-content-start flex-wrap flex-lg-nowrap list-unstyled mb-0">
 																					<li class="productdtlIntroIcon">
 												<div class="productdtlIntroIconImg">
-													<img data-src="/static/web/stylesimages/product/pc.svg" alt="PC週邊" class="defaultImg lazyload">
+													<img data-src="/static/web/styles/images/product/pc.svg" alt="PC週邊" class="defaultImg lazyload">
 												</div>
 												<div class="productdtlIntroIconText">PC週邊</div>
 											</li>
 																					<li class="productdtlIntroIcon">
 												<div class="productdtlIntroIconImg">
-													<img data-src="/static/web/stylesimages/product/electronic.svg" alt="消費性電子" class="defaultImg lazyload">
+													<img data-src="/static/web/styles/images/product/electronic.svg" alt="消費性電子" class="defaultImg lazyload">
 												</div>
 												<div class="productdtlIntroIconText">消費性電子</div>
 											</li>
 																					<li class="productdtlIntroIcon">
 												<div class="productdtlIntroIconImg">
-													<img data-src="/static/web/stylesimages/product/telecommunications.svg" alt="網通電信" class="defaultImg lazyload">
+													<img data-src="/static/web/styles/images/product/telecommunications.svg" alt="網通電信" class="defaultImg lazyload">
 												</div>
 												<div class="productdtlIntroIconText">網通電信</div>
 											</li>
 																					<li class="productdtlIntroIcon">
 												<div class="productdtlIntroIconImg">
-													<img data-src="/static/web/stylesimages/product/mobile.svg" alt="行動裝置" class="defaultImg lazyload">
+													<img data-src="/static/web/styles/images/product/mobile.svg" alt="行動裝置" class="defaultImg lazyload">
 												</div>
 												<div class="productdtlIntroIconText">行動裝置</div>
 											</li>
 																					<li class="productdtlIntroIcon">
 												<div class="productdtlIntroIconImg">
-													<img data-src="/static/web/stylesimages/product/car.svg" alt="車用" class="defaultImg lazyload">
+													<img data-src="/static/web/styles/images/product/car.svg" alt="車用" class="defaultImg lazyload">
 												</div>
 												<div class="productdtlIntroIconText">車用</div>
 											</li>

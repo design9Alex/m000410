@@ -42,4 +42,9 @@ return [
         'scale' => '營收佔比:',
     ],
 
+    'product' => [
+        'editor' => '產品說明',
+        'application' => '應用產業',
+    ],
+
 ];
