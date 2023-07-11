@@ -219,6 +219,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'financial-menu':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceFinancialMenu($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -1163,6 +1171,59 @@ class PageBuilder extends ParentBuilder
         ];
 
         $html = view('web.layouts.components.products-post', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+    //replaceFinancialMenu
+    /**
+     * @param  \DOMElement|\DOMNode $blockNode
+     */
+    protected function replaceFinancialMenu($blockNode)
+    {
+        $financialMenu = \Minmax\Base\Models\SystemMenu::query()
+            ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+
+            ->with([
+                'systemMenus' => function ($query) {
+                    $query->distributedActive()
+                        ->whereHas('languageUsage', function ($query) {
+                            $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                        })
+                        ->distributedOrderBy();
+                },
+                'systemMenus.systemMenus' => function ($query) {
+                    $query->distributedActive()
+                        ->whereHas('languageUsage', function ($query) {
+                            $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                        })
+                        ->distributedOrderBy();
+                },
+                'systemMenus.systemMenus.systemMenus' => function ($query) {
+                    $query->distributedActive()
+                        ->whereHas('languageUsage', function ($query) {
+                            $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                        })
+                        ->distributedOrderBy();
+                },
+
+            ])
+            ->distributedWhere('code','web-header-investor-financials')
+            ->distributedWhere('guard', 'web')
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->distributedActive()
+            ->distributedOrderBy()
+            ->first();
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'fullUrl' => request()->fullUrl(),
+            'financialMenu' => $financialMenu,
+        ];
+
+        $html = view('web.layouts.components.financial-menu', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
 

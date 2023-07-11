@@ -69,6 +69,13 @@ class InsertWebSystemMenus extends Migration
 			//投資人關係
             ['id' => $id4 = uuid(), 'parent_id' => $rootId, 'created_at' => $timestamp, 'updated_at' => $timestamp],
                 ['id' => $id4_1 = uuid(), 'parent_id' => $id4, 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                    ['id' => $id4_1_1 = uuid(), 'parent_id' => $id4_1, 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                    ['id' => $id4_1_2 = uuid(), 'parent_id' => $id4_1, 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                    ['id' => $id4_1_3 = uuid(), 'parent_id' => $id4_1, 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                    ['id' => $id4_1_4 = uuid(), 'parent_id' => $id4_1, 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                    ['id' => $id4_1_5 = uuid(), 'parent_id' => $id4_1, 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                    ['id' => $id4_1_6 = uuid(), 'parent_id' => $id4_1, 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
 				['id' => $id4_2 = uuid(), 'parent_id' => $id4, 'created_at' => $timestamp, 'updated_at' => $timestamp],
 				['id' => $id4_3 = uuid(), 'parent_id' => $id4, 'created_at' => $timestamp, 'updated_at' => $timestamp],
 				['id' => $id4_4 = uuid(), 'parent_id' => $id4, 'created_at' => $timestamp, 'updated_at' => $timestamp],
@@ -191,12 +198,56 @@ class InsertWebSystemMenus extends Migration
             ],
 
                 $id4_1 => [
-                    'guard' => 'web', 'code' => 'web-header-investor-financial',
+                    'guard' => 'web', 'code' => 'web-header-investor-financials',
                     'title' => '財務資訊', 'description' => null, 'editor' => null, 'pic' => null,
                     'url' =>'/financial', 'target' => '_self',
                     'permission' => null, 'roles' => null, 'options' => null,
                     'operations' => null, 'sort' => 1, 'active' => 1,
                 ],
+                    $id4_1_1 => [
+                        'guard' => 'web', 'code' => 'web-header-investor-financial',
+                        'title' => '財務基本資料', 'description' => null, 'editor' => null, 'pic' => null,
+                        'url' =>'/financial', 'target' => '_self',
+                        'permission' => null, 'roles' => null, 'options' => null,
+                        'operations' => null, 'sort' => 1, 'active' => 1,
+                    ],
+                    $id4_1_2 => [
+                        'guard' => 'web', 'code' => 'web-header-investor-financial-products-proportion',
+                        'title' => '財務摘要', 'description' => null, 'editor' => null, 'pic' => null,
+                        'url' =>'/financial-information', 'target' => '_self',
+                        'permission' => null, 'roles' => null, 'options' => null,
+                        'operations' => null, 'sort' => 2, 'active' => 1,
+                    ],
+                    $id4_1_3 => [
+                        'guard' => 'web', 'code' => 'web-header-investor-financial-monthly',
+                        'title' => '每月營收報告', 'description' => null, 'editor' => null, 'pic' => null,
+                        'url' =>'/financial-monthly', 'target' => '_self',
+                        'permission' => null, 'roles' => null, 'options' => null,
+                        'operations' => null, 'sort' => 3, 'active' => 1,
+                    ],
+                    $id4_1_4 => [
+                        'guard' => 'web', 'code' => 'web-header-investor-financial-quarterly-statements',
+                        'title' => '每季財務報告', 'description' => null, 'editor' => null, 'pic' => null,
+                        'url' =>'/financial-quarterly-statements', 'target' => '_self',
+                        'permission' => null, 'roles' => null, 'options' => null,
+                        'operations' => null, 'sort' => 4, 'active' => 1,
+                    ],
+                    $id4_1_5 => [
+                        'guard' => 'web', 'code' => 'web-header-investor-financial-annual',
+                        'title' => '公司年報', 'description' => null, 'editor' => null, 'pic' => null,
+                        'url' =>'/financial-annual', 'target' => '_self',
+                        'permission' => null, 'roles' => null, 'options' => null,
+                        'operations' => null, 'sort' => 5, 'active' => 1,
+                    ],
+                    $id4_1_6 => [
+                        'guard' => 'web', 'code' => 'web-header-investor-financial-law-conference',
+                        'title' => '法說會資料', 'description' => null, 'editor' => null, 'pic' => null,
+                        'url' =>'/financial-law-conference', 'target' => '_self',
+                        'permission' => null, 'roles' => null, 'options' => null,
+                        'operations' => null, 'sort' => 6, 'active' => 1,
+                    ],
+
+
                 $id4_2 => [
                     'guard' => 'web', 'code' => 'web-header-investor-shareholders-meeting',
                     'title' => '股東專區', 'description' => null, 'editor' => null, 'pic' => null,
