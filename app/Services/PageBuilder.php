@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Minmax\Article\Contracts\PageBuilder as ParentBuilder;
 use Minmax\Article\Models\ArticleBlock;
 use Minmax\Article\Models\ArticleCategory;
+use Minmax\Article\Models\ArticleColumn;
 use Minmax\Article\Models\ArticleDownload;
 use Minmax\Article\Models\ArticleIntro;
 use Minmax\Article\Models\ArticlePage;
@@ -1304,7 +1305,11 @@ class PageBuilder extends ParentBuilder
     {
         $type = request()->has('type') && filled(request()->get('type')) ? request()->get('type') : 'year';
 
+        /*
         $categoryId = 'web-block-investor-income-statement';
+
+        $articleColumn = ArticleColumn::where('id','income-statement')->first();
+        $column = array_pluck(array_get($articleColumn,'column_set'),'column');
 
         $articleCategory = ArticleCategory::query()
             ->with(['articleCategories.articleCategories'])
@@ -1342,7 +1347,7 @@ class PageBuilder extends ParentBuilder
 
 
         foreach($articleBlocks ?? [] as $key => $item){
-            $array = array_only($item->toArray(),['income','grossprofit','revenue','netincome','cpynetincome','eps10','eps1']);
+            $array = array_only($item->toArray(),$column);
             $quarter[array_get($item,'title')] = $array;
 
             if(is_numeric(mb_substr(array_get($item,'title'),0,2))){
@@ -1380,18 +1385,25 @@ class PageBuilder extends ParentBuilder
 
             }
         }
+        */
+
+        $arr = getFinancialData('web-block-investor-income-statement','income-statement');
+        //dd($arr);
 
         $viewData = [
             'routeName' => request()->route()->getName(),
             'type' => $type,
+            /*
             'articleBlocks' => $articleBlocks,
             'year' => $year,
             'tableYear' => $tableYear,
             'quarter' => $quarter,
             'tableQuarter' => $tableQuarter,
+            */
         ];
 
-        //dd($year);
+        $viewData = array_merge($viewData,$arr);
+
 
         $html = view('web.layouts.components.financial-income-statement', $viewData)->render();
         $this->replaceElement($blockNode, $html);

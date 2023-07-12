@@ -4,6 +4,10 @@
  * You can check Minmax\Base\Helper\ShortcutHelper.php to learn how to make.
  */
 
+use Minmax\Article\Models\ArticleBlock;
+use Minmax\Article\Models\ArticleCategory;
+use Minmax\Article\Models\ArticleColumn;
+
 if (! function_exists('sampleInfo')) {
     /**
      * Get php server info.
@@ -346,3 +350,103 @@ function breadcrumbs($route, $parameters = [])
     return $arr;
 
 }
+
+
+
+if (! function_exists('getFinancialData')) {
+    /**
+     * Get financial data.
+     */
+    function getFinancialData($categoryId,$ArticleColumnId){
+        $articleColumn = ArticleColumn::where('id',$ArticleColumnId)->first();
+        $column = array_pluck(array_get($articleColumn,'column_set'),'column');
+
+
+        $articleCategory = ArticleCategory::query()
+            ->with(['articleCategories.articleCategories'])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where('id',$categoryId)->distributedOrWhere('code',$categoryId)
+            ->distributedActive()
+            ->orderBy('sort')
+            ->first();
+
+
+        $articleBlocks = ArticleBlock::query()
+            ->with([
+                'articleCategories.articleCategory',
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->whereHas('articleCategories', function ($query) use($articleCategory) {
+                $query->where('id', array_get($articleCategory,'id'));
+            })
+
+            ->where(function ($query) {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query) {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>=', now());
+            })
+            ->distributedActive()->get();
+
+
+        $year = array();
+        $quarter = array();
+        $tableYear = array();
+        $tableQuarter = array();
+
+        foreach($articleBlocks ?? [] as $key => $item){
+            $array = array_only($item->toArray(),$column);
+            $quarter[array_get($item,'title')] = $array;
+
+            if(is_numeric(mb_substr(array_get($item,'title'),0,2))){
+                try {
+                    foreach($array as $key2 => $value){
+                        if(!empty($year['20' . mb_substr(array_get($item, 'title'), 0, 2)][$key2])) {
+                            $year['20' . mb_substr(array_get($item, 'title'), 0, 2)][$key2] += $value;
+                        }else{
+                            $year['20' . mb_substr(array_get($item, 'title'), 0, 2)][$key2] = $value;
+                        }
+                    }
+                }catch (\Exception $e){}
+            }
+        }
+
+
+        foreach($year as $key => $item){
+            foreach($item as $key2 => $value2){
+                if(is_numeric($value2)) {
+                    $year[$key][$key2] = number_format($value2);
+                    $tableYear[$key2][$key] = number_format($value2);
+                }
+            }
+        }
+
+
+        foreach($quarter as $key => $item){
+            foreach($item as $key2 => $value2){
+                if(is_numeric($value2)) {
+                    $quarter[$key][$key2] = number_format($value2);
+                    $tableQuarter[$key2][$key] = number_format($value2);
+                }else{
+                    $tableQuarter[$key2][$key] = ($value2);
+                }
+
+            }
+        }
+
+        $arr = [
+            'articleBlocks' => $articleBlocks,
+            'year' => $year,
+            'tableYear' => $tableYear,
+            'quarter' => $quarter,
+            'tableQuarter' => $tableQuarter,
+        ];
+
+        return $arr;
+    }
+}
+

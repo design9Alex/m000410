@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Minmax\Article\Models\ArticleBlock;
 use Minmax\Article\Models\ArticleCategory;
+use Minmax\Article\Models\ArticleColumn;
 use Minmax\Base\Helpers\Log as LogHelper;
 use Minmax\Foundation\Contracts\WebController as BaseController;
 use Minmax\Inbox\Web\InboxReceivedRepository;
@@ -1139,8 +1140,34 @@ class JsonController extends BaseController
             'Content-Type' => 'application/json; charset=utf-8'
         );
 
-        //dump($this->defaultArr);exit;
+        $this->getData('web-block-investor-income-statement','income-statement','income_statement');
+        $this->getData('web-block-investor-balance-sheet','balance-sheet','balance_sheet');
+        $this->getData('web-block-investor-cash-flow','cash-flow','cash_flow');
+        $this->getData('web-block-investor-share-data','share-data','share_data');
+        $this->getData('web-block-investor-important-ratio','important-ratio','important_ratio');
+        $this->getData('web-block-investor-products-proportion','products-proportion','products_proportion');
+
+        return response()->json($this->defaultArr,200,$headers,JSON_UNESCAPED_UNICODE);
+    }
+
+
+    public function getData($categoryId,$ArticleColumnId,$mergeId){
+
+        $arr = getFinancialData($categoryId,$ArticleColumnId);
+
+        $income_statement = array_merge(array_get($this->defaultArr,$mergeId),$arr);
+        $addArr = [$mergeId => $income_statement];
+
+        $this->defaultArr = array_merge($this->defaultArr,$addArr);
+    }
+
+
+    public function income_statement(){
         $categoryId = 'web-block-investor-income-statement';
+
+        $articleColumn = ArticleColumn::where('id','income-statement')->first();
+        $column = array_pluck(array_get($articleColumn,'column_set'),'column');
+
 
         $articleCategory = ArticleCategory::query()
             ->with(['articleCategories.articleCategories'])
@@ -1177,7 +1204,7 @@ class JsonController extends BaseController
         $quarter = array();
 
         foreach($articleBlocks ?? [] as $key => $item){
-            $array = array_only($item->toArray(),['income','grossprofit','revenue','netincome','cpynetincome','eps10','eps1']);
+            $array = array_only($item->toArray(),$column);
             $quarter[array_get($item,'title')] = $array;
 
             if(is_numeric(mb_substr(array_get($item,'title'),0,2))){
@@ -1220,11 +1247,8 @@ class JsonController extends BaseController
         $addArr = ['income_statement' => $income_statement];
 
         $this->defaultArr = array_merge($this->defaultArr,$addArr);
-
-        return response()->json($this->defaultArr,200,$headers,JSON_UNESCAPED_UNICODE);
-
-
     }
+
 
 
 
