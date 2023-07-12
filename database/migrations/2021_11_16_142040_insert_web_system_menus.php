@@ -71,6 +71,15 @@ class InsertWebSystemMenus extends Migration
                 ['id' => $id4_1 = uuid(), 'parent_id' => $id4, 'created_at' => $timestamp, 'updated_at' => $timestamp],
                     ['id' => $id4_1_1 = uuid(), 'parent_id' => $id4_1, 'created_at' => $timestamp, 'updated_at' => $timestamp],
                     ['id' => $id4_1_2 = uuid(), 'parent_id' => $id4_1, 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
+                        ['id' => $id4_1_2_1 = uuid(), 'parent_id' => $id4_1_2, 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                        ['id' => $id4_1_2_2 = uuid(), 'parent_id' => $id4_1_2, 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                        ['id' => $id4_1_2_3 = uuid(), 'parent_id' => $id4_1_2, 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                        ['id' => $id4_1_2_4 = uuid(), 'parent_id' => $id4_1_2, 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                        ['id' => $id4_1_2_5 = uuid(), 'parent_id' => $id4_1_2, 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                        ['id' => $id4_1_2_6 = uuid(), 'parent_id' => $id4_1_2, 'created_at' => $timestamp, 'updated_at' => $timestamp],
+
+
                     ['id' => $id4_1_3 = uuid(), 'parent_id' => $id4_1, 'created_at' => $timestamp, 'updated_at' => $timestamp],
                     ['id' => $id4_1_4 = uuid(), 'parent_id' => $id4_1, 'created_at' => $timestamp, 'updated_at' => $timestamp],
                     ['id' => $id4_1_5 = uuid(), 'parent_id' => $id4_1, 'created_at' => $timestamp, 'updated_at' => $timestamp],
@@ -211,13 +220,61 @@ class InsertWebSystemMenus extends Migration
                         'permission' => null, 'roles' => null, 'options' => null,
                         'operations' => null, 'sort' => 1, 'active' => 1,
                     ],
+
                     $id4_1_2 => [
-                        'guard' => 'web', 'code' => 'web-header-investor-financial-products-proportion',
+                        'guard' => 'web', 'code' => 'web-header-investor-financial-income-statement',
                         'title' => '財務摘要', 'description' => null, 'editor' => null, 'pic' => null,
-                        'url' =>'/financial-information', 'target' => '_self',
+                        'url' =>'/financial-income-statement', 'target' => '_self',
                         'permission' => null, 'roles' => null, 'options' => null,
                         'operations' => null, 'sort' => 2, 'active' => 1,
                     ],
+
+                        $id4_1_2_1 => [
+                            'guard' => 'web', 'code' => 'web-header-investor-financial-income-statement',
+                            'title' => '損益表', 'description' => null, 'editor' => null, 'pic' => null,
+                            'url' =>'/financial-income-statement', 'target' => '_self',
+                            'permission' => null, 'roles' => null, 'options' => null,
+                            'operations' => null, 'sort' => 2, 'active' => 1,
+                        ],
+                        $id4_1_2_2 => [
+                            'guard' => 'web', 'code' => 'web-header-investor-financial-balance-sheet',
+                            'title' => '資產負債表', 'description' => null, 'editor' => null, 'pic' => null,
+                            'url' =>'/financial-balance-sheet', 'target' => '_self',
+                            'permission' => null, 'roles' => null, 'options' => null,
+                            'operations' => null, 'sort' => 2, 'active' => 1,
+                        ],
+                        $id4_1_2_3 => [
+                            'guard' => 'web', 'code' => 'web-header-investor-financial-cash-flow',
+                            'title' => '現金流量表', 'description' => null, 'editor' => null, 'pic' => null,
+                            'url' =>'/financial-cash-flow', 'target' => '_self',
+                            'permission' => null, 'roles' => null, 'options' => null,
+                            'operations' => null, 'sort' => 2, 'active' => 1,
+                        ],
+                        $id4_1_2_4 => [
+                            'guard' => 'web', 'code' => 'web-header-investor-financial-share-data',
+                            'title' => '每股數據', 'description' => null, 'editor' => null, 'pic' => null,
+                            'url' =>'/financial-share-data', 'target' => '_self',
+                            'permission' => null, 'roles' => null, 'options' => null,
+                            'operations' => null, 'sort' => 2, 'active' => 1,
+                        ],
+                        $id4_1_2_5 => [
+                            'guard' => 'web', 'code' => 'web-header-investor-financial-important-ratio',
+                            'title' => '重要比率', 'description' => null, 'editor' => null, 'pic' => null,
+                            'url' =>'/financial-important-ratio', 'target' => '_self',
+                            'permission' => null, 'roles' => null, 'options' => null,
+                            'operations' => null, 'sort' => 2, 'active' => 1,
+                        ],
+                        $id4_1_2_6 => [
+                            'guard' => 'web', 'code' => 'web-header-investor-financial-products-proportion',
+                            'title' => '產品組合', 'description' => null, 'editor' => null, 'pic' => null,
+                            'url' =>'/financial-products-proportion', 'target' => '_self',
+                            'permission' => null, 'roles' => null, 'options' => null,
+                            'operations' => null, 'sort' => 2, 'active' => 1,
+                        ],
+
+
+
+
                     $id4_1_3 => [
                         'guard' => 'web', 'code' => 'web-header-investor-financial-monthly',
                         'title' => '每月營收報告', 'description' => null, 'editor' => null, 'pic' => null,

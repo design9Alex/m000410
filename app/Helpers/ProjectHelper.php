@@ -309,6 +309,34 @@ function breadcrumbs($route, $parameters = [])
             $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
             break;
 
+        case 'web.page.web-financial-income-statement':
+            $breadcrumbs[] = ['uri' => route('web.page.web-financial') , 'title' => trans('web.menu.investor')];
+
+            $menu = \Minmax\Base\Models\SystemMenu::query()
+                ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+                ->distributedWhere('guard', 'web')
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('code','web-header-investor-financials')
+                ->distributedActive()
+                ->first();
+
+            $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
+
+            $menu = \Minmax\Base\Models\SystemMenu::query()
+                ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+                ->distributedWhere('guard', 'web')
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('code','web-header-investor-financial-income-statement')
+                ->distributedActive()
+                ->first();
+
+            $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
+            break;
+
 
     }
 

@@ -466,7 +466,6 @@ function chartData(aHide,sKind,sTime){
                 }
             }
 
-
             var aTmpChartData = [];
             for(let index in data.title[sTime]){
                 // 資產負債表
@@ -511,8 +510,6 @@ function chartData(aHide,sKind,sTime){
                 }
                 aDatasets.push(oTmpDatasets);
             }
-
-
         }
 
         aScales = data.scales[sTime];

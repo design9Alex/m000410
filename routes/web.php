@@ -18,3 +18,5 @@ Route::post('saveContact', 'AjaxController@ContactForm')->name('ajax.contact.for
 Route::post('getProductCategory', 'AjaxController@getProductCategory')->name('ajax.getProductCategory');
 Route::get('getCaptcha', 'AjaxController@getCaptcha')->name('ajax.getCaptcha'); // 驗證碼
 Route::post('saveTrack', 'AjaxController@saveTrack')->name('ajax.save.track');
+
+Route::get('static/web/scripts/default/financialData.json', 'JsonController@financialData')->name('financialData');

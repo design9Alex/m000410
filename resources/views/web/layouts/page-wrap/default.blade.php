@@ -34,6 +34,9 @@ switch(request()->route()->getName()){
   case 'web.page.web-news-post': $wpClass = 'newsdtlBox nd1'; break;
   case 'web.page.web-products': $wpClass = 'productsBox'; break;
   case 'web.page.web-products-post': $wpClass = 'productdtlBox jsProductdtlBox'; break;
+
+  case 'web.page.web-financial': $wpClass = 'fnclBox'; break;
+  case 'web.page.web-financial-income-statement': $wpClass = 'fnclrptBox jsFnclrptBox'; break;
 }
 ?>
 <!doctype html>

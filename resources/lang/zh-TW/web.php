@@ -47,4 +47,29 @@ return [
         'application' => '應用產業',
     ],
 
+    'financial' => [
+        'financial_information' => '財務摘要',
+        'year' => '年度',
+        'quarter' => '季度',
+        'income_statement' => '損益表',
+        'balance_sheet' => '資產負債表',
+        'cash_flow' => '現金流量表',
+        'share_data' => '每股數據',
+        'important_ratio' => '重要比率',
+        'products_proportion' => '產品組合',
+        'unit_1' => '單位：百萬新台幣',
+        'unit_2' => '單位：元',
+        'item' => '項目',
+    ],
+
+    'income_statement' => [
+        'income' => '營業收入',
+        'grossprofit' => '營業毛利',
+        'revenue' => '營業利益',
+        'netincome' => '稅前淨利',
+        'cpynetincome' => '歸屬於母公司淨利',
+        'eps10' => "股票面額 10元計<br>稅後EPS (元)",
+        'eps1' => "股票面額 1元計<br>稅後EPS (元)",
+    ]
+
 ];

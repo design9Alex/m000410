@@ -20,8 +20,6 @@ use Minmax\Article\Web\ArticlePageRepository;
 use Minmax\Article\Web\ArticlePostRepository;
 use Minmax\Base\Models\SystemMenu;
 use Minmax\Inbox\Models\InboxCategory;
-use Minmax\Product\Models\ProductClass;
-use Minmax\Product\Models\ProductIntro;
 use Minmax\World\Admin\WorldCountryRepository;
 use Minmax\World\Admin\WorldCountyRepository;
 use Minmax\World\Models\WorldCounty;
@@ -222,6 +220,22 @@ class PageBuilder extends ParentBuilder
                 case 'financial-menu':
                     if (!$this->isPreview('admin.article-page.preview-view')) {
                         $this->replaceFinancialMenu($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
+                case 'financial-information-menu':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceFinancialInformationMenu($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
+                case 'financial-income-statement':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceFinancialIncomeStatement($moduleBlock);
                     } else {
                         $this->clearWrapDom($moduleBlock, true);
                     }
@@ -1226,6 +1240,164 @@ class PageBuilder extends ParentBuilder
         $html = view('web.layouts.components.financial-menu', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
+
+
+
+    //replaceFinancialInformationMenu
+    /**
+     * @param  \DOMElement|\DOMNode $blockNode
+     */
+    protected function replaceFinancialInformationMenu($blockNode)
+    {
+        $financialMenu = \Minmax\Base\Models\SystemMenu::query()
+            ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+
+            ->with([
+                'systemMenus' => function ($query) {
+                    $query->distributedActive()
+                        ->whereHas('languageUsage', function ($query) {
+                            $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                        })
+                        ->distributedOrderBy();
+                },
+                'systemMenus.systemMenus' => function ($query) {
+                    $query->distributedActive()
+                        ->whereHas('languageUsage', function ($query) {
+                            $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                        })
+                        ->distributedOrderBy();
+                },
+                'systemMenus.systemMenus.systemMenus' => function ($query) {
+                    $query->distributedActive()
+                        ->whereHas('languageUsage', function ($query) {
+                            $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                        })
+                        ->distributedOrderBy();
+                },
+
+            ])
+            ->distributedWhere('code','web-header-investor-financials')
+            ->distributedWhere('guard', 'web')
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->distributedActive()
+            ->distributedOrderBy()
+            ->first();
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'fullUrl' => request()->fullUrl(),
+            'financialMenu' => $financialMenu,
+        ];
+
+        $html = view('web.layouts.components.financial-information-menu', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+    //replaceFinancialIncomeStatement
+    /**
+     * @param  \DOMElement|\DOMNode $blockNode
+     */
+    protected function replaceFinancialIncomeStatement($blockNode)
+    {
+        $type = request()->has('type') && filled(request()->get('type')) ? request()->get('type') : 'year';
+
+        $categoryId = 'web-block-investor-income-statement';
+
+        $articleCategory = ArticleCategory::query()
+            ->with(['articleCategories.articleCategories'])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where('id',$categoryId)->distributedOrWhere('code',$categoryId)
+            ->distributedActive()
+            ->orderBy('sort')
+            ->first();
+
+        $articleBlocks = ArticleBlock::query()
+            ->with([
+                'articleCategories.articleCategory',
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->whereHas('articleCategories', function ($query) use($articleCategory) {
+                $query->where('id', array_get($articleCategory,'id'));
+            })
+
+            ->where(function ($query) {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query) {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>=', now());
+            })
+            ->distributedActive()->get();
+
+        $year = array();
+        $quarter = array();
+        $tableYear = array();
+        $tableQuarter = array();
+
+
+        foreach($articleBlocks ?? [] as $key => $item){
+            $array = array_only($item->toArray(),['income','grossprofit','revenue','netincome','cpynetincome','eps10','eps1']);
+            $quarter[array_get($item,'title')] = $array;
+
+            if(is_numeric(mb_substr(array_get($item,'title'),0,2))){
+                try {
+                    foreach($array as $key2 => $value){
+                        if(!empty($year['20' . mb_substr(array_get($item, 'title'), 0, 2)][$key2])) {
+                            $year['20' . mb_substr(array_get($item, 'title'), 0, 2)][$key2] += $value;
+                        }else{
+                            $year['20' . mb_substr(array_get($item, 'title'), 0, 2)][$key2] = $value;
+                        }
+                    }
+                }catch (\Exception $e){}
+            }
+        }
+
+
+        foreach($year as $key => $item){
+            foreach($item as $key2 => $value2){
+                if(is_numeric($value2)) {
+                    $year[$key][$key2] = number_format($value2);
+                    $tableYear[$key2][$key] = number_format($value2);
+                }
+            }
+        }
+
+
+        foreach($quarter as $key => $item){
+            foreach($item as $key2 => $value2){
+                if(is_numeric($value2)) {
+                    $quarter[$key][$key2] = number_format($value2);
+                    $tableQuarter[$key2][$key] = number_format($value2);
+                }else{
+                    $tableQuarter[$key2][$key] = ($value2);
+                }
+
+            }
+        }
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'type' => $type,
+            'articleBlocks' => $articleBlocks,
+            'year' => $year,
+            'tableYear' => $tableYear,
+            'quarter' => $quarter,
+            'tableQuarter' => $tableQuarter,
+        ];
+
+        //dd($year);
+
+        $html = view('web.layouts.components.financial-income-statement', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
 
 
 
