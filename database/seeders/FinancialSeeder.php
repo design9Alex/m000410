@@ -678,7 +678,7 @@ class FinancialSeeder extends Seeder
             $id[++$i] => [
                 'title' => '19',
 
-                'cash' => '3,820',
+                'cash' => '3820',
                 'receiveable' => '3489',
                 'currentassets' => '10022',
                 'equityinvestments' => '2913',
@@ -703,7 +703,7 @@ class FinancialSeeder extends Seeder
                 'receiveable' => '3646',
                 'currentassets' => '11118',
                 'equityinvestments' => '3088',
-                'currentliabilities' => ',282',
+                'currentliabilities' => '6282',
                 'noncurrentliabilities' => '8122',
                 'totalequity' => '8916',
                 'totalassets' => '23320',
@@ -741,7 +741,7 @@ class FinancialSeeder extends Seeder
             $id[++$i] => [
                 'title' => '22',
 
-                'cash' => '7,106',
+                'cash' => '7106',
                 'receiveable' => '3894',
                 'currentassets' => '15826',
                 'equityinvestments' => '3099',

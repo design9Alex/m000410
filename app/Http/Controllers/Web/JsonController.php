@@ -561,7 +561,141 @@ class JsonController extends BaseController
                             "borderColor" => "#CDD55B",
                             "backgroundColor" => "#CDD55B"
                         ]
-                    ]
+                    ],
+                    "quarter" => [
+                        [
+                            "key" => "cash",
+                            "title" => "現金及約當現金",
+                            "label" => "現金及約當現金",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 36,
+                            "categoryPercentage" => 0.9,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#6BABE0"
+                        ],
+                        [
+                            "key" => "receiveable",
+                            "title" => "應收帳款淨額",
+                            "label" => "應收帳款淨額",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 36,
+                            "categoryPercentage" => 0.9,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#91CBE8"
+                        ],
+                        [
+                            "key" => "currentassets",
+                            "title" => "流動資產",
+                            "label" => "流動資產",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 36,
+                            "categoryPercentage" => 0.9,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#A5A5A5"
+                        ],
+                        [
+                            "key" => "equityinvestments",
+                            "title" => "採用權益法之投資",
+                            "label" => "採用權益法之投資",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 36,
+                            "categoryPercentage" => 0.9,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#D1B194"
+                        ],
+                        [
+                            "key" => "currentliabilities",
+                            "title" => "流動負債",
+                            "label" => "流動負債",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 36,
+                            "categoryPercentage" => 0.9,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#999BCC"
+                        ],
+                        [
+                            "key" => "noncurrentliabilities",
+                            "title" => "非流動負債",
+                            "label" => "非流動負債",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 36,
+                            "categoryPercentage" => 0.9,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#D194B0"
+                        ],
+                        [
+                            "key" => "totalequity",
+                            "title" => "權益總計",
+                            "label" => "權益總計",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 36,
+                            "categoryPercentage" => 0.9,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#769AC0"
+                        ],
+                        [
+                            "key" => "totalassets",
+                            "title" => "總資產",
+                            "label" => "總資產",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 36,
+                            "categoryPercentage" => 0.9,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#CC6666"
+                        ],
+                        [
+                            "key" => "netincome10",
+                            "title" => "<div>股票面額 10元計</div><div>每股淨值 (元)</div>",
+                            "label" => "股票面額 10元計每股淨值 (元)",
+                            "type" => "line",
+                            "yAxisID" => "y2",
+                            "tension" => 0.55,
+                            "pointBorderWidth" => 5,
+                            "borderColor" => "#76BEC0",
+                            "backgroundColor" => "#76BEC0"
+                        ],
+                        [
+                            "key" => "netincome1",
+                            "title" => "<div>股票面額 1元計</div><div>每股淨值 (元)</div>",
+                            "label" => "股票面額 1元計每股淨值 (元)",
+                            "type" => "line",
+                            "yAxisID" => "y2",
+                            "tension" => 0.55,
+                            "pointBorderWidth" => 5,
+                            "borderColor" => "#CDD55B",
+                            "backgroundColor" => "#CDD55B"
+                        ],
+                        [
+                            "key" => "currentratio",
+                            "title" => "流動比率",
+                            "label" => "流動比率",
+                            "type" => "line",
+                            "yAxisID" => "y2",
+                            "tension" => 0.55,
+                            "pointBorderWidth" => 5,
+                            "borderColor" => "#76BEC0",
+                            "backgroundColor" => "#76BEC0"
+                        ],
+                        [
+                            "key" => "debtratio",
+                            "title" => "負債比率",
+                            "label" => "負債比率",
+                            "type" => "line",
+                            "yAxisID" => "y2",
+                            "tension" => 0.55,
+                            "pointBorderWidth" => 5,
+                            "borderColor" => "#CDD55B",
+                            "backgroundColor" => "#CDD55B"
+                        ]
+                    ],
                 ],
                 "year" => [
                     [
@@ -708,7 +842,39 @@ class JsonController extends BaseController
                             "borderRadius" => 4,
                             "backgroundColor" => "#A5A5A5"
                         ]
-                    ]
+                    ],
+                    "quarter" => [
+                        [
+                            "key" => "operate",
+                            "title" => "營業活動現金流",
+                            "label" => "營業活動現金流",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 160,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#6BABE0"
+                        ],
+                        [
+                            "key" => "invest",
+                            "title" => "投資活動現金流",
+                            "label" => "投資活動現金流",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 160,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#91CBE8"
+                        ],
+                        [
+                            "key" => "fund",
+                            "title" => "籌資活動現金流",
+                            "label" => "籌資活動現金流",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 160,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#A5A5A5"
+                        ]
+                    ],
                 ],
                 "year" => [
                     [
@@ -826,7 +992,40 @@ class JsonController extends BaseController
                             "borderRadius" => 4,
                             "backgroundColor" => "#6BA2D0"
                         ]
-                    ]
+                    ],
+                    "quarter" => [
+                        [
+                            "key" => "cash",
+                            "title" => "現金股利",
+                            "label" => "現金股利",
+                            "type" => "bar",
+                            "yAxisID" => "y2",
+                            "maxBarThickness" => 160,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#D65C5C"
+                        ],
+                        [
+                            "key" => "netrevenue",
+                            "title" => "每股淨資產",
+                            "label" => "每股淨資產",
+                            "type" => "line",
+                            "yAxisID" => "y",
+                            "tension" => 0.55,
+                            "pointBorderWidth" => 5,
+                            "borderColor" => "#76BEC0",
+                            "backgroundColor" => "#76BEC0"
+                        ],
+                        [
+                            "key" => "eps",
+                            "title" => "EPS",
+                            "label" => "EPS",
+                            "type" => "bar",
+                            "yAxisID" => "y2",
+                            "maxBarThickness" => 160,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#6BA2D0"
+                        ]
+                    ],
                 ],
                 "year" => [
                     [
@@ -943,7 +1142,39 @@ class JsonController extends BaseController
                             "borderColor" => "#CDD55B",
                             "backgroundColor" => "#CDD55B"
                         ]
-                    ]
+                    ],
+                    "quarter" => [
+                        [
+                            "key" => "EBITDA",
+                            "title" => "EBITDA",
+                            "label" => "EBITDA",
+                            "type" => "line",
+                            "yAxisID" => "y",
+                            "pointBorderWidth" => 5,
+                            "borderColor" => "#005EAD",
+                            "backgroundColor" => "#005EAD"
+                        ],
+                        [
+                            "key" => "ROA",
+                            "title" => "ROA",
+                            "label" => "ROA",
+                            "type" => "line",
+                            "yAxisID" => "y2",
+                            "pointBorderWidth" => 5,
+                            "borderColor" => "#76BEC0",
+                            "backgroundColor" => "#76BEC0"
+                        ],
+                        [
+                            "key" => "ROE",
+                            "title" => "ROE",
+                            "label" => "ROE",
+                            "type" => "line",
+                            "yAxisID" => "y2",
+                            "pointBorderWidth" => 5,
+                            "borderColor" => "#CDD55B",
+                            "backgroundColor" => "#CDD55B"
+                        ]
+                    ],
                 ],
                 "year" => [
                     "20Q4" => [
@@ -1070,7 +1301,49 @@ class JsonController extends BaseController
                             "borderRadius" => 4,
                             "backgroundColor" => "#C29772"
                         ]
-                    ]
+                    ],
+                    "quarter" => [
+                        [
+                            "key" => "iclf",
+                            "title" => "IC L/F",
+                            "label" => "IC L/F",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 160,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#6BA2D0"
+                        ],
+                        [
+                            "key" => "resin",
+                            "title" => "封裝樹脂",
+                            "label" => "封裝樹脂",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 160,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#D65C5C"
+                        ],
+                        [
+                            "key" => "other",
+                            "title" => "其他(含基板)",
+                            "label" => "其他(含基板)",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 160,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#A5A5A5"
+                        ],
+                        [
+                            "key" => "ledlf",
+                            "title" => "LED L/F",
+                            "label" => "LED L/F",
+                            "type" => "bar",
+                            "yAxisID" => "y",
+                            "maxBarThickness" => 160,
+                            "borderRadius" => 4,
+                            "backgroundColor" => "#C29772"
+                        ]
+                    ],
                 ],
                 "year" => [
                     "20Q4" => [
@@ -1159,6 +1432,7 @@ class JsonController extends BaseController
         $addArr = [$mergeId => $income_statement];
 
         $this->defaultArr = array_merge($this->defaultArr,$addArr);
+
     }
 
 

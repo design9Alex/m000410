@@ -242,6 +242,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'financial-balance-sheet':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceFinancialBalanceSheet($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -1406,6 +1414,35 @@ class PageBuilder extends ParentBuilder
 
 
         $html = view('web.layouts.components.financial-income-statement', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+
+    //replaceFinancialBalanceSheet
+    protected function replaceFinancialBalanceSheet($blockNode)
+    {
+        $type = request()->has('type') && filled(request()->get('type')) ? request()->get('type') : 'year';
+
+
+        $arr = getFinancialData('web-block-investor-balance-sheet','balance-sheet');
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'type' => $type,
+            /*
+            'articleBlocks' => $articleBlocks,
+            'year' => $year,
+            'tableYear' => $tableYear,
+            'quarter' => $quarter,
+            'tableQuarter' => $tableQuarter,
+            */
+        ];
+
+        $viewData = array_merge($viewData,$arr);
+
+
+        $html = view('web.layouts.components.financial-balance-sheet', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
 

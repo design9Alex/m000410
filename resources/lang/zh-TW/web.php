@@ -72,6 +72,21 @@ return [
         'cpynetincome' => '歸屬於母公司淨利',
         'eps10' => "股票面額 10元計稅後EPS (元)",
         'eps1' => "股票面額 1元計稅後EPS (元)",
+    ],
+
+    'balance_sheet' => [
+        'cash' => '現金及約當現金',
+        'receiveable' => '應收帳款淨額',
+        'currentassets' => '流動資產',
+        'equityinvestments' => '採用權益法之投資',
+        'currentliabilities' => '流動負債',
+        'noncurrentliabilities' => '非流動負債',
+        'totalequity' => '權益總計',
+        'totalassets' => '總資產',
+        'netincome10' => '股票面額 10元計每股淨值 (元)',
+        'netincome1' => '股票面額 1元計每股淨值 (元)',
+        'currentratio' => '流動比率',
+        'debtratio' => '負債比率',
     ]
 
 ];
