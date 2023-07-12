@@ -59,6 +59,8 @@ return [
         'products_proportion' => '產品組合',
         'unit_1' => '單位：百萬新台幣',
         'unit_2' => '單位：元',
+        'unit_3' => '百萬新台幣',
+        'unit_4' => '元',
         'item' => '項目',
     ],
 
@@ -68,8 +70,8 @@ return [
         'revenue' => '營業利益',
         'netincome' => '稅前淨利',
         'cpynetincome' => '歸屬於母公司淨利',
-        'eps10' => "股票面額 10元計<br>稅後EPS (元)",
-        'eps1' => "股票面額 1元計<br>稅後EPS (元)",
+        'eps10' => "股票面額 10元計稅後EPS (元)",
+        'eps1' => "股票面額 1元計稅後EPS (元)",
     ]
 
 ];

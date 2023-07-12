@@ -25,8 +25,8 @@ class JsonController extends BaseController
         $this->defaultArr = [
             "income_statement" => [
                 "unit" => [
-                    "百萬新台幣",
-                    "元"
+                    trans('web.financial.unit_3'),  //百萬新台幣
+                    trans('web.financial.unit_4')   //元
                 ],
                 "scales" => [
                     "year" => [
@@ -128,8 +128,8 @@ class JsonController extends BaseController
                     "year" => [
                         [
                             "key" => "income",
-                            "title" => "營業收入",
-                            "label" => "營業收入",
+                            "title" => trans('web.income_statement.income'),    //營業收入
+                            "label" => trans('web.income_statement.income'),  //營業收入
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -139,8 +139,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "grossprofit",
-                            "title" => "營業毛利",
-                            "label" => "營業毛利",
+                            "title" => trans('web.income_statement.grossprofit'),  //營業毛利
+                            "label" => trans('web.income_statement.grossprofit'),  //營業毛利
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -150,8 +150,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "revenue",
-                            "title" => "營業利益",
-                            "label" => "營業利益",
+                            "title" => trans('web.income_statement.revenue'),  //營業利益
+                            "label" => trans('web.income_statement.revenue'),  //營業利益
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -161,8 +161,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "netincome",
-                            "title" => "稅前淨利",
-                            "label" => "稅前淨利",
+                            "title" => trans('web.income_statement.netincome'),  //稅前淨利
+                            "label" =>trans('web.income_statement.netincome'),  //稅前淨利
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -172,8 +172,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "cpynetincome",
-                            "title" => "歸屬於母公司淨利",
-                            "label" => "歸屬於母公司淨利",
+                            "title" => trans('web.income_statement.cpynetincome'),  //歸屬於母公司淨利
+                            "label" => trans('web.income_statement.cpynetincome'),  //歸屬於母公司淨利
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -183,8 +183,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "eps10",
-                            "title" => "<div>股票面額 10元計</div><div>稅後EPS (元)</div>",
-                            "label" => "股票面額 10元計計稅後EPS(元)",
+                            "title" => trans('web.income_statement.eps10'),  //<div>股票面額 10元計</div><div>稅後EPS (元)</div>
+                            "label" => trans('web.income_statement.eps10'),    //股票面額 10元計計稅後EPS(元)
                             "type" => "line",
                             "yAxisID" => "y2",
                             "tension" => 0.55,
@@ -194,8 +194,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "eps1",
-                            "title" => "<div>股票面額 1元計</div><div>稅後EPS (元)</div>",
-                            "label" => "股票面額 1元計稅後EPS (元)",
+                            "title" => trans('web.income_statement.eps1'),   //<div>股票面額 1元計</div><div>稅後EPS (元)</div>
+                            "label" => trans('web.income_statement.eps1'), //股票面額 1元計稅後EPS (元)
                             "type" => "line",
                             "yAxisID" => "y2",
                             "tension" => 0.55,
@@ -207,8 +207,8 @@ class JsonController extends BaseController
                     "quarter" => [
                         [
                             "key" => "income",
-                            "title" => "營業收入",
-                            "label" => "營業收入",
+                            "title" => trans('web.income_statement.income'),    //營業收入
+                            "label" => trans('web.income_statement.income'),  //營業收入
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -218,8 +218,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "grossprofit",
-                            "title" => "營業毛利",
-                            "label" => "營業毛利",
+                            "title" => trans('web.income_statement.grossprofit'),  //營業毛利
+                            "label" => trans('web.income_statement.grossprofit'),  //營業毛利
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -229,8 +229,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "revenue",
-                            "title" => "營業利益",
-                            "label" => "營業利益",
+                            "title" => trans('web.income_statement.revenue'),  //營業利益
+                            "label" => trans('web.income_statement.revenue'),  //營業利益
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -240,8 +240,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "netincome",
-                            "title" => "稅前淨利",
-                            "label" => "稅前淨利",
+                            "title" => trans('web.income_statement.netincome'),  //稅前淨利
+                            "label" =>trans('web.income_statement.netincome'),  //稅前淨利
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -251,8 +251,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "cpynetincome",
-                            "title" => "歸屬於母公司淨利",
-                            "label" => "歸屬於母公司淨利",
+                            "title" => trans('web.income_statement.cpynetincome'),  //歸屬於母公司淨利
+                            "label" => trans('web.income_statement.cpynetincome'),  //歸屬於母公司淨利
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -262,8 +262,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "eps10",
-                            "title" => "<div>股票面額 10元計</div><div>稅後EPS (元)</div>",
-                            "label" => "股票面額 10元計計稅後EPS(元)",
+                            "title" => trans('web.income_statement.eps10'),  //<div>股票面額 10元計</div><div>稅後EPS (元)</div>
+                            "label" => trans('web.income_statement.eps10'),    //股票面額 10元計計稅後EPS(元)
                             "type" => "line",
                             "yAxisID" => "y2",
                             "tension" => 0.55,
@@ -273,8 +273,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "eps1",
-                            "title" => "<div>股票面額 1元計</div><div>稅後EPS (元)</div>",
-                            "label" => "股票面額 1元計稅後EPS (元)",
+                            "title" => trans('web.income_statement.eps1'),   //<div>股票面額 1元計</div><div>稅後EPS (元)</div>
+                            "label" => trans('web.income_statement.eps1'), //股票面額 1元計稅後EPS (元)
                             "type" => "line",
                             "yAxisID" => "y2",
                             "tension" => 0.55,
@@ -375,7 +375,7 @@ class JsonController extends BaseController
 
             "balance_sheet" => [
                 "unit" => [
-                    "百萬新台幣",
+                    trans('web.financial.unit_3'),  //百萬新台幣
                     "%"
                 ],
                 "scales" => [
@@ -639,7 +639,7 @@ class JsonController extends BaseController
 
             "cash_flow" => [
                 "unit" => [
-                    "百萬新台幣"
+                    trans('web.financial.unit_3'),  //百萬新台幣
                 ],
                 "scales" => [
                     "year" => [
