@@ -88,6 +88,12 @@ return [
         'netincome1' => '股票面額 1元計每股淨值 (元)',
         'currentratio' => '流動比率',
         'debtratio' => '負債比率',
-    ]
+    ],
+
+    'cash_flow' => [
+        'operate' => '營業活動現金流',
+        'invest' => '投資活動現金流',
+        'fund' => '籌資活動現金流',
+    ],
 
 ];

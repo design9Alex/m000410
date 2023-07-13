@@ -250,6 +250,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'financial-cash-flow':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceFinancialCashFlow($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -1443,6 +1451,34 @@ class PageBuilder extends ParentBuilder
 
 
         $html = view('web.layouts.components.financial-balance-sheet', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+    //replaceFinancialCashFlow
+    protected function replaceFinancialCashFlow($blockNode)
+    {
+        $type = request()->has('type') && filled(request()->get('type')) ? request()->get('type') : 'year';
+
+
+        $arr = getFinancialData('web-block-investor-cash-flow','cash-flow');
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'type' => $type,
+            /*
+            'articleBlocks' => $articleBlocks,
+            'year' => $year,
+            'tableYear' => $tableYear,
+            'quarter' => $quarter,
+            'tableQuarter' => $tableQuarter,
+            */
+        ];
+
+        $viewData = array_merge($viewData,$arr);
+
+
+        $html = view('web.layouts.components.financial-cash-flow', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
 

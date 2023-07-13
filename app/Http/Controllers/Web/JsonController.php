@@ -814,8 +814,8 @@ class JsonController extends BaseController
                     "year" => [
                         [
                             "key" => "operate",
-                            "title" => "營業活動現金流",
-                            "label" => "營業活動現金流",
+                            "title" => trans('web.cash_flow.operate'),   //營業活動現金流
+                            "label" => trans('web.cash_flow.operate'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 160,
@@ -824,8 +824,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "invest",
-                            "title" => "投資活動現金流",
-                            "label" => "投資活動現金流",
+                            "title" => trans('web.cash_flow.invest'),   //投資活動現金流
+                            "label" => trans('web.cash_flow.invest'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 160,
@@ -834,8 +834,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "fund",
-                            "title" => "籌資活動現金流",
-                            "label" => "籌資活動現金流",
+                            "title" => trans('web.cash_flow.fund'),   //籌資活動現金流
+                            "label" => trans('web.cash_flow.fund'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 160,
@@ -846,8 +846,8 @@ class JsonController extends BaseController
                     "quarter" => [
                         [
                             "key" => "operate",
-                            "title" => "營業活動現金流",
-                            "label" => "營業活動現金流",
+                            "title" => trans('web.cash_flow.operate'),   //營業活動現金流
+                            "label" => trans('web.cash_flow.operate'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 160,
@@ -856,8 +856,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "invest",
-                            "title" => "投資活動現金流",
-                            "label" => "投資活動現金流",
+                            "title" => trans('web.cash_flow.invest'),   //投資活動現金流
+                            "label" => trans('web.cash_flow.invest'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 160,
@@ -866,8 +866,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "fund",
-                            "title" => "籌資活動現金流",
-                            "label" => "籌資活動現金流",
+                            "title" => trans('web.cash_flow.fund'),   //籌資活動現金流
+                            "label" => trans('web.cash_flow.fund'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 160,
