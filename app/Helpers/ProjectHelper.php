@@ -572,6 +572,7 @@ if (! function_exists('getFinancialData')) {
 
         foreach($quarter as $key => $item){
             foreach($item as $key2 => $value2){
+
                 if(is_numeric($value2)) {
                     $quarter[$key][$key2] = number_format($value2);
                     $tableQuarter[$key2][$key] = number_format($value2);

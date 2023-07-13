@@ -48,6 +48,8 @@
 
     @if($type == 'quarter')
       @foreach($tableQuarter as $key => $item)
+
+        @if($key != 'financial_type')
         <tr class="">
           <td class="title text-start fontWeight500 ">{{__('web.income_statement.'.$key)}}{{--營業收入--}}</td>
           @foreach($item as $year => $value)
@@ -58,10 +60,12 @@
             @endIf
           @endForeach
         </tr>
+        @endIf
       @endForeach
     @else
 
       @foreach($tableYear as $key => $item)
+        @if($key != 'financial_type')
         <tr class="">
           <td class="title text-start fontWeight500 ">{{__('web.income_statement.'.$key)}}{{--營業收入--}}</td>
           @foreach($item as $year => $value)
@@ -72,6 +76,7 @@
           @endIf
           @endForeach
         </tr>
+        @endIf
       @endForeach
     @endIf
 
