@@ -96,4 +96,10 @@ return [
         'fund' => '籌資活動現金流',
     ],
 
+    'share_data' => [
+        'share_cash' => '現金股利',
+        'netrevenue' => '每股淨資產',
+        'eps' => 'EPS',
+    ],
+
 ];

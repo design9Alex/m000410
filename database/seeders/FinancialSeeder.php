@@ -828,7 +828,7 @@ class FinancialSeeder extends Seeder
             $id[++$i] => [
                 'title' => '17',
 
-                'cash' => '2',
+                'share_cash' => '2',
                 'netrevenue' => '68',
                 'eps' => '8.01',
 
@@ -840,7 +840,7 @@ class FinancialSeeder extends Seeder
             $id[++$i] => [
                 'title' => '18',
 
-                'cash' => '4',
+                'share_cash' => '4',
                 'netrevenue' => '96',
                 'eps' => '8.03',
 
@@ -852,7 +852,7 @@ class FinancialSeeder extends Seeder
             $id[++$i] => [
                 'title' => '19',
 
-                'cash' => '4.2',
+                'share_cash' => '4.2',
                 'netrevenue' => '101',
                 'eps' => '8.32',
 
@@ -864,7 +864,7 @@ class FinancialSeeder extends Seeder
             $id[++$i] => [
                 'title' => '20',
 
-                'cash' => '4',
+                'share_cash' => '4',
                 'netrevenue' => '106',
                 'eps' => '7.34',
 
@@ -876,7 +876,7 @@ class FinancialSeeder extends Seeder
             $id[++$i] => [
                 'title' => '21',
 
-                'cash' => '5.2',
+                'share_cash' => '5.2',
                 'netrevenue' => '113',
                 'eps' => '10.05',
 

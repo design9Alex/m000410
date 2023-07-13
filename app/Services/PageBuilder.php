@@ -258,6 +258,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'financial-share-data':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceFinancialShareData($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -1479,6 +1487,34 @@ class PageBuilder extends ParentBuilder
 
 
         $html = view('web.layouts.components.financial-cash-flow', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+    //replaceFinancialShareData
+    protected function replaceFinancialShareData($blockNode)
+    {
+        $type = request()->has('type') && filled(request()->get('type')) ? request()->get('type') : 'year';
+
+
+        $arr = getFinancialData('web-block-investor-share-data','share-data');
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'type' => $type,
+            /*
+            'articleBlocks' => $articleBlocks,
+            'year' => $year,
+            'tableYear' => $tableYear,
+            'quarter' => $quarter,
+            'tableQuarter' => $tableQuarter,
+            */
+        ];
+
+        $viewData = array_merge($viewData,$arr);
+
+
+        $html = view('web.layouts.components.financial-share-data', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
 

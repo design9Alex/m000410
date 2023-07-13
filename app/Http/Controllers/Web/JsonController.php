@@ -962,9 +962,9 @@ class JsonController extends BaseController
                 "title" => [
                     "year" => [
                         [
-                            "key" => "cash",
-                            "title" => "現金股利",
-                            "label" => "現金股利",
+                            "key" => "share_cash",
+                            "title" => trans('web.share_data.share_cash'),  //現金股利
+                            "label" => trans('web.share_data.share_cash'),
                             "type" => "bar",
                             "yAxisID" => "y2",
                             "maxBarThickness" => 160,
@@ -973,8 +973,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "netrevenue",
-                            "title" => "每股淨資產",
-                            "label" => "每股淨資產",
+                            "title" => trans('web.share_data.netrevenue'), //每股淨資產
+                            "label" => trans('web.share_data.netrevenue'),
                             "type" => "line",
                             "yAxisID" => "y",
                             "tension" => 0.55,
@@ -984,8 +984,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "eps",
-                            "title" => "EPS",
-                            "label" => "EPS",
+                            "title" => trans('web.share_data.eps'),   //EPS
+                            "label" => trans('web.share_data.eps'),
                             "type" => "bar",
                             "yAxisID" => "y2",
                             "maxBarThickness" => 160,
@@ -995,7 +995,7 @@ class JsonController extends BaseController
                     ],
                     "quarter" => [
                         [
-                            "key" => "cash",
+                            "key" => "share_cash",
                             "title" => "現金股利",
                             "label" => "現金股利",
                             "type" => "bar",
@@ -1029,27 +1029,27 @@ class JsonController extends BaseController
                 ],
                 "year" => [
                     [
-                        "cash" => "2",
+                        "share_cash" => "2",
                         "netrevenue" => "68",
                         "eps" => "8.01"
                     ],
                     [
-                        "cash" => "4",
+                        "share_cash" => "4",
                         "netrevenue" => "96",
                         "eps" => "8.03"
                     ],
                     [
-                        "cash" => "4.2",
+                        "share_cash" => "4.2",
                         "netrevenue" => "101",
                         "eps" => "8.32"
                     ],
                     [
-                        "cash" => "4",
+                        "share_cash" => "4",
                         "netrevenue" => "106",
                         "eps" => "7.34"
                     ],
                     [
-                        "cash" => "5.2",
+                        "share_cash" => "5.2",
                         "netrevenue" => "113",
                         "eps" => "10.05"
                     ]
