@@ -1,6 +1,6 @@
 <div class="fnclrptUnitBox d-flex align-items-center justify-content-between" data-aos="fade-up" data-aos-duration="1000">
-  <p class="fnclrptUnit mb-0">單位：百萬新台幣</p>
-  <p class="fnclrptUnit mb-0">單位：%</p>
+  <p class="fnclrptUnit mb-0">@lang('web.financial.unit_1'){{--單位：百萬新台幣--}}</p>
+  <p class="fnclrptUnit mb-0">@lang('web.financial.unit_5'){{--單位：%--}}</p>
 </div>
 
 {{--data-when="year"  data-when="quarter"--}}

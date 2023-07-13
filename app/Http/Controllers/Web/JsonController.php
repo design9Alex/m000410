@@ -431,8 +431,8 @@ class JsonController extends BaseController
                     "year" => [
                         [
                             "key" => "cash",
-                            "title" => "現金及約當現金",
-                            "label" => "現金及約當現金",
+                            "title" => trans('web.balance_sheet.cash'),   //現金及約當現金
+                            "label" =>  trans('web.balance_sheet.cash'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -442,8 +442,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "receiveable",
-                            "title" => "應收帳款淨額",
-                            "label" => "應收帳款淨額",
+                            "title" =>  trans('web.balance_sheet.receiveable'),    //應收帳款淨額
+                            "label" => trans('web.balance_sheet.receiveable'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -453,8 +453,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "currentassets",
-                            "title" => "流動資產",
-                            "label" => "流動資產",
+                            "title" => trans('web.balance_sheet.currentassets'),  //流動資產
+                            "label" => trans('web.balance_sheet.currentassets'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -464,8 +464,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "equityinvestments",
-                            "title" => "採用權益法之投資",
-                            "label" => "採用權益法之投資",
+                            "title" => trans('web.balance_sheet.equityinvestments'),  //採用權益法之投資
+                            "label" => trans('web.balance_sheet.equityinvestments'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -475,8 +475,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "currentliabilities",
-                            "title" => "流動負債",
-                            "label" => "流動負債",
+                            "title" => trans('web.balance_sheet.currentliabilities'),  //流動負債
+                            "label" => trans('web.balance_sheet.currentliabilities'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -486,8 +486,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "noncurrentliabilities",
-                            "title" => "非流動負債",
-                            "label" => "非流動負債",
+                            "title" => trans('web.balance_sheet.noncurrentliabilities'), //非流動負債
+                            "label" => trans('web.balance_sheet.noncurrentliabilities'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -497,8 +497,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "totalequity",
-                            "title" => "權益總計",
-                            "label" => "權益總計",
+                            "title" => trans('web.balance_sheet.totalequity'),  //權益總計
+                            "label" => trans('web.balance_sheet.totalequity'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -508,8 +508,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "totalassets",
-                            "title" => "總資產",
-                            "label" => "總資產",
+                            "title" => trans('web.balance_sheet.totalassets'),   //總資產
+                            "label" => trans('web.balance_sheet.totalassets'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -519,8 +519,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "netincome10",
-                            "title" => "<div>股票面額 10元計</div><div>每股淨值 (元)</div>",
-                            "label" => "股票面額 10元計每股淨值 (元)",
+                            "title" => trans('web.balance_sheet.netincome10'),   //<div>股票面額 10元計</div><div>每股淨值 (元)</div>
+                            "label" => trans('web.balance_sheet.netincome10'), //股票面額 10元計每股淨值 (元)
                             "type" => "line",
                             "yAxisID" => "y2",
                             "tension" => 0.55,
@@ -530,8 +530,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "netincome1",
-                            "title" => "<div>股票面額 1元計</div><div>每股淨值 (元)</div>",
-                            "label" => "股票面額 1元計每股淨值 (元)",
+                            "title" => trans('web.balance_sheet.netincome1'),    //<div>股票面額 1元計</div><div>每股淨值 (元)</div>
+                            "label" => trans('web.balance_sheet.netincome1'),  //股票面額 1元計每股淨值 (元)
                             "type" => "line",
                             "yAxisID" => "y2",
                             "tension" => 0.55,
@@ -541,8 +541,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "currentratio",
-                            "title" => "流動比率",
-                            "label" => "流動比率",
+                            "title" => trans('web.balance_sheet.currentratio'),  //流動比率
+                            "label" => trans('web.balance_sheet.currentratio'),
                             "type" => "line",
                             "yAxisID" => "y2",
                             "tension" => 0.55,
@@ -552,8 +552,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "debtratio",
-                            "title" => "負債比率",
-                            "label" => "負債比率",
+                            "title" => trans('web.balance_sheet.debtratio'),  //負債比率
+                            "label" => trans('web.balance_sheet.debtratio'),
                             "type" => "line",
                             "yAxisID" => "y2",
                             "tension" => 0.55,
@@ -565,8 +565,8 @@ class JsonController extends BaseController
                     "quarter" => [
                         [
                             "key" => "cash",
-                            "title" => "現金及約當現金",
-                            "label" => "現金及約當現金",
+                            "title" => trans('web.balance_sheet.cash'),   //現金及約當現金
+                            "label" =>  trans('web.balance_sheet.cash'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -576,8 +576,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "receiveable",
-                            "title" => "應收帳款淨額",
-                            "label" => "應收帳款淨額",
+                            "title" =>  trans('web.balance_sheet.receiveable'),    //應收帳款淨額
+                            "label" => trans('web.balance_sheet.receiveable'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -587,8 +587,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "currentassets",
-                            "title" => "流動資產",
-                            "label" => "流動資產",
+                            "title" => trans('web.balance_sheet.currentassets'),  //流動資產
+                            "label" => trans('web.balance_sheet.currentassets'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -598,8 +598,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "equityinvestments",
-                            "title" => "採用權益法之投資",
-                            "label" => "採用權益法之投資",
+                            "title" => trans('web.balance_sheet.equityinvestments'),  //採用權益法之投資
+                            "label" => trans('web.balance_sheet.equityinvestments'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -609,8 +609,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "currentliabilities",
-                            "title" => "流動負債",
-                            "label" => "流動負債",
+                            "title" => trans('web.balance_sheet.currentliabilities'),  //流動負債
+                            "label" => trans('web.balance_sheet.currentliabilities'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -620,8 +620,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "noncurrentliabilities",
-                            "title" => "非流動負債",
-                            "label" => "非流動負債",
+                            "title" => trans('web.balance_sheet.noncurrentliabilities'), //非流動負債
+                            "label" => trans('web.balance_sheet.noncurrentliabilities'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -631,8 +631,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "totalequity",
-                            "title" => "權益總計",
-                            "label" => "權益總計",
+                            "title" => trans('web.balance_sheet.totalequity'),  //權益總計
+                            "label" => trans('web.balance_sheet.totalequity'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -642,8 +642,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "totalassets",
-                            "title" => "總資產",
-                            "label" => "總資產",
+                            "title" => trans('web.balance_sheet.totalassets'),   //總資產
+                            "label" => trans('web.balance_sheet.totalassets'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 36,
@@ -653,8 +653,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "netincome10",
-                            "title" => "<div>股票面額 10元計</div><div>每股淨值 (元)</div>",
-                            "label" => "股票面額 10元計每股淨值 (元)",
+                            "title" => trans('web.balance_sheet.netincome10'),   //<div>股票面額 10元計</div><div>每股淨值 (元)</div>
+                            "label" => trans('web.balance_sheet.netincome10'), //股票面額 10元計每股淨值 (元)
                             "type" => "line",
                             "yAxisID" => "y2",
                             "tension" => 0.55,
@@ -664,8 +664,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "netincome1",
-                            "title" => "<div>股票面額 1元計</div><div>每股淨值 (元)</div>",
-                            "label" => "股票面額 1元計每股淨值 (元)",
+                            "title" => trans('web.balance_sheet.netincome1'),    //<div>股票面額 1元計</div><div>每股淨值 (元)</div>
+                            "label" => trans('web.balance_sheet.netincome1'),  //股票面額 1元計每股淨值 (元)
                             "type" => "line",
                             "yAxisID" => "y2",
                             "tension" => 0.55,
@@ -675,8 +675,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "currentratio",
-                            "title" => "流動比率",
-                            "label" => "流動比率",
+                            "title" => trans('web.balance_sheet.currentratio'),  //流動比率
+                            "label" => trans('web.balance_sheet.currentratio'),
                             "type" => "line",
                             "yAxisID" => "y2",
                             "tension" => 0.55,
@@ -686,8 +686,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "debtratio",
-                            "title" => "負債比率",
-                            "label" => "負債比率",
+                            "title" => trans('web.balance_sheet.debtratio'),  //負債比率
+                            "label" => trans('web.balance_sheet.debtratio'),
                             "type" => "line",
                             "yAxisID" => "y2",
                             "tension" => 0.55,
