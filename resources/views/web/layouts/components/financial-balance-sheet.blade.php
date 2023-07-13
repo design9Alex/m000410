@@ -62,7 +62,6 @@
         </tr>
       @endForeach
     @else
-
       @foreach($tableYear as $key => $item)
         <tr class="">
           <td class="title text-start fontWeight500 ">{{__('web.balance_sheet.'.$key)}}</td>

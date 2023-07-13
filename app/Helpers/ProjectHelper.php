@@ -415,12 +415,13 @@ if (! function_exists('getFinancialData')) {
             }
         }
 
-
         foreach($year as $key => $item){
             foreach($item as $key2 => $value2){
                 if(is_numeric($value2)) {
                     $year[$key][$key2] = number_format($value2);
                     $tableYear[$key2][$key] = number_format($value2);
+                }else{
+                    $tableYear[$key2][$key] = ($value2);
                 }
             }
         }
