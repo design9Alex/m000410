@@ -176,6 +176,7 @@ return [
 
     'repository_injections' => [
         // ['Minmax\Base\Admin\DemoController', 'App\Repositories\Admin\DemoRepository'],
+        ['Minmax\Article\Admin\ArticleBlockController', 'App\Repositories\Admin\ArticleBlockRepository'],
     ],
 
     /*

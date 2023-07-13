@@ -20,6 +20,9 @@ class FinancialSeeder extends Seeder
     {
         //
         $this->init();
+
+        $this->insertSiteParameters();
+
         $this->insertArticleColumn();
         $this->insertArticleCategory();
         $this->insertArticleBlock();
@@ -54,6 +57,7 @@ class FinancialSeeder extends Seeder
             'income-statement' => [
                 'title' => '[財務摘要] 損益表',
                 'column_set' => json_encode([
+                    ['column' => 'financial_type', 'component' => 'minmax-select'],
                     ['column' => 'income', 'component' => 'minmax-input-text'], //營業收入
                     ['column' => 'grossprofit', 'component' => 'minmax-input-text'],    //營業毛利
                     ['column' => 'revenue', 'component' => 'minmax-input-text'],    //營業利益
@@ -68,6 +72,7 @@ class FinancialSeeder extends Seeder
             'balance-sheet' => [
                 'title' => '[財務摘要] 資產負債表',
                 'column_set' => json_encode([
+                    ['column' => 'financial_type', 'component' => 'minmax-select'],
                     ['column' => 'cash', 'component' => 'minmax-input-text'],
                     ['column' => 'receiveable', 'component' => 'minmax-input-text'],
                     ['column' => 'currentassets', 'component' => 'minmax-input-text'],
@@ -87,6 +92,7 @@ class FinancialSeeder extends Seeder
             'cash-flow' => [
                 'title' => '[財務摘要] 現金流量表',
                 'column_set' => json_encode([
+                    ['column' => 'financial_type', 'component' => 'minmax-select'],
                     ['column' => 'operate', 'component' => 'minmax-input-text'],
                     ['column' => 'invest', 'component' => 'minmax-input-text'],
                     ['column' => 'fund', 'component' => 'minmax-input-text'],
@@ -97,6 +103,7 @@ class FinancialSeeder extends Seeder
             'share-data' => [
                 'title' => '[財務摘要] 每股數據',
                 'column_set' => json_encode([
+                    ['column' => 'financial_type', 'component' => 'minmax-select'],
                     ['column' => 'share_cash', 'component' => 'minmax-input-text'],
                     ['column' => 'netrevenue', 'component' => 'minmax-input-text'],
                     ['column' => 'eps', 'component' => 'minmax-input-text'],
@@ -107,6 +114,7 @@ class FinancialSeeder extends Seeder
             'important-ratio' => [
                 'title' => '[財務摘要] 重要比率',
                 'column_set' => json_encode([
+                    ['column' => 'financial_type', 'component' => 'minmax-select'],
                     ['column' => 'EBITDA', 'component' => 'minmax-input-text'],
                     ['column' => 'ROA', 'component' => 'minmax-input-text'],
                     ['column' => 'ROE', 'component' => 'minmax-input-text'],
@@ -117,6 +125,7 @@ class FinancialSeeder extends Seeder
             'products-proportion' => [
                 'title' => '[財務摘要] 產品組合',
                 'column_set' => json_encode([
+                    ['column' => 'financial_type', 'component' => 'minmax-select'],
                     ['column' => 'iclf', 'component' => 'minmax-input-text'],
                     ['column' => 'resin', 'component' => 'minmax-input-text'],
                     ['column' => 'other', 'component' => 'minmax-input-text'],
@@ -541,7 +550,7 @@ class FinancialSeeder extends Seeder
             //損益表
             $id[++$i] => [
                 'title' => '21Q2',
-
+                'financial_type' => 'quarter', //year quarter
                 'income' => '4901',
                 'grossprofit' => '871',
                 'revenue' => '563',
@@ -557,6 +566,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '21Q3',
+                'financial_type' => 'quarter', //year quarter
 
                 'income' => '5472',
                 'grossprofit' => '1157',
@@ -573,6 +583,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '21Q4',
+                'financial_type' => 'quarter', //year quarter
 
                 'income' => '5703',
                 'grossprofit' => '1433',
@@ -589,6 +600,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '22Q1',
+                'financial_type' => 'quarter', //year quarter
 
                 'income' => '5655',
                 'grossprofit' => '1313',
@@ -605,6 +617,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '22Q2',
+                'financial_type' => 'quarter', //year quarter
 
                 'income' => '5820',
                 'grossprofit' => '1343',
@@ -621,6 +634,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => 'QoQ',
+                'financial_type' => 'quarter', //year quarter
 
                 'income' => '2.90%',
                 'grossprofit' => '2.30%',
@@ -637,6 +651,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => 'YoY',
+                'financial_type' => 'quarter', //year quarter
 
                 'income' => '18.80%',
                 'grossprofit' => '54.20%',
@@ -655,7 +670,8 @@ class FinancialSeeder extends Seeder
 
             //資產負債表
             $id[++$i] => [
-                'title' => '18',
+                'title' => '2018',
+                'financial_type' => 'year', //year quarter
 
                 'cash' => '3050',
                 'receiveable' => '3333',
@@ -676,7 +692,8 @@ class FinancialSeeder extends Seeder
                 'roles' => null, 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '19',
+                'title' => '2019',
+                'financial_type' => 'year', //year quarter
 
                 'cash' => '3820',
                 'receiveable' => '3489',
@@ -697,7 +714,8 @@ class FinancialSeeder extends Seeder
                 'roles' => null, 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '20',
+                'title' => '2020',
+                'financial_type' => 'year', //year quarter
 
                 'cash' => '3196',
                 'receiveable' => '3646',
@@ -718,7 +736,8 @@ class FinancialSeeder extends Seeder
                 'roles' => null, 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '21',
+                'title' => '2021',
+                'financial_type' => 'year', //year quarter
 
                 'cash' => '4799',
                 'receiveable' => '4775',
@@ -739,7 +758,8 @@ class FinancialSeeder extends Seeder
                 'roles' => null, 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '22',
+                'title' => '2022',
+                'financial_type' => 'year', //year quarter
 
                 'cash' => '7106',
                 'receiveable' => '3894',
@@ -763,7 +783,8 @@ class FinancialSeeder extends Seeder
 
             //現金流量表
             $id[++$i] => [
-                'title' => '17',
+                'title' => '2017',
+                'financial_type' => 'year', //year quarter
 
                 'operate' => '-39341',
                 'invest' => '-64990',
@@ -775,7 +796,8 @@ class FinancialSeeder extends Seeder
                 'roles' => null, 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '18',
+                'title' => '2018',
+                'financial_type' => 'year', //year quarter
 
                 'operate' => '-40156',
                 'invest' => '71431',
@@ -787,7 +809,8 @@ class FinancialSeeder extends Seeder
                 'roles' => null, 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '19',
+                'title' => '2019',
+                'financial_type' => 'year', //year quarter
 
                 'operate' => '248018',
                 'invest' => '70584',
@@ -799,7 +822,8 @@ class FinancialSeeder extends Seeder
                 'roles' => null, 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '20',
+                'title' => '2020',
+                'financial_type' => 'year', //year quarter
 
                 'operate' => '377624',
                 'invest' => '34586',
@@ -811,7 +835,8 @@ class FinancialSeeder extends Seeder
                 'roles' => null, 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '21',
+                'title' => '2021',
+                'financial_type' => 'year', //year quarter
 
                 'operate' => '-98212',
                 'invest' => '-92083',
@@ -826,7 +851,8 @@ class FinancialSeeder extends Seeder
 
             //每股數據
             $id[++$i] => [
-                'title' => '17',
+                'title' => '2017',
+                'financial_type' => 'year', //year quarter
 
                 'share_cash' => '2',
                 'netrevenue' => '68',
@@ -838,7 +864,8 @@ class FinancialSeeder extends Seeder
                 'roles' => null, 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '18',
+                'title' => '2018',
+                'financial_type' => 'year', //year quarter
 
                 'share_cash' => '4',
                 'netrevenue' => '96',
@@ -850,7 +877,8 @@ class FinancialSeeder extends Seeder
                 'roles' => null, 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '19',
+                'title' => '2019',
+                'financial_type' => 'year', //year quarter
 
                 'share_cash' => '4.2',
                 'netrevenue' => '101',
@@ -862,7 +890,8 @@ class FinancialSeeder extends Seeder
                 'roles' => null, 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '20',
+                'title' => '2020',
+                'financial_type' => 'year', //year quarter
 
                 'share_cash' => '4',
                 'netrevenue' => '106',
@@ -874,7 +903,8 @@ class FinancialSeeder extends Seeder
                 'roles' => null, 'sort' => ++$sort, 'active' => 1,
             ],
             $id[++$i] => [
-                'title' => '21',
+                'title' => '2021',
+                'financial_type' => 'year', //year quarter
 
                 'share_cash' => '5.2',
                 'netrevenue' => '113',
@@ -890,6 +920,7 @@ class FinancialSeeder extends Seeder
             //重要比率
             $id[++$i] => [
                 'title' => '20Q4',
+                'financial_type' => 'quarter', //year quarter
 
                 'EBITDA' => '13%',
                 'ROA' => '1.24%',
@@ -902,6 +933,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '21Q1',
+                'financial_type' => 'quarter', //year quarter
 
                 'EBITDA' => '13%',
                 'ROA' => '1.41%',
@@ -914,6 +946,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '21Q2',
+                'financial_type' => 'quarter', //year quarter
 
                 'EBITDA' => '16%',
                 'ROA' => '1.83%',
@@ -926,6 +959,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '21Q3',
+                'financial_type' => 'quarter', //year quarter
 
                 'EBITDA' => '24%',
                 'ROA' => '3.6%',
@@ -938,6 +972,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '21Q4',
+                'financial_type' => 'quarter', //year quarter
 
                 'EBITDA' => '19%',
                 'ROA' => '2.4%',
@@ -950,6 +985,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '22Q1',
+                'financial_type' => 'quarter', //year quarter
 
                 'EBITDA' => '24%',
                 'ROA' => '2.97%',
@@ -962,6 +998,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '22Q2',
+                'financial_type' => 'quarter', //year quarter
 
                 'EBITDA' => '24%',
                 'ROA' => '2.90%',
@@ -974,6 +1011,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '22Q3',
+                'financial_type' => 'quarter', //year quarter
 
                 'EBITDA' => '32%',
                 'ROA' => '3.92%',
@@ -989,6 +1027,7 @@ class FinancialSeeder extends Seeder
             //產品組合
             $id[++$i] => [
                 'title' => '20Q4',
+                'financial_type' => 'quarter', //year quarter
 
                 'iclf' => '47%',
                 'resin' => '28%',
@@ -1002,6 +1041,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '21Q1',
+                'financial_type' => 'quarter', //year quarter
 
                 'iclf' => '47%',
                 'resin' => '29%',
@@ -1015,6 +1055,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '21Q2',
+                'financial_type' => 'quarter', //year quarter
 
                 'iclf' => '49%',
                 'resin' => '28%',
@@ -1028,6 +1069,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '21Q3',
+                'financial_type' => 'quarter', //year quarter
 
                 'iclf' => '51%',
                 'resin' => '27%',
@@ -1041,6 +1083,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '21Q4',
+                'financial_type' => 'quarter', //year quarter
 
                 'iclf' => '54%',
                 'resin' => '25%',
@@ -1054,6 +1097,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '22Q1',
+                'financial_type' => 'quarter', //year quarter
 
                 'iclf' => '55%',
                 'resin' => '25%',
@@ -1067,6 +1111,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '22Q2',
+                'financial_type' => 'quarter', //year quarter
 
                 'iclf' => '55%',
                 'resin' => '25%',
@@ -1080,6 +1125,7 @@ class FinancialSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '22Q3',
+                'financial_type' => 'quarter', //year quarter
 
                 'iclf' => '59%',
                 'resin' => '22%',
@@ -1636,6 +1682,38 @@ HTML;
         ], false);
 
         DBHelper::insertLanguageUsage('Minmax\Base\Models\Template', array_pluck($insertData, 'id'),$this->languages);
+    }
+
+
+
+    protected function insertSiteParameters()
+    {
+        DB::table('site_parameter')->insert($insertData = [
+            //產業別
+            ['id' => $group1 = uuid(), 'parent_id' => null,
+                'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $item1_1 = uuid(), 'parent_id' => $group1,
+                'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $item1_2 = uuid(), 'parent_id' => $group1,
+                'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+
+
+        ]);
+
+        DBHelper::insertDistributedData('site_parameter', [
+            $group1 => ['value' => 'financial_type', 'sort' => 1, 'active' => 1,
+                'title' => '度別', 'operations' => json_encode(['unmodifiable', 'indelible']),
+            ],
+            $item1_1 => ['value' => 'year', 'sort' => 1, 'active' => 1,
+                'title' => '年度', 'operations' => null,
+            ],
+            $item1_2 => ['value' => 'quarter', 'sort' => 2, 'active' => 1,
+                'title' => '季度', 'operations' => null,
+            ],
+
+        ], false);
+
+        DBHelper::insertLanguageUsage('Minmax\Base\Models\SiteParameter', array_pluck($insertData, 'id'), $this->languages );
     }
 
 

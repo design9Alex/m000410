@@ -57,6 +57,9 @@ class UpdateArticleBlockColumnConfig extends Migration
                 'phone' => ['table' => 'data_article_plaintext', 'language' => true],    //電話
                 'fax' => ['table' => 'data_article_plaintext', 'language' => true],    //傳真
 
+
+                'financial_type' => ['table' => 'data_article_plaintext', 'language' => true],    //
+
                 //損益表
                 'income' => ['table' => 'data_article_plaintext', 'language' => true],    //營業收入
                 'grossprofit' => ['table' => 'data_article_plaintext', 'language' => true],    //營業毛利

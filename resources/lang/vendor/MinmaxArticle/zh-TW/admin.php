@@ -4,6 +4,8 @@ return [
 
     'module' => [
         'ArticleBlock' => [
+            'financial_type' => '度別',
+
             'link' => '自訂連結',
             'city' => '縣市',
             'department' => '部門/職稱',

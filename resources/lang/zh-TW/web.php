@@ -109,4 +109,11 @@ return [
         'ROE' => 'ROE',
     ],
 
+    'products_proportion' => [
+        'iclf' => 'IC L/F',
+        'resin' => '封裝樹脂',
+        'other' => '其他(含基板)',
+        'ledlf' => 'LED L/F',
+    ],
+
 ];

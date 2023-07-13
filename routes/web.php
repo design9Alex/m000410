@@ -20,3 +20,7 @@ Route::get('getCaptcha', 'AjaxController@getCaptcha')->name('ajax.getCaptcha'); 
 Route::post('saveTrack', 'AjaxController@saveTrack')->name('ajax.save.track');
 
 Route::get('static/web/scripts/default/financialData.json', 'JsonController@financialData')->name('financialData');
+
+Route::get('tt',function(){
+   dd(siteOption('financial_type'));
+});

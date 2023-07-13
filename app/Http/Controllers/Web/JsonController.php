@@ -1111,6 +1111,7 @@ class JsonController extends BaseController
                     ]
                 ],
                 "title" => [
+                    /*
                     "year" => [
                         [
                             "key" => "EBITDA",
@@ -1143,6 +1144,7 @@ class JsonController extends BaseController
                             "backgroundColor" => "#CDD55B"
                         ]
                     ],
+                    */
                     "quarter" => [
                         [
                             "key" => "EBITDA",
@@ -1176,7 +1178,7 @@ class JsonController extends BaseController
                         ]
                     ],
                 ],
-                "year" => [
+                "quarter" => [
                     "20Q4" => [
                         "EBITDA" => "13%",
                         "ROA" => "1.24%",
@@ -1260,11 +1262,12 @@ class JsonController extends BaseController
                     ]
                 ],
                 "title" => [
+                    /*
                     "year" => [
                         [
                             "key" => "iclf",
-                            "title" => "IC L/F",
-                            "label" => "IC L/F",
+                            "title" => trans('web.products_proportion.iclf'),    //IC L/F
+                            "label" => trans('web.products_proportion.iclf'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 160,
@@ -1273,8 +1276,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "resin",
-                            "title" => "封裝樹脂",
-                            "label" => "封裝樹脂",
+                            "title" => trans('web.products_proportion.resin'),  //封裝樹脂
+                            "label" => trans('web.products_proportion.resin'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 160,
@@ -1283,8 +1286,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "other",
-                            "title" => "其他(含基板)",
-                            "label" => "其他(含基板)",
+                            "title" => trans('web.products_proportion.other'),   //其他(含基板)
+                            "label" => trans('web.products_proportion.other'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 160,
@@ -1293,8 +1296,8 @@ class JsonController extends BaseController
                         ],
                         [
                             "key" => "ledlf",
-                            "title" => "LED L/F",
-                            "label" => "LED L/F",
+                            "title" => trans('web.products_proportion.ledlf'),   //LED L/
+                            "label" => trans('web.products_proportion.ledlf'),
                             "type" => "bar",
                             "yAxisID" => "y",
                             "maxBarThickness" => 160,
@@ -1302,6 +1305,7 @@ class JsonController extends BaseController
                             "backgroundColor" => "#C29772"
                         ]
                     ],
+                    */
                     "quarter" => [
                         [
                             "key" => "iclf",
@@ -1345,7 +1349,7 @@ class JsonController extends BaseController
                         ]
                     ],
                 ],
-                "year" => [
+                "quarter" => [
                     "20Q4" => [
                         "iclf" => "47%",
                         "resin" => "28%",

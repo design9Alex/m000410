@@ -1497,7 +1497,7 @@ class AboutSeeder extends Seeder
 
         ];
 
-        foreach (collect($data)->chunk(100) as $chunk) {
+        foreach (collect($data)->chunk(50) as $chunk) {
             DBHelper::insertDistributedData('article_block', $chunk , false);
         }
 
