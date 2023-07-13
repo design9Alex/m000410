@@ -282,6 +282,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'financial-monthly':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceFinancialMonthly($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -1587,6 +1595,90 @@ class PageBuilder extends ParentBuilder
 
 
         $html = view('web.layouts.components.financial-products-proportion', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+    //replaceFinancialMonthly
+    protected function replaceFinancialMonthly($blockNode)
+    {
+        $categoryId = 'web-intro-investor-financial-monthly';
+        $articleCategory = ArticleCategory::query()
+            ->with(['articleCategories.articleCategories'])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where('id',$categoryId)->distributedOrWhere('code',$categoryId)
+            ->distributedActive()
+            ->first();
+
+
+
+        if(blank($articleCategory)){
+            abort(404);
+        }
+
+
+        $articleIntros = (new ArticleIntroRepository())->query()
+            ->with([
+                'articleCategories.articleCategory',
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->whereHas('articleCategories', function ($query) use($articleCategory) {
+                $query->where('id', array_get($articleCategory,'id'));
+            })
+
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>', now());
+            })
+            ->distributedActive()
+            ->orderBy('sort')
+            ->get();
+
+
+        $y = filled(request()->route('y')) ? request()->route('y') : array_get($articleIntros,'0.title');
+
+
+        $articleIntro = (new ArticleIntroRepository())->query()
+            ->with([
+                'articleCategories.articleCategory',
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->whereHas('articleCategories', function ($query) use($articleCategory) {
+                $query->where('id', array_get($articleCategory,'id'));
+            })
+
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>', now());
+            })
+            ->distributedOrWhere('title',$y)
+            ->distributedActive()->first();
+
+            $viewData = [
+            'routeName' => request()->route()->getName(),
+            'articleIntros' => $articleIntros,
+            'articleIntro' => $articleIntro,
+            'y' => $y,
+        ];
+
+
+        $html = view('web.layouts.components.financial-monthly', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
 

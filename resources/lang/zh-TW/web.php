@@ -116,4 +116,8 @@ return [
         'ledlf' => 'LED L/F',
     ],
 
+    'financial_monthly' => [
+        'all' => 'All',
+    ]
+
 ];

@@ -508,7 +508,7 @@ class InsertInitialPages extends Migration
                     return view('web.templates.pages.financial-monthly', ['local' => 'zh-TW'])->render();
                 }, ''),
                 'start_at' => null, 'end_at' => null,
-                'path' => 'financial-monthly',
+                'path' => 'financial-monthly/{y?}',
                 'menus' => null,
                 'permission' => null, 'roles' => null,
                 'operations' => json_encode(['indelible']),
