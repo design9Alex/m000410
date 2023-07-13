@@ -1,10 +1,9 @@
 <div class="fnclrptUnitBox d-flex align-items-center justify-content-between" data-aos="fade-up" data-aos-duration="1000">
-  <p class="fnclrptUnit mb-0">@lang('web.financial.unit_6'){{--單位：百萬新台幣--}}</p>
-  <p class="fnclrptUnit mb-0">@lang('web.financial.unit_6'){{--單位：百萬新台幣--}}</p>
+  <p class="fnclrptUnit mb-0">@lang('web.financial.unit_5'){{--單位：百萬新台幣--}}</p>
 </div>
 
 {{--data-when="year"  data-when="quarter"--}}
-<div class="fnclrptChartBox jsFnclrptChart" data-when="{{$type}}" data-kind="share_data" data-aos="fade-up" data-aos-duration="1000">
+<div class="fnclrptChartBox jsFnclrptChart" data-when="{{$type}}" data-kind="important_ratio" data-aos="fade-up" data-aos-duration="1000">
   <canvas id="jsFnclrptChartGraph"></canvas>
 </div>
 
@@ -51,7 +50,7 @@
     @if($type == 'quarter')
       @foreach($tableQuarter as $key => $item)
         <tr class="">
-          <td class="title text-start fontWeight500 ">{{__('web.share_data.'.$key)}}</td>
+          <td class="title text-start fontWeight500 ">{{__('web.important_ratio.'.$key)}}</td>
           @foreach($item as $year => $value)
             @if(++$loop->index >= count($item) - 2)
               <td class="FontSub ColorDF2020 jsFnclrptTd" data-year="{{$year}}" data-index="{{ ++$loop->index}}">{{$value}}</td>
@@ -64,7 +63,7 @@
     @else
       @foreach($tableYear as $key => $item)
         <tr class="">
-          <td class="title text-start fontWeight500 ">{{__('web.share_data.'.$key)}}</td>
+          <td class="title text-start fontWeight500 ">{{__('web.important_ratio.'.$key)}}</td>
           @foreach($item as $year => $value)
           @if(++$loop->index == count($item))
             <td class="FontSub ColorDF2020 jsFnclrptTd" data-year="{{$year}}" data-index="{{ ++$loop->index}}">{{$value}}</td>

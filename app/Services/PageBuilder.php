@@ -266,6 +266,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'financial-important-ratio':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceFinancialImportantRatio($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -1518,6 +1526,33 @@ class PageBuilder extends ParentBuilder
         $this->replaceElement($blockNode, $html);
     }
 
+
+    //replaceFinancialImportantRatio
+    protected function replaceFinancialImportantRatio($blockNode)
+    {
+        $type = request()->has('type') && filled(request()->get('type')) ? request()->get('type') : 'year';
+
+
+        $arr = getFinancialData('web-block-investor-important-ratio','important-ratio');
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'type' => $type,
+            /*
+            'articleBlocks' => $articleBlocks,
+            'year' => $year,
+            'tableYear' => $tableYear,
+            'quarter' => $quarter,
+            'tableQuarter' => $tableQuarter,
+            */
+        ];
+
+        $viewData = array_merge($viewData,$arr);
+
+
+        $html = view('web.layouts.components.financial-important-ratio', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
 
 
 

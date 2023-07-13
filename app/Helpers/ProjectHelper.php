@@ -428,6 +428,35 @@ function breadcrumbs($route, $parameters = [])
             break;
 
 
+        case 'web.page.web-financial-important-ratio':
+            $breadcrumbs[] = ['uri' => route('web.page.web-financial') , 'title' => trans('web.menu.investor')];
+
+            $menu = \Minmax\Base\Models\SystemMenu::query()
+                ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+                ->distributedWhere('guard', 'web')
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('code','web-header-investor-financials')
+                ->distributedActive()
+                ->first();
+
+            $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
+
+            $menu = \Minmax\Base\Models\SystemMenu::query()
+                ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+                ->distributedWhere('guard', 'web')
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('code','web-header-investor-financial-important-ratio')
+                ->distributedActive()
+                ->first();
+
+            $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
+            break;
+
+
     }
 
     $arr['breadcrumbs'] = $breadcrumbs ?? [];

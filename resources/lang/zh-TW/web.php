@@ -62,6 +62,7 @@ return [
         'unit_3' => '百萬新台幣',
         'unit_4' => '元',
         'unit_5' => '單位：%',
+        'unit_6' => '單位：新台幣',
         'item' => '項目',
     ],
 
@@ -100,6 +101,12 @@ return [
         'share_cash' => '現金股利',
         'netrevenue' => '每股淨資產',
         'eps' => 'EPS',
+    ],
+
+    'important_ratio' => [
+        'EBITDA' => 'EBITDA',
+        'ROA' => 'ROA',
+        'ROE' => 'ROE',
     ],
 
 ];

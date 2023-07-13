@@ -40,6 +40,7 @@ switch(request()->route()->getName()){
   case 'web.page.web-financial-balance-sheet': $wpClass = 'fnclrptBox jsFnclrptBox'; break;
   case 'web.page.web-financial-cash-flow': $wpClass = 'fnclrptBox jsFnclrptBox'; break;
   case 'web.page.web-financial-share-data': $wpClass = 'fnclrptBox jsFnclrptBox'; break;
+  case 'web.page.web-financial-important-ratio': $wpClass = 'fnclrptBox jsFnclrptBox'; break;
 }
 ?>
 <!doctype html>
