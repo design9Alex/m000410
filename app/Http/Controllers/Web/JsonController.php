@@ -1498,7 +1498,6 @@ class JsonController extends BaseController
             }
         }
 
-
         foreach($year as $key => $item){
             foreach($item as $key2 => $value2){
                 if(is_numeric($value2)) {

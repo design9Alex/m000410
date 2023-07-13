@@ -48,7 +48,7 @@
 
 
     @if($type == 'quarter')
-      @foreach( as $key => $item)
+      @foreach($tableQuarter as $key => $item)
         @if($key != 'financial_type')
         <tr class="">
           <td class="title text-start fontWeight500 ">{{__('web.important_ratio.'.$key)}}</td>

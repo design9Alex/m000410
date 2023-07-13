@@ -543,8 +543,13 @@ if (! function_exists('getFinancialData')) {
 
         foreach($articleBlocks ?? [] as $key => $item){
             $array = array_only($item->toArray(),$column);
-            $quarter[array_get($item,'title')] = $array;
 
+            if(array_get($item,'financial_type') == 'quarter') {
+                $quarter[array_get($item, 'title')] = $array;
+            }else{
+                $year[array_get($item, 'title')] = $array;
+            }
+            /*
             if(is_numeric(mb_substr(array_get($item,'title'),0,2))){
                 try {
                     foreach($array as $key2 => $value){
@@ -556,6 +561,7 @@ if (! function_exists('getFinancialData')) {
                     }
                 }catch (\Exception $e){}
             }
+            */
         }
 
         foreach($year as $key => $item){

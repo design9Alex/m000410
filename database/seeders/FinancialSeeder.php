@@ -493,6 +493,12 @@ class FinancialSeeder extends Seeder
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
@@ -547,7 +553,94 @@ class FinancialSeeder extends Seeder
 		$i = 0;
 
         DBHelper::insertDistributedData('article_block', [
-            //損益表
+
+            //損益表-年度
+            $id[++$i] => [
+                'title' => '2018',
+                'financial_type' => 'year', //year quarter
+                'income' => '15757',
+                'grossprofit' => '2321',
+                'revenue' => '1390',
+                'netincome' => '1748',
+                'cpynetincome' => '856',
+                'eps10' => '13.47',
+                'eps1' => '1.35',
+
+                'pic' => null,
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '2019',
+                'financial_type' => 'year', //year quarter
+
+                'income' => '15757',
+                'grossprofit' => '2321',
+                'revenue' => '1390',
+                'netincome' => '1748',
+                'cpynetincome' => '856',
+                'eps10' => '13.47',
+                'eps1' => '1.35',
+
+                'pic' => null,
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '2020',
+                'financial_type' => 'year', //year quarter
+
+                'income' => '16424',
+                'grossprofit' => '2447',
+                'revenue' => '1321',
+                'netincome' => '1613',
+                'cpynetincome' => '997',
+                'eps10' => '15.6',
+                'eps1' => '1.56',
+
+                'pic' => null,
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '2021',
+                'financial_type' => 'year', //year quarter
+
+                'income' => '20671',
+                'grossprofit' => '4148',
+                'revenue' => '2559',
+                'netincome' => '3079',
+                'cpynetincome' => '1726',
+                'eps10' => '25.4',
+                'eps1' => '2.54',
+
+                'pic' => null,
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+            $id[++$i] => [
+                'title' => '2022',
+                'financial_type' => 'year', //year quarter
+
+                'income' => '21859',
+                'grossprofit' => '5069',
+                'revenue' => '3424',
+                'netincome' => '4501',
+                'cpynetincome' => '2164',
+                'eps10' => '31.6' ,
+                'eps1' => '3.16',
+
+                'pic' => null,
+                'start_at' => null, 'end_at' => null,
+                'path' => null,
+                'roles' => null, 'sort' => ++$sort, 'active' => 1,
+            ],
+
+            //損益表-季度
             $id[++$i] => [
                 'title' => '21Q2',
                 'financial_type' => 'quarter', //year quarter
@@ -1147,6 +1240,12 @@ class FinancialSeeder extends Seeder
 
         DB::table('article_categorical')->insert([
             //損益表
+            ['category_id' => 'web-block-investor-income-statement','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-investor-income-statement','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-investor-income-statement','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-investor-income-statement','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+            ['category_id' => 'web-block-investor-income-statement','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
+
             ['category_id' => 'web-block-investor-income-statement','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
             ['category_id' => 'web-block-investor-income-statement','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
             ['category_id' => 'web-block-investor-income-statement','categorical_id' => $id[++$i], 'categorical_type' => 'Minmax\Article\Models\ArticleBlock'],
