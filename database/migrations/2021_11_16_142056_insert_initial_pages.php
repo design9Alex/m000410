@@ -553,7 +553,7 @@ class InsertInitialPages extends Migration
                     return view('web.templates.pages.financial-law-conference', ['local' => 'zh-TW'])->render();
                 }, ''),
                 'start_at' => null, 'end_at' => null,
-                'path' => 'financial-law-conference',
+                'path' => 'financial-law-conference/{y?}',
                 'menus' => null,
                 'permission' => null, 'roles' => null,
                 'operations' => json_encode(['indelible']),

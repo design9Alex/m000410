@@ -306,6 +306,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'financial-law-conference':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceFinancialLawConference($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -1807,6 +1815,78 @@ class PageBuilder extends ParentBuilder
 
 
         $html = view('web.layouts.components.financial-annual', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+    //replaceFinancialLawConference
+    protected function replaceFinancialLawConference($blockNode)
+    {
+        $categoryId = 'web-download-investor-financial-law-conference';
+        $articleCategory = ArticleCategory::query()
+            ->with(['articleCategories.articleCategories'])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where('id',$categoryId)->distributedOrWhere('code',$categoryId)
+            ->distributedActive()
+            ->first();
+
+
+
+        if(blank($articleCategory)){
+            abort(404);
+        }
+
+
+        $articleDownloads = (new ArticleDownloadRepository())->query()
+            ->with([
+                'articleCategories.articleCategory',
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->whereHas('articleCategories', function ($query) use($articleCategory) {
+                $query->where('id', array_get($articleCategory,'id'));
+            })
+
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>', now());
+            })
+            ->distributedActive()
+            ->orderBy('sort')
+            ->get();
+
+        $years = array();
+        $blocks = array();
+
+        foreach($articleDownloads ?? [] as $key => $item){
+            $years[] = array_get($item,'created_at')->format('Y');
+
+            $downloads[array_get($item,'created_at')->format('Y')][] = $item;
+        }
+        $years = array_unique($years);
+        rsort($years);
+        $years = array_values($years);
+
+        $y = filled(request()->route('y')) ? request()->route('y') : array_get($years,'0');
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'articleDownloads' => $articleDownloads,
+            'years' => $years,
+            'downloads' => $downloads,
+            'y' => $y,
+        ];
+
+
+        $html = view('web.layouts.components.financial-law-conference', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
 

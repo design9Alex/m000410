@@ -118,6 +118,14 @@ return [
 
     'financial_monthly' => [
         'all' => 'All',
-    ]
+    ],
+
+    'financial_law_conference' => [
+        'all' => 'All',
+        'date' => '日期',
+        'title' => '標題',
+        'download' => '下載',
+        'movie_download' => '影音下載',
+    ],
 
 ];
