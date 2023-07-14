@@ -75,7 +75,7 @@ return [
             'quarterly_statements_file_2' => '第二季',
             'quarterly_statements_file_3' => '第三季',
             'quarterly_statements_file_4' => '第四季',
-            'quarterly_statements_file_5' => '全季',
+            'quarterly_statements_file_5' => '全年度',
             'file' => '檔案',
             'movie_file' => '影音檔案',
 
