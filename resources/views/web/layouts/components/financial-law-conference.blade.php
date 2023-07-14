@@ -14,13 +14,15 @@
       </div>
     </div>
     <div class="FilterSelManu">
+      {{--
       <a href="{{route('web.page.web-financial-law-conference')}}" class="defaultA FilterSelManuBtn @if(empty($y)) active @endIf">
         <div class="FilterSelManuBtnText">@lang('web.financial_law_conference.all')</div>
       </a>
+      --}}
 
-      @foreach($articleIntros ?? [] as $key => $item)
-        <a href="{{route('web.page.web-financial-law-conference',['y' => array_get($item,'title')])}}" class="defaultA FilterSelManuBtn @if(!empty($y) && array_get($item,'title') == $y ) active @endIf">
-          <div class="FilterSelManuBtnText">{{array_get($item,'title')}}</div>
+      @foreach($years ?? [] as $key => $value)
+        <a href="{{route('web.page.web-financial-law-conference',['y' => $value])}}" class="defaultA FilterSelManuBtn @if(!empty($y) && $value == $y ) active @endIf">
+          <div class="FilterSelManuBtnText">{{$value}}</div>
         </a>
       @endForeach
 

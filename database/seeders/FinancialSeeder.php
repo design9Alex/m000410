@@ -1324,7 +1324,7 @@ class FinancialSeeder extends Seeder
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
             ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
-            ['id' => $id[++$i] = uuid(), 'created_at' => $this->timestamp, 'updated_at' => $this->timestamp],
+            ['id' => $id[++$i] = uuid(), 'created_at' => '2022-07-01 09:00:00', 'updated_at' => $this->timestamp],
         ]);
 
 

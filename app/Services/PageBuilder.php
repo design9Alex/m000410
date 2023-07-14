@@ -1871,9 +1871,12 @@ class PageBuilder extends ParentBuilder
 
             $downloads[array_get($item,'created_at')->format('Y')][] = $item;
         }
+
+
         $years = array_unique($years);
         rsort($years);
         $years = array_values($years);
+
 
         $y = filled(request()->route('y')) ? request()->route('y') : array_get($years,'0');
 
