@@ -42,6 +42,10 @@ switch(request()->route()->getName()){
   case 'web.page.web-financial-share-data': $wpClass = 'fnclrptBox jsFnclrptBox'; break;
   case 'web.page.web-financial-important-ratio': $wpClass = 'fnclrptBox jsFnclrptBox'; break;
   case 'web.page.web-financial-products-proportion': $wpClass = 'fnclrptBox jsFnclrptBox'; break;
+  case 'web.page.web-financial-monthly': $wpClass = 'fnclmtlBox'; break;
+  case 'web.page.web-financial-quarterly-statements': $wpClass = 'fnclqtlBox'; break;
+  case 'web.page.web-financial-annual': $wpClass = 'annualrptBox'; break;
+  case 'web.page.web-financial-law-conference': $wpClass = 'lawcfrcBox'; break;
 }
 ?>
 <!doctype html>

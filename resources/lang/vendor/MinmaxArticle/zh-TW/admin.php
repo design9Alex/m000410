@@ -85,6 +85,7 @@ return [
             'meeting_file_4' => '議事錄',
 
             'location' => '會場',
+            'sub_title' => '副標題',
         ],
     ]
 

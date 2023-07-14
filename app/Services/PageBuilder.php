@@ -298,6 +298,14 @@ class PageBuilder extends ParentBuilder
                     }
                     break;
 
+                case 'financial-annual':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceFinancialAnnual($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
 
             }
         }
@@ -1743,6 +1751,62 @@ class PageBuilder extends ParentBuilder
 
 
         $html = view('web.layouts.components.financial-quarterly-statements', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+    //replaceFinancialAnnual
+    protected function replaceFinancialAnnual($blockNode)
+    {
+        $categoryId = 'web-download-investor-financial-annual';
+        $articleCategory = ArticleCategory::query()
+            ->with(['articleCategories.articleCategories'])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where('id',$categoryId)->distributedOrWhere('code',$categoryId)
+            ->distributedActive()
+            ->first();
+
+
+
+        if(blank($articleCategory)){
+            abort(404);
+        }
+
+
+        $articleDownloads = (new ArticleDownloadRepository())->query()
+            ->with([
+                'articleCategories.articleCategory',
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->whereHas('articleCategories', function ($query) use($articleCategory) {
+                $query->where('id', array_get($articleCategory,'id'));
+            })
+
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>', now());
+            })
+            ->distributedActive()
+            ->orderBy('sort')
+            ->get();
+
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'articleDownloads' => $articleDownloads,
+        ];
+
+
+        $html = view('web.layouts.components.financial-annual', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
 

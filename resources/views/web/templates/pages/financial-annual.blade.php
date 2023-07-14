@@ -1,6 +1,6 @@
 <?php
 /**
- * Page route:financial-quarterly-statements
+ * Page route:financial-annual
  *
  * @var string $local
  */
@@ -25,7 +25,7 @@
       <h2 class="MainTitle text-center" data-aos="fade-up" data-aos-duration="1000">財務資訊</h2>
       <div class="TabBox financial" data-aos="zoom-in" data-aos-duration="1000">
         <div class="TabNow d-lg-none jsTabNow">
-          <div class="TabNowText">每季財務報告</div>
+          <div class="TabNowText">公司年報</div>
           <div class="TabNowIcon">
             <i class="icon_selectTri"></i>
           </div>
@@ -35,12 +35,10 @@
 
       </div>
 
-      <h3 class="Para1" data-aos="fade-up" data-aos-duration="1000">每季財務報告</h3>
-      <div class="DataTable2" data-aos="fade-up" data-aos-duration="1000">
+      <h3 class="Para1" data-aos="fade-up" data-aos-duration="1000">公司年報</h3>
 
-        @include('web.templates.modules.financial-quarterly-statements')
+      @include('web.templates.modules.financial-annual')
 
-      </div>
     </section>
   </div>
 </main>
