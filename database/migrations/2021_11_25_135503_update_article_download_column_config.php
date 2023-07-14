@@ -41,6 +41,7 @@ class UpdateArticleDownloadColumnConfig extends Migration
                 'description' => ['table' => 'data_article_plaintext', 'language' => true], // 簡短敘述
 
                 'location' => ['table' => 'data_article_plaintext', 'language' => true], // 會場
+                'meeting_at' => ['table' => 'data_article_plaintext', 'language' => true], // 會場
 
 
                 'editor' => ['table' => 'data_article_editor', 'language' => true],         // 區塊內容

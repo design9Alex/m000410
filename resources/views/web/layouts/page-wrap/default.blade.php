@@ -46,6 +46,8 @@ switch(request()->route()->getName()){
   case 'web.page.web-financial-quarterly-statements': $wpClass = 'fnclqtlBox'; break;
   case 'web.page.web-financial-annual': $wpClass = 'annualrptBox'; break;
   case 'web.page.web-financial-law-conference': $wpClass = 'lawcfrcBox'; break;
+
+  case 'web.page.web-shareholders-meeting': $wpClass = 'shareholderBox jsShareholderBox'; break;
 }
 ?>
 <!doctype html>

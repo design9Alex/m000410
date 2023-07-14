@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\Admin\ProductIntroRepository;
+use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
@@ -309,6 +310,22 @@ class PageBuilder extends ParentBuilder
                 case 'financial-law-conference':
                     if (!$this->isPreview('admin.article-page.preview-view')) {
                         $this->replaceFinancialLawConference($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
+                case 'shareholders-menu':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceShareholdersMenu($moduleBlock);
+                    } else {
+                        $this->clearWrapDom($moduleBlock, true);
+                    }
+                    break;
+
+                case 'shareholders-meeting':
+                    if (!$this->isPreview('admin.article-page.preview-view')) {
+                        $this->replaceShareholdersMeeting($moduleBlock);
                     } else {
                         $this->clearWrapDom($moduleBlock, true);
                     }
@@ -1890,6 +1907,127 @@ class PageBuilder extends ParentBuilder
 
 
         $html = view('web.layouts.components.financial-law-conference', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+
+
+    //replaceShareholdersMenu
+    /**
+     * @param  \DOMElement|\DOMNode $blockNode
+     */
+    protected function replaceShareholdersMenu($blockNode)
+    {
+        $shareholdersMenu = \Minmax\Base\Models\SystemMenu::query()
+            ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+
+            ->with([
+                'systemMenus' => function ($query) {
+                    $query->distributedActive()
+                        ->whereHas('languageUsage', function ($query) {
+                            $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                        })
+                        ->distributedOrderBy();
+                },
+                'systemMenus.systemMenus' => function ($query) {
+                    $query->distributedActive()
+                        ->whereHas('languageUsage', function ($query) {
+                            $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                        })
+                        ->distributedOrderBy();
+                },
+                'systemMenus.systemMenus.systemMenus' => function ($query) {
+                    $query->distributedActive()
+                        ->whereHas('languageUsage', function ($query) {
+                            $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                        })
+                        ->distributedOrderBy();
+                },
+
+            ])
+            ->distributedWhere('code','web-header-investor-shareholders')
+            ->distributedWhere('guard', 'web')
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->distributedActive()
+            ->distributedOrderBy()
+            ->first();
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'fullUrl' => request()->fullUrl(),
+            'shareholdersMenu' => $shareholdersMenu,
+        ];
+
+        $html = view('web.layouts.components.shareholders-menu', $viewData)->render();
+        $this->replaceElement($blockNode, $html);
+    }
+
+
+    //replaceShareholdersMeeting
+    /**
+     * @param  \DOMElement|\DOMNode $blockNode
+     */
+    protected function replaceShareholdersMeeting($blockNode)
+    {
+        $categoryId = 'web-download-shareholders-meeting';
+        $articleCategory = ArticleCategory::query()
+            ->with(['articleCategories.articleCategories'])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where('id',$categoryId)->distributedOrWhere('code',$categoryId)
+            ->distributedActive()
+            ->first();
+
+
+
+        if(blank($articleCategory)){
+            abort(404);
+        }
+
+
+        $articleDownloads = (new ArticleDownloadRepository())->query()
+            ->with([
+                'articleCategories.articleCategory',
+            ])
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->whereHas('articleCategories', function ($query) use($articleCategory) {
+                $query->where('id', array_get($articleCategory,'id'));
+            })
+
+            ->whereHas('languageUsage', function ($query) {
+                $query->whereJsonContains('languages', [app()->getLocale() => true]);
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('start_at')->distributedOrWhere('start_at', '<=', now());
+            })
+            ->where(function ($query)  {
+                $query->distributedWhereNull('end_at')->distributedOrWhere('end_at', '>', now());
+            })
+            ->distributedActive()
+            ->orderBy('sort')
+            ->get();
+
+        foreach($articleDownloads as $key => $item){
+            //array_get($item,'meeting_at')
+            array_set($item,'new_meeting_at',Carbon::parse(array_get($item,'meeting_at')));
+            //dd(getWeekday($meeting_at->format('w')));
+        }
+
+
+
+        $viewData = [
+            'routeName' => request()->route()->getName(),
+            'articleDownloads' => $articleDownloads,
+        ];
+
+
+        $html = view('web.layouts.components.shareholders-meeting', $viewData)->render();
         $this->replaceElement($blockNode, $html);
     }
 

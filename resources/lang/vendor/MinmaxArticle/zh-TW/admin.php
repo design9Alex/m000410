@@ -86,6 +86,7 @@ return [
 
             'location' => '會場',
             'sub_title' => '副標題',
+            'meeting_at' => '會議日期時間',
         ],
     ]
 

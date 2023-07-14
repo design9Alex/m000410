@@ -40,6 +40,7 @@ class ShareHoldersSeeder extends Seeder
             'shareholders-meeting' => [
                 'title' => '[股東專區] 股東會',
                 'column_set' => json_encode([
+                    ['column' => 'meeting_at', 'component' => 'minmax-datetime'],
                     ['column' => 'location', 'component' => 'minmax-input-text'],
                     ['column' => 'meeting_file_1', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
                     ['column' => 'meeting_file_2', 'component' => 'minmax-files', 'required' => 'false', 'limit' => '1'],
@@ -137,6 +138,7 @@ class ShareHoldersSeeder extends Seeder
         DBHelper::insertDistributedData('article_download', [
             $id[++$i] => [
                 'title' => '2022年股東會',
+                'meeting_at' => '2022-07-01 10:00:00',
                 'location' => '高雄市楠梓區經二路15號(從業員工服務中心)',
                 'meeting_file_1' => json_encode([['path' => '/files/uploads/test.pdf',],]),
                 'meeting_file_2' => json_encode([['path' => '/files/uploads/test.pdf',],]),
@@ -147,6 +149,7 @@ class ShareHoldersSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '2021年股東會',
+                'meeting_at' => '2021-07-01 10:00:00',
                 'location' => '高雄市楠梓區經二路15號(從業員工服務中心)',
                 'meeting_file_1' => json_encode([['path' => '/files/uploads/test.pdf',],]),
                 'meeting_file_2' => json_encode([['path' => '/files/uploads/test.pdf',],]),
@@ -157,6 +160,7 @@ class ShareHoldersSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '2020年股東會',
+                'meeting_at' => '2020-07-01 10:00:00',
                 'location' => '高雄市楠梓區經二路15號(從業員工服務中心)',
                 'meeting_file_1' => json_encode([['path' => '/files/uploads/test.pdf',],]),
                 'meeting_file_2' => json_encode([['path' => '/files/uploads/test.pdf',],]),
@@ -167,6 +171,7 @@ class ShareHoldersSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '2019年股東會',
+                'meeting_at' => '2019-07-01 10:00:00',
                 'location' => '高雄市楠梓區經二路15號(從業員工服務中心)',
                 'meeting_file_1' => json_encode([['path' => '/files/uploads/test.pdf',],]),
                 'meeting_file_2' => json_encode([['path' => '/files/uploads/test.pdf',],]),
@@ -177,6 +182,7 @@ class ShareHoldersSeeder extends Seeder
             ],
             $id[++$i] => [
                 'title' => '2018年股東會',
+                'meeting_at' => '2018-07-01 10:00:00',
                 'location' => '高雄市楠梓區經二路15號(從業員工服務中心)',
                 'meeting_file_1' => json_encode([['path' => '/files/uploads/test.pdf',],]),
                 'meeting_file_2' => json_encode([['path' => '/files/uploads/test.pdf',],]),

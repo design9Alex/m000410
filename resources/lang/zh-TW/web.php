@@ -128,4 +128,19 @@ return [
         'movie_download' => '影音下載',
     ],
 
+    'shareholders_meeting' => [
+        'year' => '年份',
+        'meeting' => '會議',
+        'date' => '日期',
+        'time' => '時間',
+        'location' => '會場',
+        'item' => '項目',
+        'download' => '下載',
+        'meeting_1' => '開會通知',
+        'meeting_2' => '議事手冊',
+        'meeting_3' => '主要股東名單',
+        'meeting_4' => '議事錄',
+        'meeting_list' => '歷年股東會資料',
+    ],
+
 ];

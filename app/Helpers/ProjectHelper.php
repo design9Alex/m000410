@@ -598,6 +598,35 @@ function breadcrumbs($route, $parameters = [])
             break;
 
 
+        case 'web.page.web-shareholders-meeting':
+            $breadcrumbs[] = ['uri' => route('web.page.web-financial') , 'title' => trans('web.menu.investor')];
+
+            $menu = \Minmax\Base\Models\SystemMenu::query()
+                ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+                ->distributedWhere('guard', 'web')
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('code','web-header-investor-shareholders')
+                ->distributedActive()
+                ->first();
+
+            $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
+
+            $menu = \Minmax\Base\Models\SystemMenu::query()
+                ->with(trim(str_repeat('systemMenu.', config('minmax.layer_limit.system_menu') - 1), '.'))
+                ->distributedWhere('guard', 'web')
+                ->whereHas('languageUsage', function ($query) {
+                    $query->whereJsonContains('languages', [app()->getLocale() => true]);
+                })
+                ->distributedWhere('code','web-header-investor-shareholders-meeting')
+                ->distributedActive()
+                ->first();
+
+            $breadcrumbs[] = ['uri' => array_get($menu,'url') , 'title' => array_get($menu,'title') ];
+            break;
+
+
     }
 
     $arr['breadcrumbs'] = $breadcrumbs ?? [];
@@ -714,3 +743,14 @@ if (! function_exists('getFinancialData')) {
     }
 }
 
+
+
+if (! function_exists('getWeekday')) {
+    /**
+     * Get getWeekday data.
+     */
+    function getWeekday($day){
+        $weeklist = array('日', '一', '二', '三', '四', '五', '六');
+        return $weeklist[$day];
+    }
+}
